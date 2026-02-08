@@ -72,11 +72,7 @@ import { buildAttackOutcome, deriveAttributesFromSkills } from "https://whispers
 
 ### Calc Endpoints (PHP)
 
-Auth:
-- `Authorization: Bearer <your key>`
-- `?api_key=<your key>` (fallback)
-
-All endpoints are `POST` and accept JSON bodies.
+All endpoints are `POST` and accept JSON bodies. No auth required.
 
 Endpoints:
 - `/rules-api/calc/attack`
@@ -134,52 +130,42 @@ Minimal curl examples:
 ```bash
 curl -s https://whisperspace.com/rules-api/calc/attack \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <key>" \
   -d '{"total":12,"useDC":8,"weaponDamage":4,"label":"Shotgun"}'
 
 curl -s https://whisperspace.com/rules-api/calc/crit-extra \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <key>" \
   -d '{"margin":4}'
 
 curl -s https://whisperspace.com/rules-api/calc/damage \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <key>" \
   -d '{"incomingDamage":4,"stressDelta":1,"armour":{"protection":2,"durability":{"current":3,"max":3}},"wounds":{"light":0,"moderate":0,"heavy":0},"stress":{"current":0,"cuf":0,"cufLoss":0}}'
 
 curl -s https://whisperspace.com/rules-api/calc/derive-attributes \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <key>" \
   -d '{"skills":{"athletics":2},"inherentSkills":[{"id":"athletics","attribute":"phys"}]}'
 
 curl -s https://whisperspace.com/rules-api/calc/derive-cuf \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <key>" \
   -d '{"skills":{"instinct":2,"willpower":1,"bearing":0,"toughness":0,"tactics":1}}'
 
 curl -s https://whisperspace.com/rules-api/calc/skill-notation \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <key>" \
   -d '{"netDice":1,"modifier":2,"label":"Athletics"}'
 
 curl -s https://whisperspace.com/rules-api/calc/skill-mod \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <key>" \
   -d '{"learnedByFocus":{"combat":[{"id":"melee"}]},"skillId":"melee","ranks":{"melee":0},"learningFocus":"combat","skillMods":{"melee":0}}'
 
 curl -s https://whisperspace.com/rules-api/calc/status-deltas \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <key>" \
   -d '{"statuses":["phys +1","speed -2"]}'
 
 curl -s https://whisperspace.com/rules-api/calc/status-apply \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <key>" \
   -d '{"derived":{"phys":2,"ref":1,"soc":0,"ment":1,"speed":6},"statuses":["phys +1","speed -2"]}'
 
 curl -s https://whisperspace.com/rules-api/calc/ammo-max \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <key>" \
   -d '{"weapon":{"keywordParams":{"ammoMax":6}}}'
 ```
 

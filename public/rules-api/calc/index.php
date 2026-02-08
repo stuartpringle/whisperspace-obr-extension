@@ -5,7 +5,7 @@ declare(strict_types=1);
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Headers: Content-Type");
 
 if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
   http_response_code(204);
@@ -38,40 +38,14 @@ load_env("/hdd/sites/stuartpringle/whisperspace/public/.env");
 load_env("/hdd/sites/stuartpringle/whisperspace/public/rules-api/.env");
 load_env("/hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/.env");
 
-$headers = function_exists("getallheaders") ? getallheaders() : [];
-$auth = $headers["Authorization"] ?? $headers["authorization"] ?? "";
-$apiKey = null;
-if (str_starts_with($auth, "Bearer ")) {
-  $apiKey = substr($auth, 7);
-}
-if (!$apiKey) {
-  $apiKey = $_GET["api_key"] ?? null;
-}
-$expected = $_SERVER["WS_RULES_API_KEY"] ?? ($_ENV["WS_RULES_API_KEY"] ?? (getenv("WS_RULES_API_KEY") ?: ""));
-
 $path = parse_url($_SERVER["REQUEST_URI"] ?? "", PHP_URL_PATH) ?? "";
 $path = preg_replace("#^/rules-api/calc#","", $path);
 $path = rtrim($path, "/");
 
 if ($path === "/debug") {
   echo json_encode([
-    "hasServerEnv" => isset($_SERVER["WS_RULES_API_KEY"]),
-    "hasEnv" => isset($_ENV["WS_RULES_API_KEY"]),
-    "hasGetenv" => getenv("WS_RULES_API_KEY") !== false,
-    "expectedLen" => strlen($expected),
+    "ok" => true,
   ]);
-  exit;
-}
-
-if (!$expected) {
-  http_response_code(500);
-  echo json_encode(["error" => "server_not_configured"]);
-  exit;
-}
-
-if (!$apiKey || !hash_equals($expected, $apiKey)) {
-  http_response_code(401);
-  echo json_encode(["error" => "unauthorized"]);
   exit;
 }
 
