@@ -170,7 +170,7 @@ export function SheetApp() {
         const data = event.data as CombatLogPayload;
         if (!data?.text) return;
         setCombatLog((prev) => {
-          const next = [...prev, data].slice(-50);
+          const next = [...prev, data].slice(-3);
           return next;
         });
       });
@@ -274,37 +274,34 @@ export function SheetApp() {
     };
   }, []);
 
-  async function applyOutcomeToToken(tokenId: string, entry: CombatLogPayload) {
-    const outcome = entry.outcome;
-    if (!outcome?.hit) return;
-    const sheet = await ensureSheetOnToken(tokenId);
-    if (!sheet) return;
-    const next = applyDamageAndStress({
-      sheet,
-      incomingDamage: outcome.totalDamage ?? 0,
-      stressDelta: outcome.stressDelta ?? 0,
-    });
-    await saveSheetToToken(tokenId, next);
+  function appendEffectLog(targetName: string, damageApplied: number, stressApplied: number) {
+    const payload: CombatLogPayload = {
+      text: `${targetName} took ${damageApplied} damage${stressApplied ? ` and +${stressApplied} stress` : ""}.`,
+      ts: Date.now(),
+      kind: "effect",
+      targetName,
+      damageApplied,
+      stressApplied,
+    };
+    setCombatLog((prev) => [...prev, payload].slice(-3));
   }
 
-  async function applyCombatLog(entry: CombatLogPayload) {
-    if (!entry?.outcome?.hit) return;
-    if (isGM) {
-      const selection = (await OBR.player.getSelection()) ?? [];
-      if (!selection.length) {
-        void OBR.notification.show("Select one or more target tokens to apply damage.", "WARNING");
-        return;
-      }
-      await Promise.all(selection.map((id) => applyOutcomeToToken(id, entry)));
-      return;
-    }
+  function applyCombatLog(entry: CombatLogPayload) {
+    if (state.kind !== "ready") return;
+    if (state.mode !== "my") return;
+    const damage = Math.max(0, Math.trunc(entry.damageApplied ?? 0));
+    const stress = Math.max(0, Math.trunc(entry.stressApplied ?? 0));
+    if (damage <= 0 && stress <= 0) return;
 
-    const myTokenId = await getMyCharacterTokenId();
-    if (!myTokenId) {
-      void OBR.notification.show("No character token set. Set your character first.", "WARNING");
-      return;
-    }
-    await applyOutcomeToToken(myTokenId, entry);
+    updateSheet((s) =>
+      applyDamageAndStress({
+        sheet: s,
+        incomingDamage: damage,
+        stressDelta: stress,
+      })
+    );
+
+    appendEffectLog(state.sheet.name || "Target", damage, stress);
   }
 
   // Keep sheet name in sync with token text (Edit Text in OBR)
@@ -871,7 +868,7 @@ function burnCufToPass() {
             onChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))}
             onApplyStress={applyStress}
             combatLog={combatLog}
-            onApplyCombatLog={applyCombatLog}
+            onApplyCombatLog={state.mode === "my" ? applyCombatLog : undefined}
             isGM={isGM}
           />
         )}

@@ -29,6 +29,12 @@ export type AttackOutcome = {
 export type CombatLogPayload = {
   text: string;
   ts: number;
+  kind?: "attack" | "effect";
+  attackerName?: string;
+  weaponName?: string;
+  targetName?: string;
+  damageApplied?: number;
+  stressApplied?: number;
   outcome?: Pick<AttackOutcome, "total" | "useDC" | "hit" | "isCrit" | "baseDamage" | "totalDamage" | "stressDelta">;
 };
 
@@ -54,6 +60,7 @@ export async function rollWeaponAttack(opts: {
   useDC?: number;
   // Optional prefix to help identify source (e.g., "(Initiative)")
   prefix?: string;
+  attackerName?: string;
 }): Promise<AttackOutcome> {
   const useDC = Number.isFinite(opts.useDC) ? Math.trunc(opts.useDC!) : Math.trunc(opts.weapon.useDC);
   const label = opts.weapon.name || "Attack";
@@ -93,6 +100,9 @@ export async function rollWeaponAttack(opts: {
   const payload: CombatLogPayload = {
     text: msg,
     ts: Date.now(),
+    kind: "attack",
+    attackerName: opts.attackerName,
+    weaponName: label,
     outcome: {
       total,
       useDC,

@@ -283,6 +283,7 @@ export function InitiativePanel() {
       weapon: weapon as any,
       netDice: effectiveNetDice,
       modifier: mod,
+      attackerName: sheet.name,
       rollTarget: "everyone",
       showResults: true,
     });
