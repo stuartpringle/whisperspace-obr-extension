@@ -42,6 +42,16 @@ $headers = function_exists("getallheaders") ? getallheaders() : [];
 $apiKey = $headers["X-WS-API-Key"] ?? $headers["x-ws-api-key"] ?? null;
 $expected = $_SERVER["WS_RULES_API_KEY"] ?? ($_ENV["WS_RULES_API_KEY"] ?? (getenv("WS_RULES_API_KEY") ?: ""));
 
+if ($path === "/debug") {
+  echo json_encode([
+    "hasServerEnv" => isset($_SERVER["WS_RULES_API_KEY"]),
+    "hasEnv" => isset($_ENV["WS_RULES_API_KEY"]),
+    "hasGetenv" => getenv("WS_RULES_API_KEY") !== false,
+    "expectedLen" => strlen($expected),
+  ]);
+  exit;
+}
+
 if (!$expected) {
   http_response_code(500);
   echo json_encode(["error" => "server_not_configured"]);
