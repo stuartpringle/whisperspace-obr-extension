@@ -406,11 +406,27 @@ export function RulesApp() {
 
     async function loadLatest() {
       try {
-        const metaRes = await fetch(`${API_BASE}/meta.json`, { cache: "no-store" });
-        if (!metaRes.ok) return;
-        const meta = await metaRes.json();
         const cachedMetaRaw = localStorage.getItem("ws_rules_meta_v1");
         const cachedMeta = cachedMetaRaw ? JSON.parse(cachedMetaRaw) : null;
+        const cachedEtag = localStorage.getItem("ws_rules_meta_etag_v1") || "";
+
+        const metaRes = await fetch(`${API_BASE}/meta.json`, {
+          cache: "no-store",
+          headers: cachedEtag ? { "If-None-Match": cachedEtag } : undefined,
+        });
+
+        if (metaRes.status === 304 && cachedMeta) {
+          const cachedRulesRaw = localStorage.getItem("ws_rules_cache_v1");
+          if (cachedRulesRaw && !cancelled) {
+            setRules(JSON.parse(cachedRulesRaw) as RuleDoc[]);
+          }
+          return;
+        }
+
+        if (!metaRes.ok) return;
+        const meta = await metaRes.json();
+        const etag = metaRes.headers.get("ETag");
+        if (etag) localStorage.setItem("ws_rules_meta_etag_v1", etag);
         const cachedRulesRaw = localStorage.getItem("ws_rules_cache_v1");
 
         if (!cachedMeta || cachedMeta.version !== meta.version) {
