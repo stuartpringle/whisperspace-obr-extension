@@ -70,6 +70,40 @@ The shared core logic is available as an ES module:
 import { buildAttackOutcome, deriveAttributesFromSkills } from "https://whisperspace.com/rules-api/latest/core/index.js";
 ```
 
+### Calc Endpoints (PHP)
+
+`POST https://whisperspace.com/rules-api/calc/attack`
+
+Headers:
+- `Content-Type: application/json`
+- `X-WS-API-Key: <your key>`
+
+Body:
+```json
+{
+  "total": 11,
+  "useDC": 8,
+  "weaponDamage": 4,
+  "label": "Shotgun"
+}
+```
+
+Response:
+```json
+{
+  "total": 11,
+  "useDC": 8,
+  "margin": 3,
+  "hit": true,
+  "isCrit": false,
+  "critExtra": 0,
+  "baseDamage": 4,
+  "totalDamage": 4,
+  "stressDelta": 0,
+  "message": "Hit. Shotgun rolled 11 vs DC 8. Damage: 4."
+}
+```
+
 ### Core Hooks
 
 You can subscribe to hooks exposed by the core module:

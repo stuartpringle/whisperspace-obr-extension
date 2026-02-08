@@ -14,3 +14,7 @@ bash scripts/core-build.sh
 
 echo "[rules:publish] Syncing parser output + generating API bundle..."
 bash scripts/import-rules.sh "${PARSER_OUT}"
+
+echo "[rules:publish] Publishing calc endpoints..."
+mkdir -p /hdd/sites/stuartpringle/whisperspace/public/rules-api/calc
+cp public/rules-api/calc/index.php /hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/index.php
