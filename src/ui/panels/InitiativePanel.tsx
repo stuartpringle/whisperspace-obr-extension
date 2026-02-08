@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import OBR from "@owlbear-rodeo/sdk";
 
+import { CharacterSheetV1 } from "../../rules/schema";
 import {
   advanceInitiative,
   clearInitiative,
-  getInitiativeState,
   onInitiativeChange,
   removeInitiativeEntry,
   setSurprised,
@@ -12,9 +12,11 @@ import {
 } from "../../obr/initiative";
 import type { InitiativeTrackerState } from "../../obr/initiative";
 import { getMyCharacterTokenId, loadSheetFromToken, saveSheetToToken, TOKEN_KEY_OWNER_PLAYER } from "../../obr/metadata";
+import { skillsData } from "../../data/skills";
+import type { FocusId } from "../../data/types";
 import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../../rules/deriveAttributes";
 import { applyStatusToDerived, computeStatusEffects } from "../../rules/statusEffects";
-import { buildWhisperspaceSkillNotation, rollWithDicePlus, rollWithDicePlusTotal } from "../diceplus/roll";
+import { buildWhisperspaceSkillNotation, rollWithDicePlusTotal } from "../diceplus/roll";
 import { rollWeaponAttackAndBroadcast } from "../combat/weaponAttack";
 
 import {
@@ -30,13 +32,14 @@ import {
   Stack,
   Tooltip,
   Typography,
+  ToggleButton,
+  ToggleButtonGroup,
 } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CasinoIcon from "@mui/icons-material/Casino";
 import ShieldIcon from "@mui/icons-material/Shield";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import ReplayIcon from "@mui/icons-material/Replay";
 
 type TokenExtra = {
   tokenId: string;
@@ -49,20 +52,36 @@ type TokenExtra = {
   topWeaponUseDC?: number;
   topWeaponDamage?: number;
   topWeaponSkillId?: string;
+  topWeaponAmmo?: number;
+  topWeaponAmmoMax?: number;
 };
 
-const COMBAT_LOG_CHANNEL = "ws:combat-log";
-
-function getSkillMod(rank: number | undefined): number {
-  const r = typeof rank === "number" ? rank : 0;
-  return r <= 0 ? -1 : r;
+function makeLearnedInfoById() {
+  const map = new Map<string, { focus: FocusId }>();
+  (Object.keys(skillsData.learned) as FocusId[]).forEach((focus) => {
+    (skillsData.learned[focus] ?? []).forEach((s) => map.set(s.id, { focus }));
+  });
+  return map;
 }
 
-function critExtraDamage(diff: number): number {
-  if (diff >= 9) return 4;
-  if (diff >= 7) return 3;
-  if (diff >= 4) return 2;
-  return 0;
+function getAmmoMax(w: CharacterSheetV1["weapons"][number] | undefined): number {
+  if (!w) return 0;
+  const raw = (w.keywordParams as any)?.ammoMax;
+  const max = typeof raw === "number" ? raw : typeof raw === "string" ? Number(raw) : undefined;
+  return Number.isFinite(max) ? Number(max) : 0;
+}
+
+function skillModifierFor(
+  learnedInfoById: Map<string, { focus: FocusId }>,
+  skillId: string,
+  learningFocus: FocusId,
+  rank: number,
+  bonus: number
+): number {
+  if (rank > 0) return rank + bonus;
+  const learnedInfo = learnedInfoById.get(skillId);
+  const base = learnedInfo && learnedInfo.focus === learningFocus ? 0 : -1;
+  return base + bonus;
 }
 
 export function InitiativePanel() {
@@ -77,10 +96,10 @@ export function InitiativePanel() {
   const [isGM, setIsGM] = useState(false);
 
   // Attack dice controls for the initiative-row "Attack" button.
-  const [attackBonusDice, setAttackBonusDice] = useState(0);
-  const [attackPenaltyDice, setAttackPenaltyDice] = useState(0);
+  const [netDice, setNetDice] = useState<-2 | -1 | 0 | 1 | 2>(0);
 
   const clampNetDice = (n: number) => Math.max(-3, Math.min(3, n));
+  const learnedInfoById = useMemo(() => makeLearnedInfoById(), []);
 
   useEffect(() => {
     const off = onInitiativeChange((s) => setState(s));
@@ -136,6 +155,8 @@ export function InitiativePanel() {
           const armorBroken = !!armor && durabilityCur <= 0;
           const prot = armorBroken ? 0 : (armor?.protection ?? 0);
           const w0 = sheet?.weapons?.[0];
+          const ammoMax = getAmmoMax(w0);
+          const ammoCur = Number.isFinite(w0?.ammo as any) ? Number(w0?.ammo) : 0;
           next[tokenId] = {
             tokenId,
             name:
@@ -151,6 +172,8 @@ export function InitiativePanel() {
             topWeaponUseDC: w0?.useDC,
             topWeaponDamage: w0?.damage,
             topWeaponSkillId: w0?.skillId,
+            topWeaponAmmo: ammoCur,
+            topWeaponAmmoMax: ammoMax,
           };
         }
 
@@ -241,30 +264,48 @@ export function InitiativePanel() {
     const curStress = sheet.stress?.current ?? 0;
     const stressed = curStress > effectiveCUF;
 
-    const skillId = weapon.skillId;
+    const skillId = String(weapon.skillId ?? "");
     const baseRank = sheet.skills?.[skillId] ?? 0;
-    const mod = getSkillMod(baseRank) + (deltas[skillId] ?? 0);
+    const learningFocus = (sheet.learningFocus ?? "combat") as FocusId;
+    const mod = skillModifierFor(learnedInfoById, skillId, learningFocus, baseRank, deltas[skillId] ?? 0);
 
-    const netDice = clampNetDice(attackBonusDice - (attackPenaltyDice + (stressed ? 1 : 0)));
+    const maxAmmo = getAmmoMax(weapon);
+    const curAmmo = Number.isFinite((weapon as any)?.ammo) ? Number((weapon as any)?.ammo) : 0;
+    if (maxAmmo > 0 && curAmmo <= 0) {
+      void OBR.notification.show("Out of ammo. Reload first.", "WARNING");
+      return;
+    }
+
+    const effectiveNetDice = clampNetDice(netDice - (stressed ? 1 : 0));
 
     // Use the same weapon attack roll + messaging as the Combat tab.
-    const res = await rollWeaponAttackAndBroadcast({
+    await rollWeaponAttackAndBroadcast({
       weapon: weapon as any,
-      netDice,
+      netDice: effectiveNetDice,
       modifier: mod,
       rollTarget: "everyone",
       showResults: true,
     });
 
     // Spend ammo if applicable.
-    const maxAmmo = Number((weapon as any)?.keywordParams?.ammoMax ?? 0);
     if (maxAmmo > 0) {
-      const curAmmo = Number((weapon as any)?.ammo ?? 0);
       const nextAmmo = Math.max(0, curAmmo - 1);
       const nextWeapons = [...(sheet.weapons ?? [])];
       nextWeapons[0] = { ...nextWeapons[0], ammo: nextAmmo } as any;
       await saveSheetToToken(tokenId, { ...sheet, weapons: nextWeapons });
     }
+  }
+
+  async function reloadTopWeapon(tokenId: string) {
+    const sheet = await loadSheetFromToken(tokenId);
+    if (!sheet) return;
+    const weapon = sheet.weapons?.[0];
+    if (!weapon) return;
+    const maxAmmo = getAmmoMax(weapon);
+    if (maxAmmo <= 0) return;
+    const nextWeapons = [...(sheet.weapons ?? [])];
+    nextWeapons[0] = { ...nextWeapons[0], ammo: maxAmmo } as any;
+    await saveSheetToToken(tokenId, { ...sheet, weapons: nextWeapons });
   }
 
   return (
@@ -278,49 +319,26 @@ export function InitiativePanel() {
           </Button>
 
           {/* Attack dice controls (used by initiative-row Attack buttons) */}
-          <Stack direction="row" spacing={0.5} alignItems="center" sx={{ pl: 1 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1, flexWrap: "wrap", pl: 1 }}>
             <Typography variant="body2" sx={{ opacity: 0.8 }}>
-              Attack dice
+              Attack Roll:
             </Typography>
-
-            <Tooltip title="Bonus dice">
-              <span>
-                <IconButton size="small" onClick={() => setAttackBonusDice((n) => Math.min(3, n + 1))}>
-                  <AddIcon fontSize="inherit" />
-                </IconButton>
-              </span>
-            </Tooltip>
-            <Typography variant="body2" sx={{ width: 16, textAlign: "center" }}>
-              {attackBonusDice}
-            </Typography>
-            <Tooltip title="Reduce bonus dice">
-              <span>
-                <IconButton size="small" onClick={() => setAttackBonusDice((n) => Math.max(0, n - 1))}>
-                  <RemoveIcon fontSize="inherit" />
-                </IconButton>
-              </span>
-            </Tooltip>
-
-            <Box sx={{ width: 8 }} />
-
-            <Tooltip title="Penalty dice">
-              <span>
-                <IconButton size="small" onClick={() => setAttackPenaltyDice((n) => Math.min(3, n + 1))}>
-                  <AddIcon fontSize="inherit" />
-                </IconButton>
-              </span>
-            </Tooltip>
-            <Typography variant="body2" sx={{ width: 16, textAlign: "center" }}>
-              {attackPenaltyDice}
-            </Typography>
-            <Tooltip title="Reduce penalty dice">
-              <span>
-                <IconButton size="small" onClick={() => setAttackPenaltyDice((n) => Math.max(0, n - 1))}>
-                  <RemoveIcon fontSize="inherit" />
-                </IconButton>
-              </span>
-            </Tooltip>
-          </Stack>
+            <ToggleButtonGroup
+              size="small"
+              exclusive
+              value={netDice}
+              onChange={(_, v) => {
+                if (v === null) return;
+                setNetDice(v);
+              }}
+            >
+              <ToggleButton value={-2}>−2</ToggleButton>
+              <ToggleButton value={-1}>−1</ToggleButton>
+              <ToggleButton value={0}>0</ToggleButton>
+              <ToggleButton value={1}>+1</ToggleButton>
+              <ToggleButton value={2}>+2</ToggleButton>
+            </ToggleButtonGroup>
+          </Box>
 
           {isGM && (
             <>
@@ -346,6 +364,9 @@ export function InitiativePanel() {
             const isActive = state.activeTokenId === e.tokenId;
             const showYourTurn = isActive && canControlRow && !isGM;
             const surprised = !!e.surprised;
+            const ammoMax = extra?.topWeaponAmmoMax ?? 0;
+            const ammoCur = extra?.topWeaponAmmo ?? 0;
+            const outOfAmmo = ammoMax > 0 && ammoCur <= 0;
 
             return (
               <ListItem
@@ -360,20 +381,50 @@ export function InitiativePanel() {
                   <Stack direction="row" spacing={0.5} alignItems="center">
                     <Tooltip title={extra?.armorBroken ? "Armor broken" : "Protection"}>
                       <Box sx={{ display: "inline-flex", alignItems: "center", gap: 0.5, px: 1, py: 0.5, borderRadius: 1, bgcolor: "rgba(0,0,0,0.25)" }}>
-                        <ShieldIcon fontSize="small" />
+                        <ShieldIcon fontSize="small" sx={{ color: extra?.armorBroken ? "error.main" : "inherit" }} />
                         <Typography variant="caption">{extra?.prot ?? 0}</Typography>
                       </Box>
                     </Tooltip>
 
                     {(isGM || canControlRow) && (
-                      <Tooltip title={extra?.topWeaponName ? `Attack: ${extra.topWeaponName}` : "No top weapon"}>
+                      <Tooltip
+                        title={
+                          !extra?.topWeaponName
+                            ? "No top weapon"
+                            : outOfAmmo
+                              ? `Out of ammo: ${extra.topWeaponName}`
+                              : `Attack: ${extra.topWeaponName}`
+                        }
+                      >
                         <span>
                           <IconButton
                             size="small"
-                            disabled={!extra?.topWeaponName}
+                            disabled={!extra?.topWeaponName || outOfAmmo}
                             onClick={() => void attackWithTopWeapon(e.tokenId)}
                           >
                             <CasinoIcon fontSize="small" />
+                          </IconButton>
+                        </span>
+                      </Tooltip>
+                    )}
+
+                    {(isGM || canControlRow) && (
+                      <Tooltip
+                        title={
+                          !extra?.topWeaponName
+                            ? "No top weapon"
+                            : ammoMax <= 0
+                              ? "No ammo to reload"
+                              : `Reload: ${extra.topWeaponName}`
+                        }
+                      >
+                        <span>
+                          <IconButton
+                            size="small"
+                            disabled={!extra?.topWeaponName || ammoMax <= 0}
+                            onClick={() => void reloadTopWeapon(e.tokenId)}
+                          >
+                            <ReplayIcon fontSize="small" />
                           </IconButton>
                         </span>
                       </Tooltip>

@@ -12,6 +12,9 @@ const ROOT = process.cwd();
 const SRC = path.join(ROOT, "src", "data");
 const OUT = path.join(SRC, "generated");
 
+//enable/disable the TAR behaviour here
+const ENABLE_ARCHIVE = false;
+
 const files = [
   { in: "skills.yaml", out: "skills.json" },
   { in: "weapons.yaml", out: "weapons.json" },
@@ -50,6 +53,12 @@ async function main() {
     fs.writeFileSync(outPath, JSON.stringify(parsed, null, 2) + "\n", "utf8");
     console.log(`[generate-data] Wrote ${path.relative(ROOT, outPath)}`);
   }
+
+  await archiveProject({ enabled: ENABLE_ARCHIVE });
+}
+
+async function archiveProject({ enabled }) {
+  if (!enabled) return;
 
   // --- Archive step (final) ---
   const targets = [
@@ -90,7 +99,6 @@ async function main() {
     },
     existing
   );
-
 
   console.log(`[generate-data] Archived -> ${path.relative(ROOT, ARCHIVE_PATH)}`);
 }

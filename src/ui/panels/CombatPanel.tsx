@@ -29,7 +29,7 @@ import {
 } from "@mui/material";
 
 import { buildWhisperspaceSkillNotation, rollWithDicePlus } from "../diceplus/roll";
-import { COMBAT_LOG_CHANNEL, rollWeaponAttackAndBroadcast } from "../combat/weaponAttack";
+import { rollWeaponAttackAndBroadcast } from "../combat/weaponAttack";
 
 function makeLearnedInfoById() {
   const map = new Map<string, { focus: FocusId }>();
@@ -51,20 +51,6 @@ export function CombatPanel(props: {
   const [dragWeaponIndex, setDragWeaponIndex] = useState<number | null>(null);
   const [damageInput, setDamageInput] = useState<string>("");
   const [unmitigatedDamage, setUnmitigatedDamage] = useState<boolean>(false);
-
-
-useEffect(() => {
-  // Show combat log popups for all clients (messages sent via broadcast)
-  const unsub = OBR.broadcast.onMessage(COMBAT_LOG_CHANNEL, (event) => {
-    const data = event.data as any;
-    if (data?.text) {
-      void OBR.notification.show(String(data.text), "INFO");
-    }
-  });
-  return () => {
-    try { unsub(); } catch { /* ignore */ }
-  };
-}, []);
 
 
   const learnedInfoById = useMemo(() => makeLearnedInfoById(), []);

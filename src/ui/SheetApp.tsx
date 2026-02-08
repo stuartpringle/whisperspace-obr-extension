@@ -18,6 +18,8 @@ import { FeatsPanel } from "./panels/FeatsPanel";
 import { CombatPanel } from "./panels/CombatPanel";
 import { InventoryPanel } from "./panels/InventoryPanel";
 import { InitiativePanel } from "./panels/InitiativePanel";
+import { OwnershipPanel } from "./panels/OwnershipPanel";
+import { COMBAT_LOG_CHANNEL } from "./combat/weaponAttack";
 
 import { skillsData } from "../data/skills";
 import type { SkillDef } from "../data/types";
@@ -43,6 +45,8 @@ export function SheetApp() {
   const [activeTab, setActiveTab] = useState<"core" | "skills" | "combat" | "initiative" | "inventory" | "feats">("core");
   const [isSaving, setIsSaving] = useState(false);
   const [crucible, setCrucible] = useState<null | { incoming: number; dc: number; status: "pending" | "success" | "fail"; total?: number }>(null);
+  const [isGM, setIsGM] = useState(false);
+  const [activeView, setActiveView] = useState<"sheet" | "ownership">("sheet");
 
   async function getTokenHeaderMeta(tokenId: string): Promise<{ ownerLabel: string; thumbUrl: string | null }> {
     try {
@@ -141,6 +145,8 @@ export function SheetApp() {
     let cancelled = false;
     OBR.onReady(async () => {
       try {
+        const role = await OBR.player.getRole();
+        if (!cancelled) setIsGM(String(role).toUpperCase() === "GM");
         await load();
       } catch (e) {
         if (!cancelled) setState({ kind: "error", message: (e as Error).message ?? "Unknown error" });
@@ -148,6 +154,97 @@ export function SheetApp() {
     });
     return () => {
       cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let unsub: (() => void) | null = null;
+    let intervalId: number | null = null;
+    let cancelled = false;
+    const KEY = "whisperspace.combatLogLeader";
+    const HEARTBEAT_MS = 2000;
+    const STALE_MS = 6000;
+    const instanceId = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+
+    const readLeader = () => {
+      try {
+        const raw = localStorage.getItem(KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch {
+        return null;
+      }
+    };
+
+    const writeLeader = (tsOverride?: number) => {
+      try {
+        localStorage.setItem(KEY, JSON.stringify({ id: instanceId, ts: tsOverride ?? Date.now() }));
+      } catch {
+        // If localStorage isn't available, we'll just fall back to local listener.
+      }
+    };
+
+    const isLeader = () => {
+      const cur = readLeader();
+      return cur && cur.id === instanceId;
+    };
+
+    const maybeClaimLeader = () => {
+      const now = Date.now();
+      const cur = readLeader();
+      if (!cur || (now - (cur.ts ?? 0)) > STALE_MS || cur.id === instanceId) {
+        writeLeader(now);
+      }
+    };
+
+    const ensureSubscription = () => {
+      const leader = isLeader();
+      if (leader && !unsub) {
+        unsub = OBR.broadcast.onMessage(COMBAT_LOG_CHANNEL, (event) => {
+          const data = event.data as any;
+          if (data?.text) {
+            void OBR.notification.show(String(data.text), "INFO");
+          }
+        });
+      } else if (!leader && unsub) {
+        try { unsub(); } catch { /* ignore */ }
+        unsub = null;
+      }
+    };
+
+    const onStorage = (ev: StorageEvent) => {
+      if (ev.key === KEY) ensureSubscription();
+    };
+
+    OBR.onReady(() => {
+      if (cancelled) return;
+      try {
+        window.addEventListener("storage", onStorage);
+      } catch {
+        // ignore
+      }
+
+      maybeClaimLeader();
+      ensureSubscription();
+
+      intervalId = window.setInterval(() => {
+        if (cancelled) return;
+        maybeClaimLeader();
+        ensureSubscription();
+      }, HEARTBEAT_MS);
+    });
+
+    return () => {
+      cancelled = true;
+      try { window.removeEventListener("storage", onStorage); } catch { /* ignore */ }
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+      }
+      if (isLeader()) {
+        try { localStorage.removeItem(KEY); } catch { /* ignore */ }
+      }
+      if (typeof unsub === "function") {
+        try { unsub(); } catch { /* ignore */ }
+      }
     };
   }, []);
 
@@ -529,6 +626,8 @@ function burnCufToPass() {
     );
   }
 
+  const showSheet = activeView === "sheet";
+
   return (
     <div style={{ padding: 12 }}>
       <div style={{ display: "flex", alignItems: "flex-start", gap: 12, justifyContent: "space-between", marginBottom: 10 }}>
@@ -557,6 +656,14 @@ function burnCufToPass() {
         </div>
 
         <div style={{ display: "flex", gap: 8 }}>
+          {isGM && (
+            <button
+              style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
+              onClick={() => setActiveView((v) => (v === "sheet" ? "ownership" : "sheet"))}
+            >
+              {showSheet ? "Ownership" : "Back to Sheet"}
+            </button>
+          )}
           {state.mode === "view" ? (
             <button
               style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
@@ -576,150 +683,160 @@ function burnCufToPass() {
       </div>
 
 
-{/* Global status (visible on all tabs) */}
-<div style={styles.statusBar}>
-  <div style={styles.statusLeft}>
-    <div style={styles.statusGroup}>
-      <div style={styles.statusLabel}>Stress</div>
-      <input
-        type="number"
-        min={0}
-        value={state.sheet.stress?.current ?? 0}
-        onChange={(e) => applyStress(Number(e.target.value))}
-        style={styles.statusNumber}
-      />
-    </div>
+{showSheet && (
+  <>
+    {/* Global status (visible on all tabs) */}
+    <div style={styles.statusBar}>
+      <div style={styles.statusLeft}>
+        <div style={styles.statusGroup}>
+          <div style={styles.statusLabel}>Stress</div>
+          <input
+            type="number"
+            min={0}
+            value={state.sheet.stress?.current ?? 0}
+            onChange={(e) => applyStress(Number(e.target.value))}
+            style={styles.statusNumber}
+          />
+        </div>
 
-    <div style={styles.statusGroup}>
-      <div style={styles.statusLabel}>Wounds</div>
-      <div style={styles.woundsRow}>
-        <span style={styles.woundsKind}>L</span>
-        {Array.from({ length: 4 }).map((_, i) => (
+        <div style={styles.statusGroup}>
+          <div style={styles.statusLabel}>Wounds</div>
+          <div style={styles.woundsRow}>
+            <span style={styles.woundsKind}>L</span>
+            {Array.from({ length: 4 }).map((_, i) => (
+              <input
+                key={`wl_${i}`}
+                type="checkbox"
+                checked={(state.sheet.wounds?.light ?? 0) > i}
+                onChange={() => toggleWound("light", i)}
+              />
+            ))}
+            <span style={{ width: 8 }} />
+            <span style={styles.woundsKind}>M</span>
+            {Array.from({ length: 2 }).map((_, i) => (
+              <input
+                key={`wm_${i}`}
+                type="checkbox"
+                checked={(state.sheet.wounds?.moderate ?? 0) > i}
+                onChange={() => toggleWound("moderate", i)}
+              />
+            ))}
+            <span style={{ width: 8 }} />
+            <span style={styles.woundsKind}>H</span>
+            {Array.from({ length: 1 }).map((_, i) => (
+              <input
+                key={`wh_${i}`}
+                type="checkbox"
+                checked={(state.sheet.wounds?.heavy ?? 0) > i}
+                onChange={() => toggleWound("heavy", i)}
+              />
+            ))}
+          </div>
+        </div>
+
+        <label style={{ display: "flex", alignItems: "center", gap: 6 }}>
           <input
-            key={`wl_${i}`}
             type="checkbox"
-            checked={(state.sheet.wounds?.light ?? 0) > i}
-            onChange={() => toggleWound("light", i)}
+            checked={!!state.sheet.indomitable}
+            onChange={(e) => updateSheet((s) => ({ ...s, indomitable: e.target.checked }))}
           />
-        ))}
-        <span style={{ width: 8 }} />
-        <span style={styles.woundsKind}>M</span>
-        {Array.from({ length: 2 }).map((_, i) => (
-          <input
-            key={`wm_${i}`}
-            type="checkbox"
-            checked={(state.sheet.wounds?.moderate ?? 0) > i}
-            onChange={() => toggleWound("moderate", i)}
-          />
-        ))}
-        <span style={{ width: 8 }} />
-        <span style={styles.woundsKind}>H</span>
-        {Array.from({ length: 1 }).map((_, i) => (
-          <input
-            key={`wh_${i}`}
-            type="checkbox"
-            checked={(state.sheet.wounds?.heavy ?? 0) > i}
-            onChange={() => toggleWound("heavy", i)}
-          />
-        ))}
+          <span style={{ fontSize: 12, opacity: 0.9 }}>Indomitable</span>
+        </label>
+
+        {(state.sheet.stress?.current ?? 0) > ((sheetForView ?? state.sheet).stress?.cuf ?? 0) && (
+          <div style={styles.warning}>
+            Stress &gt; CUF: make all rolls with +1 Penalty Die
+          </div>
+        )}
+
+        <div style={{ fontSize: 12, opacity: 0.85 }}>
+          Bulk: {totalBulk} / {effectiveCarryingCapacity}
+        </div>
+        {encumbranceLabel && <div style={styles.warning}>{encumbranceLabel}</div>}
+      </div>
+
+      <div style={styles.statusRight}>
+        {crucible && crucible.status === "pending" && (
+          <div style={styles.crucibleBox}>
+            <div style={{ fontWeight: 700 }}>Crucible Test!</div>
+            <div style={{ fontSize: 12, opacity: 0.85 }}>
+              Incoming stress: {crucible.incoming} • DC {crucible.dc} • Roll CUF (no bonus/penalty dice)
+            </div>
+            <button style={styles.buttonSecondary} onClick={() => void rollCrucibleTest(crucible.incoming)}>
+              Roll Crucible
+            </button>
+          </div>
+        )}
+
+        {crucible && crucible.status === "success" && (
+          <div style={styles.crucibleBox}>
+            <div style={{ fontWeight: 700 }}>Crucible succeeded!</div>
+            <div style={{ fontSize: 12, opacity: 0.85 }}>
+              Choose an Indomitable effect. (Indomitable checked automatically.)
+            </div>
+          </div>
+        )}
+
+        {crucible && crucible.status === "fail" && (
+          <div style={styles.crucibleBox}>
+            <div style={{ fontWeight: 700 }}>Crucible failed</div>
+            <div style={{ fontSize: 12, opacity: 0.85 }}>
+              You’ve entered PTSD range (6–8 stress).
+            </div>
+            <button style={styles.buttonSecondary} onClick={burnCufToPass}>
+              Spend 1 CUF to pass
+            </button>
+          </div>
+        )}
       </div>
     </div>
-
-    <label style={{ display: "flex", alignItems: "center", gap: 6 }}>
-      <input
-        type="checkbox"
-        checked={!!state.sheet.indomitable}
-        onChange={(e) => updateSheet((s) => ({ ...s, indomitable: e.target.checked }))}
-      />
-      <span style={{ fontSize: 12, opacity: 0.9 }}>Indomitable</span>
-    </label>
-
-    {(state.sheet.stress?.current ?? 0) > ((sheetForView ?? state.sheet).stress?.cuf ?? 0) && (
-      <div style={styles.warning}>
-        Stress &gt; CUF: make all rolls with +1 Penalty Die
-      </div>
-    )}
-
-    <div style={{ fontSize: 12, opacity: 0.85 }}>
-      Bulk: {totalBulk} / {effectiveCarryingCapacity}
+    <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10 }}>
+      <Tab label="Core" active={activeTab === "core"} onClick={() => setActiveTab("core")} />
+      <Tab label="Skills" active={activeTab === "skills"} onClick={() => setActiveTab("skills")} />
+      <Tab label="Combat" active={activeTab === "combat"} onClick={() => setActiveTab("combat")} />
+      <Tab label="Initiative" active={activeTab === "initiative"} onClick={() => setActiveTab("initiative")} />
+      <Tab label="Inventory" active={activeTab === "inventory"} onClick={() => setActiveTab("inventory")} />
+      <Tab label="Feats" active={activeTab === "feats"} onClick={() => setActiveTab("feats")} />
+      <div style={{ marginLeft: "auto", opacity: 0.8 }}>{isSaving ? "Saving…" : "Synced"}</div>
     </div>
-    {encumbranceLabel && <div style={styles.warning}>{encumbranceLabel}</div>}
+
+    <div style={{ border: "1px solid #888", borderRadius: 12, padding: 10 }}>
+      {activeTab === "core" && (
+        <CorePanel sheet={sheetForView as CharacterSheetV1} onChange={(partial) => updateSheet((s) => ({ ...s, ...partial }))} />
+      )}
+      {activeTab === "skills" && (
+        <SkillsPanel
+          sheet={sheetForView as CharacterSheetV1}
+          skillMods={statusSkillMods}
+          onChange={(skills) => updateSheet((s) => ({ ...s, skills }))}
+          onMetaChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))}
+        />
+      )}
+      {activeTab === "combat" && (
+        <CombatPanel
+          sheet={sheetForView as CharacterSheetV1}
+          tokenId={state.tokenId}
+          skillMods={statusSkillMods}
+          onChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))}
+          onApplyStress={applyStress}
+        />
+      )}
+      {activeTab === "initiative" && <InitiativePanel />}
+      {activeTab === "inventory" && (
+        <InventoryPanel sheet={sheetForView as CharacterSheetV1} onChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))} />
+      )}
+      {activeTab === "feats" && (
+        <FeatsPanel sheet={sheetForView as CharacterSheetV1} onChange={(feats) => updateSheet((s) => ({ ...s, feats }))} />
+      )}
+    </div>
+  </>
+)}
+
+{!showSheet && (
+  <div style={{ border: "1px solid #888", borderRadius: 12, padding: 10 }}>
+    <OwnershipPanel isGM={isGM} />
   </div>
-
-  <div style={styles.statusRight}>
-    {crucible && crucible.status === "pending" && (
-      <div style={styles.crucibleBox}>
-        <div style={{ fontWeight: 700 }}>Crucible Test!</div>
-        <div style={{ fontSize: 12, opacity: 0.85 }}>
-          Incoming stress: {crucible.incoming} • DC {crucible.dc} • Roll CUF (no bonus/penalty dice)
-        </div>
-        <button style={styles.buttonSecondary} onClick={() => void rollCrucibleTest(crucible.incoming)}>
-          Roll Crucible
-        </button>
-      </div>
-    )}
-
-    {crucible && crucible.status === "success" && (
-      <div style={styles.crucibleBox}>
-        <div style={{ fontWeight: 700 }}>Crucible succeeded!</div>
-        <div style={{ fontSize: 12, opacity: 0.85 }}>
-          Choose an Indomitable effect. (Indomitable checked automatically.)
-        </div>
-      </div>
-    )}
-
-    {crucible && crucible.status === "fail" && (
-      <div style={styles.crucibleBox}>
-        <div style={{ fontWeight: 700 }}>Crucible failed</div>
-        <div style={{ fontSize: 12, opacity: 0.85 }}>
-          You’ve entered PTSD range (6–8 stress).
-        </div>
-        <button style={styles.buttonSecondary} onClick={burnCufToPass}>
-          Spend 1 CUF to pass
-        </button>
-      </div>
-    )}
-  </div>
-</div>
-      <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10 }}>
-        <Tab label="Core" active={activeTab === "core"} onClick={() => setActiveTab("core")} />
-        <Tab label="Skills" active={activeTab === "skills"} onClick={() => setActiveTab("skills")} />
-        <Tab label="Combat" active={activeTab === "combat"} onClick={() => setActiveTab("combat")} />
-        <Tab label="Initiative" active={activeTab === "initiative"} onClick={() => setActiveTab("initiative")} />
-        <Tab label="Inventory" active={activeTab === "inventory"} onClick={() => setActiveTab("inventory")} />
-        <Tab label="Feats" active={activeTab === "feats"} onClick={() => setActiveTab("feats")} />
-        <div style={{ marginLeft: "auto", opacity: 0.8 }}>{isSaving ? "Saving…" : "Synced"}</div>
-      </div>
-
-      <div style={{ border: "1px solid #888", borderRadius: 12, padding: 10 }}>
-        {activeTab === "core" && (
-          <CorePanel sheet={sheetForView as CharacterSheetV1} onChange={(partial) => updateSheet((s) => ({ ...s, ...partial }))} />
-        )}
-        {activeTab === "skills" && (
-          <SkillsPanel
-            sheet={sheetForView as CharacterSheetV1}
-            skillMods={statusSkillMods}
-            onChange={(skills) => updateSheet((s) => ({ ...s, skills }))}
-            onMetaChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))}
-          />
-        )}
-        {activeTab === "combat" && (
-          <CombatPanel
-            sheet={sheetForView as CharacterSheetV1}
-            tokenId={state.tokenId}
-            skillMods={statusSkillMods}
-            onChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))}
-            onApplyStress={applyStress}
-          />
-        )}
-        {activeTab === "initiative" && <InitiativePanel />}
-        {activeTab === "inventory" && (
-          <InventoryPanel sheet={sheetForView as CharacterSheetV1} onChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))} />
-        )}
-        {activeTab === "feats" && (
-          <FeatsPanel sheet={sheetForView as CharacterSheetV1} onChange={(feats) => updateSheet((s) => ({ ...s, feats }))} />
-        )}
-      </div>
+)}
     </div>
   );
 }
