@@ -398,6 +398,7 @@ export function RulesApp() {
     return rulesData as RuleDoc[];
   });
   const [activeSectionId, setActiveSectionId] = useState<string>("");
+  const [cacheStatus, setCacheStatus] = useState<string>("");
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -419,6 +420,7 @@ export function RulesApp() {
           const cachedRulesRaw = localStorage.getItem("ws_rules_cache_v1");
           if (cachedRulesRaw && !cancelled) {
             setRules(JSON.parse(cachedRulesRaw) as RuleDoc[]);
+            setCacheStatus("Revalidated (304)");
           }
           return;
         }
@@ -437,12 +439,15 @@ export function RulesApp() {
           localStorage.setItem("ws_rules_meta_v1", JSON.stringify(meta));
           localStorage.setItem("ws_rules_cache_v1", JSON.stringify(data));
           setRules(data);
+          setCacheStatus("Updated (downloaded)");
         } else if (cachedRulesRaw) {
           if (cancelled) return;
           setRules(JSON.parse(cachedRulesRaw) as RuleDoc[]);
+          setCacheStatus("Cached (no change)");
         }
       } catch {
         // ignore network errors; fallback to bundled data
+        if (!cancelled) setCacheStatus("Offline (bundled)");
       }
     }
 
@@ -588,6 +593,11 @@ export function RulesApp() {
 
       <main ref={contentRef}>
         <h2 style={{ margin: "0 0 8px 0" }}>Whisperspace Rules Reference</h2>
+        {cacheStatus ? (
+          <div style={{ marginBottom: 8, fontSize: 12, opacity: 0.7 }}>
+            Data: {cacheStatus}
+          </div>
+        ) : null}
         <div style={{ position: "relative", marginBottom: 12 }}>
           <input
             type="text"
