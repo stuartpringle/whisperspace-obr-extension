@@ -81,8 +81,8 @@ export function SheetApp() {
 
   // NOTE: this is best-effort; if a token has no ownership metadata or image, we fall back gracefully.
 
-  async function load() {
-    const openTokenId = await getOpenTokenOverride();
+  async function load(opts?: { ignoreOpenOverride?: boolean }) {
+    const openTokenId = opts?.ignoreOpenOverride ? null : await getOpenTokenOverride();
     if (openTokenId) {
       const exists = await itemExists(openTokenId);
       if (exists) {
@@ -325,7 +325,7 @@ export function SheetApp() {
     await setOpenTokenOverride(null);
     setState({ kind: "loading" });
     try {
-      await load();
+      await load({ ignoreOpenOverride: true });
     } catch (e) {
       setState({ kind: "error", message: (e as Error).message ?? "Unknown error" });
     }

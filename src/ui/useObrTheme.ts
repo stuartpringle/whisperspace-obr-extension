@@ -4,6 +4,7 @@ import OBR from "@owlbear-rodeo/sdk";
 export function useObrThemeCssVars() {
   useEffect(() => {
     let unsub: null | (() => void) = null;
+    let cancelled = false;
 
     const apply = (theme: any) => {
       const root = document.documentElement;
@@ -26,13 +27,19 @@ export function useObrThemeCssVars() {
       root.style.setProperty("--obr-secondary-contrast", theme.secondary.contrastText);
     };
 
-    (async () => {
-      const theme = await OBR.theme.getTheme();
-      apply(theme);
-      unsub = OBR.theme.onChange(apply);
-    })();
+    OBR.onReady(async () => {
+      if (cancelled) return;
+      try {
+        const theme = await OBR.theme.getTheme();
+        if (!cancelled) apply(theme);
+        unsub = OBR.theme.onChange(apply);
+      } catch {
+        // ignore
+      }
+    });
 
     return () => {
+      cancelled = true;
       if (unsub) unsub();
     };
   }, []);

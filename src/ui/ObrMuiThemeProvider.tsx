@@ -43,14 +43,21 @@ export function ObrMuiThemeProvider(props: { children: React.ReactNode }) {
 
   useEffect(() => {
     let unsub: null | (() => void) = null;
+    let cancelled = false;
 
-    (async () => {
-      const initial = await OBR.theme.getTheme();
-      setObrTheme(initial);
-      unsub = OBR.theme.onChange((next) => setObrTheme(next));
-    })();
+    OBR.onReady(async () => {
+      if (cancelled) return;
+      try {
+        const initial = await OBR.theme.getTheme();
+        if (!cancelled) setObrTheme(initial);
+        unsub = OBR.theme.onChange((next) => setObrTheme(next));
+      } catch {
+        // ignore
+      }
+    });
 
     return () => {
+      cancelled = true;
       if (unsub) unsub();
     };
   }, []);
