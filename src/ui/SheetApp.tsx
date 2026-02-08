@@ -18,7 +18,6 @@ import { FeatsPanel } from "./panels/FeatsPanel";
 import { CombatPanel } from "./panels/CombatPanel";
 import { InventoryPanel } from "./panels/InventoryPanel";
 import { InitiativePanel } from "./panels/InitiativePanel";
-import { OwnershipPanel } from "./panels/OwnershipPanel";
 import { COMBAT_LOG_CHANNEL } from "./combat/weaponAttack";
 
 import { skillsData } from "../data/skills";
@@ -45,8 +44,6 @@ export function SheetApp() {
   const [activeTab, setActiveTab] = useState<"core" | "skills" | "combat" | "initiative" | "inventory" | "feats">("core");
   const [isSaving, setIsSaving] = useState(false);
   const [crucible, setCrucible] = useState<null | { incoming: number; dc: number; status: "pending" | "success" | "fail"; total?: number }>(null);
-  const [isGM, setIsGM] = useState(false);
-  const [activeView, setActiveView] = useState<"sheet" | "ownership">("sheet");
 
   async function getTokenHeaderMeta(tokenId: string): Promise<{ ownerLabel: string; thumbUrl: string | null }> {
     try {
@@ -145,8 +142,6 @@ export function SheetApp() {
     let cancelled = false;
     OBR.onReady(async () => {
       try {
-        const role = await OBR.player.getRole();
-        if (!cancelled) setIsGM(String(role).toUpperCase() === "GM");
         await load();
       } catch (e) {
         if (!cancelled) setState({ kind: "error", message: (e as Error).message ?? "Unknown error" });
@@ -626,8 +621,6 @@ function burnCufToPass() {
     );
   }
 
-  const showSheet = activeView === "sheet";
-
   return (
     <div style={{ padding: 12 }}>
       <div style={{ display: "flex", alignItems: "flex-start", gap: 12, justifyContent: "space-between", marginBottom: 10 }}>
@@ -656,14 +649,6 @@ function burnCufToPass() {
         </div>
 
         <div style={{ display: "flex", gap: 8 }}>
-          {isGM && (
-            <button
-              style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
-              onClick={() => setActiveView((v) => (v === "sheet" ? "ownership" : "sheet"))}
-            >
-              {showSheet ? "Ownership" : "Back to Sheet"}
-            </button>
-          )}
           {state.mode === "view" ? (
             <button
               style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
@@ -683,8 +668,7 @@ function burnCufToPass() {
       </div>
 
 
-{showSheet && (
-  <>
+<>
     {/* Global status (visible on all tabs) */}
     <div style={styles.statusBar}>
       <div style={styles.statusLeft}>
@@ -830,13 +814,6 @@ function burnCufToPass() {
       )}
     </div>
   </>
-)}
-
-{!showSheet && (
-  <div style={{ border: "1px solid #888", borderRadius: 12, padding: 10 }}>
-    <OwnershipPanel isGM={isGM} />
-  </div>
-)}
     </div>
   );
 }
