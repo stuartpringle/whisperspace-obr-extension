@@ -8,6 +8,7 @@
     "generate:data": "node scripts/generate-data.mjs",
     "rules:gear": "node scripts/parse-gear.mjs",
     "rules:sync": "bash scripts/import-rules.sh",
+    "core:build": "bash scripts/core-build.sh",
     "rules:publish": "bash scripts/rules-publish.sh",
     "build": "npm run rules:publish && tsc -b && vite build",
     "dev": "npm run generate:data && vite",

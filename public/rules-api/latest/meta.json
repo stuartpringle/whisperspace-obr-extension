@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-02-08T08:11:00.296Z",
+  "generatedAt": "2026-02-08T08:17:23.459Z",
   "files": {
     "skills.json": {
       "sha256": "bfac1c04a8924cb564578fd830930191ffa9a4c674c19430f860a9e5dbf7c169",
@@ -35,12 +35,44 @@
       "bytes": 1086
     },
     "rules.json": {
-      "sha256": "c319fe4a0cd38612ae529bbe5b00458a4cd9c440cb87fbea938b361c5f074207",
+      "sha256": "49cdcf3000f1443052efc19c92ba80e13a2afc8927c1e023835543384eece783",
       "bytes": 541691
     },
     "skill_tooltips.json": {
       "sha256": "72b8d80e7d68e7fa1b8c773afe101444c7840e51cedb12b53d16889d35237193",
       "bytes": 6020
+    },
+    "core/combat.js": {
+      "sha256": "4b8d4c01b283fc119fd1b71a32f7f5ab06f948a541af1f44074a00a0e81c1dd7",
+      "bytes": 3758
+    },
+    "core/deriveAttributes.js": {
+      "sha256": "dbb2f25d463a8b581810c165edcdb5547da324545a96ffcc9f4706cfb47bd42b",
+      "bytes": 1044
+    },
+    "core/index.js": {
+      "sha256": "18a1f6012ee0ce63f5fa0cd277c19ed227c8cd1841decbf9ef24a1ee0848e875",
+      "bytes": 198
+    },
+    "core/roll.js": {
+      "sha256": "2ea02259be13e848cb7708b46c0da4c733f3a3e17118e2625dd3e67bb25b7a15",
+      "bytes": 501
+    },
+    "core/schema.js": {
+      "sha256": "6cbe5417b69923e3587aaace05256f6ceac391f0a36116baac3f24314e228dc0",
+      "bytes": 1418
+    },
+    "core/skills.js": {
+      "sha256": "c2700f18702c89029c21ab2fababd716e8413ff950132e303882e1d94be9e8af",
+      "bytes": 681
+    },
+    "core/statusEffects.js": {
+      "sha256": "d2d473f454dd318124872e44e0b3fe32d10a3d974622601969b5bae39c5679c2",
+      "bytes": 1961
+    },
+    "core/weapons.js": {
+      "sha256": "4cb647d45b44de5418357f2bac25f700122bfc5fe4595609fbdcdda09dc52000",
+      "bytes": 256
     }
   }
 }

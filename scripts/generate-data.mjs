@@ -257,6 +257,18 @@ function writeRulesApiBundle() {
     };
   }
 
+  // Include core module files if present
+  const coreDir = path.join(RULES_API_DIR, "core");
+  if (fs.existsSync(coreDir)) {
+    const coreFiles = fs.readdirSync(coreDir).filter((f) => f.endsWith(".js"));
+    for (const file of coreFiles) {
+      const filePath = path.join(coreDir, file);
+      const data = fs.readFileSync(filePath);
+      const hash = crypto.createHash("sha256").update(data).digest("hex");
+      meta.files[`core/${file}`] = { sha256: hash, bytes: data.length };
+    }
+  }
+
   const metaPath = path.join(RULES_API_DIR, "meta.json");
   const metaPublishPath = path.join(RULES_API_PUBLISH_DIR, "meta.json");
   const metaJson = JSON.stringify(meta, null, 2) + "\n";
