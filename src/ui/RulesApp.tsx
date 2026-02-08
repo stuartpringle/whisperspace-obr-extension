@@ -254,7 +254,7 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
         </summary>
         <div>
           {content.map((b, i) => renderBlock(b, i, q))}
-          {!hasChildren && content.length === 0 && fallbackTable ? renderBlock(fallbackTable, 0, q) : null}
+          {content.length === 0 && fallbackTable ? renderBlock(fallbackTable, 0, q) : null}
           {hasChildren && (props.section.sections ?? []).map((s, i) => (
             <RuleSectionView
               key={`${s.slug ?? s.title}-${i}`}
