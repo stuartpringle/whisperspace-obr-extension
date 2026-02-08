@@ -282,9 +282,51 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
 export function RulesApp() {
   const [query, setQuery] = useState("");
   const [searchSelection, setSearchSelection] = useState<string>("");
-  const rules = rulesData as RuleDoc[];
+  const [rules, setRules] = useState<RuleDoc[]>(() => {
+    try {
+      const cached = localStorage.getItem("ws_rules_cache_v1");
+      if (cached) return JSON.parse(cached) as RuleDoc[];
+    } catch {}
+    return rulesData as RuleDoc[];
+  });
   const [activeSectionId, setActiveSectionId] = useState<string>("");
   const contentRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    const API_BASE = "https://whisperspace.com/rules-api/latest";
+
+    async function loadLatest() {
+      try {
+        const metaRes = await fetch(`${API_BASE}/meta.json`, { cache: "no-store" });
+        if (!metaRes.ok) return;
+        const meta = await metaRes.json();
+        const cachedMetaRaw = localStorage.getItem("ws_rules_meta_v1");
+        const cachedMeta = cachedMetaRaw ? JSON.parse(cachedMetaRaw) : null;
+        const cachedRulesRaw = localStorage.getItem("ws_rules_cache_v1");
+
+        if (!cachedMeta || cachedMeta.version !== meta.version) {
+          const rulesRes = await fetch(`${API_BASE}/rules.json`, { cache: "no-store" });
+          if (!rulesRes.ok) return;
+          const data = (await rulesRes.json()) as RuleDoc[];
+          if (cancelled) return;
+          localStorage.setItem("ws_rules_meta_v1", JSON.stringify(meta));
+          localStorage.setItem("ws_rules_cache_v1", JSON.stringify(data));
+          setRules(data);
+        } else if (cachedRulesRaw) {
+          if (cancelled) return;
+          setRules(JSON.parse(cachedRulesRaw) as RuleDoc[]);
+        }
+      } catch {
+        // ignore network errors; fallback to bundled data
+      }
+    }
+
+    loadLatest();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const q = query.trim().toLowerCase();
   const [activeSlug, setActiveSlug] = useState<string>(() => {

@@ -1,0 +1,194 @@
+{
+  "cyberware": [
+    {
+      "name": "Reflex Booster",
+      "tier": 1,
+      "effect": "Once per round, gain +1 bonus die to an Evade check.",
+      "installationDifficulty": 2,
+      "requirements": "REF 1",
+      "physicalImpact": "Low; spine",
+      "bulk": 1,
+      "cost": 4000
+    },
+    {
+      "name": "Targeting Link",
+      "tier": 1,
+      "effect": "Once per round, ignore 1 level of cover when attacking an enemy you can see.",
+      "installationDifficulty": 2,
+      "requirements": "-",
+      "physicalImpact": "Medium; eyes",
+      "bulk": 1,
+      "cost": 6000
+    },
+    {
+      "name": "Low-Light Optics",
+      "tier": 1,
+      "effect": "Ignore penalty dice caused by darkness within medium range.",
+      "installationDifficulty": 1,
+      "requirements": "-",
+      "physicalImpact": "Medium; eyes",
+      "bulk": 1,
+      "cost": 4000
+    },
+    {
+      "name": "EMP Shielding",
+      "tier": 1,
+      "effect": "Ignore the effects of EMP once per day.",
+      "installationDifficulty": 2,
+      "requirements": "MENT 1",
+      "physicalImpact": "None; torso",
+      "bulk": 1,
+      "cost": 5500
+    },
+    {
+      "name": "Metabolic Filter",
+      "tier": 1,
+      "effect": "Gain +1 bonus die on checks to resist toxins or narcotics.",
+      "installationDifficulty": 1,
+      "requirements": "PHYS 1",
+      "physicalImpact": "Minor; liver",
+      "bulk": 1,
+      "cost": 2000
+    },
+    {
+      "name": "Internal Communicator",
+      "tier": 1,
+      "effect": "Gain the ability to send and receive messages mentally just as if you were using a regular comms device.",
+      "installationDifficulty": 0,
+      "requirements": "-",
+      "physicalImpact": "Medium; jaw, ear",
+      "bulk": 1,
+      "cost": 2500
+    },
+    {
+      "name": "Skull Popper",
+      "tier": 1,
+      "effect": "Highly illegal; when installed, is given a mandate such as “don’t go to the police”. If the host violates this mandate, the Skull Popper explodes, killing the host. The more specific the mandate, the better the implant functions.",
+      "installationDifficulty": 2,
+      "requirements": "-",
+      "physicalImpact": "None; brain",
+      "bulk": 1,
+      "cost": 12000
+    },
+    {
+      "name": "Databank",
+      "tier": 2,
+      "effect": "You gain an internal information storage device. You may store information upon it (thinking you want to record what you see, for example), and access information from it at will. You may also load external information onto it, though the GM determines how long that takes and how much may be stored on it.",
+      "installationDifficulty": 2,
+      "requirements": "MENT 1",
+      "physicalImpact": "Medium; cranium",
+      "bulk": 1,
+      "cost": 7500
+    },
+    {
+      "name": "Invisible Databank",
+      "tier": 2,
+      "effect": "You gain an internal information storage device. You may store information upon it (thinking you want to record what you see, for example), and access information from it at will. This device cannot be seen or accessed externally without removing it and is shielded to avoid electronic detection.",
+      "installationDifficulty": 3,
+      "requirements": "-",
+      "physicalImpact": "None; cranium",
+      "bulk": 1,
+      "cost": 15000
+    },
+    {
+      "name": "Neural Accelerator",
+      "tier": 2,
+      "effect": "Once per day, activate to gain 2 additional actions on your turn. At the end of your turn, gain +2 stress.",
+      "installationDifficulty": 4,
+      "requirements": "Ment 2",
+      "physicalImpact": "Obvious; spine",
+      "bulk": 1,
+      "cost": 10000
+    },
+    {
+      "name": "Reaction Governor Matrix",
+      "tier": 2,
+      "effect": "Gain +1 reaction per round.",
+      "installationDifficulty": 2,
+      "requirements": "REF 2",
+      "physicalImpact": "None; brain",
+      "bulk": 1,
+      "cost": 8000
+    },
+    {
+      "name": "Threat Awareness Suite",
+      "tier": 2,
+      "effect": "Gain +1 bonus die to Observe or Instinct checks to detect ambushes or imminent danger. Additionally, you may not be Surprised.",
+      "installationDifficulty": 2,
+      "requirements": "-",
+      "physicalImpact": "None; brain",
+      "bulk": 1,
+      "cost": 5500
+    },
+    {
+      "name": "Synthetic Musculature",
+      "tier": 2,
+      "effect": "Gain +1 bonus die on Powerlifting or Athletics checks involving lifting, pushing, or breaking objects. Unarmed attacks deal damage equal to your full PHYS.",
+      "installationDifficulty": 4,
+      "requirements": "PHYS 3",
+      "physicalImpact": "Obvious; arms, legs, torso",
+      "bulk": 1,
+      "cost": 10000
+    },
+    {
+      "name": "Stability Gyros",
+      "tier": 2,
+      "effect": "Ignore penalty dice from unstable environments (moving vehicles, zero-G, poor footing)",
+      "installationDifficulty": 2,
+      "requirements": "REF 2",
+      "physicalImpact": "Minor; ear",
+      "bulk": 1,
+      "cost": 6000
+    },
+    {
+      "name": "Adrenal Boost",
+      "tier": 2,
+      "effect": "Activate to ignore stress penalties for 1 round. At the end of this round, take 1 damage.",
+      "installationDifficulty": 2,
+      "requirements": "PHYS 1",
+      "physicalImpact": "None; adrenal glands",
+      "bulk": 1,
+      "cost": 5000
+    },
+    {
+      "name": "Mantis Claws (retractable)",
+      "tier": 3,
+      "effect": "Your unarmed attacks deal damage equal to your REF and have Piercing 3. Additionally, gain +1 bonus die to climbing related checks.",
+      "installationDifficulty": 3,
+      "requirements": "REF 2 or PHYS 2",
+      "physicalImpact": "Obvious; forearms and hands",
+      "bulk": 1,
+      "cost": 10000
+    },
+    {
+      "name": "Neuro Regulator",
+      "tier": 3,
+      "effect": "Ignore up to 3 stress per day from up to 3 sources of stress. Make all SOC based rolls with +1 penalty die.",
+      "installationDifficulty": 3,
+      "requirements": "MENT 2",
+      "physicalImpact": "None; brain",
+      "bulk": 1,
+      "cost": 12000
+    },
+    {
+      "name": "Synthetic Antibodies",
+      "tier": 3,
+      "effect": "Become immune to nanites targeting your body (including positive effects). Does not stop things from being thrown at you with nanites.",
+      "installationDifficulty": 4,
+      "requirements": "PHYS 1 and MENT 1",
+      "physicalImpact": "Minor; nervous system",
+      "bulk": 1,
+      "cost": 17500
+    },
+    {
+      "name": "Bio-Stabilizer",
+      "tier": 3,
+      "effect": "When you would take a Medium or Heavy wound, roll Cybernetics (DC8).- Extreme success: ignore the wound.\n- Success: ignore the wound; this cyberware effect cannot be used for 1 day.\n- Failure: suffer the wound as normal; this cyberware effect cannot be used for 1 day.\nThis effect may only trigger once per instance of damage.",
+      "installationDifficulty": 4,
+      "requirements": "-",
+      "physicalImpact": "Medium; chest and back",
+      "bulk": 1,
+      "cost": 15000
+    }
+  ]
+}

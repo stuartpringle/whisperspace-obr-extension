@@ -1,0 +1,227 @@
+{
+  "weapons": [
+    {
+      "id": "pistol",
+      "name": "Pistol",
+      "skillId": "weapons_light",
+      "useDC": 7,
+      "damage": 2,
+      "range": "Med",
+      "ammo": 10,
+      "bulk": 1,
+      "cost": 500
+    },
+    {
+      "id": "smart_pistol",
+      "name": "SMART Pistol",
+      "skillId": "weapons_light",
+      "useDC": 9,
+      "damage": 4,
+      "range": "Med",
+      "ammo": 6,
+      "bulk": 1,
+      "cost": 900,
+      "keywords": [
+        "Smart-Linked"
+      ]
+    },
+    {
+      "id": "toxic_spike",
+      "name": "Toxic Spike",
+      "skillId": "weapons_light",
+      "useDC": 10,
+      "damage": 3,
+      "range": "Near",
+      "ammo": 1,
+      "bulk": 1,
+      "cost": 750,
+      "keywords": [
+        "Toxin (Prax)",
+        "Concealable"
+      ]
+    },
+    {
+      "id": "smg",
+      "name": "SMG",
+      "skillId": "weapons_medium",
+      "useDC": 6,
+      "damage": 3,
+      "range": "Med",
+      "ammo": 8,
+      "bulk": 2,
+      "cost": 600,
+      "keywords": [
+        "Bullet Spray"
+      ]
+    },
+    {
+      "id": "photon_rifle",
+      "name": "Photon Rifle",
+      "skillId": "weapons_medium",
+      "useDC": 8,
+      "damage": 6,
+      "range": "Long",
+      "ammo": 6,
+      "bulk": 3,
+      "cost": 5000,
+      "keywords": [
+        "Two-Handed"
+      ]
+    },
+    {
+      "id": "rifle",
+      "name": "Rifle",
+      "skillId": "weapons_medium",
+      "useDC": 8,
+      "damage": 4,
+      "range": "Long",
+      "ammo": 8,
+      "bulk": 2,
+      "cost": 1000,
+      "keywords": [
+        "Two-Handed",
+        "Piercing 1"
+      ]
+    },
+    {
+      "id": "shotgun",
+      "name": "Shotgun",
+      "skillId": "weapons_medium",
+      "useDC": 8,
+      "damage": 4,
+      "range": "Near",
+      "ammo": 4,
+      "bulk": 3,
+      "cost": 800,
+      "req": "PHYS 1",
+      "keywords": [
+        "Point Blank",
+        "Shredding 1"
+      ]
+    },
+    {
+      "id": "gauss_cannon",
+      "name": "Gauss Cannon",
+      "skillId": "weapons_heavy",
+      "useDC": 7,
+      "damage": 4,
+      "range": "Med",
+      "ammo": 20,
+      "bulk": 4,
+      "cost": 900,
+      "req": "PHYS 3",
+      "keywords": [
+        "Bullet Spray"
+      ]
+    },
+    {
+      "id": "grenade_launcher",
+      "name": "Grenade Launcher",
+      "skillId": "weapons_heavy",
+      "useDC": 8,
+      "damage": 3,
+      "range": "Med",
+      "ammo": 1,
+      "bulk": 3,
+      "cost": 2000,
+      "req": "PHYS 2",
+      "keywords": [
+        "Area (Very Near)",
+        "Two-Handed",
+        "Slow Load",
+        "Grenade"
+      ]
+    },
+    {
+      "id": "magneton_cannon",
+      "name": "Magneton Cannon",
+      "skillId": "weapons_exotic",
+      "useDC": 5,
+      "damage": 2,
+      "range": "Near",
+      "ammo": 5,
+      "bulk": 2,
+      "cost": 8000,
+      "req": "PHYS 1",
+      "keywords": [
+        "Area (melee)",
+        "Slow Load",
+        "Shredding 3"
+      ]
+    },
+    {
+      "id": "tesla_rifle",
+      "name": "Tesla Rifle",
+      "skillId": "weapons_exotic",
+      "useDC": 8,
+      "damage": 5,
+      "range": "Med",
+      "ammo": 6,
+      "bulk": 2,
+      "cost": 6000,
+      "keywords": [
+        "Two-Handed",
+        "Stun 2"
+      ]
+    },
+    {
+      "id": "stun_baton",
+      "name": "Stun Baton",
+      "skillId": "melee_weapons",
+      "useDC": 6,
+      "damage": 0,
+      "range": "Melee",
+      "ammo": 0,
+      "bulk": 1,
+      "cost": 450,
+      "keywords": [
+        "Stun 1"
+      ]
+    },
+    {
+      "id": "switchblade",
+      "name": "Switchblade",
+      "skillId": "melee_weapons",
+      "useDC": 9,
+      "damage": 2,
+      "range": "Melee",
+      "ammo": 0,
+      "bulk": 1,
+      "cost": 150,
+      "keywords": [
+        "Concealable",
+        "Thrown"
+      ]
+    },
+    {
+      "id": "fusion_blade",
+      "name": "Fusion Blade",
+      "skillId": "melee_weapons",
+      "useDC": 8,
+      "damage": 3,
+      "range": "Melee",
+      "ammo": 0,
+      "bulk": 2,
+      "cost": 1200,
+      "req": "REF 2",
+      "keywords": [
+        "Piercing 2"
+      ]
+    },
+    {
+      "id": "rocket_maul",
+      "name": "Rocket Maul",
+      "skillId": "melee_weapons",
+      "useDC": 10,
+      "damage": 6,
+      "range": "Melee",
+      "ammo": 2,
+      "bulk": 3,
+      "cost": 2500,
+      "req": "PHYS 3",
+      "keywords": [
+        "Two-Handed"
+      ]
+    }
+  ]
+}

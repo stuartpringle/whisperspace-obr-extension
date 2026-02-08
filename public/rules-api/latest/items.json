@@ -1,0 +1,116 @@
+{
+  "items": [
+    {
+      "name": "Flashbang Grenade",
+      "effect": "Applies Stun 1 to everyone within Very Near range, Thrown",
+      "uses": "1 use",
+      "bulk": 1,
+      "cost": 200
+    },
+    {
+      "name": "Frag Grenade",
+      "effect": "Deals 2 area (Very Near range) damage (DC8 to Evade half), Thrown",
+      "uses": "1 use",
+      "bulk": 1,
+      "cost": 250
+    },
+    {
+      "name": "EMP Grenade",
+      "effect": "Applies EMP 2 to everything within range, Thrown",
+      "uses": "1 use",
+      "bulk": 1,
+      "cost": 300
+    },
+    {
+      "name": "Combat Stim Injector",
+      "effect": "Gain +1 action & -1 Stress; take 1 wound after effect ends",
+      "uses": "1 use",
+      "bulk": 1,
+      "cost": 200
+    },
+    {
+      "name": "Basic Medkit",
+      "effect": "Right tool for the job: First Aid checks",
+      "uses": "3 uses",
+      "bulk": 1,
+      "cost": 350
+    },
+    {
+      "name": "Multitool",
+      "effect": "Allows engineering checks to repair, bypass, scrap, etc.",
+      "uses": "Permanent",
+      "bulk": 1,
+      "cost": 750
+    },
+    {
+      "name": "Repair Kit",
+      "effect": "Provides materials and tools for repairs",
+      "uses": "10 uses",
+      "bulk": 1,
+      "cost": 500
+    },
+    {
+      "name": "Tracker",
+      "effect": "While within 10km, always know location of this device",
+      "uses": "1 use",
+      "bulk": 1,
+      "cost": 250
+    },
+    {
+      "name": "Portable Scanner",
+      "effect": "Right tool for the job: Observe (tech, lifeforms)",
+      "uses": "Permanent",
+      "bulk": 1,
+      "cost": 400
+    },
+    {
+      "name": "Weapon Scope",
+      "effect": "Simple Modification. Grants +1 bonus die to called shots at medium range and farther; inflicts +1 penalty die to attacks at Near range or nearer",
+      "uses": "Permanent",
+      "bulk": 1,
+      "cost": 750
+    },
+    {
+      "name": "Weapon Silencer",
+      "effect": "Simple Modification. Weapon makes reduced sound when fired; deals -1 damage",
+      "uses": "Permanent",
+      "bulk": 1,
+      "cost": 500
+    },
+    {
+      "name": "Compact Backpack",
+      "effect": "+5 Inventory Slots when worn",
+      "uses": "Permanent",
+      "bulk": 0,
+      "cost": 150
+    },
+    {
+      "name": "Ammo (Flechette)",
+      "effect": "Deals +2 damage to unarmoured targets.",
+      "uses": "10 rounds",
+      "bulk": 1,
+      "cost": 500
+    },
+    {
+      "name": "Ammo (SMART)",
+      "effect": "Required for Smart-Linked weapons.",
+      "uses": "10",
+      "bulk": 1,
+      "cost": 1250
+    },
+    {
+      "name": "Ammo (Armour Piercing)",
+      "effect": "Adds Piercing 1 to attacks.",
+      "uses": "10",
+      "bulk": 1,
+      "cost": 750
+    },
+    {
+      "name": "Ammo (Explosive)",
+      "effect": "Adds Shredding 1 to attacks.",
+      "uses": "10",
+      "bulk": 1,
+      "cost": 750
+    }
+  ]
+}

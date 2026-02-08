@@ -5,12 +5,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import crypto from "node:crypto";
 import YAML from "yaml";
 import { create as tarCreate } from "tar";
 
 const ROOT = process.cwd();
 const SRC = path.join(ROOT, "src", "data");
 const OUT = path.join(SRC, "generated");
+const RULES_API_DIR = path.join(ROOT, "public", "rules-api", "latest");
 
 //enable/disable the TAR behaviour here
 const ENABLE_ARCHIVE = false;
@@ -84,6 +86,8 @@ async function main() {
   } else {
     console.warn(`[generate-data] Rules directory missing: ${path.relative(ROOT, RULES_DIR)} (skipping)`);
   }
+
+  writeRulesApiBundle();
 
   await archiveProject({ enabled: ENABLE_ARCHIVE });
 }
@@ -201,6 +205,49 @@ function extractSkillTooltips(ruleDoc) {
   }
 
   return { attributes, skills };
+}
+
+function writeRulesApiBundle() {
+  const filesToCopy = [
+    "skills.json",
+    "weapons.json",
+    "armor.json",
+    "weapon_keywords.json",
+    "items.json",
+    "cyberware.json",
+    "narcotics.json",
+    "hacking_gear.json",
+    "rules.json",
+    "skill_tooltips.json",
+  ];
+
+  fs.mkdirSync(RULES_API_DIR, { recursive: true });
+
+  const meta = {
+    version: timestamp(),
+    generatedAt: new Date().toISOString(),
+    files: {},
+  };
+
+  for (const filename of filesToCopy) {
+    const srcPath = path.join(OUT, filename);
+    if (!fs.existsSync(srcPath)) {
+      console.warn(`[generate-data] Missing ${path.relative(ROOT, srcPath)} (skipping rules-api)`);
+      continue;
+    }
+    const data = fs.readFileSync(srcPath);
+    const hash = crypto.createHash("sha256").update(data).digest("hex");
+    const destPath = path.join(RULES_API_DIR, filename);
+    fs.writeFileSync(destPath, data);
+    meta.files[filename] = {
+      sha256: hash,
+      bytes: data.length,
+    };
+  }
+
+  const metaPath = path.join(RULES_API_DIR, "meta.json");
+  fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2) + "\n", "utf8");
+  console.log(`[generate-data] Wrote ${path.relative(ROOT, metaPath)}`);
 }
 
 main().catch((err) => {
