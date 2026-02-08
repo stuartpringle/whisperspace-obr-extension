@@ -23,6 +23,8 @@ type RuleDoc = RuleSection & {
   file?: string;
 };
 
+type LabeledTable = { label: string; block: RuleBlock };
+
 function getSectionId(section: RuleSection) {
   return section.slug || section.title.toLowerCase().replace(/\s+/g, "-");
 }
@@ -52,6 +54,20 @@ function normalizeContent(content: RuleBlock[] = []) {
       i += duplicateCount;
     }
   }
+  return out;
+}
+
+function collectLabeledTables(section: RuleSection, out: LabeledTable[] = []) {
+  const content = section.content ?? [];
+  for (const block of content) {
+    if (block.type !== "table") continue;
+    const firstRow = block.rows?.[0] ?? [];
+    if (firstRow.length !== 1) continue;
+    const label = String(firstRow[0]?.text ?? "").trim();
+    if (!label) continue;
+    out.push({ label, block });
+  }
+  (section.sections ?? []).forEach((s) => collectLabeledTables(s, out));
   return out;
 }
 
@@ -199,7 +215,7 @@ function filterSection(section: RuleSection, q: string): RuleSection | null {
   return null;
 }
 
-function RuleSectionView(props: { section: RuleSection; depth?: number; expandAll?: boolean; query?: string }) {
+function RuleSectionView(props: { section: RuleSection; depth?: number; expandAll?: boolean; query?: string; tablesByLabel?: Map<string, RuleBlock> }) {
   const depth = props.depth ?? 0;
   const content = normalizeContent(props.section.content ?? []);
   const hasChildren = (props.section.sections ?? []).length > 0;
@@ -207,6 +223,7 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
   const pad = depth * 12;
   const id = getSectionId(props.section);
   const q = props.query ?? "";
+  const fallbackTable = props.tablesByLabel?.get(props.section.title.toLowerCase());
 
   if (depth === 0) {
     return (
@@ -215,7 +232,14 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
         <div>
           {content.map((b, i) => renderBlock(b, i, q))}
           {hasChildren && (props.section.sections ?? []).map((s, i) => (
-            <RuleSectionView key={`${s.slug ?? s.title}-${i}`} section={s} depth={depth + 1} expandAll={props.expandAll} query={q} />
+            <RuleSectionView
+              key={`${s.slug ?? s.title}-${i}`}
+              section={s}
+              depth={depth + 1}
+              expandAll={props.expandAll}
+              query={q}
+              tablesByLabel={props.tablesByLabel}
+            />
           ))}
         </div>
       </div>
@@ -230,8 +254,16 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
         </summary>
         <div>
           {content.map((b, i) => renderBlock(b, i, q))}
+          {!hasChildren && content.length === 0 && fallbackTable ? renderBlock(fallbackTable, 0, q) : null}
           {hasChildren && (props.section.sections ?? []).map((s, i) => (
-            <RuleSectionView key={`${s.slug ?? s.title}-${i}`} section={s} depth={depth + 1} expandAll={props.expandAll} query={q} />
+            <RuleSectionView
+              key={`${s.slug ?? s.title}-${i}`}
+              section={s}
+              depth={depth + 1}
+              expandAll={props.expandAll}
+              query={q}
+              tablesByLabel={props.tablesByLabel}
+            />
           ))}
         </div>
       </details>
@@ -263,6 +295,17 @@ export function RulesApp() {
   const activeDoc = useMemo(() => {
     return rules.find((d) => getSectionId(d) === activeSlug) ?? rules[0];
   }, [rules, activeSlug]);
+
+  const tablesByLabel = useMemo(() => {
+    if (!activeDoc) return new Map<string, RuleBlock>();
+    const labeled = collectLabeledTables(activeDoc, []);
+    const map = new Map<string, RuleBlock>();
+    for (const entry of labeled) {
+      const key = entry.label.toLowerCase();
+      if (!map.has(key)) map.set(key, entry.block);
+    }
+    return map;
+  }, [activeDoc]);
 
   useEffect(() => {
     const root = contentRef.current;
@@ -425,6 +468,7 @@ export function RulesApp() {
               depth={0}
               expandAll={false}
               query=""
+              tablesByLabel={tablesByLabel}
             />
           )
         )}
