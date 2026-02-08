@@ -19,3 +19,5 @@ echo "[rules:publish] Publishing calc endpoints..."
 mkdir -p /hdd/sites/stuartpringle/whisperspace/public/rules-api/calc
 cp public/rules-api/calc/index.php /hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/index.php
 cp public/rules-api/calc/.htaccess /hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/.htaccess
+mkdir -p /hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/schemas
+cp public/rules-api/calc/schemas/*.json /hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/schemas/

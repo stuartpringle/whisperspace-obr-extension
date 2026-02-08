@@ -73,6 +73,8 @@ import { buildAttackOutcome, deriveAttributesFromSkills } from "https://whispers
 ### Calc Endpoints (PHP)
 
 All endpoints are `POST` and accept JSON bodies. No auth required.
+Rate limit: 120 requests per minute per IP (best-effort).
+Schemas: `https://whisperspace.com/rules-api/calc/schemas/index.json`
 
 Endpoints:
 - `/rules-api/calc/attack`

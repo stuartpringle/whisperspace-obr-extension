@@ -28,6 +28,7 @@ import { SheetTabs } from "./components/SheetTabs";
 import { skillsData } from "../data/skills";
 import type { SkillDef } from "../data/types";
 import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../../packages/core/src/deriveAttributes";
+import { calcDeriveAttributes, calcDeriveCuf } from "../lib/calcApi";
 import { mergeStatusDeltas } from "../../packages/core/src/statusEffects";
 import { rollWithDicePlusTotal } from "./diceplus/roll";
 
@@ -90,6 +91,27 @@ export function SheetApp() {
 
   // NOTE: this is best-effort; if a token has no ownership metadata or image, we fall back gracefully.
 
+  async function deriveFromApi(sheet: CharacterSheetV1) {
+    try {
+      const [attrs, cuf] = await Promise.all([
+        calcDeriveAttributes({ skills: sheet.skills ?? {}, inherentSkills: skillsData.inherent ?? [] }),
+        calcDeriveCuf({ skills: sheet.skills ?? {} }),
+      ]);
+      return {
+        ...sheet,
+        attributes: { ...sheet.attributes, ...attrs },
+        stress: { ...(sheet.stress ?? { current: 0, cuf: 0, cufLoss: 0 }), cuf: cuf.cuf },
+      } as CharacterSheetV1;
+    } catch {
+      const derived = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
+      return {
+        ...sheet,
+        attributes: { ...sheet.attributes, ...derived },
+        stress: { ...(sheet.stress ?? { current: 0, cuf: 0, cufLoss: 0 }), cuf: deriveCUFFromSkills(sheet.skills ?? {}) },
+      } as CharacterSheetV1;
+    }
+  }
+
   async function load(opts?: { ignoreOpenOverride?: boolean; suppressUnset?: boolean }) {
     const openTokenId = opts?.ignoreOpenOverride ? null : await getOpenTokenOverride();
     if (openTokenId) {
@@ -98,8 +120,7 @@ export function SheetApp() {
         const sheet = await ensureSheetOnToken(openTokenId);
         if (!sheet) throw new Error("Could not load sheet from token.");
         // Ensure attributes are derived on load as well (in case older tokens stored stale values)
-        const derived = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
-        const fixed: CharacterSheetV1 = { ...sheet, attributes: derived };
+        const fixed = await deriveFromApi(sheet);
         const header = await getTokenHeaderMeta(openTokenId);
         setState({ kind: "ready", tokenId: openTokenId, sheet: fixed, mode: "view", suppressUnset: true, ...header });
         return;
@@ -142,8 +163,7 @@ export function SheetApp() {
     if (!sheet) throw new Error("Could not load sheet from token.");
     // Best-effort: tag token ownership so we can recover stickily and show owner labels.
     try { await tagTokenOwnedByMe(resolvedMyTokenId); } catch {}
-    const derived = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
-    const fixed: CharacterSheetV1 = { ...sheet, attributes: derived };
+    const fixed = await deriveFromApi(sheet);
     const header = await getTokenHeaderMeta(resolvedMyTokenId);
     setState({ kind: "ready", tokenId: resolvedMyTokenId, sheet: fixed, mode: "my", suppressUnset: !!opts?.suppressUnset, ...header });
   }
@@ -291,25 +311,23 @@ export function SheetApp() {
     setCombatLog((prev) => [...prev, payload].slice(-3));
   }
 
-  function applyCombatLog(entry: CombatLogPayload) {
+  async function applyCombatLog(entry: CombatLogPayload) {
     if (state.kind !== "ready") return;
     if (state.mode !== "my") return;
     const damage = Math.max(0, Math.trunc(entry.damageApplied ?? 0));
     const stress = Math.max(0, Math.trunc(entry.stressApplied ?? 0));
     if (damage <= 0 && stress <= 0) return;
 
-    updateSheet((s) => {
-      const updated = applyDamageAndStress({
-        sheet: s,
-        incomingDamage: damage,
-        stressDelta: stress,
-      });
-      if (updated.stressDelta > 0) {
-        applyStress(updated.sheet.stress?.current ?? 0);
-      }
-      appendEffectLog(state.sheet.name || "Target", damage, stress);
-      return updated.sheet;
+    const updated = await applyDamageAndStress({
+      sheet: state.sheet,
+      incomingDamage: damage,
+      stressDelta: stress,
     });
+    if (updated.stressDelta > 0) {
+      applyStress(updated.sheet.stress?.current ?? 0);
+    }
+    appendEffectLog(state.sheet.name || "Target", damage, stress);
+    updateSheet(() => updated.sheet);
   }
 
   // Keep sheet name in sync with token text (Edit Text in OBR)
@@ -372,8 +390,7 @@ export function SheetApp() {
       setState({ kind: "error", message: "Could not attach a sheet to the selected token." });
       return;
     }
-    const derived = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
-    const fixed: CharacterSheetV1 = { ...sheet, attributes: derived };
+    const fixed = await deriveFromApi(sheet);
 
     await setMyCharacterTokenId(selectedId);
     // Tag ownership so the header can show "owned by…" and so we can recover stickily later.
@@ -428,6 +445,18 @@ export function SheetApp() {
 
       // Optimistic update: return next immediately, then persist to token metadata.
       void saveToToken(prev.tokenId, next);
+      void (async () => {
+        try {
+          const updated = await deriveFromApi(next);
+          setState((inner) => {
+            if (inner.kind !== "ready" || inner.tokenId !== prev.tokenId) return inner;
+            return { ...inner, sheet: updated };
+          });
+          await saveToToken(prev.tokenId, updated);
+        } catch {
+          // ignore calc failures
+        }
+      })();
 
       return {
         ...prev,

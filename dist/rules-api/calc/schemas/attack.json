@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["total", "useDC", "weaponDamage"],
+  "properties": {
+    "total": {"type": "integer"},
+    "useDC": {"type": "integer"},
+    "weaponDamage": {"type": "integer"},
+    "label": {"type": "string"}
+  },
+  "additionalProperties": false
+}

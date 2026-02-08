@@ -39,8 +39,72 @@ load_env("/hdd/sites/stuartpringle/whisperspace/public/rules-api/.env");
 load_env("/hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/.env");
 
 $path = parse_url($_SERVER["REQUEST_URI"] ?? "", PHP_URL_PATH) ?? "";
-$path = preg_replace("#^/rules-api/calc#","", $path);
+$path = preg_replace("#^/rules-api/calc#", "", $path);
 $path = rtrim($path, "/");
+
+function client_ip(): string {
+  $headers = function_exists("getallheaders") ? getallheaders() : [];
+  $ip = $headers["CF-Connecting-IP"] ?? $headers["cf-connecting-ip"] ?? null;
+  if (!$ip) {
+    $xff = $headers["X-Forwarded-For"] ?? $headers["x-forwarded-for"] ?? "";
+    if (is_string($xff) && $xff !== "") {
+      $parts = explode(",", $xff);
+      $ip = trim($parts[0] ?? "");
+    }
+  }
+  if (!$ip) $ip = $_SERVER["REMOTE_ADDR"] ?? "unknown";
+  return (string)$ip;
+}
+
+function rate_limit(int $limit, int $windowSeconds): void {
+  $dir = sys_get_temp_dir() . "/whisperspace_calc_rate";
+  if (!is_dir($dir)) {
+    @mkdir($dir, 0755, true);
+  }
+  $ip = client_ip();
+  $key = preg_replace("/[^a-zA-Z0-9_.-]/", "_", $ip);
+  $file = $dir . "/" . $key . ".json";
+  $now = time();
+  $data = ["windowStart" => $now, "count" => 0];
+
+  $fh = @fopen($file, "c+");
+  if ($fh) {
+    flock($fh, LOCK_EX);
+    $raw = stream_get_contents($fh);
+    if ($raw !== false && $raw !== "") {
+      $decoded = json_decode($raw, true);
+      if (is_array($decoded) && isset($decoded["windowStart"], $decoded["count"])) {
+        $data = $decoded;
+      }
+    }
+    if (($now - (int)$data["windowStart"]) >= $windowSeconds) {
+      $data = ["windowStart" => $now, "count" => 0];
+    }
+    $data["count"] = (int)$data["count"] + 1;
+
+    ftruncate($fh, 0);
+    rewind($fh);
+    fwrite($fh, json_encode($data));
+    fflush($fh);
+    flock($fh, LOCK_UN);
+    fclose($fh);
+  }
+
+  $reset = (int)$data["windowStart"] + $windowSeconds;
+  $remaining = max(0, $limit - (int)$data["count"]);
+  header("X-RateLimit-Limit: {$limit}");
+  header("X-RateLimit-Remaining: {$remaining}");
+  header("X-RateLimit-Reset: {$reset}");
+
+  if ((int)$data["count"] > $limit) {
+    http_response_code(429);
+    header("Retry-After: " . max(1, $reset - $now));
+    echo json_encode(["error" => "rate_limited"]);
+    exit;
+  }
+}
+
+rate_limit(120, 60);
 
 if ($path === "/debug") {
   echo json_encode([

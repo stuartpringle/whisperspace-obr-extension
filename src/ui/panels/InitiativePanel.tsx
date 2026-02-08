@@ -14,12 +14,11 @@ import type { InitiativeTrackerState } from "../../obr/initiative";
 import { getMyCharacterTokenId, loadSheetFromToken, saveSheetToToken, TOKEN_KEY_OWNER_PLAYER } from "../../obr/metadata";
 import type { FocusId } from "../../data/types";
 import { skillsData } from "../../data/skills";
-import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../../../packages/core/src/deriveAttributes";
-import { applyStatusToDerived, computeStatusEffects } from "../../../packages/core/src/statusEffects";
-import { buildWhisperspaceSkillNotation, rollWithDicePlusTotal } from "../diceplus/roll";
+import { rollWithDicePlusTotal } from "../diceplus/roll";
 import { rollWeaponAttackAndBroadcast } from "../combat/weaponAttack";
 import { buildLearnedInfoById, skillModifierFor } from "../../../packages/core/src/skills";
 import { getAmmoMax } from "../../../packages/core/src/weapons";
+import { calcDeriveAttributes, calcDeriveCuf, calcSkillMod, calcSkillNotation, calcStatusDeltas } from "../../lib/calcApi";
 
 import {
   Box,
@@ -170,31 +169,28 @@ export function InitiativePanel() {
     const sheet = await loadSheetFromToken(tokenId);
     if (!sheet) return;
 
-    const deltas = computeStatusEffects([
-      ...(sheet.feats ?? []).map((f) => f.statusEffects ?? "").filter(Boolean),
-      ...(sheet.inventory ?? []).map((i) => i.statusEffects ?? "").filter(Boolean),
-    ]).deltas;
+    const deltas = (await calcStatusDeltas({
+      statuses: [
+        ...(sheet.feats ?? []).map((f) => f.statusEffects ?? "").filter(Boolean),
+        ...(sheet.inventory ?? []).map((i) => i.statusEffects ?? "").filter(Boolean),
+      ],
+    })).deltas;
 
-    const baseAttrs = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
+    const baseAttrs = await calcDeriveAttributes({
+      skills: sheet.skills ?? {},
+      inherentSkills: skillsData.inherent ?? [],
+    });
     const curStress = sheet.stress?.current ?? 0;
-    const baseCUF = Math.max(0, (deriveCUFFromSkills(sheet.skills ?? {}) || 0) - (sheet.stress?.cufLoss ?? 0));
-    const derived = applyStatusToDerived(
-      {
-        attributes: baseAttrs,
-        stress: { current: curStress, cuf: baseCUF },
-      },
-      deltas
-    );
-
-    const effectiveCUF = derived.stress.cuf ?? baseCUF;
-    const effectiveRef = derived.attributes.ref ?? baseAttrs.ref ?? 0;
+    const baseCUF = Math.max(0, (await calcDeriveCuf({ skills: sheet.skills ?? {} })).cuf - (sheet.stress?.cufLoss ?? 0));
+    const effectiveCUF = baseCUF + (deltas["cool_under_fire"] ?? 0);
+    const effectiveRef = baseAttrs.ref + (deltas["ref"] ?? 0) + (deltas["reflex"] ?? 0);
 
     const stressed = curStress > effectiveCUF;
-    const diceNotation = buildWhisperspaceSkillNotation({
+    const diceNotation = (await calcSkillNotation({
       netDice: stressed ? -1 : 0,
       modifier: effectiveRef,
       label: `${(item as any).text?.plainText ?? sheet.name ?? "Token"} Initiative`,
-    });
+    })).notation;
 
     const initiative = await rollWithDicePlusTotal({ diceNotation, rollTarget: "everyone", showResults: true });
     await upsertInitiativeEntry({
@@ -229,24 +225,38 @@ export function InitiativePanel() {
       return;
     }
 
-    const deltas = computeStatusEffects([
-      ...(sheet.feats ?? []).map((f) => f.statusEffects ?? "").filter(Boolean),
-      ...(sheet.inventory ?? []).map((i) => i.statusEffects ?? "").filter(Boolean),
-    ]).deltas;
+    const deltas = (await calcStatusDeltas({
+      statuses: [
+        ...(sheet.feats ?? []).map((f) => f.statusEffects ?? "").filter(Boolean),
+        ...(sheet.inventory ?? []).map((i) => i.statusEffects ?? "").filter(Boolean),
+      ],
+    })).deltas;
 
-    const baseCUF = (deriveCUFFromSkills(sheet.skills ?? {}) - (sheet.stress?.cufLoss ?? 0)) || 0;
+    const baseCUF = (await calcDeriveCuf({ skills: sheet.skills ?? {} })).cuf - (sheet.stress?.cufLoss ?? 0);
     const effectiveCUF = baseCUF + (deltas["cool_under_fire"] ?? 0);
     const curStress = sheet.stress?.current ?? 0;
     const stressed = curStress > effectiveCUF;
 
     const skillId = String(weapon.skillId ?? "");
-    const mod = skillModifierFor({
+    let mod = skillModifierFor({
       learnedInfoById,
       skillId,
       ranks: sheet.skills ?? {},
       learningFocus: sheet.learningFocus,
       skillMods: deltas as any,
     });
+    try {
+      const remote = await calcSkillMod({
+        learnedByFocus: skillsData.learned as any,
+        skillId,
+        ranks: sheet.skills ?? {},
+        learningFocus: sheet.learningFocus,
+        skillMods: deltas as any,
+      });
+      mod = remote.modifier;
+    } catch {
+      // fallback to local modifier
+    }
 
     const maxAmmo = getAmmoMax(weapon);
     const curAmmo = Number.isFinite((weapon as any)?.ammo) ? Number((weapon as any)?.ammo) : 0;

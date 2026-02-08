@@ -6,7 +6,6 @@ import type { FocusId, SkillDef } from "../../data/types";
 
 import { WEAPON_TEMPLATES } from "../../data/weapons";
 import { ARMOR_TEMPLATES } from "../../data/armour";
-import { rollWithDicePlusTotal } from "../diceplus/roll";
 import { Button } from "@mui/material";
 import CasinoIcon from "@mui/icons-material/Casino";
 import AddIcon from "@mui/icons-material/Add";
@@ -29,11 +28,11 @@ import {
   Typography
 } from "@mui/material";
 
-import { buildWhisperspaceSkillNotation, rollWithDicePlus } from "../diceplus/roll";
 import { rollWeaponAttackAndBroadcast, type CombatLogPayload } from "../combat/weaponAttack";
 import { applyDamageAndStress } from "../combat/applyDamage";
 import { buildLearnedInfoById, skillModifierFor } from "../../../packages/core/src/skills";
 import { getAmmoMax } from "../../../packages/core/src/weapons";
+import { calcSkillMod } from "../../lib/calcApi";
 import { CombatLog } from "../combat/CombatLog";
 import { resolveWeaponKeyword } from "../weaponKeywords";
 
@@ -81,12 +80,12 @@ export function CombatPanel(props: {
 
 
 
-function applyDamage() {
+async function applyDamage() {
   const raw = Number(damageInput);
   const incoming = Number.isFinite(raw) ? Math.max(0, Math.trunc(raw)) : 0;
   if (incoming <= 0) return;
 
-  const result = applyDamageAndStress({
+  const result = await applyDamageAndStress({
     sheet: props.sheet,
     incomingDamage: incoming,
     unmitigated: unmitigatedDamage,
@@ -202,7 +201,19 @@ function updateWeapon(i: number, patch: Partial<CharacterSheetV1["weapons"][numb
       return;
     }
 
-    const mod = skillModifier(w.skillId);
+    let mod = skillModifier(w.skillId);
+    try {
+      const remote = await calcSkillMod({
+        learnedByFocus: skillsData.learned as any,
+        skillId: w.skillId,
+        ranks: props.sheet.skills ?? {},
+        learningFocus: props.sheet.learningFocus,
+        skillMods: props.skillMods,
+      });
+      mod = remote.modifier;
+    } catch {
+      // fall back to local modifier
+    }
     await rollWeaponAttackAndBroadcast({
       weapon: w as any,
       useDC: Number.isFinite(w.useDC as any) ? Number(w.useDC) : 0,

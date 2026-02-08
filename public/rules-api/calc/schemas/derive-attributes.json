@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["skills", "inherentSkills"],
+  "properties": {
+    "skills": {"type": "object", "additionalProperties": {"type": "integer"}},
+    "inherentSkills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "attribute"],
+        "properties": {
+          "id": {"type": "string"},
+          "attribute": {"type": "string", "enum": ["phys", "ref", "soc", "ment"]}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

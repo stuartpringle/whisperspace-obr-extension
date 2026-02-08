@@ -24,9 +24,10 @@ import {
   Typography,
 } from "@mui/material";
 
-import { buildWhisperspaceSkillNotation, checkDicePlusReady, rollWithDicePlus } from "../diceplus/roll";
+import { checkDicePlusReady, rollWithDicePlus } from "../diceplus/roll";
 import { buildLearnedInfoById } from "../../../packages/core/src/skills";
 import { getSkillTooltip } from "../../data/skillTooltips";
+import { calcSkillNotation } from "../../lib/calcApi";
 
 const ATTR_ORDER: AttributeId[] = ["phys", "ref", "soc", "ment"];
 const ATTR_LABEL: Record<AttributeId, string> = {
@@ -152,11 +153,11 @@ export function SkillsPanel(props: {
   }
 
   async function rollSkill(skill: SkillDef) {
-    const diceNotation = buildWhisperspaceSkillNotation({
+    const diceNotation = (await calcSkillNotation({
       netDice,
       modifier: modifierFor(skill),
       label: skill.label,
-    });
+    })).notation;
 
     try {
       await rollWithDicePlus({ diceNotation, showResults: true, rollTarget: "everyone" });

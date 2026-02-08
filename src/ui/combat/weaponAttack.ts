@@ -1,6 +1,6 @@
 import OBR from "@owlbear-rodeo/sdk";
-import { buildWhisperspaceSkillNotation, rollWithDicePlusTotal } from "../diceplus/roll";
-import { buildAttackOutcome } from "../../../packages/core/src/combat";
+import { rollWithDicePlusTotal } from "../diceplus/roll";
+import { calcAttack, calcSkillNotation, type CalcAttackOutcome } from "../../lib/calcApi";
 import { getHookBus } from "../../../packages/core/src/hooks";
 
 // Shared broadcast channel for derived combat messages (hit/miss, damage, crits, etc.)
@@ -15,7 +15,7 @@ export type WeaponForAttack = {
   keywordParams?: Record<string, string | number | boolean>;
 };
 
-export type AttackOutcome = ReturnType<typeof buildAttackOutcome>;
+export type AttackOutcome = CalcAttackOutcome;
 
 export type CombatLogPayload = {
   text: string;
@@ -49,11 +49,11 @@ export async function rollWeaponAttack(opts: {
   const useDC = Number.isFinite(opts.useDC) ? Math.trunc(opts.useDC!) : Math.trunc(opts.weapon.useDC);
   const label = opts.weapon.name || "Attack";
 
-  const diceNotation = buildWhisperspaceSkillNotation({
+  const diceNotation = (await calcSkillNotation({
     netDice: opts.netDice,
     modifier: opts.modifier,
     label,
-  });
+  })).notation;
 
   const total = await rollWithDicePlusTotal({
     diceNotation,
@@ -61,7 +61,7 @@ export async function rollWeaponAttack(opts: {
     showResults: opts.showResults ?? true,
   });
 
-  const outcome = buildAttackOutcome({
+  const outcome = await calcAttack({
     total,
     useDC,
     weaponDamage: Math.trunc(opts.weapon.damage ?? 0),

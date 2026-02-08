@@ -2,11 +2,10 @@ import OBR from "@owlbear-rodeo/sdk";
 import { setOpenTokenOverride } from "./obr/metadata";
 import { META_KEY_SHEET } from "./rules/schema";
 import { migrateSheet } from "./rules/migrate";
-import { buildWhisperspaceSkillNotation, rollWithDicePlusTotal } from "./ui/diceplus/roll";
+import { rollWithDicePlusTotal } from "./ui/diceplus/roll";
 import { getInitiativeState, removeFromInitiative, upsertInitiativeEntry } from "./obr/initiative";
 import { skillsData } from "./data/skills";
-import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../packages/core/src/deriveAttributes";
-import { computeStatusEffects } from "../packages/core/src/statusEffects";
+import { calcDeriveAttributes, calcDeriveCuf, calcSkillNotation, calcStatusDeltas } from "./lib/calcApi";
 
 const EXT_ID = "com.whisperspace.sheet";
 const MENU_ID = `${EXT_ID}/context/open-sheet`;
@@ -93,21 +92,24 @@ async function main() {
 	        if (typeof (sheet as any)?.statusEffects === "string" && (sheet as any).statusEffects.trim()) {
 	          statusStrings.push((sheet as any).statusEffects);
 	        }
-	        const status = computeStatusEffects(statusStrings);
+	        const status = await calcStatusDeltas({ statuses: statusStrings });
 
-          const derivedAttrs = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
+          const derivedAttrs = await calcDeriveAttributes({
+            skills: sheet.skills ?? {},
+            inherentSkills: skillsData.inherent ?? [],
+          });
 			    const attrDeltaRef = (status.deltas["ref"] ?? 0) + (status.deltas["reflex"] ?? 0);
 	        const effectiveRef = Math.max(0, derivedAttrs.ref + attrDeltaRef);
 
-	        const baseCuf = deriveCUFFromSkills(sheet.skills ?? {});
+	        const baseCuf = (await calcDeriveCuf({ skills: sheet.skills ?? {} })).cuf;
 			    const effectiveCuf = Math.max(0, baseCuf + (status.deltas["cool_under_fire"] ?? 0));
 
 	        const stressed = (sheet.stress?.current ?? 0) > effectiveCuf;
-	        const notation = buildWhisperspaceSkillNotation({
+	        const notation = (await calcSkillNotation({
 	          modifier: effectiveRef,
 	          label: `${sheet.name} Initiative`,
 	          netDice: stressed ? -1 : 0
-	        });
+	        })).notation;
 
 	        const total = await rollWithDicePlusTotal({ diceNotation: notation, rollTarget: "everyone", showResults: true });
 	        const thumbUrl = (token as any)?.image?.url as string | undefined;

@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["netDice", "modifier", "label"],
+  "properties": {
+    "netDice": {"type": "integer"},
+    "modifier": {"type": "integer"},
+    "label": {"type": "string"}
+  },
+  "additionalProperties": false
+}

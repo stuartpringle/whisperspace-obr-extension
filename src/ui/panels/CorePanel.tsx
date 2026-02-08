@@ -3,7 +3,8 @@ import { CharacterSheetV1 } from "../../rules/schema";
 import { Stack, Box, Typography, TextField, ToggleButtonGroup, ToggleButton, IconButton, Tooltip } from "@mui/material";
 import CasinoIcon from "@mui/icons-material/Casino";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { buildWhisperspaceSkillNotation, rollWithDicePlus } from "../diceplus/roll";
+import { rollWithDicePlus } from "../diceplus/roll";
+import { calcSkillNotation } from "../../lib/calcApi";
 import { getAttributeTooltip } from "../../data/skillTooltips";
 
 type AttrKey = "phys" | "ref" | "soc" | "ment";
@@ -21,7 +22,7 @@ export function CorePanel(props: {
 
   async function rollAttr(attr: AttrKey, label: string) {
     const modifier = Number((attrs as any)[attr] ?? 0);
-    const diceNotation = buildWhisperspaceSkillNotation({ netDice, modifier, label });
+    const diceNotation = (await calcSkillNotation({ netDice, modifier, label })).notation;
     await rollWithDicePlus({ diceNotation, showResults: true, rollTarget: "everyone" });
   }
 

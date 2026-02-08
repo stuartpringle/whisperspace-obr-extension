@@ -1,4 +1,5 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
+import { RULES_API_BASE } from "../config";
 import rulesData from "../data/generated/rules.json";
 import { resolveWeaponKeyword, splitKeywordList } from "./weaponKeywords";
 import { WEAPON_KEYWORDS } from "../data/weaponKeywords";
@@ -402,7 +403,7 @@ export function RulesApp() {
 
   useEffect(() => {
     let cancelled = false;
-    const API_BASE = "https://whisperspace.com/rules-api/latest";
+    const API_BASE = RULES_API_BASE;
 
     async function loadLatest() {
       try {
