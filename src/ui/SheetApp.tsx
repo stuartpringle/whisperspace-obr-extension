@@ -39,6 +39,7 @@ type ViewState =
       thumbUrl?: string | null;
       ownerPlayerId?: string | null;
       isOwnedByMe?: boolean;
+      suppressUnset?: boolean;
     }
   | { kind: "error"; message: string };
 
@@ -83,7 +84,7 @@ export function SheetApp() {
 
   // NOTE: this is best-effort; if a token has no ownership metadata or image, we fall back gracefully.
 
-  async function load(opts?: { ignoreOpenOverride?: boolean }) {
+  async function load(opts?: { ignoreOpenOverride?: boolean; suppressUnset?: boolean }) {
     const openTokenId = opts?.ignoreOpenOverride ? null : await getOpenTokenOverride();
     if (openTokenId) {
       const exists = await itemExists(openTokenId);
@@ -94,7 +95,7 @@ export function SheetApp() {
         const derived = deriveAttributesFromSkills(sheet.skills ?? {});
         const fixed: CharacterSheetV1 = { ...sheet, attributes: derived };
         const header = await getTokenHeaderMeta(openTokenId);
-        setState({ kind: "ready", tokenId: openTokenId, sheet: fixed, mode: "view", ...header });
+        setState({ kind: "ready", tokenId: openTokenId, sheet: fixed, mode: "view", suppressUnset: true, ...header });
         return;
       } else {
         await setOpenTokenOverride(null);
@@ -138,7 +139,7 @@ export function SheetApp() {
     const derived = deriveAttributesFromSkills(sheet.skills ?? {});
     const fixed: CharacterSheetV1 = { ...sheet, attributes: derived };
     const header = await getTokenHeaderMeta(resolvedMyTokenId);
-    setState({ kind: "ready", tokenId: resolvedMyTokenId, sheet: fixed, mode: "my", ...header });
+    setState({ kind: "ready", tokenId: resolvedMyTokenId, sheet: fixed, mode: "my", suppressUnset: !!opts?.suppressUnset, ...header });
   }
 
   useEffect(() => {
@@ -314,7 +315,7 @@ export function SheetApp() {
     try { await tagTokenOwnedByMe(selectedId); } catch {}
     await setOpenTokenOverride(null);
     const header = await getTokenHeaderMeta(selectedId);
-    setState({ kind: "ready", tokenId: selectedId, sheet: fixed, mode: "my", ...header });
+    setState({ kind: "ready", tokenId: selectedId, sheet: fixed, mode: "my", suppressUnset: false, ...header });
   }
 
   async function unsetMyCharacter() {
@@ -327,7 +328,7 @@ export function SheetApp() {
     await setOpenTokenOverride(null);
     setState({ kind: "loading" });
     try {
-      await load({ ignoreOpenOverride: true });
+      await load({ ignoreOpenOverride: true, suppressUnset: true });
     } catch (e) {
       setState({ kind: "error", message: (e as Error).message ?? "Unknown error" });
     }
@@ -662,14 +663,14 @@ function burnCufToPass() {
                 Back to My Sheet
               </button>
             )
-          ) : (
+          ) : !state.suppressUnset ? (
             <button
               style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
               onClick={unsetMyCharacter}
             >
               Unset “My Character”
             </button>
-          )}
+          ) : null}
         </div>
       </div>
 
