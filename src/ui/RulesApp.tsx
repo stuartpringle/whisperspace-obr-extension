@@ -281,6 +281,7 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
 
 export function RulesApp() {
   const [query, setQuery] = useState("");
+  const [searchSelection, setSearchSelection] = useState<string>("");
   const rules = rulesData as RuleDoc[];
   const [activeSectionId, setActiveSectionId] = useState<string>("");
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -301,8 +302,9 @@ export function RulesApp() {
   }));
 
   const activeDoc = useMemo(() => {
-    return rules.find((d) => getSectionId(d) === activeSlug) ?? rules[0];
-  }, [rules, activeSlug]);
+    const slug = q && searchSelection ? searchSelection : activeSlug;
+    return rules.find((d) => getSectionId(d) === slug) ?? rules[0];
+  }, [rules, activeSlug, q, searchSelection]);
 
   const tablesByLabel = useMemo(() => {
     if (!activeDoc) return new Map<string, RuleBlock>();
@@ -422,7 +424,10 @@ export function RulesApp() {
           type="text"
           placeholder="Search rules…"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setSearchSelection("");
+          }}
           style={{
             width: "100%",
             padding: "8px 10px",
@@ -447,7 +452,7 @@ export function RulesApp() {
                     key={slug}
                     onClick={() => {
                       setActiveSlug(slug);
-                      setQuery("");
+                      setSearchSelection(slug);
                     }}
                     style={{
                       textAlign: "left",
@@ -480,6 +485,16 @@ export function RulesApp() {
             />
           )
         )}
+        {q && searchSelection && activeDoc ? (
+          <RuleSectionView
+            key={`search-${activeDoc.slug ?? activeDoc.title}`}
+            section={activeDoc}
+            depth={0}
+            expandAll={false}
+            query={q}
+            tablesByLabel={tablesByLabel}
+          />
+        ) : null}
       </main>
     </div>
   );
