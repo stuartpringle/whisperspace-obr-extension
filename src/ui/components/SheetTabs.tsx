@@ -9,21 +9,22 @@ export function SheetTabs(props: {
   const theme = useTheme();
   const textColor = theme.palette.text.primary;
   const borderColor = theme.palette.mode === "dark" ? "rgba(255,255,255,0.25)" : "#777";
+  const activeBg = theme.palette.mode === "dark" ? "rgba(255,255,255,0.12)" : "transparent";
 
   return (
     <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10 }}>
-      <Tab label="Core" active={props.activeTab === "core"} onClick={() => props.onTab("core")} color={textColor} borderColor={borderColor} />
-      <Tab label="Skills" active={props.activeTab === "skills"} onClick={() => props.onTab("skills")} color={textColor} borderColor={borderColor} />
-      <Tab label="Combat" active={props.activeTab === "combat"} onClick={() => props.onTab("combat")} color={textColor} borderColor={borderColor} />
-      <Tab label="Initiative" active={props.activeTab === "initiative"} onClick={() => props.onTab("initiative")} color={textColor} borderColor={borderColor} />
-      <Tab label="Inventory" active={props.activeTab === "inventory"} onClick={() => props.onTab("inventory")} color={textColor} borderColor={borderColor} />
-      <Tab label="Feats" active={props.activeTab === "feats"} onClick={() => props.onTab("feats")} color={textColor} borderColor={borderColor} />
+      <Tab label="Core" active={props.activeTab === "core"} onClick={() => props.onTab("core")} color={textColor} borderColor={borderColor} activeBg={activeBg} />
+      <Tab label="Skills" active={props.activeTab === "skills"} onClick={() => props.onTab("skills")} color={textColor} borderColor={borderColor} activeBg={activeBg} />
+      <Tab label="Combat" active={props.activeTab === "combat"} onClick={() => props.onTab("combat")} color={textColor} borderColor={borderColor} activeBg={activeBg} />
+      <Tab label="Initiative" active={props.activeTab === "initiative"} onClick={() => props.onTab("initiative")} color={textColor} borderColor={borderColor} activeBg={activeBg} />
+      <Tab label="Inventory" active={props.activeTab === "inventory"} onClick={() => props.onTab("inventory")} color={textColor} borderColor={borderColor} activeBg={activeBg} />
+      <Tab label="Feats" active={props.activeTab === "feats"} onClick={() => props.onTab("feats")} color={textColor} borderColor={borderColor} activeBg={activeBg} />
       <div style={{ marginLeft: "auto", opacity: 0.8 }}>{props.isSaving ? "Saving…" : "Synced"}</div>
     </div>
   );
 }
 
-function Tab(props: { label: string; active: boolean; onClick: () => void; color: string; borderColor: string }) {
+function Tab(props: { label: string; active: boolean; onClick: () => void; color: string; borderColor: string; activeBg: string }) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
 
@@ -35,7 +36,7 @@ function Tab(props: { label: string; active: boolean; onClick: () => void; color
         borderRadius: 999,
         border: `1px solid ${props.borderColor}`,
         cursor: "pointer",
-        background: "transparent",
+        background: props.active ? props.activeBg : "transparent",
         fontWeight: props.active ? 700 : 400,
         color: props.color,
         outline: "none",
