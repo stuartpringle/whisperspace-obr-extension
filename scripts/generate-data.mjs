@@ -13,6 +13,7 @@ const ROOT = process.cwd();
 const SRC = path.join(ROOT, "src", "data");
 const OUT = path.join(SRC, "generated");
 const RULES_API_DIR = path.join(ROOT, "public", "rules-api", "latest");
+const RULES_API_PUBLISH_DIR = "/hdd/sites/stuartpringle/whisperspace/public/rules-api/latest";
 
 //enable/disable the TAR behaviour here
 const ENABLE_ARCHIVE = false;
@@ -222,6 +223,7 @@ function writeRulesApiBundle() {
   ];
 
   fs.mkdirSync(RULES_API_DIR, { recursive: true });
+  fs.mkdirSync(RULES_API_PUBLISH_DIR, { recursive: true });
 
   const meta = {
     version: timestamp(),
@@ -238,7 +240,9 @@ function writeRulesApiBundle() {
     const data = fs.readFileSync(srcPath);
     const hash = crypto.createHash("sha256").update(data).digest("hex");
     const destPath = path.join(RULES_API_DIR, filename);
+    const publishPath = path.join(RULES_API_PUBLISH_DIR, filename);
     fs.writeFileSync(destPath, data);
+    fs.writeFileSync(publishPath, data);
     meta.files[filename] = {
       sha256: hash,
       bytes: data.length,
@@ -246,8 +250,12 @@ function writeRulesApiBundle() {
   }
 
   const metaPath = path.join(RULES_API_DIR, "meta.json");
-  fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2) + "\n", "utf8");
+  const metaPublishPath = path.join(RULES_API_PUBLISH_DIR, "meta.json");
+  const metaJson = JSON.stringify(meta, null, 2) + "\n";
+  fs.writeFileSync(metaPath, metaJson, "utf8");
+  fs.writeFileSync(metaPublishPath, metaJson, "utf8");
   console.log(`[generate-data] Wrote ${path.relative(ROOT, metaPath)}`);
+  console.log(`[generate-data] Wrote ${metaPublishPath}`);
 }
 
 main().catch((err) => {
