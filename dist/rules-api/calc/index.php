@@ -32,14 +32,23 @@ function load_env(string $path): void {
   }
 }
 
-// Load env from project root (adjust if needed)
+// Load env from project root first, then fall back to public locations
 load_env("/hdd/sites/stuartpringle/whisperspace/.env");
+load_env("/hdd/sites/stuartpringle/whisperspace/public/.env");
+load_env("/hdd/sites/stuartpringle/whisperspace/public/rules-api/.env");
+load_env("/hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/.env");
 
 $headers = function_exists("getallheaders") ? getallheaders() : [];
 $apiKey = $headers["X-WS-API-Key"] ?? $headers["x-ws-api-key"] ?? null;
 $expected = getenv("WS_RULES_API_KEY") ?: "";
 
-if (!$expected || !$apiKey || !hash_equals($expected, $apiKey)) {
+if (!$expected) {
+  http_response_code(500);
+  echo json_encode(["error" => "server_not_configured"]);
+  exit;
+}
+
+if (!$apiKey || !hash_equals($expected, $apiKey)) {
   http_response_code(401);
   echo json_encode(["error" => "unauthorized"]);
   exit;
