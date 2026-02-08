@@ -52,7 +52,7 @@ weapons:
     bulk: 3
     cost: 5000
     keywords:
-      - Two Handed
+      - Two-Handed
   - id: rifle
     name: Rifle
     skillId: weapons_medium
@@ -63,7 +63,7 @@ weapons:
     bulk: 2
     cost: 1000
     keywords:
-      - Two Handed
+      - Two-Handed
       - Piercing 1
   - id: shotgun
     name: Shotgun
@@ -102,7 +102,7 @@ weapons:
     req: PHYS 2
     keywords:
       - Area (Very Near)
-      - Two Handed
+      - Two-Handed
       - Slow Load
       - Grenade
   - id: magneton_cannon
@@ -129,7 +129,7 @@ weapons:
     bulk: 2
     cost: 6000
     keywords:
-      - Two Handed
+      - Two-Handed
       - Stun 2
   - id: stun_baton
     name: Stun Baton
@@ -177,4 +177,4 @@ weapons:
     cost: 2500
     req: PHYS 3
     keywords:
-      - Two Handed
+      - Two-Handed

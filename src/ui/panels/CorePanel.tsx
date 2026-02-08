@@ -3,6 +3,7 @@ import { CharacterSheetV1 } from "../../rules/schema";
 import { Stack, Box, Typography, TextField, ToggleButtonGroup, ToggleButton, IconButton, Tooltip } from "@mui/material";
 import CasinoIcon from "@mui/icons-material/Casino";
 import { buildWhisperspaceSkillNotation, rollWithDicePlus } from "../diceplus/roll";
+import { getAttributeTooltip } from "../../data/skillTooltips";
 
 type AttrKey = "phys" | "ref" | "soc" | "ment";
 
@@ -57,10 +58,10 @@ export function CorePanel(props: {
       />
 
       <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1 }}>
-        <AttrField label="PHYS" value={attrs.phys} onRoll={() => rollAttr("phys", "PHYS Check")} />
-        <AttrField label="REF" value={attrs.ref} onRoll={() => rollAttr("ref", "REF Check")} />
-        <AttrField label="SOC" value={attrs.soc} onRoll={() => rollAttr("soc", "SOC Check")} />
-        <AttrField label="MENT" value={attrs.ment} onRoll={() => rollAttr("ment", "MENT Check")} />
+        <AttrField label="PHYS" tooltip={getAttributeTooltip("PHYS")} value={attrs.phys} onRoll={() => rollAttr("phys", "PHYS Check")} />
+        <AttrField label="REF" tooltip={getAttributeTooltip("REF")} value={attrs.ref} onRoll={() => rollAttr("ref", "REF Check")} />
+        <AttrField label="SOC" tooltip={getAttributeTooltip("SOC")} value={attrs.soc} onRoll={() => rollAttr("soc", "SOC Check")} />
+        <AttrField label="MENT" tooltip={getAttributeTooltip("MENT")} value={attrs.ment} onRoll={() => rollAttr("ment", "MENT Check")} />
       </Box>
 
       
@@ -95,16 +96,20 @@ export function CorePanel(props: {
   );
 }
 
-function AttrField(props: { label: string; value: number; onRoll: () => void }) {
+function AttrField(props: { label: string; tooltip?: string; value: number; onRoll: () => void }) {
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-      <TextField
-        label={props.label}
-        size="small"
-        value={props.value}
-        inputProps={{ readOnly: true }}
-        fullWidth
-      />
+      <Tooltip title={props.tooltip || ""} disableHoverListener={!props.tooltip}>
+        <Box sx={{ flex: 1 }}>
+          <TextField
+            label={props.label}
+            size="small"
+            value={props.value}
+            inputProps={{ readOnly: true }}
+            fullWidth
+          />
+        </Box>
+      </Tooltip>
       <Tooltip title="Roll with Dice+">
         <IconButton onClick={props.onRoll} aria-label={`Roll ${props.label}`}>
           <CasinoIcon />

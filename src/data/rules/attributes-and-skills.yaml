@@ -38,30 +38,34 @@ sections:
         spans: []
       - text: PHYS
         spans: []
-      - text: Physical prowess, stamina, strength, and overall fitnessEach point in
-          Physique increases your carrying capacityEvery point in Physique increases
-          your movement speed by 5ftSoldiers and brawlers typically have high PHYS
+      - text: 'Physical prowess, stamina, strength, and overall fitness- Each point
+          in Physique increases your carrying capacity
+
+          - Every point in Physique increases your movement speed by 5ft
+
+          - Soldiers and brawlers typically have high PHYS'
         spans: []
     - - text: Reflex
         spans: []
       - text: REF
         spans: []
-      - text: Quickness of mind and body sometimes bordering on instinctReflex is
-          rolled to determine initiative order in combatPilots, Martial Artists, and
-          Spiderman are all known for high REF
+      - text: 'Quickness of mind and body sometimes bordering on instinct- Reflex
+          is rolled to determine initiative order in combat
+
+          - Pilots, Martial Artists, and Spiderman are all known for high REF'
         spans: []
     - - text: Social
         spans: []
       - text: SOC
         spans: []
       - text: Empathy, charm, quickness of wit, gravitas, personal magnetism, and
-          picking up on social cuesDiplomats and empaths typically have high SOC
+          picking up on social cues- Diplomats and empaths typically have high SOC
         spans: []
     - - text: Mental
         spans: []
       - text: MENT
         spans: []
-      - text: Acuity, keenness of mind, learning ability, and mental toughnessScientists,
+      - text: Acuity, keenness of mind, learning ability, and mental toughness- Scientists,
           mechanics, and hackers are likely to want high MENT
         spans: []
   - type: list

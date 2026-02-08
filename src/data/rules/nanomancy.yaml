@@ -296,9 +296,11 @@ sections:
           spans: []
         - text: 1 reaction
           spans: []
-        - text: 'Counter a Nanomantic Effect. DC = the effect’s Nanomancy roll.Extreme
+        - text: 'Counter a Nanomantic Effect. DC = the effect’s Nanomancy roll.- Extreme
             success: negate the effect. In addition, that effect cannot be attempted
-            again for 1 * ND minute(s).Success: negate the effect.'
+            again for 1 * ND minute(s).
+
+            - Success: negate the effect.'
           spans: []
     - type: list
       ordered: false
@@ -337,7 +339,7 @@ sections:
         - text: 'Create a target location. For the duration, all living creatures
             within Very Near range of that location heal at a rate of half ND (rounded
             up) light wounds at the start of each of their turns. This effect lasts
-            1 round for each action used.Extreme success: this effect may heal (and
+            1 round for each action used.- Extreme success: this effect may heal (and
             will prioritize) moderate wounds.'
           spans: []
       - - text: Knit Together
@@ -350,10 +352,10 @@ sections:
           spans: []
         - text: '2'
           spans: []
-        - text: 'Heal up to 1 + half ND (rounded up) light or moderate wounds on target
-            creature.Extreme success: you may heal heavy wounds with this effect as
-            well.Failure: give target Bleeding (1) Extreme failure: give target Bleeding
-            (2).'
+        - text: "Heal up to 1 + half ND (rounded up) light or moderate wounds on target\
+            \ creature.- Extreme success: you may heal heavy wounds with this effect\
+            \ as well.\n- Failure: give target Bleeding (1) \n- Extreme failure: give\
+            \ target Bleeding (2)."
           spans:
           - style: link_underline
             text: Bleeding (1)
@@ -387,10 +389,11 @@ sections:
         - text: '2'
           spans: []
         - text: 'Impose Blinded on target creature for rounds equal to ND. While affected,
-            target gains +1 stress at the end of each of their turns.Extreme success:
-            target gains +2 stress at the end of each of their turns instead.Target
-            may attempt a Willpower or Composure (DC 6 + ND) check at the end of each
-            of their turns to end the effect early.'
+            target gains +1 stress at the end of each of their turns.- Extreme success:
+            target gains +2 stress at the end of each of their turns instead.
+
+            Target may attempt a Willpower or Composure (DC 6 + ND) check at the end
+            of each of their turns to end the effect early.'
           spans:
           - style: link_underline
             text: Blinded

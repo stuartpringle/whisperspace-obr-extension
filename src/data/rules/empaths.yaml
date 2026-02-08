@@ -142,14 +142,19 @@ sections:
         spans: []
       - text: '2'
         spans: []
-      - text: Form an Empathic Bond with target. When you have an Empathic Bond:All
-          your other Empathic Abilities targeting bonded creature are bumped up one
-          level of success. So an extreme failure becomes a failure, a failure becomes
-          a success, etc.Once per round, you may use 1 reaction to reduce stress gained
-          by bonded creature by 1 (minimum 1).Whenever bonded creature suffers stress,
-          you take half of that stress (rounded up) while it takes the remainder.You
-          may have no more than one Empathic Bond at a time. You may dismiss an Empathic
-          Bond by using 1 action. This ability cannot be Heightened.
+      - text: 'Form an Empathic Bond with target. When you have an Empathic Bond:-
+          All your other Empathic Abilities targeting bonded creature are bumped up
+          one level of success. So an extreme failure becomes a failure, a failure
+          becomes a success, etc.
+
+          - Once per round, you may use 1 reaction to reduce stress gained by bonded
+          creature by 1 (minimum 1).
+
+          - Whenever bonded creature suffers stress, you take half of that stress
+          (rounded up) while it takes the remainder.
+
+          You may have no more than one Empathic Bond at a time. You may dismiss an
+          Empathic Bond by using 1 action. This ability cannot be Heightened.'
         spans: []
     - - text: Sense Violence
         spans: []
@@ -161,10 +166,13 @@ sections:
         spans: []
       - text: 'Violent emotions have a particular tang to them, reminiscent of a metallic
           taste. You are aware of these around you at all times, though you cannot
-          determine the exact origin.You cannot be Surprised by living creatures.You
-          gain +1 bonus die on Initiative rolls against living creatures.Heightened:
-          you know the exact origin of these emotions. Additionally, the first attack
-          by a living creature against you each combat suffers +1 penalty die.'
+          determine the exact origin.- You cannot be Surprised by living creatures.
+
+          - You gain +1 bonus die on Initiative rolls against living creatures.
+
+          - Heightened: you know the exact origin of these emotions. Additionally,
+          the first attack by a living creature against you each combat suffers +1
+          penalty die.'
         spans: []
     - - text: Read Motive
         spans: []
@@ -175,7 +183,7 @@ sections:
       - text: '1'
         spans: []
       - text: 'Discern what underlying emotions are influencing target creature’s
-          current actions. What drives a merchant: greed or necessity?Heightened:
+          current actions. What drives a merchant: greed or necessity?- Heightened:
           you gain knowledge of target’s greatest emotional lever: their greatest
           fear, desire, or hope.'
         spans: []
@@ -235,7 +243,8 @@ sections:
       - text: 1 to 3
         spans: []
       - text: 'Transfer stress (amount equal to number of actions spent) from yourself
-          to target creature.Heightened: transfer twice as much stress to target instead.'
+          to target creature.- Heightened: transfer twice as much stress to target
+          instead.'
         spans: []
     - - text: Reap Carnage
         spans: []
@@ -246,8 +255,9 @@ sections:
       - text: '2'
         spans: []
       - text: 'Impose the Frenzied condition on target. At the end of the target’s
-          turns, they may roll a Composure or Willpower (DC8) check to end this condition.Heightened:
-          target creature ignores all penalty dice for the duration of Frenzied.'
+          turns, they may roll a Composure or Willpower (DC8) check to end this condition.-
+          Heightened: target creature ignores all penalty dice for the duration of
+          Frenzied.'
         spans:
         - style: link_underline
           text: Frenzied
@@ -264,7 +274,7 @@ sections:
           of you. Every living creature in range gains 1 stress for every 2 stress
           you currently have (minimum 1). You reduce your stress by half the total
           stress inflicted (rounded up). Creatures who receive stress this way must
-          immediately roll Composure (DC8) or gain the Demoralized condition.Heightened:
+          immediately roll Composure (DC8) or gain the Demoralized condition.- Heightened:
           you may exclude yourself and any bonded creature from the distribution.'
         spans:
         - style: link_underline
@@ -311,8 +321,8 @@ sections:
         spans: []
       - text: 'Remove up to 2 stress from target creature. Gain stress equal to the
           amount removed. If target is reduced to 0 stress in this way, they may ignore
-          the next instance of stress gain before the end of the day.Heightened: remove
-          up to 4 stress instead.'
+          the next instance of stress gain before the end of the day.- Heightened:
+          remove up to 4 stress instead.'
         spans: []
     - - text: Take the Burden
         spans: []
@@ -322,9 +332,9 @@ sections:
         spans: []
       - text: '2'
         spans: []
-      - text: 'Transfer one negative mental condition from target creature to yourself.Heightened:
-          while you are affected by this condition, the target cannot regain it again
-          from the same source.'
+      - text: 'Transfer one negative mental condition from target creature to yourself.-
+          Heightened: while you are affected by this condition, the target cannot
+          regain it again from the same source.'
         spans: []
     - - text: Emotional Grounding
         spans: []
@@ -334,10 +344,13 @@ sections:
         spans: []
       - text: 1-2
         spans: []
-      - text: 'Until the start of your next turn, choose one per action spent:Target
-          reduces all stress gain by 1.Target gains +1 bonus die on Composure checksYou
-          immediately gain 1 stress per action spent when using this ability.Heightened:
-          you may apply this effect to yourself as well.'
+      - text: 'Until the start of your next turn, choose one per action spent:- Target
+          reduces all stress gain by 1.
+
+          - Target gains +1 bonus die on Composure checks
+
+          You immediately gain 1 stress per action spent when using this ability.-
+          Heightened: you may apply this effect to yourself as well.'
         spans: []
   - type: list
     ordered: false

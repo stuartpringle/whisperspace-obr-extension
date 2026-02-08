@@ -183,7 +183,7 @@
     {
       "name": "Bio-Stabilizer",
       "tier": 3,
-      "effect": "When you would take a Medium or Heavy wound, roll Cybernetics (DC8).Extreme success: ignore the wound.Success: ignore the wound; this cyberware effect cannot be used for 1 day.Failure: suffer the wound as normal; this cyberware effect cannot be used for 1 day.This effect may only trigger once per instance of damage.",
+      "effect": "When you would take a Medium or Heavy wound, roll Cybernetics (DC8).- Extreme success: ignore the wound.\n- Success: ignore the wound; this cyberware effect cannot be used for 1 day.\n- Failure: suffer the wound as normal; this cyberware effect cannot be used for 1 day.\nThis effect may only trigger once per instance of damage.",
       "installationDifficulty": 4,
       "requirements": "-",
       "physicalImpact": "Medium; chest and back",

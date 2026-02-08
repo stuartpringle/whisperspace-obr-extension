@@ -326,7 +326,7 @@
               "spans": []
             },
             {
-              "text": "When moving toward an enemy (Very Near range or closer), you may use an action to make a Bearing (DC8 + target’s Willpower) check with +1 bonus die.Success: the target suffers +2 stress. Extreme success: the target also gains the Fleeing condition.",
+              "text": "When moving toward an enemy (Very Near range or closer), you may use an action to make a Bearing (DC8 + target’s Willpower) check with +1 bonus die.- Success: the target suffers +2 stress. \n- Extreme success: the target also gains the Fleeing condition.",
               "spans": [
                 {
                   "style": "link_underline",
@@ -1219,7 +1219,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Physical prowess, stamina, strength, and overall fitnessEach point in Physique increases your carrying capacityEvery point in Physique increases your movement speed by 5ftSoldiers and brawlers typically have high PHYS",
+                  "text": "Physical prowess, stamina, strength, and overall fitness- Each point in Physique increases your carrying capacity\n- Every point in Physique increases your movement speed by 5ft\n- Soldiers and brawlers typically have high PHYS",
                   "spans": []
                 }
               ],
@@ -1233,7 +1233,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Quickness of mind and body sometimes bordering on instinctReflex is rolled to determine initiative order in combatPilots, Martial Artists, and Spiderman are all known for high REF",
+                  "text": "Quickness of mind and body sometimes bordering on instinct- Reflex is rolled to determine initiative order in combat\n- Pilots, Martial Artists, and Spiderman are all known for high REF",
                   "spans": []
                 }
               ],
@@ -1247,7 +1247,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Empathy, charm, quickness of wit, gravitas, personal magnetism, and picking up on social cuesDiplomats and empaths typically have high SOC",
+                  "text": "Empathy, charm, quickness of wit, gravitas, personal magnetism, and picking up on social cues- Diplomats and empaths typically have high SOC",
                   "spans": []
                 }
               ],
@@ -1261,7 +1261,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Acuity, keenness of mind, learning ability, and mental toughnessScientists, mechanics, and hackers are likely to want high MENT",
+                  "text": "Acuity, keenness of mind, learning ability, and mental toughness- Scientists, mechanics, and hackers are likely to want high MENT",
                   "spans": []
                 }
               ]
@@ -3916,7 +3916,7 @@
                       "spans": []
                     },
                     {
-                      "text": "Choose a direction or a location within your weapon’s range, then spend 1-3 ammo. Until the start of your next turn, the first time each enemy you can see enters or moves from that direction or location, they must make a Cool Under Fire (DC4 + ammo used) check. This effect occurs once per ammo spent, up to a maximum of three times.Extreme success: no effect.Success: enemy gains +1 movement penalty.Failure: enemy gains +1 stress and +1 movement penalty.Extreme failure: enemy gains +1 stress and immediately falls prone, ending their movement.Suppressing fire may only be used with a ranged weapon.",
+                      "text": "Choose a direction or a location within your weapon’s range, then spend 1-3 ammo. Until the start of your next turn, the first time each enemy you can see enters or moves from that direction or location, they must make a Cool Under Fire (DC4 + ammo used) check. This effect occurs once per ammo spent, up to a maximum of three times.- Extreme success: no effect.\n- Success: enemy gains +1 movement penalty.\n- Failure: enemy gains +1 stress and +1 movement penalty.\n- Extreme failure: enemy gains +1 stress and immediately falls prone, ending their movement.\nSuppressing fire may only be used with a ranged weapon.",
                       "spans": []
                     }
                   ],
@@ -3955,7 +3955,7 @@
                       "spans": []
                     },
                     {
-                      "text": "Attempt to demoralize or frighten an enemy. Roll Bearing or Persuade (DC 12 - enemy’s stress level). Gain a bonus die to this roll if the enemy was injured within the last round, another enemy was killed during combat, or is flanked.Extreme success, target suffers +2 stress and is Demoralized.Success: target is Demoralized.",
+                      "text": "Attempt to demoralize or frighten an enemy. Roll Bearing or Persuade (DC 12 - enemy’s stress level). Gain a bonus die to this roll if the enemy was injured within the last round, another enemy was killed during combat, or is flanked.- Extreme success, target suffers +2 stress and is Demoralized.\n- Success: target is Demoralized.",
                       "spans": [
                         {
                           "style": "link_underline",
@@ -3999,7 +3999,7 @@
                       "spans": []
                     },
                     {
-                      "text": "Co-ordinate with teammates. Choose any number of allies within Near range; roll Tactics (DC4 + 2 per ally).Extreme Success: you and each targeted ally all gain +1 bonus die to any roll before the start of your next turn.Success: each targeted ally gains +1 bonus die to any roll before the start of your next turn.Teamwork may be used no more than once per ally per turn.",
+                      "text": "Co-ordinate with teammates. Choose any number of allies within Near range; roll Tactics (DC4 + 2 per ally).- Extreme Success: you and each targeted ally all gain +1 bonus die to any roll before the start of your next turn.\n- Success: each targeted ally gains +1 bonus die to any roll before the start of your next turn.\nTeamwork may be used no more than once per ally per turn.",
                       "spans": []
                     }
                   ],
@@ -4027,7 +4027,7 @@
                       "spans": []
                     },
                     {
-                      "text": "Make an attack as normal against a character within Melee range who is Dying, Unconscious, or otherwise completely helpless (GM discretion).Success: target dies.Failure: no effect.After a successful Execute action, make a Composure (DC6 + your Empathy) check.Success: no effectFailure: suffer +1 stress.Extreme failure: suffer +2 stress.",
+                      "text": "Make an attack as normal against a character within Melee range who is Dying, Unconscious, or otherwise completely helpless (GM discretion).- Success: target dies.\n- Failure: no effect.\nAfter a successful Execute action, make a Composure (DC6 + your Empathy) check.- Success: no effect\n- Failure: suffer +1 stress.\n- Extreme failure: suffer +2 stress.",
                       "spans": []
                     }
                   ],
@@ -4226,7 +4226,7 @@
                       "spans": []
                     },
                     {
-                      "text": "Requires melee weapon. Roll Melee (Weapons) (DC 8 + attacker’s weapon skill).Extreme Success: you may immediately use 1 additional reaction to attack your attacker.Success: attack against you fails.",
+                      "text": "Requires melee weapon. Roll Melee (Weapons) (DC 8 + attacker’s weapon skill).- Extreme Success: you may immediately use 1 additional reaction to attack your attacker.\n- Success: attack against you fails.",
                       "spans": []
                     }
                   ],
@@ -4262,7 +4262,7 @@
                       "spans": []
                     },
                     {
-                      "text": "Roll Finesse. If your roll is higher than the throw roll, you successfully deflect or catch the thrown object.Extreme success: you may catch or deflect object away from you (choose a location within Very Near range to deflect it to).Success: you may catch or deflect object away from you (GM decides where). If the object would deal damage on impact, take half that damage.",
+                      "text": "Roll Finesse. If your roll is higher than the throw roll, you successfully deflect or catch the thrown object.- Extreme success: you may catch or deflect object away from you (choose a location within Very Near range to deflect it to).\n- Success: you may catch or deflect object away from you (GM decides where). If the object would deal damage on impact, take half that damage.",
                       "spans": []
                     }
                   ],
@@ -7245,7 +7245,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Form an Empathic Bond with target. When you have an Empathic Bond:All your other Empathic Abilities targeting bonded creature are bumped up one level of success. So an extreme failure becomes a failure, a failure becomes a success, etc.Once per round, you may use 1 reaction to reduce stress gained by bonded creature by 1 (minimum 1).Whenever bonded creature suffers stress, you take half of that stress (rounded up) while it takes the remainder.You may have no more than one Empathic Bond at a time. You may dismiss an Empathic Bond by using 1 action. This ability cannot be Heightened.",
+                  "text": "Form an Empathic Bond with target. When you have an Empathic Bond:- All your other Empathic Abilities targeting bonded creature are bumped up one level of success. So an extreme failure becomes a failure, a failure becomes a success, etc.\n- Once per round, you may use 1 reaction to reduce stress gained by bonded creature by 1 (minimum 1).\n- Whenever bonded creature suffers stress, you take half of that stress (rounded up) while it takes the remainder.\nYou may have no more than one Empathic Bond at a time. You may dismiss an Empathic Bond by using 1 action. This ability cannot be Heightened.",
                   "spans": []
                 }
               ],
@@ -7267,7 +7267,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Violent emotions have a particular tang to them, reminiscent of a metallic taste. You are aware of these around you at all times, though you cannot determine the exact origin.You cannot be Surprised by living creatures.You gain +1 bonus die on Initiative rolls against living creatures.Heightened: you know the exact origin of these emotions. Additionally, the first attack by a living creature against you each combat suffers +1 penalty die.",
+                  "text": "Violent emotions have a particular tang to them, reminiscent of a metallic taste. You are aware of these around you at all times, though you cannot determine the exact origin.- You cannot be Surprised by living creatures.\n- You gain +1 bonus die on Initiative rolls against living creatures.\n- Heightened: you know the exact origin of these emotions. Additionally, the first attack by a living creature against you each combat suffers +1 penalty die.",
                   "spans": []
                 }
               ],
@@ -7289,7 +7289,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Discern what underlying emotions are influencing target creature’s current actions. What drives a merchant: greed or necessity?Heightened: you gain knowledge of target’s greatest emotional lever: their greatest fear, desire, or hope.",
+                  "text": "Discern what underlying emotions are influencing target creature’s current actions. What drives a merchant: greed or necessity?- Heightened: you gain knowledge of target’s greatest emotional lever: their greatest fear, desire, or hope.",
                   "spans": []
                 }
               ]
@@ -7396,7 +7396,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Transfer stress (amount equal to number of actions spent) from yourself to target creature.Heightened: transfer twice as much stress to target instead.",
+                  "text": "Transfer stress (amount equal to number of actions spent) from yourself to target creature.- Heightened: transfer twice as much stress to target instead.",
                   "spans": []
                 }
               ],
@@ -7418,7 +7418,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Impose the Frenzied condition on target. At the end of the target’s turns, they may roll a Composure or Willpower (DC8) check to end this condition.Heightened: target creature ignores all penalty dice for the duration of Frenzied.",
+                  "text": "Impose the Frenzied condition on target. At the end of the target’s turns, they may roll a Composure or Willpower (DC8) check to end this condition.- Heightened: target creature ignores all penalty dice for the duration of Frenzied.",
                   "spans": [
                     {
                       "style": "link_underline",
@@ -7446,7 +7446,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Release a violent surge of emotions to all creatures within Near range of you. Every living creature in range gains 1 stress for every 2 stress you currently have (minimum 1). You reduce your stress by half the total stress inflicted (rounded up). Creatures who receive stress this way must immediately roll Composure (DC8) or gain the Demoralized condition.Heightened: you may exclude yourself and any bonded creature from the distribution.",
+                  "text": "Release a violent surge of emotions to all creatures within Near range of you. Every living creature in range gains 1 stress for every 2 stress you currently have (minimum 1). You reduce your stress by half the total stress inflicted (rounded up). Creatures who receive stress this way must immediately roll Composure (DC8) or gain the Demoralized condition.- Heightened: you may exclude yourself and any bonded creature from the distribution.",
                   "spans": [
                     {
                       "style": "link_underline",
@@ -7537,7 +7537,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Remove up to 2 stress from target creature. Gain stress equal to the amount removed. If target is reduced to 0 stress in this way, they may ignore the next instance of stress gain before the end of the day.Heightened: remove up to 4 stress instead.",
+                  "text": "Remove up to 2 stress from target creature. Gain stress equal to the amount removed. If target is reduced to 0 stress in this way, they may ignore the next instance of stress gain before the end of the day.- Heightened: remove up to 4 stress instead.",
                   "spans": []
                 }
               ],
@@ -7559,7 +7559,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Transfer one negative mental condition from target creature to yourself.Heightened: while you are affected by this condition, the target cannot regain it again from the same source.",
+                  "text": "Transfer one negative mental condition from target creature to yourself.- Heightened: while you are affected by this condition, the target cannot regain it again from the same source.",
                   "spans": []
                 }
               ],
@@ -7581,7 +7581,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Until the start of your next turn, choose one per action spent:Target reduces all stress gain by 1.Target gains +1 bonus die on Composure checksYou immediately gain 1 stress per action spent when using this ability.Heightened: you may apply this effect to yourself as well.",
+                  "text": "Until the start of your next turn, choose one per action spent:- Target reduces all stress gain by 1.\n- Target gains +1 bonus die on Composure checks\nYou immediately gain 1 stress per action spent when using this ability.- Heightened: you may apply this effect to yourself as well.",
                   "spans": []
                 }
               ]
@@ -8126,7 +8126,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Two Handed",
+                  "text": "Two-Handed",
                   "spans": []
                 },
                 {
@@ -8168,7 +8168,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Two Handed, Piercing 1",
+                  "text": "Two-Handed, Piercing 1",
                   "spans": []
                 },
                 {
@@ -8294,7 +8294,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Area (Very Near), Two Handed, Slow Load, Grenade",
+                  "text": "Area (Very Near), Two-Handed, Slow Load, Grenade",
                   "spans": []
                 },
                 {
@@ -8378,7 +8378,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Two Handed, Stun 2",
+                  "text": "Two-Handed, Stun 2",
                   "spans": []
                 },
                 {
@@ -8546,7 +8546,7 @@
                   "spans": []
                 },
                 {
-                  "text": "Two Handed",
+                  "text": "Two-Handed",
                   "spans": []
                 },
                 {
@@ -9990,7 +9990,7 @@
                       "spans": []
                     },
                     {
-                      "text": "When you would take a Medium or Heavy wound, roll Cybernetics (DC8).Extreme success: ignore the wound.Success: ignore the wound; this cyberware effect cannot be used for 1 day.Failure: suffer the wound as normal; this cyberware effect cannot be used for 1 day.This effect may only trigger once per instance of damage.",
+                      "text": "When you would take a Medium or Heavy wound, roll Cybernetics (DC8).- Extreme success: ignore the wound.\n- Success: ignore the wound; this cyberware effect cannot be used for 1 day.\n- Failure: suffer the wound as normal; this cyberware effect cannot be used for 1 day.\nThis effect may only trigger once per instance of damage.",
                       "spans": []
                     },
                     {
@@ -12617,7 +12617,7 @@
                       "spans": []
                     },
                     {
-                      "text": "Counter a Nanomantic Effect. DC = the effect’s Nanomancy roll.Extreme success: negate the effect. In addition, that effect cannot be attempted again for 1 * ND minute(s).Success: negate the effect.",
+                      "text": "Counter a Nanomantic Effect. DC = the effect’s Nanomancy roll.- Extreme success: negate the effect. In addition, that effect cannot be attempted again for 1 * ND minute(s).\n- Success: negate the effect.",
                       "spans": []
                     }
                   ]
@@ -12694,7 +12694,7 @@
                       "spans": []
                     },
                     {
-                      "text": "Create a target location. For the duration, all living creatures within Very Near range of that location heal at a rate of half ND (rounded up) light wounds at the start of each of their turns. This effect lasts 1 round for each action used.Extreme success: this effect may heal (and will prioritize) moderate wounds.",
+                      "text": "Create a target location. For the duration, all living creatures within Very Near range of that location heal at a rate of half ND (rounded up) light wounds at the start of each of their turns. This effect lasts 1 round for each action used.- Extreme success: this effect may heal (and will prioritize) moderate wounds.",
                       "spans": []
                     }
                   ],
@@ -12720,7 +12720,7 @@
                       "spans": []
                     },
                     {
-                      "text": "Heal up to 1 + half ND (rounded up) light or moderate wounds on target creature.Extreme success: you may heal heavy wounds with this effect as well.Failure: give target Bleeding (1) Extreme failure: give target Bleeding (2).",
+                      "text": "Heal up to 1 + half ND (rounded up) light or moderate wounds on target creature.- Extreme success: you may heal heavy wounds with this effect as well.\n- Failure: give target Bleeding (1) \n- Extreme failure: give target Bleeding (2).",
                       "spans": [
                         {
                           "style": "link_underline",
@@ -12789,7 +12789,7 @@
                       "spans": []
                     },
                     {
-                      "text": "Impose Blinded on target creature for rounds equal to ND. While affected, target gains +1 stress at the end of each of their turns.Extreme success: target gains +2 stress at the end of each of their turns instead.Target may attempt a Willpower or Composure (DC 6 + ND) check at the end of each of their turns to end the effect early.",
+                      "text": "Impose Blinded on target creature for rounds equal to ND. While affected, target gains +1 stress at the end of each of their turns.- Extreme success: target gains +2 stress at the end of each of their turns instead.\nTarget may attempt a Willpower or Composure (DC 6 + ND) check at the end of each of their turns to end the effect early.",
                       "spans": [
                         {
                           "style": "link_underline",
@@ -13456,7 +13456,7 @@
               {
                 "style": "link_underline",
                 "text": "Whisperspace Prebuilt Ships",
-                "href": "https://www.google.com/url?q=https://docs.google.com/document/d/1XiRWRsOdGWYK-RYJuTo70ptH0Rf6Jq-AZNij4rZ43_o/edit?tab%3Dt.0%23heading%3Dh.athg476geqtz&sa=D&source=editors&ust=1770532064248954&usg=AOvVaw08uMiUypEBtg3ZX4PE_TpK"
+                "href": "https://www.google.com/url?q=https://docs.google.com/document/d/1XiRWRsOdGWYK-RYJuTo70ptH0Rf6Jq-AZNij4rZ43_o/edit?tab%3Dt.0%23heading%3Dh.athg476geqtz&sa=D&source=editors&ust=1770532470800918&usg=AOvVaw16xnxcIS9SNtY7oaSDxJOI"
               }
             ]
           }

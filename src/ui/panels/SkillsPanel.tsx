@@ -25,6 +25,7 @@ import {
 
 import { buildWhisperspaceSkillNotation, checkDicePlusReady, rollWithDicePlus } from "../diceplus/roll";
 import { makeLearnedInfoById } from "../combat/skills";
+import { getSkillTooltip } from "../../data/skillTooltips";
 
 const ATTR_ORDER: AttributeId[] = ["phys", "ref", "soc", "ment"];
 const ATTR_LABEL: Record<AttributeId, string> = {
@@ -378,6 +379,7 @@ function SkillRow(props: {
 }) {
   const canInc = props.rank < props.maxRank;
   const canDec = props.rank > 0;
+  const tooltip = getSkillTooltip(props.skill.label);
 
   return (
     <Box
@@ -394,9 +396,11 @@ function SkillRow(props: {
       }}
     >
       <Box sx={{ minWidth: 0 }}>
-        <Typography fontWeight={600} noWrap>
-          {props.skill.label}
-        </Typography>
+        <Tooltip title={tooltip} disableHoverListener={!tooltip}>
+          <Typography fontWeight={600} noWrap>
+            {props.skill.label}
+          </Typography>
+        </Tooltip>
         <Typography variant="caption" sx={{ opacity: 0.7 }} noWrap>
           {props.rightTag ?? ""}
         </Typography>

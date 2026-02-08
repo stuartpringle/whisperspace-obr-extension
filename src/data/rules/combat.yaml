@@ -603,11 +603,17 @@ sections:
             spend 1-3 ammo. Until the start of your next turn, the first time each
             enemy you can see enters or moves from that direction or location, they
             must make a Cool Under Fire (DC4 + ammo used) check. This effect occurs
-            once per ammo spent, up to a maximum of three times.Extreme success: no
-            effect.Success: enemy gains +1 movement penalty.Failure: enemy gains +1
-            stress and +1 movement penalty.Extreme failure: enemy gains +1 stress
-            and immediately falls prone, ending their movement.Suppressing fire may
-            only be used with a ranged weapon.'
+            once per ammo spent, up to a maximum of three times.- Extreme success:
+            no effect.
+
+            - Success: enemy gains +1 movement penalty.
+
+            - Failure: enemy gains +1 stress and +1 movement penalty.
+
+            - Extreme failure: enemy gains +1 stress and immediately falls prone,
+            ending their movement.
+
+            Suppressing fire may only be used with a ranged weapon.'
           spans: []
       - - text: Hack an interface or enemy
           spans: []
@@ -629,8 +635,9 @@ sections:
         - text: 'Attempt to demoralize or frighten an enemy. Roll Bearing or Persuade
             (DC 12 - enemy’s stress level). Gain a bonus die to this roll if the enemy
             was injured within the last round, another enemy was killed during combat,
-            or is flanked.Extreme success, target suffers +2 stress and is Demoralized.Success:
-            target is Demoralized.'
+            or is flanked.- Extreme success, target suffers +2 stress and is Demoralized.
+
+            - Success: target is Demoralized.'
           spans:
           - style: link_underline
             text: flanked
@@ -655,10 +662,14 @@ sections:
         - text: 1 action
           spans: []
         - text: 'Co-ordinate with teammates. Choose any number of allies within Near
-            range; roll Tactics (DC4 + 2 per ally).Extreme Success: you and each targeted
-            ally all gain +1 bonus die to any roll before the start of your next turn.Success:
-            each targeted ally gains +1 bonus die to any roll before the start of
-            your next turn.Teamwork may be used no more than once per ally per turn.'
+            range; roll Tactics (DC4 + 2 per ally).- Extreme Success: you and each
+            targeted ally all gain +1 bonus die to any roll before the start of your
+            next turn.
+
+            - Success: each targeted ally gains +1 bonus die to any roll before the
+            start of your next turn.
+
+            Teamwork may be used no more than once per ally per turn.'
           spans: []
       - - text: Pick Up/Grab
           spans: []
@@ -674,10 +685,17 @@ sections:
         - text: 2 actions
           spans: []
         - text: 'Make an attack as normal against a character within Melee range who
-            is Dying, Unconscious, or otherwise completely helpless (GM discretion).Success:
-            target dies.Failure: no effect.After a successful Execute action, make
-            a Composure (DC6 + your Empathy) check.Success: no effectFailure: suffer
-            +1 stress.Extreme failure: suffer +2 stress.'
+            is Dying, Unconscious, or otherwise completely helpless (GM discretion).-
+            Success: target dies.
+
+            - Failure: no effect.
+
+            After a successful Execute action, make a Composure (DC6 + your Empathy)
+            check.- Success: no effect
+
+            - Failure: suffer +1 stress.
+
+            - Extreme failure: suffer +2 stress.'
           spans: []
       - - text: ''
           spans: []
@@ -774,8 +792,10 @@ sections:
         - text: Targeted by melee attack
           spans: []
         - text: 'Requires melee weapon. Roll Melee (Weapons) (DC 8 + attacker’s weapon
-            skill).Extreme Success: you may immediately use 1 additional reaction
-            to attack your attacker.Success: attack against you fails.'
+            skill).- Extreme Success: you may immediately use 1 additional reaction
+            to attack your attacker.
+
+            - Success: attack against you fails.'
           spans: []
       - - text: Dodge
           spans: []
@@ -793,10 +813,12 @@ sections:
         - text: Thrown object passes within melee range of you
           spans: []
         - text: 'Roll Finesse. If your roll is higher than the throw roll, you successfully
-            deflect or catch the thrown object.Extreme success: you may catch or deflect
-            object away from you (choose a location within Very Near range to deflect
-            it to).Success: you may catch or deflect object away from you (GM decides
-            where). If the object would deal damage on impact, take half that damage.'
+            deflect or catch the thrown object.- Extreme success: you may catch or
+            deflect object away from you (choose a location within Very Near range
+            to deflect it to).
+
+            - Success: you may catch or deflect object away from you (GM decides where).
+            If the object would deal damage on impact, take half that damage.'
           spans: []
       - - text: Use Held Action
           spans: []

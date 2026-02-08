@@ -1,0 +1,36 @@
+{
+  "attributes": {
+    "PHYS": "Physical prowess, stamina, strength, and overall fitness- Each point in Physique increases your carrying capacity - Every point in Physique increases your movement speed by 5ft - Soldiers and brawlers typically have high PHYS",
+    "REF": "Quickness of mind and body sometimes bordering on instinct- Reflex is rolled to determine initiative order in combat - Pilots, Martial Artists, and Spiderman are all known for high REF",
+    "SOC": "Empathy, charm, quickness of wit, gravitas, personal magnetism, and picking up on social cues- Diplomats and empaths typically have high SOC",
+    "MENT": "Acuity, keenness of mind, learning ability, and mental toughness- Scientists, mechanics, and hackers are likely to want high MENT"
+  },
+  "skills": {
+    "Melee (weapons)": "Proficiency with melee weapons (bar stools, katanas)",
+    "Melee (unarmed)": "Unarmed fighting",
+    "Weapons (light)": "Pistols, SMGs",
+    "Weapons (medium)": "Shotguns, rifles",
+    "Weapons (heavy)": "Autocannons, mortars",
+    "Weapons (exotic)": "Experimental weapons, high-tech weaponry",
+    "Power Armour": "Use and abuse of the best armour there is",
+    "Explosives": "Make things go boom without going boom yourself",
+    "Tactics": "Strategic thinking, setting up ambushes perhaps (or spotting where they may be set up by someone else), and other military-type training that focuses your character on the battlefield",
+    "Material Sciences": "Chemistry and geology",
+    "Computers": "Hacking, coding",
+    "Cryptology": "Encoding and decoding secrets and ciphers",
+    "Electronics": "Power grids, computer hardware, cybernetics",
+    "Engineering": "Ship maintenance, repairing drones, cutting through locked doors, or designing new mechanical parts",
+    "First Aid": "Saving lives in emergencies",
+    "Forgery": "Making stuff look like stuff it isn’t. Like signatures.",
+    "History": "What happened before you were there to see it and why",
+    "Linguistics": "Languages. Lots of languages",
+    "Research": "Finding information in databases, scientific journals, data centres, etc",
+    "Natural Sciences": "Biology, botany, zoology; study of organic creatures and how they work, flora, and fauna",
+    "Gunnery": "Shooting things from ships",
+    "Navigation": "Figure out the best way to get where you’re going",
+    "Piloting": "Flying ships, driving vehicles",
+    "Remote Operation": "Using drones or unmanned ships",
+    "Sensors": "Interpreting a whole heap of scan data to find anomalies or things of interest",
+    "Systems Interface": "Your ability to operate and interact with digital control systems—whether on a starship bridge, station terminal, outpost console, or emergency override panel. Systems Interface governs real-time manipulation of user-facing systems like power reroutes, system lockdowns, navigational tools, environmental controls, and automated safety features."
+  }
+}

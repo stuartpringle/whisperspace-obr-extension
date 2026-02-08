@@ -187,10 +187,10 @@ content:
       spans: []
     - text: ''
       spans: []
-    - text: 'When moving toward an enemy (Very Near range or closer), you may use
-        an action to make a Bearing (DC8 + target’s Willpower) check with +1 bonus
-        die.Success: the target suffers +2 stress. Extreme success: the target also
-        gains the Fleeing condition.'
+    - text: "When moving toward an enemy (Very Near range or closer), you may use\
+        \ an action to make a Bearing (DC8 + target’s Willpower) check with +1 bonus\
+        \ die.- Success: the target suffers +2 stress. \n- Extreme success: the target\
+        \ also gains the Fleeing condition."
       spans:
       - style: link_underline
         text: Fleeing

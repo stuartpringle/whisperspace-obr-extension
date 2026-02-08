@@ -58,6 +58,7 @@ async function main() {
   // --- Rules YAML aggregation ---
   const RULES_DIR = path.join(SRC, "rules");
   const RULES_OUT = path.join(OUT, "rules.json");
+  const TOOLTIP_OUT = path.join(OUT, "skill_tooltips.json");
   if (fs.existsSync(RULES_DIR)) {
     const ruleFiles = fs.readdirSync(RULES_DIR).filter((f) => f.endsWith(".yaml")).sort();
     const docs = [];
@@ -69,6 +70,17 @@ async function main() {
     }
     fs.writeFileSync(RULES_OUT, JSON.stringify(docs, null, 2) + "\n", "utf8");
     console.log(`[generate-data] Wrote ${path.relative(ROOT, RULES_OUT)}`);
+
+    const attrSkillsPath = path.join(RULES_DIR, "attributes-and-skills.yaml");
+    if (fs.existsSync(attrSkillsPath)) {
+      const raw = fs.readFileSync(attrSkillsPath, "utf8");
+      const parsed = YAML.parse(raw);
+      const { attributes, skills } = extractSkillTooltips(parsed);
+      fs.writeFileSync(TOOLTIP_OUT, JSON.stringify({ attributes, skills }, null, 2) + "\n", "utf8");
+      console.log(`[generate-data] Wrote ${path.relative(ROOT, TOOLTIP_OUT)}`);
+    } else {
+      console.warn(`[generate-data] Missing ${path.relative(ROOT, attrSkillsPath)} (skipping tooltips)`);
+    }
   } else {
     console.warn(`[generate-data] Rules directory missing: ${path.relative(ROOT, RULES_DIR)} (skipping)`);
   }
@@ -120,6 +132,69 @@ async function archiveProject({ enabled }) {
   );
 
   console.log(`[generate-data] Archived -> ${path.relative(ROOT, ARCHIVE_PATH)}`);
+}
+
+function collectTables(node, out = []) {
+  const content = node?.content ?? [];
+  for (const block of content) {
+    if (block?.type === "table") out.push(block);
+  }
+  const sections = node?.sections ?? [];
+  for (const section of sections) collectTables(section, out);
+  return out;
+}
+
+function cleanDescription(text) {
+  return String(text ?? "")
+    .replace(/([a-z])([A-Z][a-z])/g, "$1. $2")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extractSkillTooltips(ruleDoc) {
+  const tables = collectTables(ruleDoc, []);
+  const attributes = {};
+  const skills = {};
+
+  for (const table of tables) {
+    const rows = (table?.rows ?? []).map((row) => row.map((cell) => String(cell?.text ?? "").trim()));
+    if (!rows.length) continue;
+    const header = rows[0].map((h) => h.toLowerCase());
+
+    const isAttributeTable =
+      header.includes("attribute") && header.includes("short form") && header.includes("description");
+    if (isAttributeTable) {
+      for (const row of rows.slice(1)) {
+        const shortForm = row[1];
+        const description = cleanDescription(row[2]);
+        if (!shortForm || !description) continue;
+        attributes[shortForm] = description;
+      }
+      continue;
+    }
+
+    const hasDescription = header.some((h) => h.includes("description"));
+    const hasSkillsLabel = header[0]?.includes("skills") || header[0]?.includes("skill");
+    if (!hasDescription || !hasSkillsLabel) continue;
+
+    if (header.length >= 3 && header.some((h) => h.includes("max rank"))) {
+      for (const row of rows.slice(1)) {
+        const name = row[0];
+        const description = cleanDescription(row[2]);
+        if (!name || !description) continue;
+        if (!skills[name]) skills[name] = description;
+      }
+    } else if (header.length >= 2) {
+      for (const row of rows.slice(1)) {
+        const name = row[0];
+        const description = cleanDescription(row[1]);
+        if (!name || !description) continue;
+        if (!skills[name]) skills[name] = description;
+      }
+    }
+  }
+
+  return { attributes, skills };
 }
 
 main().catch((err) => {
