@@ -403,7 +403,7 @@ function SkillRow(props: {
           </Typography>
           {tooltip ? (
             <Tooltip title={tooltip}>
-              <InfoOutlinedIcon fontSize="small" sx={{ opacity: 0.7 }} />
+              <InfoOutlinedIcon fontSize="small" sx={{ opacity: 0.7, flexShrink: 0 }} />
             </Tooltip>
           ) : null}
         </Box>
