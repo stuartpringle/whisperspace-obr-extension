@@ -1,0 +1,54 @@
+cyberware:
+  - name: Reflex Booster
+    tier: 1
+    effect: "Once per round, gain +1 bonus die to an Evade check."
+    installationDifficulty: 2
+    requirements: "REF 1"
+    physicalImpact: "Low; spine"
+    bulk: 1
+    cost: 3000
+
+  - name: Targeting Link
+    tier: 1
+    effect: "Once per round, ignore 1 level of cover when attacking an enemy you can see."
+    installationDifficulty: 2
+    requirements: "-"
+    physicalImpact: "Medium; eyes"
+    bulk: 1
+    cost: 4000
+
+  - name: Low-Light Optics
+    tier: 1
+    effect: "Ignore penalty dice caused by darkness within medium range."
+    installationDifficulty: 1
+    requirements: "-"
+    physicalImpact: "Medium; eyes"
+    bulk: 1
+    cost: 2000
+
+  - name: EMP Shielding
+    tier: 1
+    effect: "Ignore the effects of EMP once per day."
+    installationDifficulty: 2
+    requirements: "MENT 1"
+    physicalImpact: "None; torso"
+    bulk: 1
+    cost: 3500
+
+  - name: Metabolic Filter
+    tier: 1
+    effect: "Gain +1 bonus die on checks to resist toxins or narcotics."
+    installationDifficulty: 1
+    requirements: "PHYS 1"
+    physicalImpact: "Minor; liver"
+    bulk: 1
+    cost: 1500
+
+  - name: Compact Databank
+    tier: 2
+    effect: "Internal information storage device; store/access info at will."
+    installationDifficulty: 2
+    requirements: "MENT 1"
+    physicalImpact: "Medium; cranium"
+    bulk: 1
+    cost: 5000

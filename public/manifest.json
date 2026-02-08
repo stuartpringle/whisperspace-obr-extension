@@ -1,0 +1,16 @@
+{
+  "name": "Whisperspace Sheet",
+  "version": "0.1.0",
+  "manifest_version": 1,
+  "description": "Token-backed Whisperspace character sheets (My Sheet + context menu open).",
+  "icon": "/icon.svg",
+  "author": "Whisperspace",
+  "action": {
+    "title": "My Sheet",
+    "icon": "/icon.svg",
+    "popover": "/",
+    "width": 520,
+    "height": 720
+  },
+  "background_url": "/background.html"
+}

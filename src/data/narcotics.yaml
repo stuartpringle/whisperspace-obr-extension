@@ -1,0 +1,29 @@
+narcotics:
+  - name: Space Dust
+    effect: "Grants +1 bonus die to Observe and Piloting checks for 6 hours"
+    uses: 5
+    addictionScore: 1
+    legality: "Legal"
+    bulk: 1
+    cost: 500
+  - name: Tranquility
+    effect: "Reduces stress by 1; penalty die to all REF checks for 6 hours."
+    uses: 2
+    addictionScore: 5
+    legality: "Legal"
+    bulk: 1
+    cost: 5000
+  - name: Smoothe
+    effect: "Reduces stress by 1d4; increases Cool Under Fire by 2 and grants +1 bonus die to all Mental skill checks for 1 hour"
+    uses: 1
+    addictionScore: 8
+    legality: "Illegal"
+    bulk: 1
+    cost: 20000
+  - name: Chemical Strength
+    effect: "+1 bonus die to all PHYS checks for 1 hour; +1 movement bonus for 1 hour. After 1 hour, +1 penalty die to all PHYS checks and +1 movement penalty until sleep."
+    uses: 1
+    addictionScore: 3
+    legality: "Illegal"
+    bulk: 1
+    cost: 8000

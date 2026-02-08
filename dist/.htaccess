@@ -1,0 +1,16 @@
+# allow through htpasswd
+Require all granted
+
+<IfModule mod_headers.c>
+
+  # Allow Owlbear Rodeo to fetch the manifest cross-origin
+  Header always set Access-Control-Allow-Origin "https://www.owlbear.rodeo"
+  Header always set Access-Control-Allow-Methods "GET, OPTIONS"
+  Header always set Access-Control-Allow-Headers "Content-Type"
+
+  # Allow Owlbear to embed the UI in an iframe
+  Header always set Content-Security-Policy "frame-ancestors https://www.owlbear.rodeo"
+  Header always unset X-Frame-Options
+
+  Header set Cache-Control "no-store"
+</IfModule>

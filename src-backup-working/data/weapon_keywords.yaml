@@ -1,0 +1,44 @@
+keywords:
+  - name: Concealable
+    description: "May be hidden easily. +1 bonus die to Subterfuge if trying to conceal this weapon."
+
+  - name: Piercing X
+    description: "Ignores X points of armor protection."
+
+  - name: Point Blank
+    description: "Ignore penalty die from shooting at Melee or Near range. At Melee range, gain Piercing 2."
+
+  - name: Slow Load
+    description: "Takes 2 actions to reload."
+
+  - name: Smart-Linked
+    description: "Requires Ammo (SMART); negate one level of cover (Full -> Partial; Partial negated). Target must be visible and bullets must have a path."
+
+  - name: Stun X
+    description: "Deals no damage, but forces target to roll Toughness (DC 6 + X) or be Stunned for X rounds."
+
+  - name: Two-Handed
+    description: "Requires both hands to use."
+
+  - name: Bullet Spray
+    description: >
+      Requires at least half ammo available. Targets multiple enemies in a cone; depletes remaining ammo; deals reduced damage; does friendly fire.
+      Make a single attack roll and compare it against the DC of each target in the spray zone (including cover bonuses). Each hit deals -1 damage.
+
+  - name: Shredding X
+    description: "If damage exceeds armour’s protection value, reduce armour’s durability by X."
+
+  - name: Area (X)
+    description: "Deals damage to all targets at X distance or closer."
+
+  - name: Thrown
+    description: "Weapon may be thrown without suffering a penalty die."
+
+  - name: Grenade
+    description: >
+      Requires (and uses up) a grenade item, applying the effects and any damage the grenade deals upon a hit.
+      Additionally, deals this weapon’s damage to the target from the impact.
+      A failure to hit by 3 or less still grants the effect of the grenade used, but does not deal this weapon’s damage.
+
+  - name: Toxin (X)
+    description: "Apply 1 level of X toxin upon successful attack."
