@@ -9,8 +9,8 @@
     "title": "Whisperspace Rules Reference",
     "icon": "/icon.svg",
     "popover": "/rules.html",
-    "width": 640,
-    "height": 720
+    "width": 860,
+    "height": 820
   },
   "background_url": "/background.html"
 }

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import rulesData from "../data/generated/rules.json";
 import { resolveWeaponKeyword, splitKeywordList } from "./weaponKeywords";
 
@@ -242,6 +242,8 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
 export function RulesApp() {
   const [query, setQuery] = useState("");
   const rules = rulesData as RuleDoc[];
+  const [activeSectionId, setActiveSectionId] = useState<string>("");
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
   const q = query.trim().toLowerCase();
   const [activeSlug, setActiveSlug] = useState<string>(() => {
@@ -262,9 +264,36 @@ export function RulesApp() {
     return rules.find((d) => getSectionId(d) === activeSlug) ?? rules[0];
   }, [rules, activeSlug]);
 
+  useEffect(() => {
+    const root = contentRef.current;
+    if (!root) return;
+    const targets = Array.from(root.querySelectorAll<HTMLElement>("[id]"));
+    if (!targets.length) return;
+
+    let raf = 0;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (!visible.length) return;
+        visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        const nextId = (visible[0].target as HTMLElement).id;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => setActiveSectionId(nextId));
+      },
+      { root: null, rootMargin: "0px 0px -70% 0px", threshold: [0, 0.1, 0.25, 0.5] }
+    );
+
+    targets.forEach((t) => observer.observe(t));
+    return () => {
+      cancelAnimationFrame(raf);
+      observer.disconnect();
+    };
+  }, [activeDoc, q]);
+
   const renderSectionTree = (section: RuleSection, depth: number) => {
     const id = getSectionId(section);
     const children = section.sections ?? [];
+    const isActive = id === activeSectionId;
     return (
       <div key={`${id}-${depth}`} style={{ marginLeft: depth * 12 }}>
         <button
@@ -278,12 +307,13 @@ export function RulesApp() {
           style={{
             textAlign: "left",
             background: "transparent",
-            border: "1px solid rgba(255,255,255,0.12)",
+            border: `1px solid ${isActive ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.12)"}`,
             borderRadius: 6,
             padding: "4px 6px",
             cursor: "pointer",
             color: "inherit",
             width: "100%",
+            boxShadow: isActive ? "0 0 0 1px rgba(255,255,255,0.35) inset" : "none",
           }}
         >
           {section.title}
@@ -335,7 +365,7 @@ export function RulesApp() {
         </div>
       </aside>
 
-      <main>
+      <main ref={contentRef}>
         <h2 style={{ margin: "0 0 8px 0" }}>Whisperspace Rules Reference</h2>
         <input
           type="text"
