@@ -70,6 +70,21 @@ The shared core logic is available as an ES module:
 import { buildAttackOutcome, deriveAttributesFromSkills } from "https://whisperspace.com/rules-api/latest/core/index.js";
 ```
 
+### Core Hooks
+
+You can subscribe to hooks exposed by the core module:
+
+```js
+import { getHookBus } from "https://whisperspace.com/rules-api/latest/core/index.js";
+
+const off = getHookBus().on("attack:resolved", (payload) => {
+  console.log("Attack resolved:", payload);
+});
+
+// later:
+off();
+```
+
 ### CORS
 
 Apache should allow cross‑origin access for the rules API path. Example:
