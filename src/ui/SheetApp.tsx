@@ -27,8 +27,8 @@ import { SheetTabs } from "./components/SheetTabs";
 
 import { skillsData } from "../data/skills";
 import type { SkillDef } from "../data/types";
-import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../rules/deriveAttributes";
-import { mergeStatusDeltas } from "../rules/statusEffects";
+import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../../packages/core/src/deriveAttributes";
+import { mergeStatusDeltas } from "../../packages/core/src/statusEffects";
 import { rollWithDicePlusTotal } from "./diceplus/roll";
 
 type ViewState =
@@ -98,7 +98,7 @@ export function SheetApp() {
         const sheet = await ensureSheetOnToken(openTokenId);
         if (!sheet) throw new Error("Could not load sheet from token.");
         // Ensure attributes are derived on load as well (in case older tokens stored stale values)
-        const derived = deriveAttributesFromSkills(sheet.skills ?? {});
+        const derived = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
         const fixed: CharacterSheetV1 = { ...sheet, attributes: derived };
         const header = await getTokenHeaderMeta(openTokenId);
         setState({ kind: "ready", tokenId: openTokenId, sheet: fixed, mode: "view", suppressUnset: true, ...header });
@@ -142,7 +142,7 @@ export function SheetApp() {
     if (!sheet) throw new Error("Could not load sheet from token.");
     // Best-effort: tag token ownership so we can recover stickily and show owner labels.
     try { await tagTokenOwnedByMe(resolvedMyTokenId); } catch {}
-    const derived = deriveAttributesFromSkills(sheet.skills ?? {});
+    const derived = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
     const fixed: CharacterSheetV1 = { ...sheet, attributes: derived };
     const header = await getTokenHeaderMeta(resolvedMyTokenId);
     setState({ kind: "ready", tokenId: resolvedMyTokenId, sheet: fixed, mode: "my", suppressUnset: !!opts?.suppressUnset, ...header });
@@ -372,7 +372,7 @@ export function SheetApp() {
       setState({ kind: "error", message: "Could not attach a sheet to the selected token." });
       return;
     }
-    const derived = deriveAttributesFromSkills(sheet.skills ?? {});
+    const derived = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
     const fixed: CharacterSheetV1 = { ...sheet, attributes: derived };
 
     await setMyCharacterTokenId(selectedId);
@@ -416,7 +416,7 @@ export function SheetApp() {
       // Keep derived fields in-sync as the user changes skills.
       // (Previously these only updated on initial load, requiring a reopen.)
       try {
-        const derivedAttrs = deriveAttributesFromSkills(next.skills ?? {});
+        const derivedAttrs = deriveAttributesFromSkills(next.skills ?? {}, skillsData.inherent ?? []);
         next = {
           ...next,
           attributes: { ...next.attributes, ...derivedAttrs },

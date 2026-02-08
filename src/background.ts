@@ -5,8 +5,8 @@ import { migrateSheet } from "./rules/migrate";
 import { buildWhisperspaceSkillNotation, rollWithDicePlusTotal } from "./ui/diceplus/roll";
 import { getInitiativeState, removeFromInitiative, upsertInitiativeEntry } from "./obr/initiative";
 import { skillsData } from "./data/skills";
-import { deriveAttributesFromSkills, deriveCUFFromSkills } from "./rules/deriveAttributes";
-import { computeStatusEffects } from "./rules/statusEffects";
+import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../packages/core/src/deriveAttributes";
+import { computeStatusEffects } from "../packages/core/src/statusEffects";
 
 const EXT_ID = "com.whisperspace.sheet";
 const MENU_ID = `${EXT_ID}/context/open-sheet`;
@@ -95,7 +95,7 @@ async function main() {
 	        }
 	        const status = computeStatusEffects(statusStrings);
 
-          const derivedAttrs = deriveAttributesFromSkills(sheet.skills ?? {});
+          const derivedAttrs = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
 			    const attrDeltaRef = (status.deltas["ref"] ?? 0) + (status.deltas["reflex"] ?? 0);
 	        const effectiveRef = Math.max(0, derivedAttrs.ref + attrDeltaRef);
 

@@ -13,12 +13,13 @@ import {
 import type { InitiativeTrackerState } from "../../obr/initiative";
 import { getMyCharacterTokenId, loadSheetFromToken, saveSheetToToken, TOKEN_KEY_OWNER_PLAYER } from "../../obr/metadata";
 import type { FocusId } from "../../data/types";
-import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../../rules/deriveAttributes";
-import { applyStatusToDerived, computeStatusEffects } from "../../rules/statusEffects";
+import { skillsData } from "../../data/skills";
+import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../../../packages/core/src/deriveAttributes";
+import { applyStatusToDerived, computeStatusEffects } from "../../../packages/core/src/statusEffects";
 import { buildWhisperspaceSkillNotation, rollWithDicePlusTotal } from "../diceplus/roll";
 import { rollWeaponAttackAndBroadcast } from "../combat/weaponAttack";
-import { makeLearnedInfoById, skillModifierFor } from "../combat/skills";
-import { getAmmoMax } from "../combat/weapons";
+import { buildLearnedInfoById, skillModifierFor } from "../../../packages/core/src/skills";
+import { getAmmoMax } from "../../../packages/core/src/weapons";
 
 import {
   Box,
@@ -73,7 +74,7 @@ export function InitiativePanel() {
   const [netDice, setNetDice] = useState<-2 | -1 | 0 | 1 | 2>(0);
 
   const clampNetDice = (n: number) => Math.max(-3, Math.min(3, n));
-  const learnedInfoById = useMemo(() => makeLearnedInfoById(), []);
+  const learnedInfoById = useMemo(() => buildLearnedInfoById<FocusId>(skillsData.learned), []);
 
   useEffect(() => {
     const off = onInitiativeChange((s) => setState(s));
@@ -174,7 +175,7 @@ export function InitiativePanel() {
       ...(sheet.inventory ?? []).map((i) => i.statusEffects ?? "").filter(Boolean),
     ]).deltas;
 
-    const baseAttrs = deriveAttributesFromSkills(sheet.skills ?? {});
+    const baseAttrs = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
     const curStress = sheet.stress?.current ?? 0;
     const baseCUF = Math.max(0, (deriveCUFFromSkills(sheet.skills ?? {}) || 0) - (sheet.stress?.cufLoss ?? 0));
     const derived = applyStatusToDerived(
@@ -241,8 +242,9 @@ export function InitiativePanel() {
     const skillId = String(weapon.skillId ?? "");
     const mod = skillModifierFor({
       learnedInfoById,
-      sheet,
       skillId,
+      ranks: sheet.skills ?? {},
+      learningFocus: sheet.learningFocus,
       skillMods: deltas as any,
     });
 
