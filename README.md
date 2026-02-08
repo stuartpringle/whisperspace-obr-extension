@@ -1,58 +1,48 @@
-# Whisperspace Sheet — Owlbear Rodeo Extension (Dev)
+# Whisperspace OBR Sheet + Rules Reference
 
-This is a minimal working Owlbear Rodeo extension that:
-- stores a Whisperspace character sheet on a token’s metadata
-- provides a **My Sheet** action button (top-left)
-- provides a right-click **Open Whisperspace Sheet** context menu item
-  - opens that token’s sheet without overwriting “My Character”
+This repo contains two Owlbear Rodeo extensions:
 
-## Ubuntu quickstart
+1. **Whisperspace Character Sheet** (token-backed sheet)
+2. **Whisperspace Rules Reference** (shared rules viewer)
 
-### 1) Install Node (if needed)
-Recommended: Node 20 LTS.
+## Install in OBR
 
-### 2) Install deps
-```bash
-npm install
-```
+Add these manifests in Owlbear Rodeo:
 
-### 3) Run dev server
-```bash
-npm run dev -- --host
-```
+- `dist/manifest.json` — Character Sheet
+- `dist/manifest.rules.json` — Rules Reference
 
-You should have:
-- http://localhost:5173/manifest.json
+## Rules Data Workflow
 
-### 4) Install in Owlbear Rodeo
-1. Open Owlbear Rodeo
-2. Profile → Extensions → Add Extension
-3. Paste: `http://localhost:5173/manifest.json`
-4. Enter a room and enable the extension
+Rules data comes from the **Whisperspace Rules Parser**. That parser ingests the Google Doc export and outputs YAML files.
 
-## Test flows
+Parser README:
+`/hdd/sites/stuartpringle/whisperspace-rules-parser/README.md`
 
-### My Sheet (primary)
-- Click the action icon (top-left)
-- If prompted, select a token → click “Set Selected Token as My Character”
+### Update Rules
 
-### Right-click → Open Sheet
-- Select a token → right-click → “Open Whisperspace Sheet”
-- A popover opens for that token
-- “Back to My Sheet” returns to your own character
+1. Update the Google Doc and run the parser:
+   ```bash
+   PYTHONPATH=src python3 -m whisperspace_rules_parser.cli --out out
+   ```
+2. Sync rules into this repo:
+   ```bash
+   npm run rules:sync
+   ```
+   This copies YAML files into `src/data/rules/` and regenerates `src/data/generated/rules.json`.
 
-## Notes
-- Skills are data-driven via `src/data/generated/skills.json` (source YAML is `src/data/skills.yaml`).
-- The sheet is stored per-token under metadata key `com.whisperspace.sheet/character`.
+3. Build:
+   ```bash
+   npm run build
+   ```
 
+### Where Rules Live
 
-## SDK versions
-If npm complains about missing versions, check available releases:
-```bash
-npm view @owlbear-rodeo/sdk versions
-```
-This project targets SDK ^3.1.0.
+- Source YAML: `src/data/rules/*.yaml`
+- Generated JSON: `src/data/generated/rules.json`
+- Rules UI entry: `rules.html` + `src/rules-main.tsx` + `src/ui/RulesApp.tsx`
 
+## Scripts
 
-## Build note
-This extension uses two entrypoints (index.html + background.html). Vite is configured with multi-page inputs.
+- `npm run rules:sync` — copy parser output into `src/data/rules/` and regenerate JSON.
+- `npm run build` — runs rules sync, then builds the extension.
