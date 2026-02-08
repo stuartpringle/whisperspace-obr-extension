@@ -653,13 +653,15 @@ function burnCufToPass() {
         </div>
 
         <div style={{ display: "flex", gap: 8 }}>
-          {state.mode === "view" && !state.isOwnedByMe ? (
-            <button
-              style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
-              onClick={backToMySheet}
-            >
-              Back to My Sheet
-            </button>
+          {state.mode === "view" ? (
+            !state.isOwnedByMe && (
+              <button
+                style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
+                onClick={backToMySheet}
+              >
+                Back to My Sheet
+              </button>
+            )
           ) : (
             <button
               style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
