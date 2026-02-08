@@ -1,6 +1,7 @@
 import OBR from "@owlbear-rodeo/sdk";
 import { buildWhisperspaceSkillNotation } from "../../../packages/core/src/roll";
 export { buildWhisperspaceSkillNotation };
+import { getHookBus } from "../../../packages/core/src/hooks";
 
 export const DICEPLUS_CHANNEL_READY = "dice-plus/isReady";
 export const DICEPLUS_CHANNEL_ROLL_REQUEST = "dice-plus/roll-request";
@@ -51,6 +52,12 @@ export async function rollWithDicePlus(opts: {
   showResults?: boolean;
 }) {
   const rollId = crypto.randomUUID();
+  getHookBus().emit("dice:roll", {
+    diceNotation: opts.diceNotation,
+    rollTarget: opts.rollTarget,
+    showResults: opts.showResults,
+    rollId,
+  });
 
   await OBR.broadcast.sendMessage(
     DICEPLUS_CHANNEL_ROLL_REQUEST,
@@ -86,6 +93,12 @@ export async function rollWithDicePlusTotal(opts: {
 
   const rollId = crypto.randomUUID();
   const timeoutMs = opts.timeoutMs ?? 5000;
+  getHookBus().emit("dice:roll", {
+    diceNotation: opts.diceNotation,
+    rollTarget: opts.rollTarget,
+    showResults: opts.showResults,
+    rollId,
+  });
 
   return new Promise<number>(async (resolve, reject) => {
     const extractTotal = (data: any): number => {

@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2026-02-08T08:40:03.181Z",
+  "generatedAt": "2026-02-08T08:46:04.636Z",
   "files": {
     "skills.json": {
       "sha256": "bfac1c04a8924cb564578fd830930191ffa9a4c674c19430f860a9e5dbf7c169",
@@ -35,7 +35,7 @@
       "bytes": 1086
     },
     "rules.json": {
-      "sha256": "3405d61dbe6aaf89afb0d4d5cbb87df1dc3eb5e2c0170972379f345f3219cc08",
+      "sha256": "6b57f8d68c91c78138f732722835059e9a0b5e4880a54fcfa133fb22b862c88c",
       "bytes": 541691
     },
     "skill_tooltips.json": {
@@ -50,9 +50,13 @@
       "sha256": "dbb2f25d463a8b581810c165edcdb5547da324545a96ffcc9f4706cfb47bd42b",
       "bytes": 1044
     },
+    "core/hooks.js": {
+      "sha256": "0b426dba665708a66d87bc3a6a9a555e6567a9a77f4586ee80ae3d99649ceebd",
+      "bytes": 882
+    },
     "core/index.js": {
-      "sha256": "18a1f6012ee0ce63f5fa0cd277c19ed227c8cd1841decbf9ef24a1ee0848e875",
-      "bytes": 198
+      "sha256": "a9b3d7629a6eabaabaa3412976bffb6df77d5898d669919b9a2862bfff1cac49",
+      "bytes": 223
     },
     "core/roll.js": {
       "sha256": "2ea02259be13e848cb7708b46c0da4c733f3a3e17118e2625dd3e67bb25b7a15",

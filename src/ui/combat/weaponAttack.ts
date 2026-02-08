@@ -1,6 +1,7 @@
 import OBR from "@owlbear-rodeo/sdk";
 import { buildWhisperspaceSkillNotation, rollWithDicePlusTotal } from "../diceplus/roll";
 import { buildAttackOutcome } from "../../../packages/core/src/combat";
+import { getHookBus } from "../../../packages/core/src/hooks";
 
 // Shared broadcast channel for derived combat messages (hit/miss, damage, crits, etc.)
 export const COMBAT_LOG_CHANNEL = "whisperspace.obr.sheet/combat-log";
@@ -64,6 +65,16 @@ export async function rollWeaponAttack(opts: {
     total,
     useDC,
     weaponDamage: Math.trunc(opts.weapon.damage ?? 0),
+    label,
+  });
+  getHookBus().emit("attack:resolved", {
+    total: outcome.total,
+    useDC: outcome.useDC,
+    hit: outcome.hit,
+    isCrit: outcome.isCrit,
+    baseDamage: outcome.baseDamage,
+    totalDamage: outcome.totalDamage,
+    stressDelta: outcome.stressDelta,
     label,
   });
 
