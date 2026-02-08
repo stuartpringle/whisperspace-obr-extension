@@ -8,7 +8,7 @@
   "action": {
     "title": "Whisperspace Rules Reference",
     "icon": "/icon.svg",
-    "popover": "/rules",
+    "popover": "/rules.html",
     "width": 640,
     "height": 720
   },
