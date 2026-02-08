@@ -1,4 +1,6 @@
 import OBR from "@owlbear-rodeo/sdk";
+import { buildWhisperspaceSkillNotation } from "../../../packages/core/src/roll";
+export { buildWhisperspaceSkillNotation };
 
 export const DICEPLUS_CHANNEL_READY = "dice-plus/isReady";
 export const DICEPLUS_CHANNEL_ROLL_REQUEST = "dice-plus/roll-request";
@@ -38,25 +40,6 @@ export async function checkDicePlusReady(timeoutMs = 1000): Promise<boolean> {
       resolve(false);
     }, timeoutMs);
   });
-}
-
-export function buildWhisperspaceSkillNotation(opts: {
-  netDice: number;      // -2..+2
-  modifier: number;     // flat modifier
-  label: string;        // roll label
-}) {
-  const net = Math.max(-2, Math.min(2, Math.trunc(opts.netDice)));
-  const diceCount = 1 + Math.abs(net);
-
-  let base = "1d12";
-  if (net > 0) base = `${diceCount}d12kh1`;
-  if (net < 0) base = `${diceCount}d12kl1`;
-
-  const mod = Number.isFinite(opts.modifier) ? Math.trunc(opts.modifier) : 0;
-  const modSuffix =
-    mod === 0 ? "" : mod > 0 ? ` +${mod}` : ` ${mod}`;
-
-  return `${base} # ${opts.label}${modSuffix}`;
 }
 
 /**

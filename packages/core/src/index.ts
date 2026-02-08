@@ -3,4 +3,5 @@ export * from "./combat";
 export * from "./skills";
 export * from "./statusEffects";
 export * from "./weapons";
+export * from "./roll";
 export * from "./schema";
