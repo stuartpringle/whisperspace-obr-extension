@@ -471,7 +471,16 @@ function updateWeapon(i: number, patch: Partial<CharacterSheetV1["weapons"][numb
                           return (
                             <Tooltip key={`${kw}-${kidx}`} title={info.description}>
                               <span>
-                                <Chip label={kw} size="small" variant="outlined" />
+                                <Chip
+                                  label={kw}
+                                  size="small"
+                                  variant="outlined"
+                                  component="a"
+                                  href={`/rules.html#${info.anchor}`}
+                                  target="_blank"
+                                  clickable
+                                  sx={{ textDecoration: "none" }}
+                                />
                               </span>
                             </Tooltip>
                           );
