@@ -21,7 +21,7 @@ const ENABLE_ARCHIVE = false;
 const files = [
   { in: "skills.yaml", out: "skills.json" },
   { in: "weapons.yaml", out: "weapons.json" },
-  { in: "armor.yaml", out: "armor.json" },
+  { in: "armour.yaml", out: "armour.json" },
   { in: "weapon_keywords.yaml", out: "weapon_keywords.json" },
   { in: "items.yaml", out: "items.json" },
   { in: "cyberware.yaml", out: "cyberware.json" },
@@ -212,7 +212,7 @@ function writeRulesApiBundle() {
   const filesToCopy = [
     "skills.json",
     "weapons.json",
-    "armor.json",
+    "armour.json",
     "weapon_keywords.json",
     "items.json",
     "cyberware.json",
@@ -224,6 +224,13 @@ function writeRulesApiBundle() {
 
   fs.mkdirSync(RULES_API_DIR, { recursive: true });
   fs.mkdirSync(RULES_API_PUBLISH_DIR, { recursive: true });
+
+  // Remove legacy US spelling files if present.
+  for (const dir of [RULES_API_DIR, RULES_API_PUBLISH_DIR]) {
+    try {
+      fs.rmSync(path.join(dir, "armor.json"));
+    } catch {}
+  }
 
   const meta = {
     version: timestamp(),

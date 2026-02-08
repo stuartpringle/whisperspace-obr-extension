@@ -1,6 +1,6 @@
 {
-  "version": "20260208-023536",
-  "generatedAt": "2026-02-08T07:35:36.527Z",
+  "version": "20260208-023901",
+  "generatedAt": "2026-02-08T07:39:01.873Z",
   "files": {
     "skills.json": {
       "sha256": "bfac1c04a8924cb564578fd830930191ffa9a4c674c19430f860a9e5dbf7c169",
@@ -10,7 +10,7 @@
       "sha256": "3f46daf2fccbad4c0d6bfd63fb6c7f6c7163c296934c23d991fcf98e0a833d74",
       "bytes": 4301
     },
-    "armor.json": {
+    "armour.json": {
       "sha256": "c6f9f0181769e93533829131073c3f727d4fa09a6e72746c2538dd877e8d4992",
       "bytes": 1820
     },
@@ -35,7 +35,7 @@
       "bytes": 1086
     },
     "rules.json": {
-      "sha256": "66cbe222e576c2e64d88e3a00f6863a85dc0f99ddf7814b435e583fe7cbc3f1b",
+      "sha256": "bc1173cd087fca1fe6f352102e0b00aeb18b6c9345afd439435bfb39c80556ca",
       "bytes": 541691
     },
     "skill_tooltips.json": {

@@ -5,7 +5,7 @@ import { skillsData } from "../../data/skills";
 import type { SkillDef } from "../../data/types";
 
 import { WEAPON_TEMPLATES } from "../../data/weapons";
-import { ARMOR_TEMPLATES } from "../../data/armor";
+import { ARMOR_TEMPLATES } from "../../data/armour";
 import { rollWithDicePlusTotal } from "../diceplus/roll";
 import { Button } from "@mui/material";
 import CasinoIcon from "@mui/icons-material/Casino";

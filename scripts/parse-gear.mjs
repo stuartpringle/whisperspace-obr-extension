@@ -9,7 +9,7 @@ const ROOT = process.cwd();
 const RULES_GEAR = path.join(ROOT, "src", "data", "rules", "equipment-gear.yaml");
 
 const OUT_WEAPONS = path.join(ROOT, "src", "data", "weapons.yaml");
-const OUT_ARMOR = path.join(ROOT, "src", "data", "armor.yaml");
+const OUT_ARMOUR = path.join(ROOT, "src", "data", "armour.yaml");
 const OUT_ITEMS = path.join(ROOT, "src", "data", "items.yaml");
 const OUT_CYBERWARE = path.join(ROOT, "src", "data", "cyberware.yaml");
 const OUT_NARCOTICS = path.join(ROOT, "src", "data", "narcotics.yaml");
@@ -273,13 +273,13 @@ function main() {
   }
 
   writeYaml(OUT_WEAPONS, { weapons });
-  writeYaml(OUT_ARMOR, { armor });
+  writeYaml(OUT_ARMOUR, { armor });
   writeYaml(OUT_ITEMS, { items });
   writeYaml(OUT_CYBERWARE, { cyberware });
   writeYaml(OUT_NARCOTICS, { narcotics });
   writeYaml(OUT_HACKING, { rigs, software });
 
-  console.log("[parse-gear] Wrote weapons, armor, items, cyberware, narcotics, hacking_gear.");
+  console.log("[parse-gear] Wrote weapons, armour, items, cyberware, narcotics, hacking_gear.");
 }
 
 main();

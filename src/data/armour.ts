@@ -1,4 +1,4 @@
-import armorJson from "./generated/armor.json";
+import armourJson from "./generated/armour.json";
 
 export type ArmorTemplate = {
   id: string;
@@ -15,4 +15,4 @@ export type ArmorTemplate = {
 
 type ArmorFile = { armor: ArmorTemplate[] };
 
-export const ARMOR_TEMPLATES = (armorJson as ArmorFile).armor ?? [];
+export const ARMOR_TEMPLATES = (armourJson as ArmorFile).armor ?? [];
