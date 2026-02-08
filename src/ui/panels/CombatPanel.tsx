@@ -13,6 +13,8 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ReplayIcon from "@mui/icons-material/Replay";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
+import PsychologyAltIcon from "@mui/icons-material/PsychologyAlt";
 import {
   Accordion,
   AccordionDetails,
@@ -367,17 +369,32 @@ function updateWeapon(i: number, patch: Partial<CharacterSheetV1["weapons"][numb
                     )}
                   </Typography>
                   {canApplyDamage && (
-                    <Button size="small" variant="outlined" onClick={() => props.onApplyCombatLog?.({ ...entry, kind: "attack", damageApplied: entry.outcome?.totalDamage ?? 0, stressApplied: 0 })}>
+                    <Button
+                      size="small"
+                      variant="outlined"
+                      startIcon={<LocalFireDepartmentIcon fontSize="small" />}
+                      onClick={() => props.onApplyCombatLog?.({ ...entry, kind: "attack", damageApplied: entry.outcome?.totalDamage ?? 0, stressApplied: 0 })}
+                    >
                       Apply Damage
                     </Button>
                   )}
                   {canApplyStress && (
-                    <Button size="small" variant="outlined" onClick={() => props.onApplyCombatLog?.({ ...entry, kind: "attack", damageApplied: 0, stressApplied: entry.outcome?.stressDelta ?? 0 })}>
+                    <Button
+                      size="small"
+                      variant="outlined"
+                      startIcon={<PsychologyAltIcon fontSize="small" />}
+                      onClick={() => props.onApplyCombatLog?.({ ...entry, kind: "attack", damageApplied: 0, stressApplied: entry.outcome?.stressDelta ?? 0 })}
+                    >
                       Apply Stress
                     </Button>
                   )}
                   {canApplyBoth && (
-                    <Button size="small" variant="outlined" onClick={() => props.onApplyCombatLog?.({ ...entry, kind: "attack", damageApplied: entry.outcome?.totalDamage ?? 0, stressApplied: entry.outcome?.stressDelta ?? 0 })}>
+                    <Button
+                      size="small"
+                      variant="outlined"
+                      startIcon={<LocalFireDepartmentIcon fontSize="small" />}
+                      onClick={() => props.onApplyCombatLog?.({ ...entry, kind: "attack", damageApplied: entry.outcome?.totalDamage ?? 0, stressApplied: entry.outcome?.stressDelta ?? 0 })}
+                    >
                       Apply Both
                     </Button>
                   )}

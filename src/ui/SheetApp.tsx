@@ -26,7 +26,7 @@ import { skillsData } from "../data/skills";
 import type { SkillDef } from "../data/types";
 import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../rules/deriveAttributes";
 import { mergeStatusDeltas } from "../rules/statusEffects";
-import { rollWithDicePlus, DICEPLUS_SOURCE } from "./diceplus/roll";
+import { rollWithDicePlusTotal } from "./diceplus/roll";
 
 type ViewState =
   | { kind: "loading" }
@@ -436,39 +436,13 @@ async function rollCrucibleTest(incoming: number) {
   const modSuffix = cuf === 0 ? "" : ` +${cuf}`;
   const diceNotation = `1d12 # ${rollLabel}${modSuffix}`;
 
-  // Ask Dice+ to roll, then wait for a roll-result so we can decide success/fail.
-  const rollId = await rollWithDicePlus({ diceNotation, rollTarget: "everyone", showResults: true });
-
-  const total = await new Promise<number>((resolve, reject) => {
-    const timeout = setTimeout(() => {
-      unsub();
-      reject(new Error("Dice+ roll timed out (no roll-result received)"));
-    }, 4000);
-
-    const unsub = OBR.broadcast.onMessage(`${DICEPLUS_SOURCE}/roll-result`, (event) => {
-      const data: any = event.data;
-      if (!data || data.rollId !== rollId) return;
-
-      clearTimeout(timeout);
-      unsub();
-
-      const t =
-        typeof data.total === "number"
-          ? data.total
-          : typeof data?.result?.total === "number"
-            ? data.result.total
-            : typeof data?.value === "number"
-              ? data.value
-              : NaN;
-
-      if (!Number.isFinite(t)) {
-        reject(new Error("Dice+ roll-result received, but total was missing/invalid."));
-        return;
-      }
-
-      resolve(Math.trunc(t));
-    });
-  });
+  let total: number;
+  try {
+    total = await rollWithDicePlusTotal({ diceNotation, rollTarget: "everyone", showResults: true, timeoutMs: 6000 });
+  } catch (e) {
+    void OBR.notification.show("Dice+ roll failed or timed out.", "WARNING");
+    return;
+  }
 
   if (total >= dc) {
     // Success: clamp stress to 5 and prompt Indomitable.
