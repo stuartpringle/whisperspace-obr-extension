@@ -471,7 +471,7 @@ function updateWeapon(i: number, patch: Partial<CharacterSheetV1["weapons"][numb
                                   size="small"
                                   variant="outlined"
                                   component="a"
-                                  href={`/rules.html#${info.anchor}`}
+                                  href={`https://whisperspace.com/obr-rules/#${info.anchor}`}
                                   target="_blank"
                                   clickable
                                   sx={{ textDecoration: "none" }}
