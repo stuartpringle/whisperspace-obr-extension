@@ -31,7 +31,7 @@ import {
 import { rollWeaponAttackAndBroadcast, type CombatLogPayload } from "../combat/weaponAttack";
 import { applyDamageAndStress } from "../combat/applyDamage";
 import { getAmmoMax } from "../../../packages/core/src/weapons";
-import { calcSkillMod } from "../../../packages/sdk/src/calc";
+import { calcSkillMod } from "../../@whisperspace/sdk";
 import { CombatLog } from "../combat/CombatLog";
 import { resolveWeaponKeyword } from "../weaponKeywords";
 

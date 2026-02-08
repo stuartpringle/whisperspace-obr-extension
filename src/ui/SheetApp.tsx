@@ -27,7 +27,7 @@ import { SheetTabs } from "./components/SheetTabs";
 
 import { skillsData } from "../data/skills";
 import type { SkillDef } from "../data/types";
-import { calcDeriveAttributes, calcDeriveCuf, calcStatusDeltas } from "../../packages/sdk/src/calc";
+import { calcDeriveAttributes, calcDeriveCuf, calcStatusDeltas } from "../@whisperspace/sdk";
 import { rollWithDicePlusTotal } from "./diceplus/roll";
 
 type ViewState =

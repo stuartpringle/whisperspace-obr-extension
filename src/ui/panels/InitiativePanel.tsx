@@ -16,7 +16,7 @@ import { skillsData } from "../../data/skills";
 import { rollWithDicePlusTotal } from "../diceplus/roll";
 import { rollWeaponAttackAndBroadcast } from "../combat/weaponAttack";
 import { getAmmoMax } from "../../../packages/core/src/weapons";
-import { calcDeriveAttributes, calcDeriveCuf, calcSkillMod, calcSkillNotation, calcStatusDeltas } from "../../../packages/sdk/src/calc";
+import { calcDeriveAttributes, calcDeriveCuf, calcSkillMod, calcSkillNotation, calcStatusDeltas } from "../../@whisperspace/sdk";
 
 import {
   Box,

@@ -1,20 +1,16 @@
 {
-  "name": "whisperspace-obr-sheet",
+  "name": "whisperspace-obr-extension",
   "private": true,
   "version": "0.1.0",
   "rulesVersion": "0.1.0",
   "type": "module",
   "scripts": {
-    "generate:data": "node scripts/generate-data.mjs",
-    "rules:gear": "node scripts/parse-gear.mjs",
-    "rules:sync": "bash scripts/import-rules.sh",
-    "core:build": "bash scripts/core-build.sh",
-    "rules:publish": "bash scripts/rules-publish.sh",
-    "build": "npm run rules:publish && tsc -b && vite build",
-    "dev": "npm run generate:data && vite",
+    "build": "tsc -b && vite build",
+    "dev": "vite",
     "preview": "vite preview --host"
   },
   "dependencies": {
+    "@whisperspace/sdk": "git+ssh://git@github.com/stuartpringle/whisperspace-sdk.git",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.7",
