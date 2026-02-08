@@ -5,7 +5,7 @@ declare(strict_types=1);
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, X-WS-API-Key");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
   http_response_code(204);
@@ -39,12 +39,10 @@ load_env("/hdd/sites/stuartpringle/whisperspace/public/rules-api/.env");
 load_env("/hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/.env");
 
 $headers = function_exists("getallheaders") ? getallheaders() : [];
-$apiKey = $headers["X-WS-API-Key"] ?? $headers["x-ws-api-key"] ?? null;
-if (!$apiKey) {
-  $auth = $headers["Authorization"] ?? $headers["authorization"] ?? "";
-  if (str_starts_with($auth, "Bearer ")) {
-    $apiKey = substr($auth, 7);
-  }
+$auth = $headers["Authorization"] ?? $headers["authorization"] ?? "";
+$apiKey = null;
+if (str_starts_with($auth, "Bearer ")) {
+  $apiKey = substr($auth, 7);
 }
 if (!$apiKey) {
   $apiKey = $_GET["api_key"] ?? null;
