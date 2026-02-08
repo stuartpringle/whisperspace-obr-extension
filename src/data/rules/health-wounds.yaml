@@ -26,6 +26,9 @@ sections:
       you do not have access to a character sheet, you can keep track of it in this
       basic way:'
     spans: []
+  - type: image
+    src: images/image1.png
+    alt: ''
   sections: []
 - title: Wound Severity Effects
   slug: wound-severity-effects
@@ -42,7 +45,12 @@ sections:
   - type: paragraph
     text: A heavy wound incapacitates a character entirely. He is unconscious. A character
       with a heavy wound is in desperate need of medical aid and gains the Dying condition.
-    spans: []
+    spans:
+    - style: italic
+      text: unconscious
+    - style: link_underline
+      text: Dying
+      href: '#h.kih2cwvp5weu'
   sections: []
 - title: Healing
   slug: healing

@@ -38,347 +38,692 @@ content:
   spans: []
 - type: paragraph
   text: Core Philosophies 5
-  spans: []
+  spans:
+  - style: link_underline
+    text: Core Philosophies        5
+    href: '#h.1w72ryf613al'
 - type: paragraph
   text: Core Game Principles 5
-  spans: []
+  spans:
+  - style: link_underline
+    text: Core Game Principles        5
+    href: '#h.vnsgmtm27lfz'
 - type: paragraph
   text: Specific Trumps General 5
-  spans: []
+  spans:
+  - style: link_underline
+    text: Specific Trumps General        5
+    href: '#h.akgtthri0nx6'
 - type: paragraph
   text: Your Character Affects the Roll. The World Affects the Difficulty. 6
-  spans: []
+  spans:
+  - style: link_underline
+    text: Your Character Affects the Roll. The World Affects the Difficulty.        6
+    href: '#h.w39kr86dnzr2'
 - type: paragraph
   text: Core Mechanics 6
-  spans: []
+  spans:
+  - style: link_underline
+    text: Core Mechanics        6
+    href: '#h.7dr5iojxah68'
 - type: paragraph
   text: D12 System 6
-  spans: []
+  spans:
+  - style: link_underline
+    text: D12 System        6
+    href: '#h.25xctlcd5vy2'
 - type: paragraph
   text: Difficulty Class 7
-  spans: []
+  spans:
+  - style: link_underline
+    text: Difficulty Class        7
+    href: '#h.s9t0v7gc8t07'
 - type: paragraph
   text: Bonus Dice and Penalty Dice 8
-  spans: []
+  spans:
+  - style: link_underline
+    text: Bonus Dice and Penalty Dice        8
+    href: '#h.60k6r7lbapjp'
 - type: paragraph
   text: Character Creation 8
-  spans: []
+  spans:
+  - style: link_underline
+    text: Character Creation        8
+    href: '#h.yropqb69nj4j'
 - type: paragraph
   text: 1. Concept 9
-  spans: []
+  spans:
+  - style: link_underline
+    text: 1. Concept        9
+    href: '#h.yd4qvtvcaqvb'
 - type: paragraph
   text: 2. Origin, Background, and Motivation 9
-  spans: []
+  spans:
+  - style: link_underline
+    text: 2. Origin, Background, and Motivation        9
+    href: '#h.c0w63zv1g054'
 - type: paragraph
   text: 3. Pick an Archetype or a Feat 11
-  spans: []
+  spans:
+  - style: link_underline
+    text: 3. Pick an Archetype or a Feat        11
+    href: '#h.f4mnm39spe5v'
 - type: paragraph
   text: 4. Choose a Learning Focus 11
-  spans: []
+  spans:
+  - style: link_underline
+    text: 4. Choose a Learning Focus        11
+    href: '#h.qi4cpurftn9d'
 - type: paragraph
   text: 5. Spend Skill Points (SP) 11
-  spans: []
+  spans:
+  - style: link_underline
+    text: 5. Spend Skill Points (SP)        11
+    href: '#h.23ywptievsa6'
 - type: paragraph
   text: 6. Attribute Calculation 12
-  spans: []
+  spans:
+  - style: link_underline
+    text: 6. Attribute Calculation        12
+    href: '#h.yrr7z9n6yanu'
 - type: paragraph
   text: 7. Equipment 12
-  spans: []
+  spans:
+  - style: link_underline
+    text: 7. Equipment        12
+    href: '#h.7mb8e7ct876c'
 - type: paragraph
   text: 8. Final Steps 12
-  spans: []
+  spans:
+  - style: link_underline
+    text: 8. Final Steps        12
+    href: '#h.22nk2cro67ys'
 - type: paragraph
   text: 9. Go play! 13
-  spans: []
+  spans:
+  - style: link_underline
+    text: 9. Go play!        13
+    href: '#h.5bpojvg6uvoc'
 - type: paragraph
   text: Attributes and Skills 13
-  spans: []
+  spans:
+  - style: link_underline
+    text: Attributes and Skills        13
+    href: '#h.b0ee9ei2egsx'
 - type: paragraph
   text: Attributes 13
-  spans: []
+  spans:
+  - style: link_underline
+    text: Attributes        13
+    href: '#h.czv1zreqh4sg'
 - type: paragraph
   text: Skills 14
-  spans: []
+  spans:
+  - style: link_underline
+    text: Skills        14
+    href: '#h.h5dgi4teh1d7'
 - type: paragraph
   text: Archetypes and Feats 20
-  spans: []
+  spans:
+  - style: link_underline
+    text: Archetypes and Feats        20
+    href: '#h.s7nodu1xbbh2'
 - type: paragraph
   text: Stress 26
-  spans: []
+  spans:
+  - style: link_underline
+    text: Stress        26
+    href: '#h.6tobyshwmdj4'
 - type: paragraph
   text: Stress From Damage 26
-  spans: []
+  spans:
+  - style: link_underline
+    text: Stress From Damage        26
+    href: '#h.pt4x4blqibpq'
 - type: paragraph
   text: Stress Penalties 27
-  spans: []
+  spans:
+  - style: link_underline
+    text: Stress Penalties        27
+    href: '#h.4i49kmk289fr'
 - type: paragraph
   text: Crucible Test 27
-  spans: []
+  spans:
+  - style: link_underline
+    text: Crucible Test        27
+    href: '#h.lrnplax428ea'
 - type: paragraph
   text: PTSD Range (stress levels 6-8) 27
-  spans: []
+  spans:
+  - style: link_underline
+    text: PTSD Range (stress levels 6-8)        27
+    href: '#h.rwq11029f7qx'
 - type: paragraph
   text: Stress Breakdowns 28
-  spans: []
+  spans:
+  - style: link_underline
+    text: Stress Breakdowns        28
+    href: '#h.1roi4iywaa3d'
 - type: paragraph
   text: Reducing Stress 28
-  spans: []
+  spans:
+  - style: link_underline
+    text: Reducing Stress        28
+    href: '#h.vnaqv5u7kgb1'
 - type: paragraph
   text: Health & Wounds 30
-  spans: []
+  spans:
+  - style: link_underline
+    text: Health & Wounds        30
+    href: '#h.7xpn2fplrs1y'
 - type: paragraph
   text: Wound Tracking 30
-  spans: []
+  spans:
+  - style: link_underline
+    text: Wound Tracking        30
+    href: '#h.7ew7zy9fhbzl'
 - type: paragraph
   text: Wound Severity Effects 30
-  spans: []
+  spans:
+  - style: link_underline
+    text: Wound Severity Effects        30
+    href: '#h.i52orvmb7le4'
 - type: paragraph
   text: Healing 30
-  spans: []
+  spans:
+  - style: link_underline
+    text: Healing        30
+    href: '#h.rwmuhac26taj'
 - type: paragraph
   text: Poisons and Toxins 31
-  spans: []
+  spans:
+  - style: link_underline
+    text: Poisons and Toxins        31
+    href: '#h.oaq0qtef2p1'
 - type: paragraph
   text: Stealth 31
-  spans: []
+  spans:
+  - style: link_underline
+    text: Stealth        31
+    href: '#h.l4gyfjfja4eh'
 - type: paragraph
   text: Movement 31
-  spans: []
+  spans:
+  - style: link_underline
+    text: Movement        31
+    href: '#h.gcbgazgc4pdx'
 - type: paragraph
   text: Movement Bonuses and Penalties 31
-  spans: []
+  spans:
+  - style: link_underline
+    text: Movement Bonuses and Penalties        31
+    href: '#h.mxlecz5trzxd'
 - type: paragraph
   text: Types of Movement 32
-  spans: []
+  spans:
+  - style: link_underline
+    text: Types of Movement        32
+    href: '#h.am7sfh3kw333'
 - type: paragraph
   text: Standing from prone 32
-  spans: []
+  spans:
+  - style: link_underline
+    text: Standing from prone        32
+    href: '#h.w05uzk3hxqyr'
 - type: paragraph
   text: Swimming 32
-  spans: []
+  spans:
+  - style: link_underline
+    text: Swimming        32
+    href: '#h.95rit9r9dylz'
 - type: paragraph
   text: Climbing 33
-  spans: []
+  spans:
+  - style: link_underline
+    text: Climbing        33
+    href: '#h.lfg5zzxrnf0j'
 - type: paragraph
   text: Carrying Capacity 34
-  spans: []
+  spans:
+  - style: link_underline
+    text: Carrying Capacity        34
+    href: '#h.9llvhng7f6fo'
 - type: paragraph
   text: Combat 36
-  spans: []
+  spans:
+  - style: link_underline
+    text: Combat        36
+    href: '#h.ke0ii91zruax'
 - type: paragraph
   text: Action Economy 36
-  spans: []
+  spans:
+  - style: link_underline
+    text: Action Economy        36
+    href: '#h.asi9td9jud71'
 - type: paragraph
   text: Surprise 36
-  spans: []
+  spans:
+  - style: link_underline
+    text: Surprise        36
+    href: '#h.dp498idhz1dd'
 - type: paragraph
   text: Seizing the Initiative 37
-  spans: []
+  spans:
+  - style: link_underline
+    text: Seizing the Initiative        37
+    href: '#h.u1yl2u73cfdb'
 - type: paragraph
   text: Attacking 37
-  spans: []
+  spans:
+  - style: link_underline
+    text: Attacking        37
+    href: '#h.q18ktjfb933k'
 - type: paragraph
   text: Melee Combat 39
-  spans: []
+  spans:
+  - style: link_underline
+    text: Melee Combat        39
+    href: '#h.f779ug6za7o2'
 - type: paragraph
   text: Armour 41
-  spans: []
+  spans:
+  - style: link_underline
+    text: Armour        41
+    href: '#h.mdcy0mek9noq'
 - type: paragraph
   text: Combat actions 41
-  spans: []
+  spans:
+  - style: link_underline
+    text: Combat actions        41
+    href: '#h.h1vxsml5cxvo'
 - type: paragraph
   text: Ranges 45
-  spans: []
+  spans:
+  - style: link_underline
+    text: Ranges        45
+    href: '#h.hg05e3xl0jld'
 - type: paragraph
   text: Cover 46
-  spans: []
+  spans:
+  - style: link_underline
+    text: Cover        46
+    href: '#h.iveqgxlsisea'
 - type: paragraph
   text: Resting 47
-  spans: []
+  spans:
+  - style: link_underline
+    text: Resting        47
+    href: '#h.xojh30y54ngy'
 - type: paragraph
   text: Conditions 48
-  spans: []
+  spans:
+  - style: link_underline
+    text: Conditions        48
+    href: '#h.x7pl9qjpb3q7'
 - type: paragraph
   text: Grappled 48
-  spans: []
+  spans:
+  - style: link_underline
+    text: Grappled        48
+    href: '#h.8ocqzx8i6pyl'
 - type: paragraph
   text: Unconscious 48
-  spans: []
+  spans:
+  - style: link_underline
+    text: Unconscious        48
+    href: '#h.fj6stt4r144h'
 - type: paragraph
   text: Agonized (X) 48
-  spans: []
+  spans:
+  - style: link_underline
+    text: Agonized (X)        48
+    href: '#h.m0xnvh1ygr2p'
 - type: paragraph
   text: Asphyxiating 48
-  spans: []
+  spans:
+  - style: link_underline
+    text: Asphyxiating        48
+    href: '#h.dbbxz8i2mood'
 - type: paragraph
   text: Dying 48
-  spans: []
+  spans:
+  - style: link_underline
+    text: Dying        48
+    href: '#h.kih2cwvp5weu'
 - type: paragraph
   text: EMP (X) 49
-  spans: []
+  spans:
+  - style: link_underline
+    text: EMP (X)        49
+    href: '#h.pr5v7porf3q1'
 - type: paragraph
   text: Floating 49
-  spans: []
+  spans:
+  - style: link_underline
+    text: Floating        49
+    href: '#h.elio65uiy7q6'
 - type: paragraph
   text: Demoralized 49
-  spans: []
+  spans:
+  - style: link_underline
+    text: Demoralized        49
+    href: '#h.p7xo9pm49k9v'
 - type: paragraph
   text: Frightened 49
-  spans: []
+  spans:
+  - style: link_underline
+    text: Frightened        49
+    href: '#h.vezyculdkztd'
 - type: paragraph
   text: Fleeing 49
-  spans: []
+  spans:
+  - style: link_underline
+    text: Fleeing        49
+    href: '#h.ju3pufy1twg8'
 - type: paragraph
   text: Stunned 49
-  spans: []
+  spans:
+  - style: link_underline
+    text: Stunned        49
+    href: '#h.eb9fizqn2wc4'
 - type: paragraph
   text: Immobile 50
-  spans: []
+  spans:
+  - style: link_underline
+    text: Immobile        50
+    href: '#h.i4ndc4959ij'
 - type: paragraph
   text: Blinded 50
-  spans: []
+  spans:
+  - style: link_underline
+    text: Blinded        50
+    href: '#h.ydl52popm3kj'
 - type: paragraph
   text: Bleeding (X) 50
-  spans: []
+  spans:
+  - style: link_underline
+    text: Bleeding (X)        50
+    href: '#h.bxuyd85drjou'
 - type: paragraph
   text: Frenzied 50
-  spans: []
+  spans:
+  - style: link_underline
+    text: Frenzied        50
+    href: '#h.rm8belmo8fy3'
 - type: paragraph
   text: Sluggish 50
-  spans: []
+  spans:
+  - style: link_underline
+    text: Sluggish        50
+    href: '#h.cxd1shct379t'
 - type: paragraph
   text: Environments 50
-  spans: []
+  spans:
+  - style: link_underline
+    text: Environments        50
+    href: '#h.1wt7f2iimzmr'
 - type: paragraph
   text: Hard Vac 50
-  spans: []
+  spans:
+  - style: link_underline
+    text: Hard Vac        50
+    href: '#h.256zkcsqy18d'
 - type: paragraph
   text: Zero-G 50
-  spans: []
+  spans:
+  - style: link_underline
+    text: Zero-G        50
+    href: '#h.3vy1oc6w7vh3'
 - type: paragraph
   text: Hacking 51
-  spans: []
+  spans:
+  - style: link_underline
+    text: Hacking        51
+    href: '#h.qf4s9j52rd08'
 - type: paragraph
   text: 'Optional Rule: Simple Hacking 51'
-  spans: []
+  spans:
+  - style: link_underline
+    text: 'Optional Rule: Simple Hacking        51'
+    href: '#h.ht2dwn7sxgi7'
 - type: paragraph
   text: Hacking Sequence 52
-  spans: []
+  spans:
+  - style: link_underline
+    text: Hacking Sequence        52
+    href: '#h.iqnure6ffhsx'
 - type: paragraph
   text: Data Decryption 53
-  spans: []
+  spans:
+  - style: link_underline
+    text: Data Decryption        53
+    href: '#h.9r10s1nicd6j'
 - type: paragraph
   text: Character Progression 53
-  spans: []
+  spans:
+  - style: link_underline
+    text: Character Progression        53
+    href: '#h.8gg1q2fbj8hr'
 - type: paragraph
   text: Downtime 54
-  spans: []
+  spans:
+  - style: link_underline
+    text: Downtime        54
+    href: '#h.wz1xm5eohrx'
 - type: paragraph
   text: Exploration 54
-  spans: []
+  spans:
+  - style: link_underline
+    text: Exploration        54
+    href: '#h.f89x5yrfplzp'
 - type: paragraph
   text: Equipment & Gear 54
-  spans: []
+  spans:
+  - style: link_underline
+    text: Equipment & Gear        54
+    href: '#h.eimfcd6soqs3'
 - type: paragraph
   text: The Right Tool for the Job 54
-  spans: []
+  spans:
+  - style: link_underline
+    text: The Right Tool for the Job        54
+    href: '#h.uc50s3wxpu11'
 - type: paragraph
   text: Salvaging 54
-  spans: []
+  spans:
+  - style: link_underline
+    text: Salvaging        54
+    href: '#h.jwmgsapzr57x'
 - type: paragraph
   text: Crafting 54
-  spans: []
+  spans:
+  - style: link_underline
+    text: Crafting        54
+    href: '#h.c5js9j6i7gb4'
 - type: paragraph
   text: Repair and Modification 54
-  spans: []
+  spans:
+  - style: link_underline
+    text: Repair and Modification        54
+    href: '#h.abk2uesvorh9'
 - type: paragraph
   text: Gear List 56
-  spans: []
+  spans:
+  - style: link_underline
+    text: Gear List        56
+    href: '#h.naqfz3pqitdo'
 - type: paragraph
   text: Hacking Equipment 68
-  spans: []
+  spans:
+  - style: link_underline
+    text: Hacking Equipment        68
+    href: '#h.8sz53nn9eap3'
 - type: paragraph
   text: Robots 69
-  spans: []
+  spans:
+  - style: link_underline
+    text: Robots        69
+    href: '#h.k6v70jc1hevo'
 - type: paragraph
   text: Starships 70
-  spans: []
+  spans:
+  - style: link_underline
+    text: Starships        70
+    href: '#h.j4z9128d8hx4'
 - type: paragraph
   text: Ship Movement 70
-  spans: []
+  spans:
+  - style: link_underline
+    text: Ship Movement        70
+    href: '#h.n2lkhfvrgyq9'
 - type: paragraph
   text: Basic Functions (Every Ship Has These) 72
-  spans: []
+  spans:
+  - style: link_underline
+    text: Basic Functions (Every Ship Has These)        72
+    href: '#h.e87ym8o510uv'
 - type: paragraph
   text: Stock Ship Models 72
-  spans: []
+  spans:
+  - style: link_underline
+    text: Stock Ship Models        72
+    href: '#h.9paijrh6p22l'
 - type: paragraph
   text: Building Your Own Ships 72
-  spans: []
+  spans:
+  - style: link_underline
+    text: Building Your Own Ships        72
+    href: '#h.70rde87pnwkx'
 - type: paragraph
   text: Modules 75
-  spans: []
+  spans:
+  - style: link_underline
+    text: Modules        75
+    href: '#h.1xtbbe21985c'
 - type: paragraph
   text: Empaths 80
-  spans: []
+  spans:
+  - style: link_underline
+    text: Empaths        80
+    href: '#h.t9ihe8x3yikw'
 - type: paragraph
   text: Using Empathy 81
-  spans: []
+  spans:
+  - style: link_underline
+    text: Using Empathy        81
+    href: '#h.ggdop4wja2ey'
 - type: paragraph
   text: Empathic Paths 81
-  spans: []
+  spans:
+  - style: link_underline
+    text: Empathic Paths        81
+    href: '#h.bgqx4bwe9ae6'
 - type: paragraph
   text: Empathic Abilities 82
-  spans: []
+  spans:
+  - style: link_underline
+    text: Empathic Abilities        82
+    href: '#h.6y40cli9uz99'
 - type: paragraph
   text: Empaths and Machines 83
-  spans: []
+  spans:
+  - style: link_underline
+    text: Empaths and Machines        83
+    href: '#h.f6282xf3srkg'
 - type: paragraph
   text: Nanomancy 83
-  spans: []
+  spans:
+  - style: link_underline
+    text: Nanomancy        83
+    href: '#h.uyhw9pslfymy'
 - type: paragraph
   text: Nanite Density 84
-  spans: []
+  spans:
+  - style: link_underline
+    text: Nanite Density        84
+    href: '#h.pmttk177ept2'
 - type: paragraph
   text: Using Nanomancy 85
-  spans: []
+  spans:
+  - style: link_underline
+    text: Using Nanomancy        85
+    href: '#h.85ik1c61glei'
 - type: paragraph
   text: Fine Control 88
-  spans: []
+  spans:
+  - style: link_underline
+    text: Fine Control        88
+    href: '#h.f2uesk2wjsg7'
 - type: paragraph
   text: Stress is Both Cost and Fuel 88
-  spans: []
+  spans:
+  - style: link_underline
+    text: Stress is Both Cost and Fuel        88
+    href: '#h.w50l8prr8d91'
 - type: paragraph
   text: The World 89
-  spans: []
+  spans:
+  - style: link_underline
+    text: The World        89
+    href: '#h.6eq5v7qnjozh'
 - type: paragraph
   text: The Halcyon Empire 89
-  spans: []
+  spans:
+  - style: link_underline
+    text: The Halcyon Empire        89
+    href: '#h.g8yb49yyrf1n'
 - type: paragraph
   text: The Shatterbelt 89
-  spans: []
+  spans:
+  - style: link_underline
+    text: The Shatterbelt        89
+    href: '#h.lomhrku9ipvp'
 - type: paragraph
   text: Whisperspace & The Anchorate 89
-  spans: []
+  spans:
+  - style: link_underline
+    text: Whisperspace & The Anchorate        89
+    href: '#h.3ajhewclgd7s'
 - type: paragraph
   text: The Mega-Corporations 90
-  spans: []
+  spans:
+  - style: link_underline
+    text: The Mega-Corporations        90
+    href: '#h.9rw0i0rvbt3d'
 - type: paragraph
   text: Whisper Cults 91
-  spans: []
+  spans:
+  - style: link_underline
+    text: Whisper Cults        91
+    href: '#h.7xt1wlw3fgq3'
 - type: paragraph
   text: The New Dawn 92
-  spans: []
+  spans:
+  - style: link_underline
+    text: The New Dawn        92
+    href: '#h.xexr5txu6lyr'
 - type: paragraph
   text: Kael’s Remnant 92
-  spans: []
+  spans:
+  - style: link_underline
+    text: Kael’s Remnant        92
+    href: '#h.tmbpd7ensgx3'
 - type: paragraph
   text: The Black Suns 93
-  spans: []
+  spans:
+  - style: link_underline
+    text: The Black Suns        93
+    href: '#h.20h7a2w6rc9d'
 - type: paragraph
   text: Nanites, Sensitives, and Nanomancy 93
-  spans: []
+  spans:
+  - style: link_underline
+    text: Nanites, Sensitives, and Nanomancy        93
+    href: '#h.12ggy18kfvcd'
 - type: paragraph
   text: Empaths 95
-  spans: []
+  spans:
+  - style: link_underline
+    text: Empaths        95
+    href: '#h.wknclqjk8qbz'
 sections: []

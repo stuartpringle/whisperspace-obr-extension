@@ -45,7 +45,10 @@ sections:
   - type: paragraph
     text: External conditions — like cover, lighting, distance, or equipment quality
       — affect the Difficulty Class (DC) you’re rolling against.
-    spans: []
+    spans:
+    - style: link_underline
+      text: Difficulty Class (DC)
+      href: '#h.s9t0v7gc8t07'
   - type: paragraph
     text: 'Here’s how it breaks down:'
     spans: []
@@ -60,7 +63,10 @@ sections:
     - text: Skill level adds directly to the roll
       spans: []
     - text: Tactical choices may grant Bonus Dice
-      spans: []
+      spans:
+      - style: link_underline
+        text: Bonus Dice
+        href: '#h.60k6r7lbapjp'
     - text: Traits, archetype features, or cybernetic boosts also apply here
       spans: []
   - type: list

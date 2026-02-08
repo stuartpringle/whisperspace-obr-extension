@@ -16,7 +16,11 @@ sections:
       the wall. Do I succeed?’), then you can think of this core mechanic as the GM’s
       way of answering that question (‘Roll 1d12 and add your athletics skill to it.
       If you get at least 8, you succeed climbing the wall’).
-    spans: []
+    spans:
+    - style: italic
+      text: desire
+    - style: italic
+      text: question
   - type: paragraph
     text: Want to fly a spaceship? Negotiate with terrorists? Shoot someone with a
       photon rifle? You’ll be rolling D12s and adding your skill modifiers for each
@@ -87,70 +91,6 @@ sections:
       - text: Throwing a glass of milk and getting all the milk back into its carton
           without spilling any
         spans: []
-  - type: paragraph
-    text: Task Difficulty
-    spans: []
-  - type: paragraph
-    text: Difficulty Class (DC)
-    spans: []
-  - type: paragraph
-    text: Description
-    spans: []
-  - type: paragraph
-    text: Trivial
-    spans: []
-  - type: paragraph
-    text: '4'
-    spans: []
-  - type: paragraph
-    text: Finding milk in a fridge
-    spans: []
-  - type: paragraph
-    text: Easy
-    spans: []
-  - type: paragraph
-    text: '6'
-    spans: []
-  - type: paragraph
-    text: Pouring milk into a glass
-    spans: []
-  - type: paragraph
-    text: Standard
-    spans: []
-  - type: paragraph
-    text: '9'
-    spans: []
-  - type: paragraph
-    text: Hitting a dartboard with a glass of milk
-    spans: []
-  - type: paragraph
-    text: Challenging
-    spans: []
-  - type: paragraph
-    text: '12'
-    spans: []
-  - type: paragraph
-    text: Flying a spaceship while drinking a glass of milk
-    spans: []
-  - type: paragraph
-    text: Extreme
-    spans: []
-  - type: paragraph
-    text: '15'
-    spans: []
-  - type: paragraph
-    text: Climbing a slippery wall while drinking a glass of milk
-    spans: []
-  - type: paragraph
-    text: Improbable
-    spans: []
-  - type: paragraph
-    text: '18'
-    spans: []
-  - type: paragraph
-    text: Throwing a glass of milk and getting all the milk back into its carton without
-      spilling any
-    spans: []
   sections:
   - title: Degrees of Success and Failure
     slug: degrees-of-success-and-failure
@@ -194,36 +134,6 @@ sections:
           spans: []
         - text: Extreme Failure
           spans: []
-    - type: paragraph
-      text: Result vs DC
-      spans: []
-    - type: paragraph
-      text: Outcome
-      spans: []
-    - type: paragraph
-      text: Success by 0-3
-      spans: []
-    - type: paragraph
-      text: Success
-      spans: []
-    - type: paragraph
-      text: Success by 4+
-      spans: []
-    - type: paragraph
-      text: Extreme Success
-      spans: []
-    - type: paragraph
-      text: Fail by 0-3
-      spans: []
-    - type: paragraph
-      text: Failure
-      spans: []
-    - type: paragraph
-      text: Fail by 4+
-      spans: []
-    - type: paragraph
-      text: Extreme Failure
-      spans: []
     sections: []
 - title: Bonus Dice and Penalty Dice
   slug: bonus-dice-and-penalty-dice

@@ -26,28 +26,4 @@ content:
       spans: []
     - text: 1-2
       spans: []
-- type: paragraph
-  text: Progression Rate
-  spans: []
-- type: paragraph
-  text: SP after session
-  spans: []
-- type: paragraph
-  text: Quick
-  spans: []
-- type: paragraph
-  text: 5-10
-  spans: []
-- type: paragraph
-  text: Normal
-  spans: []
-- type: paragraph
-  text: 3-5
-  spans: []
-- type: paragraph
-  text: Slow
-  spans: []
-- type: paragraph
-  text: 1-2
-  spans: []
 sections: []

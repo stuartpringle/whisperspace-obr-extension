@@ -4,5 +4,8 @@ level: 1
 content:
 - type: paragraph
   text: Outside of Downtime, resting
-  spans: []
+  spans:
+  - style: link_underline
+    text: Downtime
+    href: '#h.wz1xm5eohrx'
 sections: []

@@ -35,197 +35,6 @@ sections:
       well.
     spans: []
   - type: paragraph
-    text: Backgrounds
-    spans: []
-  - type: paragraph
-    text: D10 roll
-    spans: []
-  - type: paragraph
-    text: Background
-    spans: []
-  - type: paragraph
-    text: Description
-    spans: []
-  - type: paragraph
-    text: '1'
-    spans: []
-  - type: paragraph
-    text: Station Rat
-    spans: []
-  - type: paragraph
-    text: Grew up in the unwelcoming back-alleys of a space station fending for yourself.
-    spans: []
-  - type: paragraph
-    text: '2'
-    spans: []
-  - type: paragraph
-    text: Colony Survivor
-    spans: []
-  - type: paragraph
-    text: The settlement didn’t make it. You did.
-    spans: []
-  - type: paragraph
-    text: '3'
-    spans: []
-  - type: paragraph
-    text: Salvager
-    spans: []
-  - type: paragraph
-    text: Raised in the guts of derelict ships, you learned how to chop them up and
-      sell them for parts pretty quickly. You had to.
-    spans: []
-  - type: paragraph
-    text: '4'
-    spans: []
-  - type: paragraph
-    text: Military Academy
-    spans: []
-  - type: paragraph
-    text: Drop out, wash out, or burn out; however you slice it you were in the academy
-      and now you’re not.
-    spans: []
-  - type: paragraph
-    text: '5'
-    spans: []
-  - type: paragraph
-    text: Corporate Trainee
-    spans: []
-  - type: paragraph
-    text: Everyone starts on the lowest rung of the corporate ladder. You just never
-      got the chance to get any higher.
-    spans: []
-  - type: paragraph
-    text: '6'
-    spans: []
-  - type: paragraph
-    text: Wealthy Family
-    spans: []
-  - type: paragraph
-    text: Life handed you most things on a silver platter. You said you wanted to
-      make your own way in the world - now look at you. Would your parents even recognize
-      you?
-    spans: []
-  - type: paragraph
-    text: '7'
-    spans: []
-  - type: paragraph
-    text: Science Academy
-    spans: []
-  - type: paragraph
-    text: How things work is fascinating. Like how someone with your obvious intellect
-      and skill could be kicked out of the science academy - you find that fascinating
-      indeed.
-    spans: []
-  - type: paragraph
-    text: '8'
-    spans: []
-  - type: paragraph
-    text: Illegal Clone
-    spans: []
-  - type: paragraph
-    text: Somewhere between the lab cell and the bio-recycling chamber, you got free.
-    spans: []
-  - type: paragraph
-    text: '9'
-    spans: []
-  - type: paragraph
-    text: Criminal
-    spans: []
-  - type: paragraph
-    text: A life of crime may have led you here, but where you go next is up to you.
-    spans: []
-  - type: paragraph
-    text: '10'
-    spans: []
-  - type: paragraph
-    text: Orphan
-    spans: []
-  - type: paragraph
-    text: You’ve been alone all your life. What’s it like to work with others? To
-      find a family?
-    spans: []
-  - type: paragraph
-    text: Motivations
-    spans: []
-  - type: paragraph
-    text: D12 roll
-    spans: []
-  - type: paragraph
-    text: Motivation
-    spans: []
-  - type: paragraph
-    text: '1'
-    spans: []
-  - type: paragraph
-    text: Redemption
-    spans: []
-  - type: paragraph
-    text: '2'
-    spans: []
-  - type: paragraph
-    text: Revenge
-    spans: []
-  - type: paragraph
-    text: '3'
-    spans: []
-  - type: paragraph
-    text: Thrill-Seeking
-    spans: []
-  - type: paragraph
-    text: '4'
-    spans: []
-  - type: paragraph
-    text: Duty
-    spans: []
-  - type: paragraph
-    text: '5'
-    spans: []
-  - type: paragraph
-    text: Debt
-    spans: []
-  - type: paragraph
-    text: '6'
-    spans: []
-  - type: paragraph
-    text: Greed
-    spans: []
-  - type: paragraph
-    text: '7'
-    spans: []
-  - type: paragraph
-    text: Freedom
-    spans: []
-  - type: paragraph
-    text: '8'
-    spans: []
-  - type: paragraph
-    text: Guilt
-    spans: []
-  - type: paragraph
-    text: '9'
-    spans: []
-  - type: paragraph
-    text: Fame
-    spans: []
-  - type: paragraph
-    text: '10'
-    spans: []
-  - type: paragraph
-    text: Love
-    spans: []
-  - type: paragraph
-    text: '11'
-    spans: []
-  - type: paragraph
-    text: Faith
-    spans: []
-  - type: paragraph
-    text: '12'
-    spans: []
-  - type: paragraph
-    text: Roll twice (rerolling 12s) for a complex motivation
-    spans: []
-  - type: paragraph
     text: 'Is your character chasing down someone who wronged her? Fleeing the scene
       of a crime? Searching for something intangible she knows she won’t find trapped
       on her home planet? Whatever your character wants, what drives them day by day:
@@ -241,7 +50,10 @@ sections:
       are curated collections of feats designed to evoke a particular feel or expression
       of play. The full list of Archetypes and Feats may be found in the Archetypes
       and Feats section.
-    spans: []
+    spans:
+    - style: link_underline
+      text: Archetypes and Feats
+      href: '#h.s7nodu1xbbh2'
   sections: []
 - title: 4. Choose a Learning Focus
   slug: 4-choose-a-learning-focus
@@ -251,7 +63,9 @@ sections:
     text: Your learning focus determines what your character has trained for, studied
       for, or worked on over time. Skills under a Learning Focus are sometimes referred
       to as learned skills.
-    spans: []
+    spans:
+    - style: italic
+      text: learned skills
   - type: list
     ordered: true
     items:
@@ -268,7 +82,10 @@ sections:
   - type: paragraph
     text: The full list of Learning Focus Skills may be found in the next section,
       Attributes and Skills.
-    spans: []
+    spans:
+    - style: link_underline
+      text: Attributes and Skills
+      href: '#h.b0ee9ei2egsx'
   sections: []
 - title: 5. Spend Skill Points (SP)
   slug: 5-spend-skill-points-sp
@@ -299,30 +116,6 @@ sections:
         spans: []
       - text: Expert
         spans: []
-  - type: paragraph
-    text: Skill Level
-    spans: []
-  - type: paragraph
-    text: Proficiency
-    spans: []
-  - type: paragraph
-    text: 0-1
-    spans: []
-  - type: paragraph
-    text: Untrained
-    spans: []
-  - type: paragraph
-    text: 2-3
-    spans: []
-  - type: paragraph
-    text: Proficient
-    spans: []
-  - type: paragraph
-    text: 4-5
-    spans: []
-  - type: paragraph
-    text: Expert
-    spans: []
   - type: paragraph
     text: Each level of a skill costs its own number of skill points. So level 1 in
       a skill costs 1 skill point to get, while level 2 costs 2 skill points, and
@@ -360,49 +153,16 @@ sections:
       - text: '15'
         spans: []
   - type: paragraph
-    text: Skill Level
-    spans: []
-  - type: paragraph
-    text: Total Skill Point cost (cumulative)
-    spans: []
-  - type: paragraph
-    text: '1'
-    spans: []
-  - type: paragraph
-    text: '1'
-    spans: []
-  - type: paragraph
-    text: '2'
-    spans: []
-  - type: paragraph
-    text: '3'
-    spans: []
-  - type: paragraph
-    text: '3'
-    spans: []
-  - type: paragraph
-    text: '6'
-    spans: []
-  - type: paragraph
-    text: '4'
-    spans: []
-  - type: paragraph
-    text: '10'
-    spans: []
-  - type: paragraph
-    text: '5'
-    spans: []
-  - type: paragraph
-    text: '15'
-    spans: []
-  - type: paragraph
     text: If you already have level 2 in a skill and want to advance to level 3, it
       would cost 3 Skill Points.
     spans: []
   - type: paragraph
     text: The full list of Skills may be found in the Attributes and Skills section
       below.
-    spans: []
+    spans:
+    - style: link_underline
+      text: Attributes and Skills
+      href: '#h.b0ee9ei2egsx'
   sections: []
 - title: 6. Attribute Calculation
   slug: 6-attribute-calculation
@@ -435,7 +195,10 @@ sections:
   - type: paragraph
     text: You may use your credits to purchase items before play begins, at your GM’s
       discretion. You may find a list of items under the Equipment & Gear section
-    spans: []
+    spans:
+    - style: link_underline
+      text: Equipment & Gear
+      href: '#h.eimfcd6soqs3'
   sections: []
 - title: 8 . Final Steps
   slug: 8-final-steps
@@ -504,13 +267,25 @@ sections:
     ordered: false
     items:
     - text: Core Mechanics
-      spans: []
+      spans:
+      - style: link_underline
+        text: Core Mechanics
+        href: '#h.7dr5iojxah68'
     - text: Stress
-      spans: []
+      spans:
+      - style: link_underline
+        text: Stress
+        href: '#h.6tobyshwmdj4'
     - text: Wounds
-      spans: []
+      spans:
+      - style: link_underline
+        text: Wounds
+        href: '#h.7xpn2fplrs1y'
     - text: Combat
-      spans: []
+      spans:
+      - style: link_underline
+        text: Combat
+        href: '#h.ke0ii91zruax'
   - type: paragraph
     text: These cover the very basics of playing Whisperspace.
     spans: []

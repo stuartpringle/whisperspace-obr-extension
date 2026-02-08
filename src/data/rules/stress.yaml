@@ -51,30 +51,6 @@ sections:
         spans: []
       - text: '+4'
         spans: []
-  - type: paragraph
-    text: Wound Severity
-    spans: []
-  - type: paragraph
-    text: Stress Increase
-    spans: []
-  - type: paragraph
-    text: Light
-    spans: []
-  - type: paragraph
-    text: '+1'
-    spans: []
-  - type: paragraph
-    text: Moderate
-    spans: []
-  - type: paragraph
-    text: '+2'
-    spans: []
-  - type: paragraph
-    text: Heavy
-    spans: []
-  - type: paragraph
-    text: '+4'
-    spans: []
   sections: []
 - title: Stress Penalties
   slug: stress-penalties
@@ -110,9 +86,14 @@ sections:
     items:
     - text: 'Success: her stress is reduced to 5 and she may apply an Indomitable
         effect to herself (see below).'
-      spans: []
+      spans:
+      - style: italic
+        text: Indomitable
     - text: 'Failure: she suffers the stress as normal and enters into PTSD range.'
-      spans: []
+      spans:
+      - style: link_underline
+        text: PTSD range
+        href: '#h.rwq11029f7qx'
   - type: paragraph
     text: If a character fails a Crucible Test, she may choose to spend one point
       of her Cool Under Fire attribute (reducing that attribute’s level by 1 permanently)
@@ -159,40 +140,6 @@ sections:
     - text: Succeeds with an Extreme Success only when roll exceeds DC by 6+ (rather
         than 4+)
       spans: []
-  - type: paragraph
-    text: PTSD Reaction Table
-    spans: []
-  - type: paragraph
-    text: 1d4 roll
-    spans: []
-  - type: paragraph
-    text: Result
-    spans: []
-  - type: paragraph
-    text: '1'
-    spans: []
-  - type: paragraph
-    text: Freeze (lose 1 action. If it is not your turn, then instead lose 1 action
-      on your next turn)
-    spans: []
-  - type: paragraph
-    text: '2'
-    spans: []
-  - type: paragraph
-    text: Cower (receive Fleeing (1) condition)
-    spans: []
-  - type: paragraph
-    text: '3'
-    spans: []
-  - type: paragraph
-    text: Push Through (no effect)
-    spans: []
-  - type: paragraph
-    text: '4'
-    spans: []
-  - type: paragraph
-    text: Push Through (no effect)
-    spans: []
   sections: []
 - title: Stress Breakdowns
   slug: stress-breakdowns
@@ -202,54 +149,6 @@ sections:
     text: A character reaching her maximum stress level means she suffers a break
       of some sort (rolled on the table below or defined by the GM). This can range
       from a temporary effect to a permanent, character-altering one.
-    spans: []
-  - type: paragraph
-    text: Stress Breakdown Effects
-    spans: []
-  - type: paragraph
-    text: Roll (1d4)
-    spans: []
-  - type: paragraph
-    text: Effect
-    spans: []
-  - type: paragraph
-    text: Description
-    spans: []
-  - type: paragraph
-    text: '1'
-    spans: []
-  - type: paragraph
-    text: Freeze up
-    spans: []
-  - type: paragraph
-    text: Mind blanks. Cannot act for 1 minute.
-    spans: []
-  - type: paragraph
-    text: '2'
-    spans: []
-  - type: paragraph
-    text: Collapse
-    spans: []
-  - type: paragraph
-    text: Falls unconscious from strain
-    spans: []
-  - type: paragraph
-    text: '3'
-    spans: []
-  - type: paragraph
-    text: Panic
-    spans: []
-  - type: paragraph
-    text: Flee for 1d6 rounds
-    spans: []
-  - type: paragraph
-    text: '4'
-    spans: []
-  - type: paragraph
-    text: Mental Scar
-    spans: []
-  - type: paragraph
-    text: Gain a permanent fear or phobia (GM’s discretion)
     spans: []
   sections: []
 - title: Reducing Stress
@@ -304,7 +203,10 @@ sections:
       text: Medication may help some come down from PTSD range, however there are
         always side effects. Stress-reducing medication may be found in the Equipment
         & Gear section.
-      spans: []
+      spans:
+      - style: link_underline
+        text: Equipment & Gear
+        href: '#h.eimfcd6soqs3'
     sections: []
   - title: Pep Talk
     slug: pep-talk

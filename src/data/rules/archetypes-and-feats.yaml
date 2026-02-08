@@ -8,7 +8,13 @@ content:
     Scientist, and Soldier. In Whisperspace, an archetype is defined as a character
     path that has prerequisite skills or attributes and which provides your character
     with definition thematically and an additional set of skills to gain levels in.'
-  spans: []
+  spans:
+  - style: italic
+    text: 'Alien, '
+  - style: italic
+    text: 'Stargate: Atlantis'
+  - style: italic
+    text: The Expanse
 - type: paragraph
   text: A character may have no archetype and choose feats freely. Pick one feat :O
   spans: []
@@ -157,7 +163,13 @@ content:
       spans: []
     - text: Increase Cool Under Fire by +1. Additionally, once per turn you may ignore
         penalty dice from Suppressing Fire.
-      spans: []
+      spans:
+      - style: link_underline
+        text: Cool Under Fire
+        href: '#h.ik4eu1atnfyb'
+      - style: link_underline
+        text: Suppressing Fire
+        href: '#h.h1vxsml5cxvo'
   - - text: Conviction
       spans: []
     - text: Imperial Bearing
@@ -179,7 +191,10 @@ content:
         an action to make a Bearing (DC8 + target’s Willpower) check with +1 bonus
         die.Success: the target suffers +2 stress. Extreme success: the target also
         gains the Fleeing condition.'
-      spans: []
+      spans:
+      - style: link_underline
+        text: Fleeing
+        href: '#h.ju3pufy1twg8'
   - - text: ''
       spans: []
     - text: Fanatical Devotion
@@ -188,7 +203,10 @@ content:
       spans: []
     - text: Attempts to intimidate or scare you are made with +1 penalty die; additionally,
         you are immune to being Demoralized.
-      spans: []
+      spans:
+      - style: link_underline
+        text: Demoralized
+        href: '#h.p7xo9pm49k9v'
   - - text: ''
       spans: []
     - text: Proselytize
@@ -234,7 +252,10 @@ content:
     - text: ''
       spans: []
     - text: Gain access to all Reader Empathic Abilities
-      spans: []
+      spans:
+      - style: link_underline
+        text: Empathic Abilities
+        href: '#h.6y40cli9uz99'
   - - text: ''
       spans: []
     - text: Pusher
@@ -242,7 +263,10 @@ content:
     - text: ''
       spans: []
     - text: Gain access to all Pusher Empathic Abilities
-      spans: []
+      spans:
+      - style: link_underline
+        text: Empathic Abilities
+        href: '#h.6y40cli9uz99'
   - - text: ''
       spans: []
     - text: Vessel
@@ -250,7 +274,10 @@ content:
     - text: ''
       spans: []
     - text: Gain access to all Vessel Empathic Abilities
-      spans: []
+      spans:
+      - style: link_underline
+        text: Empathic Abilities
+        href: '#h.6y40cli9uz99'
   - - text: Firearms
       spans: []
     - text: Quick Draw
@@ -320,7 +347,10 @@ content:
       spans: []
     - text: Use 1 action to attempt a repair check (ignoring normal time constraints);
         imposes +1 penalty die on the check and uses double materials.
-      spans: []
+      spans:
+      - style: link_underline
+        text: repair check
+        href: '#h.abk2uesvorh9'
   - - text: ''
       spans: []
     - text: Craft
@@ -429,7 +459,10 @@ content:
     - text: Your body and mind have become attuned to the presence of nanites. In
         locations with high nanite density (2+), you may reroll up to three failed
         checks per day.
-      spans: []
+      spans:
+      - style: link_underline
+        text: nanite density
+        href: '#h.pmttk177ept2'
   - - text: ''
       spans: []
     - text: Nanomancy
@@ -439,7 +472,10 @@ content:
     - text: Choose a Nanomancy Field; pick one Nanomantic Effect from your field and
         one from another field. You may use those effects. You may select this feat
         more than once.
-      spans: []
+      spans:
+      - style: link_underline
+        text: Nanomancy Field
+        href: '#h.vqto8knm87g4'
   - - text: ''
       spans: []
     - text: Nanite Field
@@ -449,7 +485,10 @@ content:
     - text: You may spend an hour in a location with Nanite density 2 or more. For
         the next day, the area around you (medium range and closer) cannot have a
         nanite density lower than 1.
-      spans: []
+      spans:
+      - style: link_underline
+        text: Nanite density
+        href: '#h.pmttk177ept2'
   - - text: Social
       spans: []
     - text: ''
@@ -563,451 +602,14 @@ content:
       spans: []
     - text: ''
       spans: []
-- type: paragraph
-  text: Category
-  spans: []
-- type: paragraph
-  text: Feat name
-  spans: []
-- type: paragraph
-  text: Req.
-  spans: []
-- type: paragraph
-  text: Description
-  spans: []
-- type: paragraph
-  text: Assassin
-  spans: []
-- type: paragraph
-  text: Path Through Shadow
-  spans: []
-- type: paragraph
-  text: You have been well trained in the subtle arts of camouflage and stealth. While
-    moving through dark or obscured areas, gain +1 bonus die to stealth checks. Darkness
-    and shadows around you count as partial cover for you.
-  spans: []
-- type: paragraph
-  text: You’re Next
-  spans: []
-- type: paragraph
-  text: When you incapacitate or kill a target, you may immediately force another
-    target (who can both see and be seen by you) to make a Willpower roll (DC5 + your
-    REF or Bearing). On a failure, the target suffers +1 stress and the Frightened
-    condition. On an extreme failure, the target suffers +3 stress and the Fleeing
-    condition.
-  spans: []
-- type: paragraph
-  text: Shadow Strike
-  spans: []
-- type: paragraph
-  text: Your first successful melee attack against a Surprised enemy is made with
-    +1 bonus die. If you hit with an extreme success, your attack gains Piercing 2
-    (stacks with other sources of Piercing)
-  spans: []
-- type: paragraph
-  text: Battlefield
-  spans: []
-- type: paragraph
-  text: Dual Wielding
-  spans: []
-- type: paragraph
-  text: When you successfully make an attack roll with your main hand weapon, you
-    may immediately make an attack roll with a Light weapon held in your off hand
-    as a free action. This attack counts as part of your main hand weapon attack for
-    the purposes of counting number of attacks per turn, however it suffers all penalty
-    dice from the main hand weapon attack roll (if there were any), and additionally
-    suffers +1 penalty die.
-  spans: []
-- type: paragraph
-  text: Storm of Bullets
-  spans: []
-- type: paragraph
-  text: When you or an ally within Very Near distance from you is attacked, you may
-    spend a reaction to attack back, assuming you are within range and can see the
-    attacker.
-  spans: []
-- type: paragraph
-  text: Dance of Death
-  spans: []
-- type: paragraph
-  text: 'Whenever you make a successful roll in combat, you may choose to gain +1
-    bonus die on your next roll and suffer +1 stress. This effect stacks: if you succeed
-    your next roll, you may choose to gain +2 bonus dice and suffer +1 stress. This
-    stacking effect resets at the start of your next turn or when you fail a roll
-    (stress gained does not reset).'
-  spans: []
-- type: paragraph
-  text: Close Quarters
-  spans: []
-- type: paragraph
-  text: Way of the Readied Blade
-  spans: []
-- type: paragraph
-  text: You appear calm, but there is a sense of readiness about you, as though you
-    are waiting for something. You may spend 1 action to gain +1 bonus die to Bearing
-    rolls. Every round of combat, instead of gaining 1 reaction, you gain reactions
-    equal to your REF (minimum 1)
-  spans: []
-- type: paragraph
-  text: Lethal Precision
-  spans: []
-- type: paragraph
-  text: After you successfully Dodge or Parry a melee attack, you may immediately
-    attack back as a reaction. If this attack is successful, it is considered an extreme
-    success.
-  spans: []
-- type: paragraph
-  text: Way of the Dancing Blade
-  spans: []
-- type: paragraph
-  text: Your body is used to constant, fluid motion. You may spend 1 action to gain
-    +1 bonus die to Balance checks. After you kill or incapacitate an enemy using
-    a Melee (weapons) or Melee (unarmed) attack, you gain +1 action you may use immediately.
-  spans: []
-- type: paragraph
-  text: Strike With Conviction
-  spans: []
-- type: paragraph
-  text: 'When you hit an enemy with a melee attack, you may: suffer +1 stress & upgrade
-    the attack to an extreme success'
-  spans: []
-- type: paragraph
-  text: Defence
-  spans: []
-- type: paragraph
-  text: Indomitable Spirit / Mind of Steel
-  spans: []
-- type: paragraph
-  text: 'Spend 2 reactions to gain one of the following benefits: Until the end of
-    your next turn, reduce each instance of incoming damage by 1 wound. Until the
-    end of your next turn, reduce each instance of incoming stress by 1.'
-  spans: []
-- type: paragraph
-  text: Hold the Line
-  spans: []
-- type: paragraph
-  text: If you and at least one ally are in Melee range of each other, you both gain
-    +1 bonus die to your Dodge and Parry reactions.
-  spans: []
-- type: paragraph
-  text: Military Discipline
-  spans: []
-- type: paragraph
-  text: Increase Cool Under Fire by +1. Additionally, once per turn you may ignore
-    penalty dice from Suppressing Fire.
-  spans: []
-- type: paragraph
-  text: Conviction
-  spans: []
-- type: paragraph
-  text: Imperial Bearing
-  spans: []
-- type: paragraph
-  text: Enemies within melee range of you must make a Cool Under Fire check (DC5 +
-    your Bearing) at the start of their turns. On a success, they ignore your Daunting
-    Presence for the remainder of combat. On a failure, they suffer +1 penalty die
-    to all attacks until their next turn.
-  spans: []
-- type: paragraph
-  text: Daunting Approach
-  spans: []
-- type: paragraph
-  text: When moving toward an enemy (Very Near range or closer), you may use an action
-    to make a Bearing (DC8 + target’s Willpower) check with +1 bonus die.
-  spans: []
 - type: list
   ordered: false
   items:
   - text: 'Success: the target suffers +2 stress.'
     spans: []
   - text: 'Extreme success: the target also gains the Fleeing condition.'
-    spans: []
-- type: paragraph
-  text: Fanatical Devotion
-  spans: []
-- type: paragraph
-  text: Attempts to intimidate or scare you are made with +1 penalty die; additionally,
-    you are immune to being Demoralized.
-  spans: []
-- type: paragraph
-  text: Proselytize
-  spans: []
-- type: paragraph
-  text: This one is descript
-  spans: []
-- type: paragraph
-  text: Cyberware
-  spans: []
-- type: paragraph
-  text: Way of the Machine Fist
-  spans: []
-- type: paragraph
-  text: Cybernetic enhancements are more than a physical reality to you; they are
-    something you have spent hours feeling, thinking about, and accepting as part
-    of who you are. Gain +1 bonus die to Cybernetics checks. If you are wearing at
-    least 1 piece of cyberware, your attacks with Melee (weapon) weapons gain +1 bonus
-    die.
-  spans: []
-- type: paragraph
-  text: Synthetic Horror
-  spans: []
-- type: paragraph
-  text: While wearing at least 1 piece of visible cyberware, gain +1 bonus die to
-    Bearing checks made to intimidate.
-  spans: []
-- type: paragraph
-  text: Cybernetic Bridge
-  spans: []
-- type: paragraph
-  text: You may interface with nanites within your body the same way you would cyberware;
-    you are immune to Nanomancy effects requiring contact.
-  spans: []
-- type: paragraph
-  text: Empathy
-  spans: []
-- type: paragraph
-  text: Reader
-  spans: []
-- type: paragraph
-  text: Gain access to all Reader Empathic Abilities
-  spans: []
-- type: paragraph
-  text: Pusher
-  spans: []
-- type: paragraph
-  text: Gain access to all Pusher Empathic Abilities
-  spans: []
-- type: paragraph
-  text: Vessel
-  spans: []
-- type: paragraph
-  text: Gain access to all Vessel Empathic Abilities
-  spans: []
-- type: paragraph
-  text: Firearms
-  spans: []
-- type: paragraph
-  text: Quick Draw
-  spans: []
-- type: paragraph
-  text: Gain +1 bonus die on Initiative (REF) rolls. If you use Quick Draw before
-    combat is declared, you get one turn to act before Initiative is rolled. You may
-    draw a Light weapon as a free action.
-  spans: []
-- type: paragraph
-  text: Ricochet
-  spans: []
-- type: paragraph
-  text: You may reroll a missed attack roll once per turn. This reroll includes all
-    bonus and penalty dice from the original roll.
-  spans: []
-- type: paragraph
-  text: Duelist’s Die
-  spans: []
-- type: paragraph
-  text: Whenever you roll an attack, roll 1d6 at the same time. If the number rolled
-    on the d6 matches the number rolled on your base die or on any bonus dice (ignore
-    penalty dice), you gain +1 bonus die on your next roll.
-  spans: []
-- type: paragraph
-  text: Leadership
-  spans: []
-- type: paragraph
-  text: Commanding Voice
-  spans: []
-- type: paragraph
-  text: Choose an ally within Very Near range. Use 1 action to roll a Tactics (DC6)
-    check. On success, your target may immediately move up to half their movement
-    speed. On an extreme success, your target also gains +1 bonus die to all rolls
-    until the end of their next turn.
-  spans: []
-- type: paragraph
-  text: Precise Coordination
-  spans: []
-- type: paragraph
-  text: When initiating a coordinated attack (setting an ambush, waiting for a moment
-    to strike), each character who’s part of the coordinated attack gains +2 bonus
-    dice to spend before the end of the first round of combat.
-  spans: []
-- type: paragraph
-  text: Inspire
-  spans: []
-- type: paragraph
-  text: When an ally within Very Near range suffers stress, you may use 1 reaction
-    to roll a Bearing (DC5 + stress amount) check. On success, your ally ignores 1
-    incoming stress. On extreme success, your ally instead ignores half the incoming
-    stress (rounded up). On failure, you suffer +1 stress.
-  spans: []
-- type: paragraph
-  text: Mechanical
-  spans: []
-- type: paragraph
-  text: Duct Tape & Hope
-  spans: []
-- type: paragraph
-  text: Use 1 action to attempt a repair check (ignoring normal time constraints);
-    imposes +1 penalty die on the check and uses double materials.
-  spans: []
-- type: paragraph
-  text: Craft
-  spans: []
-- type: paragraph
-  text: Create an item from the Items gear list with a cost no more than 500 credits.
-    Requires an Engineering (DC8) check and takes 1 hour.
-  spans: []
-- type: paragraph
-  text: Fixer
-  spans: []
-- type: paragraph
-  text: Medical
-  spans: []
-- type: paragraph
-  text: Steady Hands
-  spans: []
-- type: paragraph
-  text: Spend 1 reaction to reroll a failed First Aid check (once per round).
-  spans: []
-- type: paragraph
-  text: Surgery
-  spans: []
-- type: paragraph
-  text: You may attempt to use First Aid checks to remove Heavy wounds. Doing so takes
-    1 hour and requires a difficult First Aid (DC12) check.
-  spans: []
-- type: paragraph
-  text: Bedside Manner
-  spans: []
-- type: paragraph
-  text: When you succeed on a First Aid check, remove up to 1 stress from the target.
-    If you rolled an extreme success on the check, remove up to 2 stress instead.
-  spans: []
-- type: paragraph
-  text: Momentum
-  spans: []
-- type: paragraph
-  text: Run and Gun
-  spans: []
-- type: paragraph
-  text: Once per turn when you move, you may make a weapon attack as a free action.
-    This attack counts toward multiple attacks per turn as normal.
-  spans: []
-- type: paragraph
-  text: Medic’s Impulse
-  spans: []
-- type: paragraph
-  text: Once per round, gain +2 movement bonuses when moving toward or aid injured
-    allies. Ignore all stress that would be gained during this movement.
-  spans: []
-- type: paragraph
-  text: Hard to Hit
-  spans: []
-- type: paragraph
-  text: Use 1 reaction to make an Evade (DC7 + attacker’s weapon skill) check in order
-    to avoid a gunshot.
-  spans: []
-- type: paragraph
-  text: Mercantile
-  spans: []
-- type: paragraph
-  text: Underworld Contacts
-  spans: []
-- type: paragraph
-  text: You know people, and those people know people. You can call in a favour or
-    offer one in exchange for information, material aid, or anything else you may
-    be in need of. The bigger the ask, the bigger the price, and the more dangerous
-    the people you need to talk to in order to make it happen. Gain +1 bonus die to
-    persuade and negotiate checks with unlawful individuals.
-  spans: []
-- type: paragraph
-  text: Haggler
-  spans: []
-- type: paragraph
-  text: When buying/selling, gain +1 bonus die to Negotiation checks.
-  spans: []
-- type: paragraph
-  text: Nanomancy
-  spans: []
-- type: paragraph
-  text: Nanite Sensitivity
-  spans: []
-- type: paragraph
-  text: MENT 1
-  spans: []
-- type: paragraph
-  text: Your body and mind have become attuned to the presence of nanites. In locations
-    with high nanite density (2+), you may reroll up to three failed checks per day.
-  spans: []
-- type: paragraph
-  text: Nanomancy
-  spans: []
-- type: paragraph
-  text: MENT 2
-  spans: []
-- type: paragraph
-  text: Choose a Nanomancy Field; pick one Nanomantic Effect from your field and one
-    from another field. You may use those effects. You may select this feat more than
-    once.
-  spans: []
-- type: paragraph
-  text: Nanite Field
-  spans: []
-- type: paragraph
-  text: Nanite Sensitivity
-  spans: []
-- type: paragraph
-  text: You may spend an hour in a location with Nanite density 2 or more. For the
-    next day, the area around you (medium range and closer) cannot have a nanite density
-    lower than 1.
-  spans: []
-- type: paragraph
-  text: Social
-  spans: []
-- type: paragraph
-  text: This one is descript
-  spans: []
-- type: paragraph
-  text: This one is descript
-  spans: []
-- type: paragraph
-  text: This one is descript
-  spans: []
-- type: paragraph
-  text: Survival
-  spans: []
-- type: paragraph
-  text: Scavenger
-  spans: []
-- type: paragraph
-  text: You are able to find ways to use scrap and other detritus that nobody else
-    would even consider. When Salvaging, increase the level of success by 1. Additionally,
-    when using salvaged materials for Repairing or Crafting, ignore the penalty die
-    you would normally incur.
-  spans: []
-- type: paragraph
-  text: Tracker
-  spans: []
-- type: paragraph
-  text: 'Designate a creature you are aware of as your Target. You may have up to
-    two Targets at one time. Gain +1 bonus die on all Recall, Observe, and Research
-    checks related to your currently designated Target(s). In combat with your Target,
-    you may choose to: Narrow Focus: for the duration of combat (or until your Target
-    is killed, incapacitated, or surrenders), you:'
-  spans: []
-- type: paragraph
-  text: Survivor
-  spans: []
-- type: paragraph
-  text: You have a knack for finding the sheltered areas of a world; natural caves
-    to wait out a sandstorm or even the last oxygen-filled compartment of a shuttle.
-    You may roll Instinct (DC up to the GM) to try to find such a shelter.
-  spans: []
-- type: paragraph
-  text: Systems
-  spans: []
-- type: paragraph
-  text: This one is descript
-  spans: []
-- type: paragraph
-  text: Vehicles
-  spans: []
+    spans:
+    - style: link_underline
+      text: Fleeing
+      href: '#h.ju3pufy1twg8'
 sections: []

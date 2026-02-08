@@ -6,7 +6,10 @@ content:
   text: Nanomancy is not magic, though it is often mistaken for it. To the outsider,
     what else could lift rocks, fry machinery at will, or heal in moments what should
     take weeks to mend?
-  spans: []
+  spans:
+  - style: link_underline
+    text: Nanomancy
+    href: '#h.12ggy18kfvcd'
 - type: paragraph
   text: 'It is the deliberate manipulation of nearly-omnipresent nanites; microscopic
     machines left behind by a dead empire and now woven into the fabric of countless
@@ -64,42 +67,6 @@ sections:
         spans: []
       - text: Extreme (4)
         spans: []
-  - type: paragraph
-    text: D12 roll
-    spans: []
-  - type: paragraph
-    text: Nanite Density
-    spans: []
-  - type: paragraph
-    text: '1'
-    spans: []
-  - type: paragraph
-    text: None (0)
-    spans: []
-  - type: paragraph
-    text: 2-4
-    spans: []
-  - type: paragraph
-    text: Low (1)
-    spans: []
-  - type: paragraph
-    text: 5-8
-    spans: []
-  - type: paragraph
-    text: Medium (2)
-    spans: []
-  - type: paragraph
-    text: 9-11
-    spans: []
-  - type: paragraph
-    text: High (3)
-    spans: []
-  - type: paragraph
-    text: '12'
-    spans: []
-  - type: paragraph
-    text: Extreme (4)
-    spans: []
   sections:
   - title: Local ND
     slug: local-nd
@@ -151,7 +118,10 @@ sections:
     items:
     - text: 'Extreme success: effect heightened; use the critical hit table. Instead
         of applying extra damage, raise the ND for the effect by that much.'
-      spans: []
+      spans:
+      - style: link_underline
+        text: critical hit
+        href: '#h.roym21kdsxwk'
   - type: list
     ordered: false
     items:
@@ -218,7 +188,9 @@ sections:
       - type: paragraph
         text: Nanites that work with the human body, often designed as a healing system.
           These were not programmed with ‘Do No Harm’.
-        spans: []
+        spans:
+        - style: italic
+          text: Do No Harm
       - type: paragraph
         text: 'If a Nanomancer’s primary field is Physic, they gain:'
         spans: []
@@ -251,106 +223,6 @@ sections:
     slug: nanomantic-effects
     level: 3
     content:
-    - type: paragraph
-      text: Burner Effects
-      spans: []
-    - type: paragraph
-      text: Name
-      spans: []
-    - type: paragraph
-      text: DC
-      spans: []
-    - type: paragraph
-      text: Range
-      spans: []
-    - type: paragraph
-      text: Stress Cost
-      spans: []
-    - type: paragraph
-      text: Action cost
-      spans: []
-    - type: paragraph
-      text: Effect
-      spans: []
-    - type: paragraph
-      text: Thermal Bloom
-      spans: []
-    - type: paragraph
-      text: '8'
-      spans: []
-    - type: paragraph
-      text: Near
-      spans: []
-    - type: paragraph
-      text: '+1'
-      spans: []
-    - type: paragraph
-      text: '2'
-      spans: []
-    - type: paragraph
-      text: Burst of heat energy at target location; deal half ND (rounded up) damage
-        to anything within Very Near range of target.
-      spans: []
-    - type: paragraph
-      text: Absolute Zero
-      spans: []
-    - type: paragraph
-      text: '9'
-      spans: []
-    - type: paragraph
-      text: Very Near
-      spans: []
-    - type: paragraph
-      text: '+2'
-      spans: []
-    - type: paragraph
-      text: '2'
-      spans: []
-    - type: paragraph
-      text: Removal of all heat at target location; deal 2 * ND damage to anything
-        within melee range of target.
-      spans: []
-    - type: paragraph
-      text: Static Burst
-      spans: []
-    - type: paragraph
-      text: '7'
-      spans: []
-    - type: paragraph
-      text: Very Near
-      spans: []
-    - type: paragraph
-      text: 2 + 1 per action used
-      spans: []
-    - type: paragraph
-      text: 1 to 3
-      spans: []
-    - type: paragraph
-      text: Electrical energy crackles through the air. Choose an initial target,
-        then additional targets (number of actions spent equals total number of targets).
-        Each target must be within Very Near range of at least one other chosen target
-        and be capable of conducting electricity. Deal ND damage to the first and
-        half ND (rounded up) damage to any other targets. In addition, apply EMP (0
-        + ND) to anything within melee range of any of the target.
-      spans: []
-    - type: paragraph
-      text: Nullify
-      spans: []
-    - type: paragraph
-      text: '-'
-      spans: []
-    - type: paragraph
-      text: Very Near
-      spans: []
-    - type: paragraph
-      text: '+1'
-      spans: []
-    - type: paragraph
-      text: 1 reaction
-      spans: []
-    - type: paragraph
-      text: Counter a Nanomantic Effect. DC = the effect’s Nanomancy roll.
-      spans: []
     - type: list
       ordered: false
       items:
@@ -359,227 +231,33 @@ sections:
         spans: []
       - text: 'Success: negate the effect.'
         spans: []
-    - type: paragraph
-      text: Physic Effects
-      spans: []
-    - type: paragraph
-      text: Name
-      spans: []
-    - type: paragraph
-      text: DC
-      spans: []
-    - type: paragraph
-      text: Range
-      spans: []
-    - type: paragraph
-      text: Stress Cost
-      spans: []
-    - type: paragraph
-      text: Action Cost
-      spans: []
-    - type: paragraph
-      text: Effect
-      spans: []
-    - type: paragraph
-      text: Regenerative Cloud
-      spans: []
-    - type: paragraph
-      text: '11'
-      spans: []
-    - type: paragraph
-      text: Melee
-      spans: []
-    - type: paragraph
-      text: 3 + 1 per action used
-      spans: []
-    - type: paragraph
-      text: 1 to 3
-      spans: []
-    - type: paragraph
-      text: Create a target location. For the duration, all living creatures within
-        Very Near range of that location heal at a rate of half ND (rounded up) light
-        wounds at the start of each of their turns. This effect lasts 1 round for
-        each action used.
-      spans: []
     - type: list
       ordered: false
       items:
       - text: 'Extreme success: this effect may heal (and will prioritize) moderate
           wounds.'
         spans: []
-    - type: paragraph
-      text: Knit Together
-      spans: []
-    - type: paragraph
-      text: 9 - ND
-      spans: []
-    - type: paragraph
-      text: Melee
-      spans: []
-    - type: paragraph
-      text: '2'
-      spans: []
-    - type: paragraph
-      text: '2'
-      spans: []
-    - type: paragraph
-      text: Heal up to 1 + half ND (rounded up) light or moderate wounds on target
-        creature.
-      spans: []
     - type: list
       ordered: false
       items:
       - text: 'Extreme success: you may heal heavy wounds with this effect as well.'
         spans: []
       - text: 'Failure: give target Bleeding (1)'
-        spans: []
+        spans:
+        - style: link_underline
+          text: Bleeding (1)
+          href: '#h.bxuyd85drjou'
       - text: 'Extreme failure: give target Bleeding (2).'
-        spans: []
-    - type: paragraph
-      text: Exsanguinate
-      spans: []
-    - type: paragraph
-      text: '7'
-      spans: []
-    - type: paragraph
-      text: Melee
-      spans: []
-    - type: paragraph
-      text: '1'
-      spans: []
-    - type: paragraph
-      text: '1'
-      spans: []
-    - type: paragraph
-      text: Give target Bleeding (0 + ND).
-      spans: []
-    - type: paragraph
-      text: Horrifying Hallucinations
-      spans: []
-    - type: paragraph
-      text: '9'
-      spans: []
-    - type: paragraph
-      text: Melee
-      spans: []
-    - type: paragraph
-      text: '2'
-      spans: []
-    - type: paragraph
-      text: '2'
-      spans: []
-    - type: paragraph
-      text: Impose Blinded on target creature for rounds equal to ND. While affected,
-        target gains +1 stress at the end of each of their turns.
-      spans: []
+        spans:
+        - style: link_underline
+          text: Bleeding (2)
+          href: '#h.bxuyd85drjou'
     - type: list
       ordered: false
       items:
       - text: 'Extreme success: target gains +2 stress at the end of each of their
           turns instead.'
         spans: []
-    - type: paragraph
-      text: Target may attempt a Willpower or Composure (DC 6 + ND) check at the end
-        of each of their turns to end the effect early.
-      spans: []
-    - type: paragraph
-      text: Kinetic Effects
-      spans: []
-    - type: paragraph
-      text: Name
-      spans: []
-    - type: paragraph
-      text: DC
-      spans: []
-    - type: paragraph
-      text: Range
-      spans: []
-    - type: paragraph
-      text: Stress Cost
-      spans: []
-    - type: paragraph
-      text: Action Cost
-      spans: []
-    - type: paragraph
-      text: Effect
-      spans: []
-    - type: paragraph
-      text: Push/Pull
-      spans: []
-    - type: paragraph
-      text: '5'
-      spans: []
-    - type: paragraph
-      text: Long
-      spans: []
-    - type: paragraph
-      text: '1'
-      spans: []
-    - type: paragraph
-      text: '2'
-      spans: []
-    - type: paragraph
-      text: Move an object no more than 10 bulk up to 10 * ND ft in any direction.
-        For each range band closer than long, increase the bulk this effect can move
-        by 5. If the object collides with something else, deal 1 * ND damage to it.
-      spans: []
-    - type: paragraph
-      text: Crush
-      spans: []
-    - type: paragraph
-      text: '9'
-      spans: []
-    - type: paragraph
-      text: Medium
-      spans: []
-    - type: paragraph
-      text: '2'
-      spans: []
-    - type: paragraph
-      text: '1'
-      spans: []
-    - type: paragraph
-      text: Deal 1 + ND damage. If target is Immobile, double the damage dealt.
-      spans: []
-    - type: paragraph
-      text: Hold
-      spans: []
-    - type: paragraph
-      text: '7'
-      spans: []
-    - type: paragraph
-      text: Medium
-      spans: []
-    - type: paragraph
-      text: '3'
-      spans: []
-    - type: paragraph
-      text: '3'
-      spans: []
-    - type: paragraph
-      text: Impose Immobile on target for ND number of rounds. Target may attempt
-        an Endurance or Athletics (DC6 + ND) check at the end of each of their turns
-        to end the effect early.
-      spans: []
-    - type: paragraph
-      text: Shrapnel
-      spans: []
-    - type: paragraph
-      text: '8'
-      spans: []
-    - type: paragraph
-      text: Near
-      spans: []
-    - type: paragraph
-      text: 0 + 1 per action used
-      spans: []
-    - type: paragraph
-      text: 1 to 3
-      spans: []
-    - type: paragraph
-      text: Deal 1 + ND damage to anything within melee range of target. Increase
-        the range of this effect by 1 range band for each action used beyond 1.
-      spans: []
     sections: []
 - title: Fine Control
   slug: fine-control
@@ -626,7 +304,10 @@ sections:
   - type: paragraph
     text: 'Once your stress reaches PTSD range (6+), Nanomancy becomes impossible
       to exert fine control over:'
-    spans: []
+    spans:
+    - style: link_underline
+      text: PTSD range
+      href: '#h.rwq11029f7qx'
   - type: list
     ordered: false
     items:
