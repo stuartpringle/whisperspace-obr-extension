@@ -209,6 +209,7 @@ function extractSkillTooltips(ruleDoc) {
 }
 
 function writeRulesApiBundle() {
+  const rulesVersion = readRulesVersion();
   const filesToCopy = [
     "skills.json",
     "weapons.json",
@@ -233,7 +234,7 @@ function writeRulesApiBundle() {
   }
 
   const meta = {
-    version: timestamp(),
+    version: rulesVersion,
     generatedAt: new Date().toISOString(),
     files: {},
   };
@@ -263,6 +264,19 @@ function writeRulesApiBundle() {
   fs.writeFileSync(metaPublishPath, metaJson, "utf8");
   console.log(`[generate-data] Wrote ${path.relative(ROOT, metaPath)}`);
   console.log(`[generate-data] Wrote ${metaPublishPath}`);
+}
+
+function readRulesVersion() {
+  try {
+    const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, "package.json"), "utf8"));
+    if (typeof pkg.rulesVersion === "string" && pkg.rulesVersion.trim()) {
+      return pkg.rulesVersion.trim();
+    }
+    if (typeof pkg.version === "string" && pkg.version.trim()) {
+      return pkg.version.trim();
+    }
+  } catch {}
+  return timestamp();
 }
 
 main().catch((err) => {

@@ -1,6 +1,8 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import rulesData from "../data/generated/rules.json";
 import { resolveWeaponKeyword, splitKeywordList } from "./weaponKeywords";
+import { WEAPON_KEYWORDS } from "../data/weaponKeywords";
+import { ATTRIBUTE_TOOLTIPS, SKILL_TOOLTIPS } from "../data/skillTooltips";
 
 type RuleSpan = {
   text?: string;
@@ -24,6 +26,11 @@ type RuleDoc = RuleSection & {
 };
 
 type LabeledTable = { label: string; block: RuleBlock };
+type Glossary = {
+  regex: RegExp | null;
+  linkTerms: Map<string, string>;
+  tooltipTerms: Map<string, string>;
+};
 
 function getSectionId(section: RuleSection) {
   return section.slug || section.title.toLowerCase().replace(/\s+/g, "-");
@@ -71,6 +78,59 @@ function collectLabeledTables(section: RuleSection, out: LabeledTable[] = []) {
   return out;
 }
 
+function collectSectionTitles(section: RuleSection, out: RuleSection[] = [], depth = 0) {
+  out.push({ ...section, level: depth });
+  (section.sections ?? []).forEach((s) => collectSectionTitles(s, out, depth + 1));
+  return out;
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function buildGlossary(docs: RuleDoc[]): Glossary {
+  const linkTerms = new Map<string, string>();
+  const tooltipTerms = new Map<string, string>();
+  const blacklist = new Set(["the", "and", "or", "of", "in", "to", "a", "an"]);
+
+  for (const doc of docs) {
+    const sections = collectSectionTitles(doc, []);
+    for (const section of sections) {
+      const title = String(section.title ?? "").trim();
+      if (!title || title.length < 4) continue;
+      if (blacklist.has(title.toLowerCase())) continue;
+      const id = getSectionId(section);
+      if (!linkTerms.has(title)) linkTerms.set(title, id);
+    }
+  }
+
+  Object.entries(ATTRIBUTE_TOOLTIPS).forEach(([key, desc]) => {
+    if (key && desc) tooltipTerms.set(key, desc);
+  });
+  Object.entries(SKILL_TOOLTIPS).forEach(([key, desc]) => {
+    if (key && desc) tooltipTerms.set(key, desc);
+  });
+  WEAPON_KEYWORDS.forEach((kw) => {
+    if (kw?.name && kw?.description) tooltipTerms.set(kw.name, kw.description);
+  });
+
+  const terms = Array.from(
+    new Set([...tooltipTerms.keys(), ...linkTerms.keys()])
+  ).sort((a, b) => b.length - a.length);
+
+  if (!terms.length) return { regex: null, linkTerms, tooltipTerms };
+
+  const patterns = terms.map((term) => {
+    const escaped = escapeRegExp(term);
+    const startsWord = /^[A-Za-z0-9]/.test(term);
+    const endsWord = /[A-Za-z0-9]$/.test(term);
+    return `${startsWord ? "\\b" : ""}${escaped}${endsWord ? "\\b" : ""}`;
+  });
+
+  const regex = new RegExp(`(${patterns.join("|")})`, "g");
+  return { regex, linkTerms, tooltipTerms };
+}
+
 function highlightText(text: string, q: string) {
   if (!q) return text;
   const lower = text.toLowerCase();
@@ -92,6 +152,52 @@ function highlightText(text: string, q: string) {
     i = hit + q.length;
   }
   return parts;
+}
+
+function renderGlossaryText(text: string, q: string, glossary: Glossary) {
+  const raw = String(text ?? "");
+  if (!glossary.regex) return highlightText(raw, q);
+
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null = null;
+
+  while ((match = glossary.regex.exec(raw)) !== null) {
+    const start = match.index;
+    const end = start + match[0].length;
+    if (start > lastIndex) {
+      nodes.push(highlightText(raw.slice(lastIndex, start), q));
+    }
+    const term = match[0];
+    const tooltip = glossary.tooltipTerms.get(term);
+    const link = glossary.linkTerms.get(term);
+    const content = highlightText(term, q);
+
+    if (tooltip) {
+      nodes.push(
+        <span key={`${term}-${start}`} title={tooltip} style={{ textDecoration: "underline dotted" }}>
+          {content}
+        </span>
+      );
+    } else if (link) {
+      nodes.push(
+        <a
+          key={`${term}-${start}`}
+          href={`#${link}`}
+          style={{ color: "inherit", textDecoration: "underline dotted" }}
+        >
+          {content}
+        </a>
+      );
+    } else {
+      nodes.push(content);
+    }
+    lastIndex = end;
+  }
+  if (lastIndex < raw.length) {
+    nodes.push(highlightText(raw.slice(lastIndex), q));
+  }
+  return nodes;
 }
 
 function renderKeywordText(text: string, q: string) {
@@ -117,7 +223,7 @@ function renderKeywordText(text: string, q: string) {
   });
 }
 
-function renderBlock(block: RuleBlock, idx: number, q: string) {
+function renderBlock(block: RuleBlock, idx: number, q: string, glossary: Glossary) {
   if (block.type === "table") {
     const rows = block.rows ?? [];
     if (!rows.length) return null;
@@ -150,7 +256,7 @@ function renderBlock(block: RuleBlock, idx: number, q: string) {
             >
               {row.map((cell, c) => (
                 <td key={c} style={{ borderBottom: "1px solid rgba(255,255,255,0.12)", padding: "4px 6px" }}>
-                  {renderKeywordText(cell.text, q)}
+                  {isKeywordTable ? renderKeywordText(cell.text, q) : renderGlossaryText(cell.text, q, glossary)}
                 </td>
               ))}
             </tr>
@@ -162,7 +268,7 @@ function renderBlock(block: RuleBlock, idx: number, q: string) {
   if (block.type === "paragraph") {
     return (
       <p key={`p-${idx}`} style={{ margin: "6px 0", lineHeight: 1.4 }}>
-        {highlightText(block.text, q)}
+        {renderGlossaryText(block.text, q, glossary)}
       </p>
     );
   }
@@ -174,7 +280,7 @@ function renderBlock(block: RuleBlock, idx: number, q: string) {
       <ListTag key={`list-${idx}`} style={{ margin: "6px 0 6px 18px", padding: 0 }}>
         {items.map((item, i) => (
           <li key={i} style={{ margin: "4px 0", lineHeight: 1.4 }}>
-            {highlightText(item.text ?? "", q)}
+            {renderGlossaryText(item.text ?? "", q, glossary)}
           </li>
         ))}
       </ListTag>
@@ -215,7 +321,7 @@ function filterSection(section: RuleSection, q: string): RuleSection | null {
   return null;
 }
 
-function RuleSectionView(props: { section: RuleSection; depth?: number; expandAll?: boolean; query?: string; tablesByLabel?: Map<string, RuleBlock> }) {
+function RuleSectionView(props: { section: RuleSection; depth?: number; expandAll?: boolean; query?: string; tablesByLabel?: Map<string, RuleBlock>; glossary: Glossary }) {
   const depth = props.depth ?? 0;
   const content = normalizeContent(props.section.content ?? []);
   const hasChildren = (props.section.sections ?? []).length > 0;
@@ -238,7 +344,7 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
       <div id={id} style={{ marginLeft: pad, marginTop: 0 }}>
         <h2 style={{ margin: "0 0 8px 0", fontSize: 22 }}>{props.section.title}</h2>
         <div>
-          {content.map((b, i) => renderBlock(b, i, q))}
+          {content.map((b, i) => renderBlock(b, i, q, props.glossary))}
           {hasChildren && (props.section.sections ?? []).map((s, i) => (
             <RuleSectionView
               key={`${s.slug ?? s.title}-${i}`}
@@ -247,6 +353,7 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
               expandAll={props.expandAll}
               query={q}
               tablesByLabel={props.tablesByLabel}
+              glossary={props.glossary}
             />
           ))}
         </div>
@@ -261,8 +368,8 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
           {highlightText(props.section.title, q)}
         </summary>
         <div>
-          {shouldInjectTable ? renderBlock(fallbackTable!, 0, q) : null}
-          {content.map((b, i) => renderBlock(b, i, q))}
+          {shouldInjectTable ? renderBlock(fallbackTable!, 0, q, props.glossary) : null}
+          {content.map((b, i) => renderBlock(b, i, q, props.glossary))}
           {hasChildren && (props.section.sections ?? []).map((s, i) => (
             <RuleSectionView
               key={`${s.slug ?? s.title}-${i}`}
@@ -271,6 +378,7 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
               expandAll={props.expandAll}
               query={q}
               tablesByLabel={props.tablesByLabel}
+              glossary={props.glossary}
             />
           ))}
         </div>
@@ -342,6 +450,8 @@ export function RulesApp() {
     title: doc.title,
     slug: getSectionId(doc),
   }));
+
+  const glossary = useMemo(() => buildGlossary(rules), [rules]);
 
   const activeDoc = useMemo(() => {
     const slug = q && searchSelection ? searchSelection : activeSlug;
@@ -549,6 +659,7 @@ export function RulesApp() {
               expandAll={false}
               query=""
               tablesByLabel={tablesByLabel}
+              glossary={glossary}
             />
           )
         )}
@@ -560,6 +671,7 @@ export function RulesApp() {
             expandAll={false}
             query={q}
             tablesByLabel={tablesByLabel}
+            glossary={glossary}
           />
         ) : null}
       </main>
