@@ -357,7 +357,7 @@ export function SheetApp() {
   }, [state.kind, state.kind === "ready" ? state.tokenId : null]);
 
   const title = useMemo(
-    () => (state.kind === "ready" ? state.sheet.name || "Whisperspace Sheet" : "Whisperspace Sheet"),
+    () => (state.kind === "ready" ? state.sheet.name || "Whisperspace Character Sheet" : "Whisperspace Character Sheet"),
     [state]
   );
 
@@ -636,7 +636,7 @@ function burnCufToPass() {
   if (state.kind === "need-token") {
     return (
       <div style={{ padding: 12 }}>
-        <h2 style={{ margin: "0 0 8px 0" }}>My Sheet</h2>
+        <h2 style={{ margin: "0 0 8px 0" }}>Whisperspace Character Sheet</h2>
         <p style={{ margin: "0 0 10px 0", lineHeight: 1.35 }}>
           Select your character token on the map, then click:
         </p>
