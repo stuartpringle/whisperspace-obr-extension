@@ -40,7 +40,7 @@ load_env("/hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/.env");
 
 $headers = function_exists("getallheaders") ? getallheaders() : [];
 $apiKey = $headers["X-WS-API-Key"] ?? $headers["x-ws-api-key"] ?? null;
-$expected = getenv("WS_RULES_API_KEY") ?: "";
+$expected = $_SERVER["WS_RULES_API_KEY"] ?? ($_ENV["WS_RULES_API_KEY"] ?? (getenv("WS_RULES_API_KEY") ?: ""));
 
 if (!$expected) {
   http_response_code(500);
