@@ -1,24 +1,28 @@
 import React from "react";
+import { useTheme } from "@mui/material";
 
 export function SheetTabs(props: {
   activeTab: "core" | "skills" | "combat" | "initiative" | "inventory" | "feats";
   onTab: (tab: "core" | "skills" | "combat" | "initiative" | "inventory" | "feats") => void;
   isSaving: boolean;
 }) {
+  const theme = useTheme();
+  const textColor = theme.palette.text.primary;
+
   return (
     <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10 }}>
-      <Tab label="Core" active={props.activeTab === "core"} onClick={() => props.onTab("core")} />
-      <Tab label="Skills" active={props.activeTab === "skills"} onClick={() => props.onTab("skills")} />
-      <Tab label="Combat" active={props.activeTab === "combat"} onClick={() => props.onTab("combat")} />
-      <Tab label="Initiative" active={props.activeTab === "initiative"} onClick={() => props.onTab("initiative")} />
-      <Tab label="Inventory" active={props.activeTab === "inventory"} onClick={() => props.onTab("inventory")} />
-      <Tab label="Feats" active={props.activeTab === "feats"} onClick={() => props.onTab("feats")} />
+      <Tab label="Core" active={props.activeTab === "core"} onClick={() => props.onTab("core")} color={textColor} />
+      <Tab label="Skills" active={props.activeTab === "skills"} onClick={() => props.onTab("skills")} color={textColor} />
+      <Tab label="Combat" active={props.activeTab === "combat"} onClick={() => props.onTab("combat")} color={textColor} />
+      <Tab label="Initiative" active={props.activeTab === "initiative"} onClick={() => props.onTab("initiative")} color={textColor} />
+      <Tab label="Inventory" active={props.activeTab === "inventory"} onClick={() => props.onTab("inventory")} color={textColor} />
+      <Tab label="Feats" active={props.activeTab === "feats"} onClick={() => props.onTab("feats")} color={textColor} />
       <div style={{ marginLeft: "auto", opacity: 0.8 }}>{props.isSaving ? "Saving…" : "Synced"}</div>
     </div>
   );
 }
 
-function Tab(props: { label: string; active: boolean; onClick: () => void }) {
+function Tab(props: { label: string; active: boolean; onClick: () => void; color: string }) {
   return (
     <button
       onClick={props.onClick}
@@ -28,7 +32,8 @@ function Tab(props: { label: string; active: boolean; onClick: () => void }) {
         border: "1px solid #777",
         cursor: "pointer",
         background: "transparent",
-        fontWeight: props.active ? 700 : 400
+        fontWeight: props.active ? 700 : 400,
+        color: props.color,
       }}
     >
       {props.label}

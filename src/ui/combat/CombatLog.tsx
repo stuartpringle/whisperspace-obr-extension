@@ -31,8 +31,8 @@ export function CombatLog(props: {
             const canApplyBoth = canApplyDamage && canApplyStress;
 
             const outcome = entry.outcome;
-            const statusLabel = outcome?.isCrit ? "Extreme success - crit!" : outcome?.hit ? "Hit" : "Miss";
-            const statusColor = outcome?.isCrit ? infoColor : outcome?.hit ? hitColor : missColor;
+            const statusLabel = outcome?.hit ? "Hit" : "Miss";
+            const statusColor = outcome?.hit ? hitColor : missColor;
             const attacker = entry.attackerName ?? "Unknown";
             const weapon = entry.weaponName ?? "Attack";
 
@@ -63,7 +63,14 @@ export function CombatLog(props: {
                     <>
                       <strong>{attacker}</strong>: <strong>{weapon}</strong> rolled{" "}
                       {outcome?.total ?? 0} vs DC {outcome?.useDC ?? 0}.{" "}
-                      <strong style={{ color: statusColor }}>{statusLabel}</strong>
+                      {outcome?.isCrit ? (
+                        <>
+                          <strong style={{ color: hitColor }}>Extreme success - </strong>
+                          <strong style={{ color: infoColor }}>crit!</strong>
+                        </>
+                      ) : (
+                        <strong style={{ color: statusColor }}>{statusLabel}</strong>
+                      )}
                       {outcome?.hit && (
                         <>
                           . Damage:{" "}
