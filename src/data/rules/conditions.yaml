@@ -1,297 +1,303 @@
 title: Conditions
 slug: conditions
 level: 1
-content:
-- type: paragraph
-  text: Physical Conditions
-  spans: []
+content: []
 sections:
-- title: Grappled
-  slug: grappled
+- title: Physical Conditions
+  slug: physical-conditions
   level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Cannot move or evade
-      spans: []
-    - text: May only take attack actions using Light or Melee weapons (including Melee
-        (unarmed), of course), and does so with +1 penalty die.
-      spans: []
-    - text: Makes all PHYS or REF based checks with +1 penalty die.
-      spans: []
-    - text: May attempt to break the grapple using an action (contested Melee (unarmed)
-        check; must get a higher result than the grappler to break free). Each successive
-        attempt to break free within a round becomes more difficult (add +1 penalty
-        die each time. These stack). This resets at the start of the next round.
-      spans: []
-  sections: []
-- title: Unconscious
-  slug: unconscious
+  content: []
+  sections:
+  - title: Grappled
+    slug: grappled
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Cannot move or evade
+        spans: []
+      - text: May only take attack actions using Light or Melee weapons (including
+          Melee (unarmed), of course), and does so with +1 penalty die.
+        spans: []
+      - text: Makes all PHYS or REF based checks with +1 penalty die.
+        spans: []
+      - text: May attempt to break the grapple using an action (contested Melee (unarmed)
+          check; must get a higher result than the grappler to break free). Each successive
+          attempt to break free within a round becomes more difficult (add +1 penalty
+          die each time. These stack). This resets at the start of the next round.
+        spans: []
+    sections: []
+  - title: Unconscious
+    slug: unconscious
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Cannot make any skill checks, move, take any actions, or do anything.
+          Completely incapacitated.
+        spans: []
+      - text: When a character becomes unconscious, they immediately fall prone.
+        spans: []
+      - text: May be revived with a successful First Aid (DC8) check
+        spans: []
+      - text: Once after every hour, may attempt to regain consciousness with either
+          a Willpower check or a Toughness check (DC6)
+        spans: []
+      - text: Attacks made against an unconscious character gain +1 bonus die.
+        spans: []
+    sections: []
+  - title: Asphyxiating
+    slug: asphyxiating
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: You are slowly dying due to lack of oxygen.
+        spans: []
+      - text: Roll an Endurance (DC 6, +2 per round) asphyxiation check.
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Failure: suffer 1 wound.'
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'After 3 failures: become Unconscious.'
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: If you become Dying while Asphyxiating, you die.
+        spans: []
+    sections: []
+  - title: Dying
+    slug: dying
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: At the end of each of your turns, you must roll a Toughness (DC7) dying
+          check.
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Extreme success: remove up to 1 penalty die from dying checks'
+        spans: []
+      - text: 'Success: no change'
+        spans: []
+      - text: 'Failure: gain +1 penalty die to dying checks and remove 1 rank of your
+          Toughness skill. When no longer dying, regain lost ranks of Toughness at
+          a rate of 1 per day and remove all penalty dice from dying checks.'
+        spans: []
+      - text: 'Extreme failure: you die'
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: When a character becomes dying, they immediately fall prone.
+        spans: []
+      - text: Any time you take damage, gain +1 penalty die to dying checks, then
+          immediately roll a dying check.
+        spans: []
+      - text: Receiving medical aid (successful First Aid (DC10) check) removes the
+          Dying condition, replacing it with the Unconscious condition.
+        spans: []
+      - text: Attacks made against dying characters gain +1 bonus die.
+        spans: []
+    sections: []
+  - title: EMP (X)
+    slug: emp-x
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Deals X damage to all electronic systems (robots, computers, ship modules,
+          and cyberware) affected.
+        spans: []
+      - text: Completely shuts off all electronic systems (robots, computers, ship
+          modules, and cyberware) of tier X or lower. Until restarted, these systems
+          are inactive.
+        spans: []
+      - text: Has no effect on biological creatures such as humans.
+        spans: []
+    sections: []
+  - title: Floating
+    slug: floating
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: A Floating character cannot move as normal. Instead, they may make an
+          Athletics, Balance, or Finesse check (DC6) to try to maneuver their way
+          using arm and leg motions, as though they are swimming through the air.
+        spans: []
+      - text: Moving this way applies a 5x movement penalty (moving 5 feet requires
+          25 feet of movement)
+        spans: []
+      - text: The DC for this check may be raised or lowered by the GM based on the
+          circumstances surrounding the character.
+        spans: []
+    sections: []
+  - title: Immobile
+    slug: immobile
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Unable to move at all. This includes reactions such as Dive for Cover.
+        spans: []
+    sections: []
+  - title: Blinded
+    slug: blinded
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Disadvantage to all attack rolls, Dodge or Parry rolls, and any roll
+          that involves sight.
+        spans: []
+    sections: []
+  - title: Bleeding (X)
+    slug: bleeding-x
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: 'There are four levels of bleeding: light, moderate, heavy, and extreme.
+          When not specified, light bleeding is assumed. Bleeding causes unmitigated
+          damage. A successful First Aid (DC4 + current bleed level) check reduces
+          the bleeding by one level. An extreme success reduces bleeding by two levels
+          instead. While bleeding, any effect that would apply the Bleeding condition
+          to you instead increases your Bleeding level. Thus, an effect that would
+          give Bleeding (2) while you are already Bleeding (1) would bump you from
+          light bleeding to heavy bleeding (1 + 2 = 3).'
+        spans: []
+      - text: 'Light: take 1 damage at the end of your turn.'
+        spans: []
+      - text: 'Moderate: take 2 damage at the end of your turn.'
+        spans: []
+      - text: 'Heavy: take 3 damage at the end of your turn.'
+        spans: []
+      - text: 'Extreme: take 2 damage at the start of your turn and 4 damage at the
+          end of your turn.'
+        spans: []
+    sections: []
+- title: Mental Conditions
+  slug: mental-conditions
   level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Cannot make any skill checks, move, take any actions, or do anything.
-        Completely incapacitated.
-      spans: []
-    - text: When a character becomes unconscious, they immediately fall prone.
-      spans: []
-    - text: May be revived with a successful First Aid (DC8) check
-      spans: []
-    - text: Once after every hour, may attempt to regain consciousness with either
-        a Willpower check or a Toughness check (DC6)
-      spans: []
-    - text: Attacks made against an unconscious character gain +1 bonus die.
-      spans: []
-  sections: []
-- title: Asphyxiating
-  slug: asphyxiating
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: You are slowly dying due to lack of oxygen.
-      spans: []
-    - text: Roll an Endurance (DC 6, +2 per round) asphyxiation check.
-      spans: []
-  - type: list
-    ordered: false
-    items:
-    - text: 'Failure: suffer 1 wound.'
-      spans: []
-  - type: list
-    ordered: false
-    items:
-    - text: 'After 3 failures: become Unconscious.'
-      spans: []
-  - type: list
-    ordered: false
-    items:
-    - text: If you become Dying while Asphyxiating, you die.
-      spans: []
-  sections: []
-- title: Dying
-  slug: dying
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: At the end of each of your turns, you must roll a Toughness (DC7) dying
-        check.
-      spans: []
-  - type: list
-    ordered: false
-    items:
-    - text: 'Extreme success: remove up to 1 penalty die from dying checks'
-      spans: []
-    - text: 'Success: no change'
-      spans: []
-    - text: 'Failure: gain +1 penalty die to dying checks and remove 1 rank of your
-        Toughness skill. When no longer dying, regain lost ranks of Toughness at a
-        rate of 1 per day and remove all penalty dice from dying checks.'
-      spans: []
-    - text: 'Extreme failure: you die'
-      spans: []
-  - type: list
-    ordered: false
-    items:
-    - text: When a character becomes dying, they immediately fall prone.
-      spans: []
-    - text: Any time you take damage, gain +1 penalty die to dying checks, then immediately
-        roll a dying check.
-      spans: []
-    - text: Receiving medical aid (successful First Aid (DC10) check) removes the
-        Dying condition, replacing it with the Unconscious condition.
-      spans: []
-    - text: Attacks made against dying characters gain +1 bonus die.
-      spans: []
-  sections: []
-- title: EMP (X)
-  slug: emp-x
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Deals X damage to all electronic systems (robots, computers, ship modules,
-        and cyberware) affected.
-      spans: []
-    - text: Completely shuts off all electronic systems (robots, computers, ship modules,
-        and cyberware) of tier X or lower. Until restarted, these systems are inactive.
-      spans: []
-    - text: Has no effect on biological creatures such as humans.
-      spans: []
-  sections: []
-- title: Floating
-  slug: floating
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: A Floating character cannot move as normal. Instead, they may make an
-        Athletics, Balance, or Finesse check (DC6) to try to maneuver their way using
-        arm and leg motions, as though they are swimming through the air.
-      spans: []
-    - text: Moving this way applies a 5x movement penalty (moving 5 feet requires
-        25 feet of movement)
-      spans: []
-    - text: The DC for this check may be raised or lowered by the GM based on the
-        circumstances surrounding the character.
-      spans: []
-  sections: []
-- title: Immobile
-  slug: immobile
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Unable to move at all. This includes reactions such as Dive for Cover.
-      spans: []
-  sections: []
-- title: Blinded
-  slug: blinded
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Disadvantage to all attack rolls, Dodge or Parry rolls, and any roll that
-        involves sight.
-      spans: []
-  sections: []
-- title: Bleeding (X)
-  slug: bleeding-x
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: 'There are four levels of bleeding: light, moderate, heavy, and extreme.
-        When not specified, light bleeding is assumed. Bleeding causes unmitigated
-        damage. A successful First Aid (DC4 + current bleed level) check reduces the
-        bleeding by one level. An extreme success reduces bleeding by two levels instead.
-        While bleeding, any effect that would apply the Bleeding condition to you
-        instead increases your Bleeding level. Thus, an effect that would give Bleeding
-        (2) while you are already Bleeding (1) would bump you from light bleeding
-        to heavy bleeding (1 + 2 = 3).'
-      spans: []
-    - text: 'Light: take 1 damage at the end of your turn.'
-      spans: []
-    - text: 'Moderate: take 2 damage at the end of your turn.'
-      spans: []
-    - text: 'Heavy: take 3 damage at the end of your turn.'
-      spans: []
-    - text: 'Extreme: take 2 damage at the start of your turn and 4 damage at the
-        end of your turn.'
-      spans: []
-  - type: paragraph
-    text: Mental Conditions
-    spans: []
-  sections: []
-- title: Agonized (X)
-  slug: agonized-x
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: In intense pain. Must make a Willpower or Endurance check (DC 6 + X; if
-        X is not specified, then it is 0) before taking any action. If you succeed,
-        you may take actions as normal until the end of your turn.
-      spans: []
-    - text: Lasts X rounds (minimum 1) unless otherwise specified.
-      spans: []
-  sections: []
-- title: Demoralized (X)
-  slug: demoralized-x
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Character’s heart just isn’t in the fight any more.
-      spans: []
-    - text: Character suffers +1 penalty die to their first roll every turn.
-      spans: []
-    - text: If they fail this roll, they may not take any actions other than moving
-        until their next turn.
-      spans: []
-    - text: If a character’s stress is higher than their Cool Under Fire while Demoralized,
-        they immediately become Frightened instead.
-      spans: []
-    - text: Lasts X rounds (minimum 1) unless otherwise specified.
-      spans: []
-  sections: []
-- title: Frightened (X)
-  slug: frightened-x
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Character cowers from danger, feeling the threat more keenly than normal.
-      spans: []
-    - text: Character suffers +1 penalty die on any attacks toward whatever frightened
-        her.
-      spans: []
-    - text: Character may not willingly move toward whatever frightened him.
-      spans: []
-    - text: Lasts X rounds (minimum 1) unless otherwise specified.
-      spans: []
-  sections: []
-- title: Fleeing (X)
-  slug: fleeing-x
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Character is terrified of something or someone
-      spans: []
-    - text: Must spend all their actions using movement to get farther away from whatever
-        it is they are afraid of. If an obstacle blocks their path, the GM decides
-        how they respond.
-      spans: []
-    - text: Lasts X rounds (minimum 1) unless otherwise specified.
-      spans: []
-  sections: []
-- title: Stunned (X)
-  slug: stunned-x
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Cannot take any actions or move.
-      spans: []
-    - text: Lasts X rounds (minimum 1) unless otherwise specified.
-      spans: []
-  sections: []
-- title: Frenzied (X)
-  slug: frenzied-x
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Must attack the closest creature as often as possible, regardless of alliance.
-      spans: []
-    - text: Lasts X rounds (minimum 1) unless otherwise specified.
-      spans: []
-  sections: []
-- title: Sluggish
-  slug: sluggish
-  level: 2
-  content:
-  - type: list
-    ordered: false
-    items:
-    - text: Gain only 1 action per turn.
-      spans: []
-  sections: []
+  content: []
+  sections:
+  - title: Agonized (X)
+    slug: agonized-x
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: In intense pain. Must make a Willpower or Endurance check (DC 6 + X;
+          if X is not specified, then it is 0) before taking any action. If you succeed,
+          you may take actions as normal until the end of your turn.
+        spans: []
+      - text: Lasts X rounds (minimum 1) unless otherwise specified.
+        spans: []
+    sections: []
+  - title: Demoralized (X)
+    slug: demoralized-x
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Character’s heart just isn’t in the fight any more.
+        spans: []
+      - text: Character suffers +1 penalty die to their first roll every turn.
+        spans: []
+      - text: If they fail this roll, they may not take any actions other than moving
+          until their next turn.
+        spans: []
+      - text: If a character’s stress is higher than their Cool Under Fire while Demoralized,
+          they immediately become Frightened instead.
+        spans: []
+      - text: Lasts X rounds (minimum 1) unless otherwise specified.
+        spans: []
+    sections: []
+  - title: Frightened (X)
+    slug: frightened-x
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Character cowers from danger, feeling the threat more keenly than normal.
+        spans: []
+      - text: Character suffers +1 penalty die on any attacks toward whatever frightened
+          her.
+        spans: []
+      - text: Character may not willingly move toward whatever frightened him.
+        spans: []
+      - text: Lasts X rounds (minimum 1) unless otherwise specified.
+        spans: []
+    sections: []
+  - title: Fleeing (X)
+    slug: fleeing-x
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Character is terrified of something or someone
+        spans: []
+      - text: Must spend all their actions using movement to get farther away from
+          whatever it is they are afraid of. If an obstacle blocks their path, the
+          GM decides how they respond.
+        spans: []
+      - text: Lasts X rounds (minimum 1) unless otherwise specified.
+        spans: []
+    sections: []
+  - title: Stunned (X)
+    slug: stunned-x
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Cannot take any actions or move.
+        spans: []
+      - text: Lasts X rounds (minimum 1) unless otherwise specified.
+        spans: []
+    sections: []
+  - title: Frenzied (X)
+    slug: frenzied-x
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Must attack the closest creature as often as possible, regardless of
+          alliance.
+        spans: []
+      - text: Lasts X rounds (minimum 1) unless otherwise specified.
+        spans: []
+    sections: []
+  - title: Sluggish
+    slug: sluggish
+    level: 3
+    content:
+    - type: list
+      ordered: false
+      items:
+      - text: Gain only 1 action per turn.
+        spans: []
+    sections: []

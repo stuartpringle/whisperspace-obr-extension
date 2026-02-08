@@ -101,6 +101,8 @@ function renderBlock(block: RuleBlock, idx: number, q: string) {
     const rows = block.rows ?? [];
     if (!rows.length) return null;
     const [head, ...body] = rows;
+    const headerText = head.map((cell) => String(cell.text ?? "").toLowerCase());
+    const isKeywordTable = headerText.some((h) => h.includes("keyword")) && headerText.length >= 2;
     return (
       <table key={`table-${idx}`} style={{ width: "100%", borderCollapse: "collapse", margin: "8px 0" }}>
         <thead>
@@ -114,7 +116,17 @@ function renderBlock(block: RuleBlock, idx: number, q: string) {
         </thead>
         <tbody>
           {body.map((row, r) => (
-            <tr key={r}>
+            <tr
+              key={r}
+              id={
+                isKeywordTable
+                  ? `weapon-keyword-${String(row[0]?.text ?? "")
+                      .toLowerCase()
+                      .replace(/[^a-z0-9]+/g, "-")
+                      .replace(/^-+|-+$/g, "")}`
+                  : undefined
+              }
+            >
               {row.map((cell, c) => (
                 <td key={c} style={{ borderBottom: "1px solid rgba(255,255,255,0.12)", padding: "4px 6px" }}>
                   {renderKeywordText(cell.text, q)}

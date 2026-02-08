@@ -15,6 +15,13 @@ type KeywordMatcher = {
 
 const KEYWORD_ANCHOR = "weapon-keywords";
 
+function slugify(value: string) {
+  return String(value ?? "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function escapeRegExp(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -49,6 +56,7 @@ function normalizeParam(param: string) {
 export function resolveWeaponKeyword(keyword: string): WeaponKeywordMatch | null {
   const text = String(keyword ?? "").trim();
   if (!text) return null;
+  const slug = slugify(text);
   for (const def of KEYWORD_MATCHERS) {
     const match = text.match(def.regex);
     if (!match) continue;
@@ -59,7 +67,7 @@ export function resolveWeaponKeyword(keyword: string): WeaponKeywordMatch | null
     return {
       label: text,
       description,
-      anchor: KEYWORD_ANCHOR,
+      anchor: slug ? `weapon-keyword-${slug}` : KEYWORD_ANCHOR,
     };
   }
   return null;
