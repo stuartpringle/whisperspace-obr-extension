@@ -27,7 +27,7 @@ import {
 import { checkDicePlusReady, rollWithDicePlus } from "../diceplus/roll";
 import { buildLearnedInfoById } from "../../../packages/core/src/skills";
 import { getSkillTooltip } from "../../data/skillTooltips";
-import { calcSkillNotation } from "../../@whisperspace/sdk";
+import { calcSkillNotation } from "@whisperspace/sdk";
 
 const ATTR_ORDER: AttributeId[] = ["phys", "ref", "soc", "ment"];
 const ATTR_LABEL: Record<AttributeId, string> = {

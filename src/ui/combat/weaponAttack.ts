@@ -1,6 +1,6 @@
 import OBR from "@owlbear-rodeo/sdk";
 import { rollWithDicePlusTotal } from "../diceplus/roll";
-import { calcAttack, calcSkillNotation, type CalcAttackOutcome } from "../../@whisperspace/sdk";
+import { calcAttack, calcSkillNotation, type CalcAttackOutcome } from "@whisperspace/sdk";
 import { getHookBus } from "../../../packages/core/src/hooks";
 
 // Shared broadcast channel for derived combat messages (hit/miss, damage, crits, etc.)

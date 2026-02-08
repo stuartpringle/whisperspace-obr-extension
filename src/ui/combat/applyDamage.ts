@@ -1,5 +1,5 @@
 import type { CharacterSheetV1 } from "../../rules/schema";
-import { calcDamage } from "../../@whisperspace/sdk";
+import { calcDamage } from "@whisperspace/sdk";
 import { getHookBus } from "../../../packages/core/src/hooks";
 
 export async function applyDamageAndStress(opts: {

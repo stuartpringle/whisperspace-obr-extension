@@ -1,7 +1,7 @@
 import OBR from "@owlbear-rodeo/sdk";
-import { buildWhisperspaceSkillNotation } from "../../../packages/core/src/roll";
+import { buildWhisperspaceSkillNotation } from "@whisperspace/sdk";
 export { buildWhisperspaceSkillNotation };
-import { getHookBus } from "../../../packages/core/src/hooks";
+import { getHookBus } from "@whisperspace/sdk";
 
 export const DICEPLUS_CHANNEL_READY = "dice-plus/isReady";
 export const DICEPLUS_CHANNEL_ROLL_REQUEST = "dice-plus/roll-request";

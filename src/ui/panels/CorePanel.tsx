@@ -4,7 +4,7 @@ import { Stack, Box, Typography, TextField, ToggleButtonGroup, ToggleButton, Ico
 import CasinoIcon from "@mui/icons-material/Casino";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { rollWithDicePlus } from "../diceplus/roll";
-import { calcSkillNotation } from "../../@whisperspace/sdk";
+import { calcSkillNotation } from "@whisperspace/sdk";
 import { getAttributeTooltip } from "../../data/skillTooltips";
 
 type AttrKey = "phys" | "ref" | "soc" | "ment";
