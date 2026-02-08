@@ -44,6 +44,9 @@ function Tab(props: { label: string; active: boolean; onClick: () => void; color
         background: "transparent",
         fontWeight: props.active ? 700 : 400,
         color: props.color,
+        outline: "none",
+        boxShadow: "none",
+        appearance: "none",
         ...(hovered ? hoverStyle : {}),
       }}
     >
