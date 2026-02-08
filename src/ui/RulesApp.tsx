@@ -420,24 +420,49 @@ export function RulesApp() {
 
       <main ref={contentRef}>
         <h2 style={{ margin: "0 0 8px 0" }}>Whisperspace Rules Reference</h2>
-        <input
-          type="text"
-          placeholder="Search rules…"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setSearchSelection("");
-          }}
-          style={{
-            width: "100%",
-            padding: "8px 10px",
-            borderRadius: 8,
-            border: "1px solid rgba(255,255,255,0.2)",
-            background: "transparent",
-            color: "inherit",
-            marginBottom: 12,
-          }}
-        />
+        <div style={{ position: "relative", marginBottom: 12 }}>
+          <input
+            type="text"
+            placeholder="Search rules…"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setSearchSelection("");
+            }}
+            style={{
+              width: "100%",
+              padding: "8px 34px 8px 10px",
+              borderRadius: 8,
+              border: "1px solid rgba(255,255,255,0.2)",
+              background: "transparent",
+              color: "inherit",
+            }}
+          />
+          {query ? (
+            <button
+              onClick={() => {
+                setQuery("");
+                setSearchSelection("");
+              }}
+              aria-label="Clear search"
+              style={{
+                position: "absolute",
+                right: 6,
+                top: "50%",
+                transform: "translateY(-50%)",
+                border: "none",
+                background: "transparent",
+                color: "inherit",
+                cursor: "pointer",
+                fontSize: 16,
+                lineHeight: 1,
+                padding: 4,
+              }}
+            >
+              ×
+            </button>
+          ) : null}
+        </div>
 
         {q ? (
           filtered.length === 0 ? (
