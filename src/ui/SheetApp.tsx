@@ -293,15 +293,18 @@ export function SheetApp() {
     const stress = Math.max(0, Math.trunc(entry.stressApplied ?? 0));
     if (damage <= 0 && stress <= 0) return;
 
-    updateSheet((s) =>
-      applyDamageAndStress({
+    updateSheet((s) => {
+      const updated = applyDamageAndStress({
         sheet: s,
         incomingDamage: damage,
         stressDelta: stress,
-      })
-    );
-
-    appendEffectLog(state.sheet.name || "Target", damage, stress);
+      });
+      if (updated.stressDelta > 0) {
+        applyStress(updated.sheet.stress?.current ?? 0);
+      }
+      appendEffectLog(state.sheet.name || "Target", damage, stress);
+      return updated.sheet;
+    });
   }
 
   // Keep sheet name in sync with token text (Edit Text in OBR)

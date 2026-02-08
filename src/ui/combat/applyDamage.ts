@@ -5,9 +5,11 @@ export function applyDamageAndStress(opts: {
   incomingDamage: number;
   stressDelta?: number;
   unmitigated?: boolean;
-}): CharacterSheetV1 {
+}): { sheet: CharacterSheetV1; stressDelta: number } {
   const incoming = Number.isFinite(opts.incomingDamage) ? Math.max(0, Math.trunc(opts.incomingDamage)) : 0;
-  if (incoming <= 0 && !(opts.stressDelta && opts.stressDelta > 0)) return opts.sheet;
+  if (incoming <= 0 && !(opts.stressDelta && opts.stressDelta > 0)) {
+    return { sheet: opts.sheet, stressDelta: 0 };
+  }
 
   const unmitigatedDamage = !!opts.unmitigated;
   const armor = opts.sheet.armor;
@@ -66,9 +68,12 @@ export function applyDamageAndStress(opts: {
   const nextStress = Math.max(0, Math.trunc((opts.sheet.stress?.current ?? 0) + stressInc));
 
   return {
-    ...opts.sheet,
-    wounds: nextWounds as any,
-    armor: nextArmor as any,
-    stress: { ...(opts.sheet.stress ?? { current: 0, cuf: 0, cufLoss: 0 }), current: nextStress } as any,
+    sheet: {
+      ...opts.sheet,
+      wounds: nextWounds as any,
+      armor: nextArmor as any,
+      stress: { ...(opts.sheet.stress ?? { current: 0, cuf: 0, cufLoss: 0 }), current: nextStress } as any,
+    },
+    stressDelta: stressInc,
   };
 }

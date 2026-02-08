@@ -24,6 +24,7 @@ import {
 } from "@mui/material";
 
 import { buildWhisperspaceSkillNotation, checkDicePlusReady, rollWithDicePlus } from "../diceplus/roll";
+import { makeLearnedInfoById } from "../combat/skills";
 
 const ATTR_ORDER: AttributeId[] = ["phys", "ref", "soc", "ment"];
 const ATTR_LABEL: Record<AttributeId, string> = {
@@ -88,13 +89,7 @@ export function SkillsPanel(props: {
     };
   }, []);
 
-  const learnedInfoById = useMemo(() => {
-    const map = new Map<string, { focus: FocusId }>();
-    (Object.keys(skillsData.learned) as FocusId[]).forEach((focus) => {
-      (skillsData.learned[focus] ?? []).forEach((s) => map.set(s.id, { focus }));
-    });
-    return map;
-  }, []);
+  const learnedInfoById = useMemo(() => makeLearnedInfoById(), []);
 
   function maxRankFor(skill: SkillDef): number {
     const learnedInfo = learnedInfoById.get(skill.id);

@@ -12,12 +12,13 @@ import {
 } from "../../obr/initiative";
 import type { InitiativeTrackerState } from "../../obr/initiative";
 import { getMyCharacterTokenId, loadSheetFromToken, saveSheetToToken, TOKEN_KEY_OWNER_PLAYER } from "../../obr/metadata";
-import { skillsData } from "../../data/skills";
 import type { FocusId } from "../../data/types";
 import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../../rules/deriveAttributes";
 import { applyStatusToDerived, computeStatusEffects } from "../../rules/statusEffects";
 import { buildWhisperspaceSkillNotation, rollWithDicePlusTotal } from "../diceplus/roll";
 import { rollWeaponAttackAndBroadcast } from "../combat/weaponAttack";
+import { makeLearnedInfoById, skillModifierFor } from "../combat/skills";
+import { getAmmoMax } from "../combat/weapons";
 
 import {
   Box,
@@ -56,33 +57,6 @@ type TokenExtra = {
   topWeaponAmmoMax?: number;
 };
 
-function makeLearnedInfoById() {
-  const map = new Map<string, { focus: FocusId }>();
-  (Object.keys(skillsData.learned) as FocusId[]).forEach((focus) => {
-    (skillsData.learned[focus] ?? []).forEach((s) => map.set(s.id, { focus }));
-  });
-  return map;
-}
-
-function getAmmoMax(w: CharacterSheetV1["weapons"][number] | undefined): number {
-  if (!w) return 0;
-  const raw = (w.keywordParams as any)?.ammoMax;
-  const max = typeof raw === "number" ? raw : typeof raw === "string" ? Number(raw) : undefined;
-  return Number.isFinite(max) ? Number(max) : 0;
-}
-
-function skillModifierFor(
-  learnedInfoById: Map<string, { focus: FocusId }>,
-  skillId: string,
-  learningFocus: FocusId,
-  rank: number,
-  bonus: number
-): number {
-  if (rank > 0) return rank + bonus;
-  const learnedInfo = learnedInfoById.get(skillId);
-  const base = learnedInfo && learnedInfo.focus === learningFocus ? 0 : -1;
-  return base + bonus;
-}
 
 export function InitiativePanel() {
   // Local initial state until we receive the shared initiative state from OBR metadata.
@@ -265,9 +239,12 @@ export function InitiativePanel() {
     const stressed = curStress > effectiveCUF;
 
     const skillId = String(weapon.skillId ?? "");
-    const baseRank = sheet.skills?.[skillId] ?? 0;
-    const learningFocus = (sheet.learningFocus ?? "combat") as FocusId;
-    const mod = skillModifierFor(learnedInfoById, skillId, learningFocus, baseRank, deltas[skillId] ?? 0);
+    const mod = skillModifierFor({
+      learnedInfoById,
+      sheet,
+      skillId,
+      skillMods: deltas as any,
+    });
 
     const maxAmmo = getAmmoMax(weapon);
     const curAmmo = Number.isFinite((weapon as any)?.ammo) ? Number((weapon as any)?.ammo) : 0;

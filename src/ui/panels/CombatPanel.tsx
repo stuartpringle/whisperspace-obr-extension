@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import OBR from "@owlbear-rodeo/sdk";
 import { CharacterSheetV1 } from "../../rules/schema";
 import { skillsData } from "../../data/skills";
-import type { FocusId, SkillDef } from "../../data/types";
+import type { SkillDef } from "../../data/types";
 
 import { WEAPON_TEMPLATES } from "../../data/weapons";
 import { ARMOR_TEMPLATES } from "../../data/armor";
@@ -33,14 +33,8 @@ import {
 import { buildWhisperspaceSkillNotation, rollWithDicePlus } from "../diceplus/roll";
 import { rollWeaponAttackAndBroadcast, type CombatLogPayload } from "../combat/weaponAttack";
 import { applyDamageAndStress } from "../combat/applyDamage";
-
-function makeLearnedInfoById() {
-  const map = new Map<string, { focus: FocusId }>();
-  (Object.keys(skillsData.learned) as FocusId[]).forEach((focus) => {
-    (skillsData.learned[focus] ?? []).forEach((s) => map.set(s.id, { focus }));
-  });
-  return map;
-}
+import { makeLearnedInfoById, skillModifierFor } from "../combat/skills";
+import { getAmmoMax } from "../combat/weapons";
 
 export function CombatPanel(props: {
   sheet: CharacterSheetV1;
@@ -82,8 +76,6 @@ export function CombatPanel(props: {
     return [...allSkills].sort((a, b) => a.label.localeCompare(b.label));
   }, [allSkills]);
 
-  const learningFocus = (s.learningFocus ?? "combat") as FocusId;
-
   // Initiative is handled from the Initiative tab.
 
 
@@ -93,35 +85,31 @@ function applyDamage() {
   const incoming = Number.isFinite(raw) ? Math.max(0, Math.trunc(raw)) : 0;
   if (incoming <= 0) return;
 
-  const next = applyDamageAndStress({
+  const result = applyDamageAndStress({
     sheet: props.sheet,
     incomingDamage: incoming,
     unmitigated: unmitigatedDamage,
   });
 
   props.onChange({
-    wounds: next.wounds as any,
-    armor: next.armor as any,
-    stress: next.stress as any,
+    wounds: result.sheet.wounds as any,
+    armor: result.sheet.armor as any,
+    stress: result.sheet.stress as any,
   });
+
+  if (result.stressDelta > 0 && props.onApplyStress) {
+    props.onApplyStress(result.sheet.stress?.current ?? 0);
+  }
 
   setDamageInput("");
 }
   function skillModifier(skillId: string): number {
-    const rank = (s.skills?.[skillId] ?? 0) as number;
-    const bonus = props.skillMods?.[skillId] ?? 0;
-    if (rank > 0) return rank + bonus;
-
-    const learnedInfo = learnedInfoById.get(skillId);
-    const base = learnedInfo && learnedInfo.focus === learningFocus ? 0 : -1;
-    return base + bonus;
-  }
-
-  
-  function getAmmoMax(w: CharacterSheetV1["weapons"][number]): number {
-    const raw = (w.keywordParams as any)?.ammoMax;
-    const max = typeof raw === "number" ? raw : typeof raw === "string" ? Number(raw) : undefined;
-    return Number.isFinite(max) ? Number(max) : 0;
+    return skillModifierFor({
+      learnedInfoById,
+      sheet: s,
+      skillId,
+      skillMods: props.skillMods,
+    });
   }
 
 function updateWeapon(i: number, patch: Partial<CharacterSheetV1["weapons"][number]>) {
