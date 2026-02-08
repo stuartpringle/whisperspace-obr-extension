@@ -42,6 +42,10 @@ $headers = function_exists("getallheaders") ? getallheaders() : [];
 $apiKey = $headers["X-WS-API-Key"] ?? $headers["x-ws-api-key"] ?? null;
 $expected = $_SERVER["WS_RULES_API_KEY"] ?? ($_ENV["WS_RULES_API_KEY"] ?? (getenv("WS_RULES_API_KEY") ?: ""));
 
+$path = parse_url($_SERVER["REQUEST_URI"] ?? "", PHP_URL_PATH) ?? "";
+$path = preg_replace("#^/rules-api/calc#","", $path);
+$path = rtrim($path, "/");
+
 if ($path === "/debug") {
   echo json_encode([
     "hasServerEnv" => isset($_SERVER["WS_RULES_API_KEY"]),
@@ -63,10 +67,6 @@ if (!$apiKey || !hash_equals($expected, $apiKey)) {
   echo json_encode(["error" => "unauthorized"]);
   exit;
 }
-
-$path = parse_url($_SERVER["REQUEST_URI"] ?? "", PHP_URL_PATH) ?? "";
-$path = preg_replace("#^/rules-api/calc#","", $path);
-$path = rtrim($path, "/");
 
 $raw = file_get_contents("php://input");
 $body = json_decode($raw ?: "{}", true);
