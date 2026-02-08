@@ -38,6 +38,15 @@ function toMuiTheme(t: ObrTheme) {
         styleOverrides: {
           root: {
             color: textPrimary,
+            ...(mode === "dark"
+              ? {
+                  borderColor: "rgba(255,255,255,0.25)",
+                  "&:hover": {
+                    backgroundColor: "rgba(255,255,255,0.08)",
+                    borderColor: "rgba(255,255,255,0.45)",
+                  },
+                }
+              : {}),
           },
           containedPrimary: {
             color: primaryContrast,
@@ -45,6 +54,17 @@ function toMuiTheme(t: ObrTheme) {
           containedSecondary: {
             color: secondaryContrast,
           },
+        },
+      },
+      MuiButtonBase: {
+        styleOverrides: {
+          root: mode === "dark"
+            ? {
+                "&:hover": {
+                  backgroundColor: "rgba(255,255,255,0.06)",
+                },
+              }
+            : {},
         },
       },
     }
