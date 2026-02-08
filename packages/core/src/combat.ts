@@ -15,6 +15,67 @@ export type StressState = {
   cufLoss?: number;
 };
 
+export type AttackOutcome = {
+  total: number;
+  useDC: number;
+  margin: number;
+  hit: boolean;
+  isCrit: boolean;
+  critExtra: number;
+  baseDamage: number;
+  totalDamage: number;
+  stressDelta: number;
+  message: string;
+};
+
+export function critExtraForMargin(margin: number): number {
+  if (margin >= 9) return 4;
+  if (margin >= 7) return 3;
+  if (margin >= 4) return 2;
+  return 0;
+}
+
+export function buildAttackOutcome(opts: {
+  total: number;
+  useDC: number;
+  weaponDamage: number;
+  label?: string;
+}): AttackOutcome {
+  const total = Math.trunc(opts.total ?? 0);
+  const useDC = Math.trunc(opts.useDC ?? 0);
+  const baseDamage = Math.trunc(opts.weaponDamage ?? 0);
+  const label = opts.label || "Attack";
+
+  const margin = total - useDC;
+  const hit = total >= useDC;
+  const critExtra = hit ? critExtraForMargin(margin) : 0;
+  const isCrit = hit && critExtra > 0;
+  const totalDamage = hit ? baseDamage + critExtra : 0;
+  const stressDelta = isCrit ? 1 : 0;
+
+  let message: string;
+  if (!hit) {
+    message = `Miss. ${label} rolled ${total} vs DC ${useDC}.`;
+  } else if (isCrit) {
+    message = `Extreme success - crit! ${label} rolled ${total} vs DC ${useDC}. Damage: ${baseDamage}+${critExtra}=${totalDamage}. (+1 Stress)`;
+  } else {
+    message = `Hit. ${label} rolled ${total} vs DC ${useDC}. Damage: ${baseDamage}.`;
+  }
+
+  return {
+    total,
+    useDC,
+    margin,
+    hit,
+    isCrit,
+    critExtra,
+    baseDamage,
+    totalDamage,
+    stressDelta,
+    message,
+  };
+}
+
 export function applyDamageAndStressCore(opts: {
   incomingDamage: number;
   stressDelta?: number;

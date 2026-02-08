@@ -1,5 +1,6 @@
 import OBR from "@owlbear-rodeo/sdk";
 import { buildWhisperspaceSkillNotation, rollWithDicePlusTotal } from "../diceplus/roll";
+import { buildAttackOutcome } from "../../../packages/core/src/combat";
 
 // Shared broadcast channel for derived combat messages (hit/miss, damage, crits, etc.)
 export const COMBAT_LOG_CHANNEL = "whisperspace.obr.sheet/combat-log";
@@ -13,18 +14,7 @@ export type WeaponForAttack = {
   keywordParams?: Record<string, string | number | boolean>;
 };
 
-export type AttackOutcome = {
-  total: number;
-  useDC: number;
-  margin: number;
-  hit: boolean;
-  isCrit: boolean;
-  critExtra: number;
-  baseDamage: number;
-  totalDamage: number;
-  stressDelta: number;
-  message: string;
-};
+export type AttackOutcome = ReturnType<typeof buildAttackOutcome>;
 
 export type CombatLogPayload = {
   text: string;
@@ -37,13 +27,6 @@ export type CombatLogPayload = {
   stressApplied?: number;
   outcome?: Pick<AttackOutcome, "total" | "useDC" | "hit" | "isCrit" | "baseDamage" | "totalDamage" | "stressDelta">;
 };
-
-function critExtraForMargin(margin: number): number {
-  if (margin >= 9) return 4;
-  if (margin >= 7) return 3;
-  if (margin >= 4) return 2;
-  return 0;
-}
 
 /**
  * Performs a weapon attack roll (Dice+) and broadcasts a Whisperspace-formatted combat message.
@@ -77,24 +60,14 @@ export async function rollWeaponAttack(opts: {
     showResults: opts.showResults ?? true,
   });
 
-  const margin = total - useDC;
-  const hit = total >= useDC;
-  const critExtra = hit ? critExtraForMargin(margin) : 0;
-  const isCrit = hit && critExtra > 0;
+  const outcome = buildAttackOutcome({
+    total,
+    useDC,
+    weaponDamage: Math.trunc(opts.weapon.damage ?? 0),
+    label,
+  });
 
-  const baseDamage = Math.trunc(opts.weapon.damage ?? 0);
-  const totalDamage = hit ? baseDamage + critExtra : 0;
-  const stressDelta = isCrit ? 1 : 0;
-
-  let msg: string;
-  if (!hit) {
-    msg = `Miss. ${label} rolled ${total} vs DC ${useDC}.`;
-  } else if (isCrit) {
-    msg = `Extreme success - crit! ${label} rolled ${total} vs DC ${useDC}. Damage: ${baseDamage}+${critExtra}=${totalDamage}. (+1 Stress)`;
-  } else {
-    msg = `Hit. ${label} rolled ${total} vs DC ${useDC}. Damage: ${baseDamage}.`;
-  }
-
+  let msg = outcome.message;
   if (opts.prefix) msg = `${opts.prefix} ${msg}`;
 
   const payload: CombatLogPayload = {
@@ -104,27 +77,19 @@ export async function rollWeaponAttack(opts: {
     attackerName: opts.attackerName,
     weaponName: label,
     outcome: {
-      total,
-      useDC,
-      hit,
-      isCrit,
-      baseDamage,
-      totalDamage,
-      stressDelta,
+      total: outcome.total,
+      useDC: outcome.useDC,
+      hit: outcome.hit,
+      isCrit: outcome.isCrit,
+      baseDamage: outcome.baseDamage,
+      totalDamage: outcome.totalDamage,
+      stressDelta: outcome.stressDelta,
     },
   };
   void OBR.broadcast.sendMessage(COMBAT_LOG_CHANNEL, payload, { destination: "ALL" });
 
   return {
-    total,
-    useDC,
-    margin,
-    hit,
-    isCrit,
-    critExtra,
-    baseDamage,
-    totalDamage,
-    stressDelta,
+    ...outcome,
     message: msg,
   };
 }

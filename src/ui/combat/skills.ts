@@ -1,13 +1,10 @@
 import { skillsData } from "../../data/skills";
 import type { FocusId } from "../../data/types";
 import type { CharacterSheetV1 } from "../../rules/schema";
+import { buildLearnedInfoById, skillModifierFor as coreSkillModifierFor } from "../../../packages/core/src/skills";
 
 export function makeLearnedInfoById() {
-  const map = new Map<string, { focus: FocusId }>();
-  (Object.keys(skillsData.learned) as FocusId[]).forEach((focus) => {
-    (skillsData.learned[focus] ?? []).forEach((s) => map.set(s.id, { focus }));
-  });
-  return map;
+  return buildLearnedInfoById<FocusId>(skillsData.learned);
 }
 
 export function skillModifierFor(opts: {
@@ -16,13 +13,11 @@ export function skillModifierFor(opts: {
   skillId: string;
   skillMods?: Record<string, number>;
 }): number {
-  const skillId = String(opts.skillId ?? "");
-  const rank = (opts.sheet.skills?.[skillId] ?? 0) as number;
-  const bonus = opts.skillMods?.[skillId] ?? 0;
-  if (rank > 0) return rank + bonus;
-
-  const learningFocus = (opts.sheet.learningFocus ?? "combat") as FocusId;
-  const learnedInfo = opts.learnedInfoById.get(skillId);
-  const base = learnedInfo && learnedInfo.focus === learningFocus ? 0 : -1;
-  return base + bonus;
+  return coreSkillModifierFor({
+    learnedInfoById: opts.learnedInfoById as Map<string, { focus: FocusId }>,
+    skillId: opts.skillId,
+    ranks: opts.sheet.skills,
+    learningFocus: opts.sheet.learningFocus,
+    skillMods: opts.skillMods,
+  });
 }
