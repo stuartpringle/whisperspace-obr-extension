@@ -21,6 +21,9 @@ import { InventoryPanel } from "./panels/InventoryPanel";
 import { InitiativePanel } from "./panels/InitiativePanel";
 import { COMBAT_LOG_CHANNEL, type CombatLogPayload } from "./combat/weaponAttack";
 import { applyDamageAndStress } from "./combat/applyDamage";
+import { SheetHeader } from "./components/SheetHeader";
+import { StatusBar } from "./components/StatusBar";
+import { SheetTabs } from "./components/SheetTabs";
 
 import { skillsData } from "../data/skills";
 import type { SkillDef } from "../data/types";
@@ -660,170 +663,39 @@ function burnCufToPass() {
     );
   }
 
+  const ownerLabel = state.ownerLabel ?? (state.mode === "view" ? "Viewing token" : "My Character");
+  const showBackButton = state.mode === "view" && !state.isOwnedByMe;
+  const showUnsetButton = state.mode === "my" && !state.suppressUnset;
+
   return (
     <div style={{ padding: 12 }}>
-      <div style={{ display: "flex", alignItems: "flex-start", gap: 12, justifyContent: "space-between", marginBottom: 10 }}>
-        <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-          {state.thumbUrl ? (
-            <img
-              src={state.thumbUrl}
-              alt="Token thumbnail"
-              style={{ width: 44, height: 44, borderRadius: 10, objectFit: "cover", border: "1px solid rgba(0,0,0,0.2)" }}
-            />
-          ) : (
-            <div style={{ width: 44, height: 44, borderRadius: 10, border: "1px solid rgba(0,0,0,0.2)", opacity: 0.4 }} />
-          )}
-
-          <div>
-            <div style={{ fontSize: 18, fontWeight: 700 }}>
-              {title}{" "}
-              <span style={{ fontSize: 12, opacity: 0.75 }}>
-                ({state.ownerLabel ?? (state.mode === "view" ? "Viewing token" : "My Character")})
-              </span>
-            </div>
-          <div style={{ fontSize: 12, opacity: 0.8 }}>
-            Token: <code style={{ fontSize: 11 }}>{state.tokenId}</code>
-          </div>
-          </div>
-        </div>
-
-        <div style={{ display: "flex", gap: 8 }}>
-          {state.mode === "view" ? (
-            !state.isOwnedByMe && (
-              <button
-                style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
-                onClick={backToMySheet}
-              >
-                Back to My Sheet
-              </button>
-            )
-          ) : !state.suppressUnset ? (
-            <button
-              style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
-              onClick={unsetMyCharacter}
-            >
-              Unset “My Character”
-            </button>
-          ) : null}
-        </div>
-      </div>
-
+      <SheetHeader
+        title={title}
+        ownerLabel={ownerLabel}
+        tokenId={state.tokenId}
+        thumbUrl={state.thumbUrl ?? null}
+        showBackButton={showBackButton}
+        onBack={backToMySheet}
+        showUnsetButton={showUnsetButton}
+        onUnset={unsetMyCharacter}
+      />
 
 <>
-    {/* Global status (visible on all tabs) */}
-    <div style={styles.statusBar}>
-      <div style={styles.statusLeft}>
-        <div style={styles.statusGroup}>
-          <div style={styles.statusLabel}>Stress</div>
-          <input
-            type="number"
-            min={0}
-            value={state.sheet.stress?.current ?? 0}
-            onChange={(e) => applyStress(Number(e.target.value))}
-            style={styles.statusNumber}
-          />
-        </div>
+    <StatusBar
+      sheet={state.sheet}
+      sheetForView={sheetForView as CharacterSheetV1}
+      totalBulk={totalBulk}
+      effectiveCarryingCapacity={effectiveCarryingCapacity}
+      encumbranceLabel={encumbranceLabel}
+      crucible={crucible}
+      applyStress={applyStress}
+      toggleWound={toggleWound}
+      setIndomitable={(next) => updateSheet((s) => ({ ...s, indomitable: next }))}
+      rollCrucibleTest={rollCrucibleTest}
+      burnCufToPass={burnCufToPass}
+    />
 
-        <div style={styles.statusGroup}>
-          <div style={styles.statusLabel}>Wounds</div>
-          <div style={styles.woundsRow}>
-            <span style={styles.woundsKind}>L</span>
-            {Array.from({ length: 4 }).map((_, i) => (
-              <input
-                key={`wl_${i}`}
-                type="checkbox"
-                checked={(state.sheet.wounds?.light ?? 0) > i}
-                onChange={() => toggleWound("light", i)}
-              />
-            ))}
-            <span style={{ width: 8 }} />
-            <span style={styles.woundsKind}>M</span>
-            {Array.from({ length: 2 }).map((_, i) => (
-              <input
-                key={`wm_${i}`}
-                type="checkbox"
-                checked={(state.sheet.wounds?.moderate ?? 0) > i}
-                onChange={() => toggleWound("moderate", i)}
-              />
-            ))}
-            <span style={{ width: 8 }} />
-            <span style={styles.woundsKind}>H</span>
-            {Array.from({ length: 1 }).map((_, i) => (
-              <input
-                key={`wh_${i}`}
-                type="checkbox"
-                checked={(state.sheet.wounds?.heavy ?? 0) > i}
-                onChange={() => toggleWound("heavy", i)}
-              />
-            ))}
-          </div>
-        </div>
-
-        <label style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <input
-            type="checkbox"
-            checked={!!state.sheet.indomitable}
-            onChange={(e) => updateSheet((s) => ({ ...s, indomitable: e.target.checked }))}
-          />
-          <span style={{ fontSize: 12, opacity: 0.9 }}>Indomitable</span>
-        </label>
-
-        {(state.sheet.stress?.current ?? 0) > ((sheetForView ?? state.sheet).stress?.cuf ?? 0) && (
-          <div style={styles.warning}>
-            Stress &gt; CUF: make all rolls with +1 Penalty Die
-          </div>
-        )}
-
-        <div style={{ fontSize: 12, opacity: 0.85 }}>
-          Bulk: {totalBulk} / {effectiveCarryingCapacity}
-        </div>
-        {encumbranceLabel && <div style={styles.warning}>{encumbranceLabel}</div>}
-      </div>
-
-      <div style={styles.statusRight}>
-        {crucible && crucible.status === "pending" && (
-          <div style={styles.crucibleBox}>
-            <div style={{ fontWeight: 700 }}>Crucible Test!</div>
-            <div style={{ fontSize: 12, opacity: 0.85 }}>
-              Incoming stress: {crucible.incoming} • DC {crucible.dc} • Roll CUF (no bonus/penalty dice)
-            </div>
-            <button style={styles.buttonSecondary} onClick={() => void rollCrucibleTest(crucible.incoming)}>
-              Roll Crucible
-            </button>
-          </div>
-        )}
-
-        {crucible && crucible.status === "success" && (
-          <div style={styles.crucibleBox}>
-            <div style={{ fontWeight: 700 }}>Crucible succeeded!</div>
-            <div style={{ fontSize: 12, opacity: 0.85 }}>
-              Choose an Indomitable effect. (Indomitable checked automatically.)
-            </div>
-          </div>
-        )}
-
-        {crucible && crucible.status === "fail" && (
-          <div style={styles.crucibleBox}>
-            <div style={{ fontWeight: 700 }}>Crucible failed</div>
-            <div style={{ fontSize: 12, opacity: 0.85 }}>
-              You’ve entered PTSD range (6–8 stress).
-            </div>
-            <button style={styles.buttonSecondary} onClick={burnCufToPass}>
-              Spend 1 CUF to pass
-            </button>
-          </div>
-        )}
-      </div>
-    </div>
-    <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10 }}>
-      <Tab label="Core" active={activeTab === "core"} onClick={() => setActiveTab("core")} />
-      <Tab label="Skills" active={activeTab === "skills"} onClick={() => setActiveTab("skills")} />
-      <Tab label="Combat" active={activeTab === "combat"} onClick={() => setActiveTab("combat")} />
-      <Tab label="Initiative" active={activeTab === "initiative"} onClick={() => setActiveTab("initiative")} />
-      <Tab label="Inventory" active={activeTab === "inventory"} onClick={() => setActiveTab("inventory")} />
-      <Tab label="Feats" active={activeTab === "feats"} onClick={() => setActiveTab("feats")} />
-      <div style={{ marginLeft: "auto", opacity: 0.8 }}>{isSaving ? "Saving…" : "Synced"}</div>
-    </div>
+    <SheetTabs activeTab={activeTab} onTab={setActiveTab} isSaving={isSaving} />
 
     <div style={{ border: "1px solid #888", borderRadius: 12, padding: 10 }}>
       {activeTab === "core" && (
@@ -861,52 +733,3 @@ function burnCufToPass() {
     </div>
   );
 }
-
-function Tab(props: { label: string; active: boolean; onClick: () => void }) {
-  return (
-    <button
-      onClick={props.onClick}
-      style={{
-        padding: "6px 10px",
-        borderRadius: 999,
-        border: "1px solid #777",
-        cursor: "pointer",
-        background: "transparent",
-        fontWeight: props.active ? 700 : 400
-      }}
-    >
-      {props.label}
-    </button>
-  );
-}
-
-const styles: Record<string, React.CSSProperties> = {
-  statusBar: {
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "space-between",
-    gap: 12,
-    padding: "10px 12px",
-    borderRadius: 12,
-    border: "1px solid rgba(255,255,255,0.15)",
-    marginBottom: 10,
-  },
-  statusLeft: { display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" },
-  statusRight: { display: "flex", alignItems: "center", gap: 12 },
-  statusGroup: { display: "flex", flexDirection: "column", gap: 4 },
-  statusLabel: { fontSize: 11, opacity: 0.75, letterSpacing: 0.2 },
-  statusNumber: {
-    width: 64,
-    fontSize: 16,
-  },
-  woundsRow: { display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" },
-  woundsKind: { fontSize: 11, opacity: 0.75, width: 14, textAlign: "center" },
-  warning: { marginTop: 8, fontSize: 12, opacity: 0.9 },
-  crucibleBox: {
-    border: "1px solid rgba(255,255,255,0.18)",
-    borderRadius: 12,
-    padding: 10,
-    maxWidth: 240,
-  },
-  buttonSecondary: { padding: "6px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9, background: "transparent" },
-};
