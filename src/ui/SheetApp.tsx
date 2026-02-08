@@ -27,9 +27,7 @@ import { SheetTabs } from "./components/SheetTabs";
 
 import { skillsData } from "../data/skills";
 import type { SkillDef } from "../data/types";
-import { deriveAttributesFromSkills, deriveCUFFromSkills } from "../../packages/core/src/deriveAttributes";
-import { calcDeriveAttributes, calcDeriveCuf } from "../lib/calcApi";
-import { mergeStatusDeltas } from "../../packages/core/src/statusEffects";
+import { calcDeriveAttributes, calcDeriveCuf, calcStatusDeltas } from "../lib/calcApi";
 import { rollWithDicePlusTotal } from "./diceplus/roll";
 
 type ViewState =
@@ -92,24 +90,15 @@ export function SheetApp() {
   // NOTE: this is best-effort; if a token has no ownership metadata or image, we fall back gracefully.
 
   async function deriveFromApi(sheet: CharacterSheetV1) {
-    try {
-      const [attrs, cuf] = await Promise.all([
-        calcDeriveAttributes({ skills: sheet.skills ?? {}, inherentSkills: skillsData.inherent ?? [] }),
-        calcDeriveCuf({ skills: sheet.skills ?? {} }),
-      ]);
-      return {
-        ...sheet,
-        attributes: { ...sheet.attributes, ...attrs },
-        stress: { ...(sheet.stress ?? { current: 0, cuf: 0, cufLoss: 0 }), cuf: cuf.cuf },
-      } as CharacterSheetV1;
-    } catch {
-      const derived = deriveAttributesFromSkills(sheet.skills ?? {}, skillsData.inherent ?? []);
-      return {
-        ...sheet,
-        attributes: { ...sheet.attributes, ...derived },
-        stress: { ...(sheet.stress ?? { current: 0, cuf: 0, cufLoss: 0 }), cuf: deriveCUFFromSkills(sheet.skills ?? {}) },
-      } as CharacterSheetV1;
-    }
+    const [attrs, cuf] = await Promise.all([
+      calcDeriveAttributes({ skills: sheet.skills ?? {}, inherentSkills: skillsData.inherent ?? [] }),
+      calcDeriveCuf({ skills: sheet.skills ?? {} }),
+    ]);
+    return {
+      ...sheet,
+      attributes: { ...sheet.attributes, ...attrs },
+      stress: { ...(sheet.stress ?? { current: 0, cuf: 0, cufLoss: 0 }), cuf: cuf.cuf },
+    } as CharacterSheetV1;
   }
 
   async function load(opts?: { ignoreOpenOverride?: boolean; suppressUnset?: boolean }) {
@@ -120,9 +109,13 @@ export function SheetApp() {
         const sheet = await ensureSheetOnToken(openTokenId);
         if (!sheet) throw new Error("Could not load sheet from token.");
         // Ensure attributes are derived on load as well (in case older tokens stored stale values)
-        const fixed = await deriveFromApi(sheet);
-        const header = await getTokenHeaderMeta(openTokenId);
-        setState({ kind: "ready", tokenId: openTokenId, sheet: fixed, mode: "view", suppressUnset: true, ...header });
+        try {
+          const fixed = await deriveFromApi(sheet);
+          const header = await getTokenHeaderMeta(openTokenId);
+          setState({ kind: "ready", tokenId: openTokenId, sheet: fixed, mode: "view", suppressUnset: true, ...header });
+        } catch (e) {
+          setState({ kind: "error", message: "Rules calc API unavailable. Please retry." });
+        }
         return;
       } else {
         await setOpenTokenOverride(null);
@@ -163,9 +156,13 @@ export function SheetApp() {
     if (!sheet) throw new Error("Could not load sheet from token.");
     // Best-effort: tag token ownership so we can recover stickily and show owner labels.
     try { await tagTokenOwnedByMe(resolvedMyTokenId); } catch {}
-    const fixed = await deriveFromApi(sheet);
-    const header = await getTokenHeaderMeta(resolvedMyTokenId);
-    setState({ kind: "ready", tokenId: resolvedMyTokenId, sheet: fixed, mode: "my", suppressUnset: !!opts?.suppressUnset, ...header });
+    try {
+      const fixed = await deriveFromApi(sheet);
+      const header = await getTokenHeaderMeta(resolvedMyTokenId);
+      setState({ kind: "ready", tokenId: resolvedMyTokenId, sheet: fixed, mode: "my", suppressUnset: !!opts?.suppressUnset, ...header });
+    } catch (e) {
+      setState({ kind: "error", message: "Rules calc API unavailable. Please retry." });
+    }
   }
 
   useEffect(() => {
@@ -430,19 +427,6 @@ export function SheetApp() {
       if (prev.kind !== "ready") return prev;
       let next = mutator(prev.sheet);
 
-      // Keep derived fields in-sync as the user changes skills.
-      // (Previously these only updated on initial load, requiring a reopen.)
-      try {
-        const derivedAttrs = deriveAttributesFromSkills(next.skills ?? {}, skillsData.inherent ?? []);
-        next = {
-          ...next,
-          attributes: { ...next.attributes, ...derivedAttrs },
-          stress: { ...(next.stress ?? { current: 0, cuf: 0, cufLoss: 0 }), cuf: deriveCUFFromSkills(next.skills ?? {}) },
-        };
-      } catch {
-        // If anything goes wrong here, fail open (do not block the update).
-      }
-
       // Optimistic update: return next immediately, then persist to token metadata.
       void saveToToken(prev.tokenId, next);
       void (async () => {
@@ -539,20 +523,31 @@ function burnCufToPass() {
   // --- Derived stats / encumbrance (including status effects) ---
   // NOTE: these use hooks, so they MUST be above any early returns.
   const readySheet = state.kind === "ready" ? state.sheet : null;
-  const statusDeltas = React.useMemo(() => {
-    if (!readySheet) return {};
-    // Collect all raw status strings and let the helper parse + merge.
-    const raws: string[] = [];
-    // Feats
-    (readySheet.feats ?? []).forEach((f: any) => {
-      if (typeof f?.statusEffects === "string" && f.statusEffects.trim()) raws.push(f.statusEffects);
-    });
-    // Inventory items
-    (readySheet.inventory ?? []).forEach((it: any) => {
-      if (typeof it?.statusEffects === "string" && it.statusEffects.trim()) raws.push(it.statusEffects);
-    });
-
-    return mergeStatusDeltas(raws);
+  const [statusDeltas, setStatusDeltas] = React.useState<Record<string, number>>({});
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      if (!readySheet) {
+        if (mounted) setStatusDeltas({});
+        return;
+      }
+      const raws: string[] = [];
+      (readySheet.feats ?? []).forEach((f: any) => {
+        if (typeof f?.statusEffects === "string" && f.statusEffects.trim()) raws.push(f.statusEffects);
+      });
+      (readySheet.inventory ?? []).forEach((it: any) => {
+        if (typeof it?.statusEffects === "string" && it.statusEffects.trim()) raws.push(it.statusEffects);
+      });
+      try {
+        const res = await calcStatusDeltas({ statuses: raws });
+        if (mounted) setStatusDeltas(res.deltas ?? {});
+      } catch {
+        if (mounted) setStatusDeltas({});
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
   }, [readySheet]);
 
   // Map status effects like "stealth+1" or "melee_(sharp)-1" to skill IDs.
@@ -615,7 +610,7 @@ function burnCufToPass() {
   const baseSpeed = 30 + effectivePhys * 5;
   const effectiveSpeed = baseSpeed + (statusDeltas.speed ?? 0);
 
-  const baseCUF = readySheet ? deriveCUFFromSkills(readySheet.skills ?? {}) : 0;
+  const baseCUF = readySheet?.stress?.cuf ?? 0;
   const effectiveCUF = Math.max(0, baseCUF + (statusDeltas.cool_under_fire ?? 0));
 
   // A display-only view of the sheet after applying status effect deltas.

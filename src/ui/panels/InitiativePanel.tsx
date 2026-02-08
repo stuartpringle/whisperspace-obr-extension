@@ -12,11 +12,9 @@ import {
 } from "../../obr/initiative";
 import type { InitiativeTrackerState } from "../../obr/initiative";
 import { getMyCharacterTokenId, loadSheetFromToken, saveSheetToToken, TOKEN_KEY_OWNER_PLAYER } from "../../obr/metadata";
-import type { FocusId } from "../../data/types";
 import { skillsData } from "../../data/skills";
 import { rollWithDicePlusTotal } from "../diceplus/roll";
 import { rollWeaponAttackAndBroadcast } from "../combat/weaponAttack";
-import { buildLearnedInfoById, skillModifierFor } from "../../../packages/core/src/skills";
 import { getAmmoMax } from "../../../packages/core/src/weapons";
 import { calcDeriveAttributes, calcDeriveCuf, calcSkillMod, calcSkillNotation, calcStatusDeltas } from "../../lib/calcApi";
 
@@ -73,7 +71,6 @@ export function InitiativePanel() {
   const [netDice, setNetDice] = useState<-2 | -1 | 0 | 1 | 2>(0);
 
   const clampNetDice = (n: number) => Math.max(-3, Math.min(3, n));
-  const learnedInfoById = useMemo(() => buildLearnedInfoById<FocusId>(skillsData.learned), []);
 
   useEffect(() => {
     const off = onInitiativeChange((s) => setState(s));
@@ -238,25 +235,13 @@ export function InitiativePanel() {
     const stressed = curStress > effectiveCUF;
 
     const skillId = String(weapon.skillId ?? "");
-    let mod = skillModifierFor({
-      learnedInfoById,
+    const mod = (await calcSkillMod({
+      learnedByFocus: skillsData.learned as any,
       skillId,
       ranks: sheet.skills ?? {},
       learningFocus: sheet.learningFocus,
       skillMods: deltas as any,
-    });
-    try {
-      const remote = await calcSkillMod({
-        learnedByFocus: skillsData.learned as any,
-        skillId,
-        ranks: sheet.skills ?? {},
-        learningFocus: sheet.learningFocus,
-        skillMods: deltas as any,
-      });
-      mod = remote.modifier;
-    } catch {
-      // fallback to local modifier
-    }
+    })).modifier;
 
     const maxAmmo = getAmmoMax(weapon);
     const curAmmo = Number.isFinite((weapon as any)?.ammo) ? Number((weapon as any)?.ammo) : 0;

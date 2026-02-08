@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import OBR from "@owlbear-rodeo/sdk";
 import { CharacterSheetV1 } from "../../rules/schema";
 import { skillsData } from "../../data/skills";
-import type { FocusId, SkillDef } from "../../data/types";
+import type { SkillDef } from "../../data/types";
 
 import { WEAPON_TEMPLATES } from "../../data/weapons";
 import { ARMOR_TEMPLATES } from "../../data/armour";
@@ -30,7 +30,6 @@ import {
 
 import { rollWeaponAttackAndBroadcast, type CombatLogPayload } from "../combat/weaponAttack";
 import { applyDamageAndStress } from "../combat/applyDamage";
-import { buildLearnedInfoById, skillModifierFor } from "../../../packages/core/src/skills";
 import { getAmmoMax } from "../../../packages/core/src/weapons";
 import { calcSkillMod } from "../../lib/calcApi";
 import { CombatLog } from "../combat/CombatLog";
@@ -54,7 +53,7 @@ export function CombatPanel(props: {
   const logEntries = (props.combatLog ?? []).slice(-3).reverse();
 
 
-  const learnedInfoById = useMemo(() => buildLearnedInfoById<FocusId>(skillsData.learned), []);
+  
 
   const allSkills: SkillDef[] = useMemo(() => {
     const learned = Object.values(skillsData.learned).flat();
@@ -103,16 +102,6 @@ async function applyDamage() {
 
   setDamageInput("");
 }
-  function skillModifier(skillId: string): number {
-    return skillModifierFor({
-      learnedInfoById,
-      skillId,
-      ranks: s.skills ?? {},
-      learningFocus: s.learningFocus,
-      skillMods: props.skillMods,
-    });
-  }
-
 function updateWeapon(i: number, patch: Partial<CharacterSheetV1["weapons"][number]>) {
     const next = [...(s.weapons ?? [])];
     const prev = next[i];
@@ -201,19 +190,13 @@ function updateWeapon(i: number, patch: Partial<CharacterSheetV1["weapons"][numb
       return;
     }
 
-    let mod = skillModifier(w.skillId);
-    try {
-      const remote = await calcSkillMod({
-        learnedByFocus: skillsData.learned as any,
-        skillId: w.skillId,
-        ranks: props.sheet.skills ?? {},
-        learningFocus: props.sheet.learningFocus,
-        skillMods: props.skillMods,
-      });
-      mod = remote.modifier;
-    } catch {
-      // fall back to local modifier
-    }
+    const mod = (await calcSkillMod({
+      learnedByFocus: skillsData.learned as any,
+      skillId: w.skillId,
+      ranks: props.sheet.skills ?? {},
+      learningFocus: props.sheet.learningFocus,
+      skillMods: props.skillMods,
+    })).modifier;
     await rollWeaponAttackAndBroadcast({
       weapon: w as any,
       useDC: Number.isFinite(w.useDC as any) ? Number(w.useDC) : 0,
