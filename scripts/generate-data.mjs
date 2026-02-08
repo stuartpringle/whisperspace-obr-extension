@@ -159,12 +159,18 @@ function extractSkillTooltips(ruleDoc) {
   for (const table of tables) {
     const rows = (table?.rows ?? []).map((row) => row.map((cell) => String(cell?.text ?? "").trim()));
     if (!rows.length) continue;
-    const header = rows[0].map((h) => h.toLowerCase());
+    let headerRowIndex = 0;
+    let dataStartIndex = 1;
+    if (rows[0].length === 1 && rows.length > 1) {
+      headerRowIndex = 1;
+      dataStartIndex = 2;
+    }
+    const header = rows[headerRowIndex].map((h) => h.toLowerCase());
 
     const isAttributeTable =
       header.includes("attribute") && header.includes("short form") && header.includes("description");
     if (isAttributeTable) {
-      for (const row of rows.slice(1)) {
+      for (const row of rows.slice(dataStartIndex)) {
         const shortForm = row[1];
         const description = cleanDescription(row[2]);
         if (!shortForm || !description) continue;
@@ -178,14 +184,14 @@ function extractSkillTooltips(ruleDoc) {
     if (!hasDescription || !hasSkillsLabel) continue;
 
     if (header.length >= 3 && header.some((h) => h.includes("max rank"))) {
-      for (const row of rows.slice(1)) {
+      for (const row of rows.slice(dataStartIndex)) {
         const name = row[0];
         const description = cleanDescription(row[2]);
         if (!name || !description) continue;
         if (!skills[name]) skills[name] = description;
       }
     } else if (header.length >= 2) {
-      for (const row of rows.slice(1)) {
+      for (const row of rows.slice(dataStartIndex)) {
         const name = row[0];
         const description = cleanDescription(row[1]);
         if (!name || !description) continue;

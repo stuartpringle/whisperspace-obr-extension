@@ -31,6 +31,26 @@
     "Piloting": "Flying ships, driving vehicles",
     "Remote Operation": "Using drones or unmanned ships",
     "Sensors": "Interpreting a whole heap of scan data to find anomalies or things of interest",
-    "Systems Interface": "Your ability to operate and interact with digital control systems—whether on a starship bridge, station terminal, outpost console, or emergency override panel. Systems Interface governs real-time manipulation of user-facing systems like power reroutes, system lockdowns, navigational tools, environmental controls, and automated safety features."
+    "Systems Interface": "Your ability to operate and interact with digital control systems—whether on a starship bridge, station terminal, outpost console, or emergency override panel. Systems Interface governs real-time manipulation of user-facing systems like power reroutes, system lockdowns, navigational tools, environmental controls, and automated safety features.",
+    "Athletics": "Running, jumping, climbing. Overall fitness. Whether you’d make a good triathlon-ist or not.",
+    "Cybernetics": "Can incorporate one level of cybernetic implant per level of this skill. So with 3 points in Cybernetics, you could equip one Level 2 cybernetic implant plus one Level 1 implant, three Level 1 implants, or one Level 3 implant.",
+    "Powerlift": "Ability to move heavy things. Lifting, carrying, pulling, prying, etc.",
+    "Endurance": "A measure of physical stamina. Push through fatigue, hunger, etc.",
+    "Toughness": "Pain tolerance, etc",
+    "Balance": "Ability to maintain control over your body in motion, react fluidly to unstable conditions, and perform complex physical tasks with grace and precision.",
+    "Evade": "You may use your reaction in combat to attempt to dodge an incoming melee attack. To do so, roll Evade and get a score higher than the roll your opponent made to hit you.",
+    "Finesse": "Skill at unnoticed dexterous actions. Pickpocketing, magic tricks, etc.",
+    "Instinct": "Natural ability to react to signs of trouble before they happen. Helps against surprise.",
+    "Stealth": "Blending in, keep out of sight, and move without making noise",
+    "Subterfuge": "Lie, disguise, or otherwise talk your way out of situations. Come up with convincing cover stories, false identities, etc.",
+    "Bearing": "Appearance and posture; manner of carrying yourself. Confidence, related by body language.",
+    "Negotiate": "Haggle your way to a better deal, whether in a store or while negotiating with a mob boss. Unlike Persuade, which often appeals to emotion or logic, Negotiate is rooted in mutual gain - or at least the illusion of it.",
+    "Persuade": "Your ability to convince others through speech, reasoning, charm, or emotional appeal. Persuade is used to shift someone’s beliefs, decisions, or behavior, especially when you want them to act without any guaranteed personal gain. It’s the skill of leaders, con artists, diplomats, and silver-tongued wanderers.",
+    "Streetwise": "Your ability to read the unspoken rules of the environment, especially in disreputable, dangerous, or politically charged spaces. Streetwise covers your knack for picking up on indirect social cues, tension in the air, or subtle shifts in behavior that reveal deeper truths. Whether you're spotting a con artist in a crowd, sensing an ambush in a quiet alley, or reading the performative lies of a smooth-talking diplomat, Streetwise lets you interpret what’s going on beneath the surface.",
+    "Composure": "Affects reactions under pressure; high-stakes social or stress-related moments.",
+    "Psychology": "Analyze someone’s motives, try to figure out their end goals, tell if they’re lying to you, etc.",
+    "Observe": "See things others may have missed. Investigate a crime scene. Spot a frog or a dog on a log.",
+    "Recall": "Remember things from your past. Were there three guards or four? Was her hair purple or brown? What planet are you from?",
+    "Willpower": "Ability to withstand mental manipulation."
   }
 }

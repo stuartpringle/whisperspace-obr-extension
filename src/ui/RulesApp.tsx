@@ -22,6 +22,10 @@ type RuleDoc = RuleSection & {
   file?: string;
 };
 
+function getSectionId(section: RuleSection) {
+  return section.slug || section.title.toLowerCase().replace(/\s+/g, "-");
+}
+
 function flattenTableText(table: { rows: { text: string }[][] }) {
   return table.rows.flat().map((cell) => String(cell.text ?? ""));
 }
@@ -186,8 +190,22 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
   const hasChildren = (props.section.sections ?? []).length > 0;
   const headerSize = Math.max(14, 20 - depth * 2);
   const pad = depth * 12;
-  const id = props.section.slug || props.section.title.toLowerCase().replace(/\s+/g, "-");
+  const id = getSectionId(props.section);
   const q = props.query ?? "";
+
+  if (depth === 0) {
+    return (
+      <div id={id} style={{ marginLeft: pad, marginTop: 0 }}>
+        <h2 style={{ margin: "0 0 8px 0", fontSize: 22 }}>{props.section.title}</h2>
+        <div>
+          {content.map((b, i) => renderBlock(b, i, q))}
+          {hasChildren && (props.section.sections ?? []).map((s, i) => (
+            <RuleSectionView key={`${s.slug ?? s.title}-${i}`} section={s} depth={depth + 1} expandAll={props.expandAll} query={q} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div id={id} style={{ marginLeft: pad, marginTop: depth ? 8 : 0 }}>
@@ -213,7 +231,7 @@ export function RulesApp() {
   const q = query.trim().toLowerCase();
   const [activeSlug, setActiveSlug] = useState<string>(() => {
     const first = rules[0];
-    return first?.slug || first?.title?.toLowerCase().replace(/\s+/g, "-") || "";
+    return getSectionId(first) || "";
   });
   const filtered = useMemo(() => {
     if (!q) return rules;
@@ -222,12 +240,48 @@ export function RulesApp() {
 
   const toc = rules.map((doc) => ({
     title: doc.title,
-    slug: doc.slug || doc.title.toLowerCase().replace(/\s+/g, "-"),
+    slug: getSectionId(doc),
   }));
 
   const activeDoc = useMemo(() => {
-    return rules.find((d) => (d.slug || d.title.toLowerCase().replace(/\s+/g, "-")) === activeSlug) ?? rules[0];
+    return rules.find((d) => getSectionId(d) === activeSlug) ?? rules[0];
   }, [rules, activeSlug]);
+
+  const renderSectionTree = (section: RuleSection, depth: number) => {
+    const id = getSectionId(section);
+    const children = section.sections ?? [];
+    return (
+      <div key={`${id}-${depth}`} style={{ marginLeft: depth * 12 }}>
+        <button
+          onClick={() => {
+            setActiveSlug(activeSlug);
+            setQuery("");
+            setTimeout(() => {
+              const el = document.getElementById(id);
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 0);
+          }}
+          style={{
+            textAlign: "left",
+            background: "transparent",
+            border: "1px solid rgba(255,255,255,0.12)",
+            borderRadius: 6,
+            padding: "4px 6px",
+            cursor: "pointer",
+            color: "inherit",
+            width: "100%",
+          }}
+        >
+          {section.title}
+        </button>
+        {children.length > 0 && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 4 }}>
+            {children.map((child) => renderSectionTree(child, depth + 1))}
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 12, padding: 12 }}>
@@ -255,6 +309,11 @@ export function RulesApp() {
             </button>
           ))}
         </div>
+        {!q && activeDoc?.sections?.length ? (
+          <div style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 6 }}>
+            {activeDoc.sections.map((section) => renderSectionTree(section, 1))}
+          </div>
+        ) : null}
       </aside>
 
       <main>
