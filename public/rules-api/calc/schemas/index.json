@@ -10,6 +10,8 @@
     "/skill-mod": "skill-mod.json",
     "/status-deltas": "status-deltas.json",
     "/status-apply": "status-apply.json",
-    "/ammo-max": "ammo-max.json"
+    "/ammo-max": "ammo-max.json",
+    "/point-budget": "point-budget.json",
+    "/validate-sheet": "validate-sheet.json"
   }
 }

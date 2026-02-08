@@ -87,6 +87,8 @@ Endpoints:
 - `/rules-api/calc/status-deltas`
 - `/rules-api/calc/status-apply`
 - `/rules-api/calc/ammo-max`
+- `/rules-api/calc/point-budget`
+- `/rules-api/calc/validate-sheet`
 
 Example: `POST https://whisperspace.com/rules-api/calc/attack`
 
@@ -127,6 +129,8 @@ Quick payload shapes:
 - `/status-deltas`: `{ statuses: string[] }`
 - `/status-apply`: `{ derived, statuses: string[] }`
 - `/ammo-max`: `{ weapon }`
+- `/point-budget`: `{ skills, skillPoints }`
+- `/validate-sheet`: `{ sheet, learnedByFocus, inherentSkills, maxRankInherent?, maxRankOnFocus?, maxRankOffFocus? }`
 
 Minimal curl examples:
 ```bash
@@ -169,6 +173,14 @@ curl -s https://whisperspace.com/rules-api/calc/status-apply \
 curl -s https://whisperspace.com/rules-api/calc/ammo-max \
   -H "Content-Type: application/json" \
   -d '{"weapon":{"keywordParams":{"ammoMax":6}}}'
+
+curl -s https://whisperspace.com/rules-api/calc/point-budget \
+  -H "Content-Type: application/json" \
+  -d '{"skills":{"athletics":2,"melee":1},"skillPoints":10}'
+
+curl -s https://whisperspace.com/rules-api/calc/validate-sheet \
+  -H "Content-Type: application/json" \
+  -d '{"sheet":{"skills":{"athletics":2,"melee":1},"learningFocus":"combat","skillPoints":10},"learnedByFocus":{"combat":[{"id":"melee"}]},"inherentSkills":[{"id":"athletics"}]}' 
 ```
 
 ### Core Hooks

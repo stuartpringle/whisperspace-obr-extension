@@ -376,6 +376,92 @@ function ammo_max(array $body): array {
   return ["ammoMax" => max(0, $max)];
 }
 
+function cost_to_reach(int $rank): int {
+  $r = max(0, min(5, $rank));
+  return (int)(($r * ($r + 1)) / 2);
+}
+
+function build_learned_map(array $learnedByFocus): array {
+  $map = [];
+  foreach ($learnedByFocus as $focus => $list) {
+    if (!is_array($list)) continue;
+    foreach ($list as $s) {
+      $id = (string)($s["id"] ?? "");
+      if ($id === "") continue;
+      $map[$id] = ["focus" => $focus];
+    }
+  }
+  return $map;
+}
+
+function point_budget(array $body): array {
+  $skills = is_array($body["skills"] ?? null) ? $body["skills"] : [];
+  $skillPoints = isset($body["skillPoints"]) ? (int)$body["skillPoints"] : 0;
+
+  $spent = 0;
+  foreach ($skills as $rank) {
+    $r = is_numeric($rank) ? (int)$rank : 0;
+    $spent += cost_to_reach($r);
+  }
+  $remaining = max(0, $skillPoints - $spent);
+  $overage = max(0, $spent - $skillPoints);
+  return ["spent" => $spent, "remaining" => $remaining, "overage" => $overage];
+}
+
+function validate_sheet(array $body): array {
+  $sheet = is_array($body["sheet"] ?? null) ? $body["sheet"] : [];
+  $skills = is_array($sheet["skills"] ?? null) ? $sheet["skills"] : [];
+  $learningFocus = (string)($sheet["learningFocus"] ?? "combat");
+  $skillPoints = isset($sheet["skillPoints"]) ? (int)$sheet["skillPoints"] : 0;
+
+  $learnedByFocus = is_array($body["learnedByFocus"] ?? null) ? $body["learnedByFocus"] : [];
+  $inherentSkills = is_array($body["inherentSkills"] ?? null) ? $body["inherentSkills"] : [];
+  $maxRankInherent = isset($body["maxRankInherent"]) ? (int)$body["maxRankInherent"] : 5;
+  $maxRankOnFocus = isset($body["maxRankOnFocus"]) ? (int)$body["maxRankOnFocus"] : 5;
+  $maxRankOffFocus = isset($body["maxRankOffFocus"]) ? (int)$body["maxRankOffFocus"] : 2;
+
+  $learnedMap = build_learned_map($learnedByFocus);
+  $inherentSet = [];
+  foreach ($inherentSkills as $s) {
+    $id = (string)($s["id"] ?? "");
+    if ($id !== "") $inherentSet[$id] = true;
+  }
+
+  $errors = [];
+  $warnings = [];
+
+  foreach ($skills as $id => $rank) {
+    if (!is_numeric($rank)) continue;
+    $r = (int)$rank;
+    if ($r < 0) $errors[] = "Skill '{$id}' has negative rank.";
+
+    if (isset($inherentSet[$id])) {
+      if ($r > $maxRankInherent) $errors[] = "Skill '{$id}' exceeds max rank {$maxRankInherent}.";
+      continue;
+    }
+
+    $learnedInfo = $learnedMap[$id] ?? null;
+    if ($learnedInfo) {
+      $max = ($learnedInfo["focus"] ?? "") === $learningFocus ? $maxRankOnFocus : $maxRankOffFocus;
+      if ($r > $max) $errors[] = "Skill '{$id}' exceeds max rank {$max}.";
+      continue;
+    }
+  }
+
+  $budget = point_budget(["skills" => $skills, "skillPoints" => $skillPoints]);
+  if ($budget["overage"] > 0) {
+    $errors[] = "Skill points exceeded by {$budget["overage"]}.";
+  }
+
+  return [
+    "valid" => count($errors) === 0,
+    "errors" => $errors,
+    "warnings" => $warnings,
+    "spent" => $budget["spent"],
+    "remaining" => $budget["remaining"],
+  ];
+}
+
 if ($path === "/attack") {
   echo json_encode(build_attack_outcome($body));
   exit;
@@ -420,6 +506,14 @@ if ($path === "/status-apply") {
 }
 if ($path === "/ammo-max") {
   echo json_encode(ammo_max($body));
+  exit;
+}
+if ($path === "/point-budget") {
+  echo json_encode(point_budget($body));
+  exit;
+}
+if ($path === "/validate-sheet") {
+  echo json_encode(validate_sheet($body));
   exit;
 }
 
