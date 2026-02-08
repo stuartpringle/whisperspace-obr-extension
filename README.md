@@ -89,3 +89,23 @@ Apache should allow cross‑origin access for the rules API path. Example:
 
 AddType application/json .json
 ```
+
+### Cache Headers (ETag + Cache-Control)
+
+If you want cheap revalidation, add ETag + cache headers in Apache. Example:
+
+```apache
+<Directory /hdd/sites/stuartpringle/whisperspace/public/rules-api>
+    <IfModule mod_headers.c>
+        Header set Cache-Control "public, max-age=300, must-revalidate"
+        Header set ETag "expr=%{REQUEST_URI}-%{FILE_SIZE}-%{FILE_MTIME}"
+    </IfModule>
+
+    <IfModule mod_expires.c>
+        ExpiresActive On
+        ExpiresDefault "access plus 5 minutes"
+    </IfModule>
+</Directory>
+```
+
+Note: your vhost currently has `AllowOverride None`, so put these in the vhost config (not `.htaccess`).
