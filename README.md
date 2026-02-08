@@ -45,4 +45,5 @@ Parser README:
 ## Scripts
 
 - `npm run rules:sync` — copy parser output into `src/data/rules/` and regenerate JSON.
+- `npm run rules:gear` — parse equipment tables from `src/data/rules/equipment-gear.yaml` into data YAML files.
 - `npm run build` — runs rules sync, then builds the extension.

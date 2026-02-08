@@ -1,0 +1,33 @@
+rigs:
+  - name: MonoTap
+    systemTierAccess: 1
+    maxSoftwareTier: 1
+    bulk: 1
+    cost: 250
+  - name: DeckLite
+    systemTierAccess: 2
+    maxSoftwareTier: 1
+    bulk: 2
+    cost: 400
+  - name: Raven Microdeck
+    systemTierAccess: 2
+    maxSoftwareTier: 2
+    bulk: 2
+    cost: 600
+software:
+  - name: EchoScan
+    tier: 1
+    notes: Reveals the target system's Tier and any countermeasures currently active
+    cost: 100
+  - name: Firewall.breach
+    tier: 1
+    notes: Gain a Bonus die on Bypass checks against systems up to Tier 3.
+    cost: 150
+  - name: PhantomSig
+    tier: 1
+    notes: Generates a temporary access identity using randomized system signatures
+    cost: 175
+  - name: NullTrace
+    tier: 1
+    notes: If successful, delays any trace countermeasure by 2 rounds
+    cost: 150

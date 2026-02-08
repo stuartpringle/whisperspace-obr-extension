@@ -134,27 +134,1043 @@ sections:
 - title: Gear List
   slug: gear-list
   level: 2
-  content: []
+  content:
+  - type: table
+    rows:
+    - - text: Weapons
+        spans: []
+    - - text: Name
+        spans: []
+      - text: Type
+        spans: []
+      - text: DC
+        spans: []
+      - text: Dmg
+        spans: []
+      - text: Rng
+        spans: []
+      - text: Ammo
+        spans: []
+      - text: Blk
+        spans: []
+      - text: Req.
+        spans: []
+      - text: Special
+        spans: []
+      - text: Cost
+        spans: []
+    - - text: Pistol
+        spans: []
+      - text: Light
+        spans: []
+      - text: '7'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: Med
+        spans: []
+      - text: '10'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '500'
+        spans: []
+    - - text: SMART Pistol
+        spans: []
+      - text: Light
+        spans: []
+      - text: '9'
+        spans: []
+      - text: '4'
+        spans: []
+      - text: Med
+        spans: []
+      - text: '6'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Smart-Linked
+        spans: []
+      - text: '900'
+        spans: []
+    - - text: Toxic Spike
+        spans: []
+      - text: Light
+        spans: []
+      - text: '10'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: Near
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Toxin (Prax), Concealable
+        spans: []
+      - text: '750'
+        spans: []
+    - - text: SMG
+        spans: []
+      - text: Med
+        spans: []
+      - text: '6'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: Med
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Bullet Spray
+        spans: []
+      - text: '600'
+        spans: []
+    - - text: Photon Rifle
+        spans: []
+      - text: Med
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '6'
+        spans: []
+      - text: Long
+        spans: []
+      - text: '6'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Two Handed
+        spans: []
+      - text: '5000'
+        spans: []
+    - - text: Rifle
+        spans: []
+      - text: Med
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '4'
+        spans: []
+      - text: Long
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Two Handed, Piercing 1
+        spans: []
+      - text: '1000'
+        spans: []
+    - - text: Shotgun
+        spans: []
+      - text: Med
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '4'
+        spans: []
+      - text: Near
+        spans: []
+      - text: '4'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: PHYS 1
+        spans: []
+      - text: Point Blank, Shredding 1
+        spans: []
+      - text: '800'
+        spans: []
+    - - text: Gauss Cannon
+        spans: []
+      - text: Heavy
+        spans: []
+      - text: '7'
+        spans: []
+      - text: '4'
+        spans: []
+      - text: Med
+        spans: []
+      - text: '20'
+        spans: []
+      - text: '4'
+        spans: []
+      - text: PHYS 3
+        spans: []
+      - text: Bullet Spray
+        spans: []
+      - text: '900'
+        spans: []
+    - - text: Grenade Launcher
+        spans: []
+      - text: Heavy
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: Med
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: PHYS 2
+        spans: []
+      - text: Area (Very Near), Two Handed, Slow Load, Grenade
+        spans: []
+      - text: '2000'
+        spans: []
+    - - text: Magneton Cannon
+        spans: []
+      - text: Exotic
+        spans: []
+      - text: '5'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: Near
+        spans: []
+      - text: '5'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: PHYS 1
+        spans: []
+      - text: Area (melee), Slow Load, Shredding 3
+        spans: []
+      - text: '8000'
+        spans: []
+    - - text: Tesla Rifle
+        spans: []
+      - text: Exotic
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '5'
+        spans: []
+      - text: Med
+        spans: []
+      - text: '6'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Two Handed, Stun 2
+        spans: []
+      - text: '6000'
+        spans: []
+    - - text: Stun Baton
+        spans: []
+      - text: Melee
+        spans: []
+      - text: '6'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Melee
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Stun 1
+        spans: []
+      - text: '450'
+        spans: []
+    - - text: Switchblade
+        spans: []
+      - text: Melee
+        spans: []
+      - text: '9'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: Melee
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Concealable, Thrown
+        spans: []
+      - text: '150'
+        spans: []
+    - - text: Fusion Blade
+        spans: []
+      - text: Melee
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: Melee
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: REF 2
+        spans: []
+      - text: Piercing 2
+        spans: []
+      - text: '1200'
+        spans: []
+    - - text: Rocket Maul
+        spans: []
+      - text: Melee
+        spans: []
+      - text: '10'
+        spans: []
+      - text: '6'
+        spans: []
+      - text: Melee
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: PHYS 3
+        spans: []
+      - text: Two Handed
+        spans: []
+      - text: '2500'
+        spans: []
   sections:
   - title: Weapons
     slug: weapons
     level: 3
-    content: []
+    content:
+    - type: table
+      rows:
+      - - text: Weapon keywords
+          spans: []
+      - - text: Concealable
+          spans: []
+        - text: May be hidden easily. +1 bonus die to subterfuge if trying to conceal
+            this weapon.
+          spans: []
+      - - text: Piercing X
+          spans: []
+        - text: Ignores X points of armor protection.
+          spans: []
+      - - text: Point Blank
+          spans: []
+        - text: Ignore penalty die from shooting at Melee or Very Near range. At melee
+            range, gain Piercing 2.
+          spans: []
+      - - text: Slow Load
+          spans: []
+        - text: Takes 2 actions to reload
+          spans: []
+      - - text: Smart-Linked
+          spans: []
+        - text: Requires Ammo (SMART); negate one level of cover (Full Cover becomes
+            Partial Cover; Partial Cover is negated entirely). Target must be visible
+            and bullets must have a path to reach the target.
+          spans: []
+      - - text: Stun X
+          spans: []
+        - text: Deals no damage, but forces target to roll Toughness (DC 6 + X) or
+            be Stunned for X rounds
+          spans: []
+      - - text: Two-Handed
+          spans: []
+        - text: Requires both hands to use
+          spans: []
+      - - text: Bullet Spray
+          spans: []
+        - text: Requires at least half ammo available. Targets multiple enemies in
+            a cone; depletes remaining ammo; deals reduced damage; does friendly fire.Make
+            a single attack roll and compare it against the DC of each target in the
+            spray zone (including cover bonuses, etc).Each hit deals -1 damage (compared
+            to a standard single-target shot).
+          spans: []
+      - - text: Shredding X
+          spans: []
+        - text: If damage exceeds armour’s protection value, reduce armour’s durability
+            by X.
+          spans: []
+      - - text: Area (X)
+          spans: []
+        - text: Deals damage to all targets at X distance or closer.
+          spans: []
+      - - text: Thrown
+          spans: []
+        - text: Weapon may be thrown without suffering a penalty die.
+          spans: []
+      - - text: Grenade
+          spans: []
+        - text: Requires (and uses up) a grenade item, applying the effects and any
+            damage the grenade deals upon a hit. Additionally, deals this weapon’s
+            damage to the target from the impact. A failure to hit by 3 or less still
+            grants the effect of the grenade used, but does not deal this weapon’s
+            damage to the target.
+          spans: []
+      - - text: Toxin (X)
+          spans: []
+        - text: Apply 1 level of X toxin upon successful attack.
+          spans:
+          - style: link_underline
+            text: toxin
+            href: '#h.oaq0qtef2p1'
     sections:
     - title: Weapon keywords
       slug: weapon-keywords
       level: 4
-      content: []
+      content:
+      - type: table
+        rows:
+        - - text: Armour
+            spans: []
+        - - text: Name
+            spans: []
+          - text: Prot
+            spans: []
+          - text: Durability
+            spans: []
+          - text: Blk
+            spans: []
+          - text: Req.
+            spans: []
+          - text: Special
+            spans: []
+          - text: Cost
+            spans: []
+        - - text: Scrap Armour
+            spans: []
+          - text: '1'
+            spans: []
+          - text: '2'
+            spans: []
+          - text: '2'
+            spans: []
+          - text: '-'
+            spans: []
+          - text: Cannot be repaired
+            spans: []
+          - text: '500'
+            spans: []
+        - - text: Flak Jacket
+            spans: []
+          - text: '1'
+            spans: []
+          - text: '4'
+            spans: []
+          - text: '1'
+            spans: []
+          - text: '-'
+            spans: []
+          - text: '-'
+            spans: []
+          - text: '1250'
+            spans: []
+        - - text: Kevlar Clothing
+            spans: []
+          - text: '1'
+            spans: []
+          - text: '3'
+            spans: []
+          - text: '1'
+            spans: []
+          - text: '-'
+            spans: []
+          - text: Appears to be normal clothing
+            spans: []
+          - text: '1500'
+            spans: []
+        - - text: Streetweave Jacket
+            spans: []
+          - text: '1'
+            spans: []
+          - text: '5'
+            spans: []
+          - text: '1'
+            spans: []
+          - text: '-'
+            spans: []
+          - text: +1 to Stealth
+            spans: []
+          - text: '2500'
+            spans: []
+        - - text: MilSec Bodyplate
+            spans: []
+          - text: '2'
+            spans: []
+          - text: '6'
+            spans: []
+          - text: '2'
+            spans: []
+          - text: '-'
+            spans: []
+          - text: '-'
+            spans: []
+          - text: '5000'
+            spans: []
+        - - text: Breaching plate
+            spans: []
+          - text: '2'
+            spans: []
+          - text: '4'
+            spans: []
+          - text: '3'
+            spans: []
+          - text: PHYS 2
+            spans: []
+          - text: Frontal Shielding 1
+            spans: []
+          - text: '8500'
+            spans: []
+        - - text: Heavy Bodyplate
+            spans: []
+          - text: '3'
+            spans: []
+          - text: '8'
+            spans: []
+          - text: '4'
+            spans: []
+          - text: PHYS 3
+            spans: []
+          - text: +1 penalty die to Stealth
+            spans: []
+          - text: '10000'
+            spans: []
+        - - text: Basic Power Armour
+            spans: []
+          - text: '4'
+            spans: []
+          - text: '14'
+            spans: []
+          - text: '10'
+            spans: []
+          - text: Power Armour 1
+            spans: []
+          - text: 'Requires Power Armour (DC5) check to activate. Failure: become
+              Immobile; gain +1 penalty die to all PHYS and REF based checks. When
+              activated, reduces its own bulk to 1 and grants +1 bonus die to all
+              PHYS based checks.'
+            spans: []
+          - text: '40000'
+            spans: []
       sections: []
   - title: Armour
     slug: armour
     level: 3
-    content: []
+    content:
+    - type: table
+      rows:
+      - - text: Items
+          spans: []
+      - - text: Item Name
+          spans: []
+        - text: Effect
+          spans: []
+        - text: Uses
+          spans: []
+        - text: Bulk
+          spans: []
+        - text: Cost
+          spans: []
+      - - text: Flashbang Grenade
+          spans: []
+        - text: Applies Stun 1 to everyone within Very Near range, Thrown
+          spans: []
+        - text: 1 use
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '200'
+          spans: []
+      - - text: Frag Grenade
+          spans: []
+        - text: Deals 2 area (Very Near range) damage (DC8 to Evade half), Thrown
+          spans: []
+        - text: 1 use
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '250'
+          spans: []
+      - - text: EMP Grenade
+          spans: []
+        - text: Applies EMP 2 to everything within range, Thrown
+          spans: []
+        - text: 1 use
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '300'
+          spans: []
+      - - text: Combat Stim Injector
+          spans: []
+        - text: Gain +1 action & -1 Stress; take 1 wound after effect ends
+          spans: []
+        - text: 1 use
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '200'
+          spans: []
+      - - text: Basic Medkit
+          spans: []
+        - text: 'Right tool for the job: First Aid checks'
+          spans: []
+        - text: 3 uses
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '350'
+          spans: []
+      - - text: Multitool
+          spans: []
+        - text: Allows engineering checks to repair, bypass, scrap, etc.
+          spans: []
+        - text: Permanent
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '750'
+          spans: []
+      - - text: Repair Kit
+          spans: []
+        - text: Provides materials and tools for repairs
+          spans: []
+        - text: 10 uses
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '500'
+          spans: []
+      - - text: Tracker
+          spans: []
+        - text: While within 10km, always know location of this device
+          spans: []
+        - text: 1 use
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '250'
+          spans: []
+      - - text: Portable Scanner
+          spans: []
+        - text: 'Right tool for the job: Observe (tech, lifeforms)'
+          spans: []
+        - text: Permanent
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '400'
+          spans: []
+      - - text: Weapon Scope
+          spans: []
+        - text: Simple Modification. Grants +1 bonus die to called shots at medium
+            range and farther; inflicts +1 penalty die to attacks at Near range or
+            nearer
+          spans: []
+        - text: Permanent
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '750'
+          spans: []
+      - - text: Weapon Silencer
+          spans: []
+        - text: Simple Modification. Weapon makes reduced sound when fired; deals
+            -1 damage
+          spans: []
+        - text: Permanent
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '500'
+          spans: []
+      - - text: Compact Backpack
+          spans: []
+        - text: +5 Inventory Slots when worn
+          spans: []
+        - text: Permanent
+          spans: []
+        - text: '-'
+          spans: []
+        - text: '150'
+          spans: []
+      - - text: Ammo (Flechette)
+          spans: []
+        - text: Deals +2 damage to unarmoured targets.
+          spans: []
+        - text: 10 rounds
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '500'
+          spans: []
+      - - text: Ammo (SMART)
+          spans: []
+        - text: Required for Smart-Linked weapons.
+          spans: []
+        - text: '10'
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '1250'
+          spans: []
+      - - text: Ammo (Armour Piercing)
+          spans: []
+        - text: Adds Piercing 1 to attacks.
+          spans: []
+        - text: '10'
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '750'
+          spans: []
+      - - text: Ammo (Explosive)
+          spans: []
+        - text: Adds Shredding 1 to attacks.
+          spans: []
+        - text: '10'
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '750'
+          spans: []
     sections: []
   - title: Items
     slug: items
     level: 3
-    content: []
+    content:
+    - type: table
+      rows:
+      - - text: Cyberware
+          spans: []
+      - - text: Name
+          spans: []
+        - text: Tier
+          spans: []
+        - text: Effect
+          spans: []
+        - text: Installation Difficulty
+          spans: []
+        - text: Req.
+          spans: []
+        - text: Physical Impact
+          spans: []
+        - text: Cost
+          spans: []
+      - - text: Reflex Booster
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Once per round, gain +1 bonus die to an Evade check.
+          spans: []
+        - text: '2'
+          spans: []
+        - text: REF 1
+          spans: []
+        - text: Low; spine
+          spans: []
+        - text: '4000'
+          spans: []
+      - - text: Targeting Link
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Once per round, ignore 1 level of cover when attacking an enemy you
+            can see.
+          spans: []
+        - text: '2'
+          spans: []
+        - text: '-'
+          spans: []
+        - text: Medium; eyes
+          spans: []
+        - text: '6000'
+          spans: []
+      - - text: Low-Light Optics
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Ignore penalty dice caused by darkness within medium range.
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '-'
+          spans: []
+        - text: Medium; eyes
+          spans: []
+        - text: '4000'
+          spans: []
+      - - text: EMP Shielding
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Ignore the effects of EMP once per day.
+          spans: []
+        - text: '2'
+          spans: []
+        - text: MENT 1
+          spans: []
+        - text: None; torso
+          spans: []
+        - text: '5500'
+          spans: []
+      - - text: Metabolic Filter
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Gain +1 bonus die on checks to resist toxins or narcotics.
+          spans: []
+        - text: '1'
+          spans: []
+        - text: PHYS 1
+          spans: []
+        - text: Minor; liver
+          spans: []
+        - text: '2000'
+          spans: []
+      - - text: Internal Communicator
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Gain the ability to send and receive messages mentally just as if
+            you were using a regular comms device.
+          spans: []
+        - text: '0'
+          spans: []
+        - text: '-'
+          spans: []
+        - text: Medium; jaw, ear
+          spans: []
+        - text: '2500'
+          spans: []
+      - - text: Skull Popper
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Highly illegal; when installed, is given a mandate such as “don’t
+            go to the police”. If the host violates this mandate, the Skull Popper
+            explodes, killing the host. The more specific the mandate, the better
+            the implant functions.
+          spans: []
+        - text: '2'
+          spans: []
+        - text: '-'
+          spans: []
+        - text: None; brain
+          spans: []
+        - text: '12000'
+          spans: []
+      - - text: Databank
+          spans: []
+        - text: '2'
+          spans: []
+        - text: You gain an internal information storage device. You may store information
+            upon it (thinking you want to record what you see, for example), and access
+            information from it at will. You may also load external information onto
+            it, though the GM determines how long that takes and how much may be stored
+            on it.
+          spans: []
+        - text: '2'
+          spans: []
+        - text: MENT 1
+          spans: []
+        - text: Medium; cranium
+          spans: []
+        - text: '7500'
+          spans: []
+      - - text: Invisible Databank
+          spans: []
+        - text: '2'
+          spans: []
+        - text: You gain an internal information storage device. You may store information
+            upon it (thinking you want to record what you see, for example), and access
+            information from it at will. This device cannot be seen or accessed externally
+            without removing it and is shielded to avoid electronic detection.
+          spans: []
+        - text: '3'
+          spans: []
+        - text: '-'
+          spans: []
+        - text: None; cranium
+          spans: []
+        - text: '15000'
+          spans: []
+      - - text: Neural Accelerator
+          spans: []
+        - text: '2'
+          spans: []
+        - text: Once per day, activate to gain 2 additional actions on your turn.
+            At the end of your turn, gain +2 stress.
+          spans: []
+        - text: '4'
+          spans: []
+        - text: Ment 2
+          spans: []
+        - text: Obvious; spine
+          spans: []
+        - text: '10000'
+          spans: []
+      - - text: Reaction Governor Matrix
+          spans: []
+        - text: '2'
+          spans: []
+        - text: Gain +1 reaction per round.
+          spans: []
+        - text: '2'
+          spans: []
+        - text: REF 2
+          spans: []
+        - text: None; brain
+          spans: []
+        - text: '8000'
+          spans: []
+      - - text: Threat Awareness Suite
+          spans: []
+        - text: '2'
+          spans: []
+        - text: Gain +1 bonus die to Observe or Instinct checks to detect ambushes
+            or imminent danger. Additionally, you may not be Surprised.
+          spans: []
+        - text: '2'
+          spans: []
+        - text: '-'
+          spans: []
+        - text: None; brain
+          spans: []
+        - text: '5500'
+          spans: []
+      - - text: Synthetic Musculature
+          spans: []
+        - text: '2'
+          spans: []
+        - text: Gain +1 bonus die on Powerlifting or Athletics checks involving lifting,
+            pushing, or breaking objects. Unarmed attacks deal damage equal to your
+            full PHYS.
+          spans: []
+        - text: '4'
+          spans: []
+        - text: PHYS 3
+          spans: []
+        - text: Obvious; arms, legs, torso
+          spans: []
+        - text: '10000'
+          spans: []
+      - - text: Stability Gyros
+          spans: []
+        - text: '2'
+          spans: []
+        - text: Ignore penalty dice from unstable environments (moving vehicles, zero-G,
+            poor footing)
+          spans: []
+        - text: '2'
+          spans: []
+        - text: REF 2
+          spans: []
+        - text: Minor; ear
+          spans: []
+        - text: '6000'
+          spans: []
+      - - text: Adrenal Boost
+          spans: []
+        - text: '2'
+          spans: []
+        - text: Activate to ignore stress penalties for 1 round. At the end of this
+            round, take 1 damage.
+          spans: []
+        - text: '2'
+          spans: []
+        - text: PHYS 1
+          spans: []
+        - text: None; adrenal glands
+          spans: []
+        - text: '5000'
+          spans: []
+      - - text: Mantis Claws (retractable)
+          spans: []
+        - text: '3'
+          spans: []
+        - text: Your unarmed attacks deal damage equal to your REF and have Piercing
+            3. Additionally, gain +1 bonus die to climbing related checks.
+          spans: []
+        - text: '3'
+          spans: []
+        - text: REF 2 or PHYS 2
+          spans: []
+        - text: Obvious; forearms and hands
+          spans: []
+        - text: '10000'
+          spans: []
+      - - text: Neuro Regulator
+          spans: []
+        - text: '3'
+          spans: []
+        - text: Ignore up to 3 stress per day from up to 3 sources of stress. Make
+            all SOC based rolls with +1 penalty die.
+          spans: []
+        - text: '3'
+          spans: []
+        - text: MENT 2
+          spans: []
+        - text: None; brain
+          spans: []
+        - text: '12000'
+          spans: []
+      - - text: Synthetic Antibodies
+          spans: []
+        - text: '3'
+          spans: []
+        - text: Become immune to nanites targeting your body (including positive effects).
+            Does not stop things from being thrown at you with nanites.
+          spans: []
+        - text: '4'
+          spans: []
+        - text: PHYS 1 and MENT 1
+          spans: []
+        - text: Minor; nervous system
+          spans: []
+        - text: '17500'
+          spans: []
+      - - text: Bio-Stabilizer
+          spans: []
+        - text: '3'
+          spans: []
+        - text: 'When you would take a Medium or Heavy wound, roll Cybernetics (DC8).Extreme
+            success: ignore the wound.Success: ignore the wound; this cyberware effect
+            cannot be used for 1 day.Failure: suffer the wound as normal; this cyberware
+            effect cannot be used for 1 day.This effect may only trigger once per
+            instance of damage.'
+          spans: []
+        - text: '4'
+          spans: []
+        - text: '-'
+          spans: []
+        - text: Medium; chest and back
+          spans: []
+        - text: '15000'
+          spans: []
     sections: []
   - title: Cyberware
     slug: cyberware
@@ -310,6 +1326,73 @@ sections:
           spans: []
         - text: 'Extreme failure: gain +4 stress'
           spans: []
+      - type: table
+        rows:
+        - - text: Narcotics
+            spans: []
+        - - text: Name
+            spans: []
+          - text: Effect
+            spans: []
+          - text: Uses
+            spans: []
+          - text: Addiction Score
+            spans: []
+          - text: Legality
+            spans: []
+          - text: Cost
+            spans: []
+        - - text: Space Dust
+            spans: []
+          - text: Grants +1 bonus die to Observe and Piloting checks for 6 hours
+            spans: []
+          - text: '5'
+            spans: []
+          - text: '1'
+            spans: []
+          - text: Legal
+            spans: []
+          - text: '500'
+            spans: []
+        - - text: Tranquility
+            spans: []
+          - text: Reduces stress by 1; penalty die to all REF checks for 6 hours.
+            spans: []
+          - text: '2'
+            spans: []
+          - text: '5'
+            spans: []
+          - text: Legal
+            spans: []
+          - text: '5000'
+            spans: []
+        - - text: Smoothe
+            spans: []
+          - text: Reduces stress by 1d4; increases Cool Under Fire by 2 and grants
+              +1 bonus die to all Mental skill checks for 1 hour
+            spans: []
+          - text: '1'
+            spans: []
+          - text: '8'
+            spans: []
+          - text: Illegal
+            spans: []
+          - text: '20000'
+            spans: []
+        - - text: Chemical Strength
+            spans: []
+          - text: +1 bonus die to all PHYS checks for 1 hour; +1 movement bonus for
+              1 hour. After 1 hour, gain +1 penalty die to all PHYS checks and gain
+              +1 movement penalty until sleep.
+            spans: []
+          - text: '1'
+            spans: []
+          - text: '3'
+            spans: []
+          - text: Illegal
+            spans: []
+          - text: '8000'
+            spans: []
       sections: []
   - title: Narcotics
     slug: narcotics
@@ -333,6 +1416,36 @@ sections:
         text: On a failed Addiction roll, the character becomes addicted to the narcotic
           and must progress through the Addiction table below, beginning with Onset.
         spans: []
+      - type: table
+        rows:
+        - - text: Addiction Effects
+            spans: []
+        - - text: Stage
+            spans: []
+          - text: Effect
+            spans: []
+        - - text: Onset
+            spans: []
+          - text: Character desires the substance. Each week without it, roll Addiction.
+              On success, remove the addiction. On failure, increase the DC by 1.
+              On extreme failure, progress to Dependence.
+            spans: []
+        - - text: Dependence
+            spans: []
+          - text: Character requires the substance. Without it, they gain the Demoralized
+              condition. Each week without it, roll Addiction. On extreme success,
+              remove the addiction. On success, go back to Onset. On failure, progress
+              to Addiction.
+            spans: []
+        - - text: Addiction
+            spans: []
+          - text: Character’s sole purpose in life is to have and use the substance.
+              Without it, they gain the Agonized and Fleeing conditions. Each week
+              without it, roll Addiction. On success, go back to Dependence. On failure,
+              suffer stress equal to the substance’s Addiction Score. On extreme failure,
+              the character suffers a severe withdrawal crisis and gains the Dying
+              condition.
+            spans: []
       sections: []
     - title: Addiction Effects
       slug: addiction-effects
@@ -422,7 +1535,51 @@ sections:
 - title: Hacking Equipment
   slug: hacking-equipment
   level: 2
-  content: []
+  content:
+  - type: table
+    rows:
+    - - text: Rigs
+        spans: []
+    - - text: Name
+        spans: []
+      - text: System Tier Access
+        spans: []
+      - text: Max Software Tier
+        spans: []
+      - text: Bulk
+        spans: []
+      - text: Cost
+        spans: []
+    - - text: MonoTap
+        spans: []
+      - text: '1'
+        spans: []
+      - text: Tier 1
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '250'
+        spans: []
+    - - text: DeckLite
+        spans: []
+      - text: '2'
+        spans: []
+      - text: Tier 1
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '400'
+        spans: []
+    - - text: Raven Microdeck
+        spans: []
+      - text: '2'
+        spans: []
+      - text: Tier 2
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '600'
+        spans: []
   sections:
   - title: Rigs
     slug: rigs
@@ -432,6 +1589,51 @@ sections:
       text: Software modules are loaded into rigs and used to perform specific tasks.
         Rigs must support the software’s tier to use it.
       spans: []
+    - type: table
+      rows:
+      - - text: Software
+          spans: []
+      - - text: Software
+          spans: []
+        - text: Tier
+          spans: []
+        - text: Notes
+          spans: []
+        - text: Cost
+          spans: []
+      - - text: EchoScan
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Reveals the target system's Tier and any countermeasures currently
+            active
+          spans: []
+        - text: '100'
+          spans: []
+      - - text: Firewall.breach
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Gain a Bonus die on Bypass checks against systems up to Tier 3.
+          spans: []
+        - text: '150'
+          spans: []
+      - - text: PhantomSig
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Generates a temporary access identity using randomized system signatures
+          spans: []
+        - text: '175'
+          spans: []
+      - - text: NullTrace
+          spans: []
+        - text: '1'
+          spans: []
+        - text: If successful, delays any trace countermeasure by 2 rounds
+          spans: []
+        - text: '150'
+          spans: []
     sections: []
   - title: Software
     slug: software

@@ -336,4 +336,193 @@ sections:
         situation. Others seem to have a gift for hand-eye coordination, math computation,
         etc. These are things that are inherently a part of a person.
       spans: []
+    - type: table
+      rows:
+      - - text: Physique
+          spans: []
+      - - text: Physique Skills
+          spans: []
+        - text: Max rank
+          spans: []
+        - text: Description
+          spans: []
+      - - text: Athletics
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Running, jumping, climbing. Overall fitness. Whether you’d make a
+            good triathlon-ist or not.
+          spans: []
+      - - text: Cybernetics
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Can incorporate one level of cybernetic implant per level of this
+            skill. So with 3 points in Cybernetics, you could equip one Level 2 cybernetic
+            implant plus one Level 1 implant, three Level 1 implants, or one Level
+            3 implant.
+          spans: []
+      - - text: Powerlift
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Ability to move heavy things. Lifting, carrying, pulling, prying,
+            etc.
+          spans: []
+      - - text: Endurance
+          spans: []
+        - text: '5'
+          spans: []
+        - text: A measure of physical stamina. Push through fatigue, hunger, etc.
+          spans: []
+      - - text: Toughness
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Pain tolerance, etc
+          spans: []
+    - type: table
+      rows:
+      - - text: Reflex
+          spans: []
+      - - text: Reflex Skills
+          spans: []
+        - text: Max rank
+          spans: []
+        - text: Description
+          spans: []
+      - - text: Balance
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Ability to maintain control over your body in motion, react fluidly
+            to unstable conditions, and perform complex physical tasks with grace
+            and precision.
+          spans: []
+      - - text: Evade
+          spans: []
+        - text: '5'
+          spans: []
+        - text: You may use your reaction in combat to attempt to dodge an incoming
+            melee attack. To do so, roll Evade and get a score higher than the roll
+            your opponent made to hit you.
+          spans: []
+      - - text: Finesse
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Skill at unnoticed dexterous actions. Pickpocketing, magic tricks,
+            etc.
+          spans: []
+      - - text: Instinct
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Natural ability to react to signs of trouble before they happen. Helps
+            against surprise.
+          spans: []
+      - - text: Stealth
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Blending in, keep out of sight, and move without making noise
+          spans: []
+    - type: table
+      rows:
+      - - text: Social
+          spans: []
+      - - text: Social Skills
+          spans: []
+        - text: Max rank
+          spans: []
+        - text: Description
+          spans: []
+      - - text: Subterfuge
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Lie, disguise, or otherwise talk your way out of situations. Come
+            up with convincing cover stories, false identities, etc.
+          spans: []
+      - - text: Bearing
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Appearance and posture; manner of carrying yourself. Confidence, related
+            by body language.
+          spans: []
+      - - text: Negotiate
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Haggle your way to a better deal, whether in a store or while negotiating
+            with a mob boss. Unlike Persuade, which often appeals to emotion or logic,
+            Negotiate is rooted in mutual gain - or at least the illusion of it.
+          spans: []
+      - - text: Persuade
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Your ability to convince others through speech, reasoning, charm,
+            or emotional appeal. Persuade is used to shift someone’s beliefs, decisions,
+            or behavior, especially when you want them to act without any guaranteed
+            personal gain. It’s the skill of leaders, con artists, diplomats, and
+            silver-tongued wanderers.
+          spans: []
+      - - text: Streetwise
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Your ability to read the unspoken rules of the environment, especially
+            in disreputable, dangerous, or politically charged spaces. Streetwise
+            covers your knack for picking up on indirect social cues, tension in the
+            air, or subtle shifts in behavior that reveal deeper truths. Whether you're
+            spotting a con artist in a crowd, sensing an ambush in a quiet alley,
+            or reading the performative lies of a smooth-talking diplomat, Streetwise
+            lets you interpret what’s going on beneath the surface.
+          spans: []
+    - type: table
+      rows:
+      - - text: Mental
+          spans: []
+      - - text: Mental Skills
+          spans: []
+        - text: Max rank
+          spans: []
+        - text: Description
+          spans: []
+      - - text: Composure
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Affects reactions under pressure; high-stakes social or stress-related
+            moments.
+          spans: []
+      - - text: Psychology
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Analyze someone’s motives, try to figure out their end goals, tell
+            if they’re lying to you, etc.
+          spans: []
+      - - text: Observe
+          spans: []
+        - text: '5'
+          spans: []
+        - text: See things others may have missed. Investigate a crime scene. Spot
+            a frog or a dog on a log.
+          spans: []
+      - - text: Recall
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Remember things from your past. Were there three guards or four? Was
+            her hair purple or brown? What planet are you from?
+          spans: []
+      - - text: Willpower
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Ability to withstand mental manipulation.
+          spans: []
     sections: []

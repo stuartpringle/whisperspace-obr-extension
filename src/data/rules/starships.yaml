@@ -208,7 +208,7 @@ sections:
     spans:
     - style: link_underline
       text: Whisperspace Prebuilt Ships
-      href: https://www.google.com/url?q=https://docs.google.com/document/d/1XiRWRsOdGWYK-RYJuTo70ptH0Rf6Jq-AZNij4rZ43_o/edit?tab%3Dt.0%23heading%3Dh.athg476geqtz&sa=D&source=editors&ust=1770529763294839&usg=AOvVaw0hVrOdGg_eWpAv6ccIgQGK
+      href: https://www.google.com/url?q=https://docs.google.com/document/d/1XiRWRsOdGWYK-RYJuTo70ptH0Rf6Jq-AZNij4rZ43_o/edit?tab%3Dt.0%23heading%3Dh.athg476geqtz&sa=D&source=editors&ust=1770531032922879&usg=AOvVaw0A_16ZyJZ07BodZdYTNoNI
   sections: []
 - title: Building Your Own Ships
   slug: building-your-own-ships
@@ -525,5 +525,637 @@ sections:
 - title: Modules
   slug: modules
   level: 2
-  content: []
+  content:
+  - type: table
+    rows:
+    - - text: Propulsion Modules
+        spans: []
+    - - text: Name
+        spans: []
+      - text: Slots
+        spans: []
+      - text: Boost
+        spans: []
+      - text: Drive Rating
+        spans: []
+      - text: Special
+        spans: []
+      - text: Cost
+        spans: []
+    - - text: Burner Mk. I
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '+1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '12000'
+        spans: []
+    - - text: Combat Thrusters
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Maneuver +1
+        spans: []
+      - text: '10000'
+        spans: []
+    - - text: Emergency Thrusters
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Maneuver + 2; when activated (once per round), gain +1 bonus die to
+          Evasive Maneuvers; everyone on board suffers 2 stress
+        spans: []
+      - text: '30000'
+        spans: []
+    - - text: Interceptor Drive
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '+1'
+        spans: []
+      - text: Maneuver +2
+        spans: []
+      - text: '35000'
+        spans: []
+    - - text: Afterburner
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Gain +1 Drive Rating and +1 Maneuver for 1 round. If Engineering is
+          manned, roll Engineering (DC8 + Drive Rating). On failure, suffer +2 hull
+          damage. On extreme failure, suffer +4 hull damage.
+        spans: []
+      - text: '25000'
+        spans: []
+    - - text: Kessler Burner Mk. 2
+        spans: []
+      - text: '3'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '+2'
+        spans: []
+      - text: Once per day consume +2 power to gain +1 maneuver for 10 minutes
+        spans: []
+      - text: '45000'
+        spans: []
+  - type: table
+    rows:
+    - - text: Power Modules
+        spans: []
+    - - text: Name
+        spans: []
+      - text: Slots
+        spans: []
+      - text: Boost
+        spans: []
+      - text: Special
+        spans: []
+      - text: Cost
+        spans: []
+    - - text: Auxiliary Batteries
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Once per day gain +2 power for 10 minutes
+        spans: []
+      - text: '8000'
+        spans: []
+    - - text: Fusion Core
+        spans: []
+      - text: '3'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '30000'
+        spans: []
+    - - text: High-Capacity Reactor
+        spans: []
+      - text: '5'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: 15000 * ship size
+        spans: []
+    - - text: Power Distributor
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Grants +1 bonus die to Engineering checks to reroute power
+        spans: []
+      - text: '10000'
+        spans: []
+  - type: table
+    rows:
+    - - text: Weapon Modules
+        spans: []
+    - - text: Name
+        spans: []
+      - text: Slots
+        spans: []
+      - text: Boost
+        spans: []
+      - text: Use DC
+        spans: []
+      - text: Damage
+        spans: []
+      - text: Range
+        spans: []
+      - text: Special
+        spans: []
+      - text: Cost
+        spans: []
+    - - text: Light Railgun
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: Medium
+        spans: []
+      - text: Rapid-fire 3
+        spans: []
+      - text: '15000'
+        spans: []
+    - - text: Heavy Railgun
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '4'
+        spans: []
+      - text: Medium
+        spans: []
+      - text: Rapid-fire 3
+        spans: []
+      - text: '30000'
+        spans: []
+    - - text: Flak Cannon
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '6'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: Near
+        spans: []
+      - text: Anti-Missile
+        spans: []
+      - text: '10000'
+        spans: []
+    - - text: Pulse Cannon
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '4'
+        spans: []
+      - text: Near
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '20000'
+        spans: []
+    - - text: Heavy Pulse Cannon
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: '9'
+        spans: []
+      - text: '7'
+        spans: []
+      - text: Medium
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '40000'
+        spans: []
+    - - text: Plasma Cannon
+        spans: []
+      - text: '3'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '9'
+        spans: []
+      - text: '12'
+        spans: []
+      - text: Very Near
+        spans: []
+      - text: Reload 2
+        spans: []
+      - text: '50000'
+        spans: []
+    - - text: Energy Lance
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '5'
+        spans: []
+      - text: '10'
+        spans: []
+      - text: '5'
+        spans: []
+      - text: Long
+        spans: []
+      - text: Piercing 5
+        spans: []
+      - text: '75000'
+        spans: []
+    - - text: Boarding Grapple
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: '7'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Boarding
+        spans: []
+      - text: Reload 1; Tether
+        spans: []
+      - text: '8000'
+        spans: []
+    - - text: Missile Pods
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '8'
+        spans: []
+      - text: '8'
+        spans: []
+      - text: Long
+        spans: []
+      - text: Missile
+        spans: []
+      - text: '25000'
+        spans: []
+    - - text: Aegis Cannon
+        spans: []
+      - text: '15'
+        spans: []
+      - text: '4'
+        spans: []
+      - text: '12'
+        spans: []
+      - text: '15'
+        spans: []
+      - text: Extreme
+        spans: []
+      - text: Reload 3; Gunnery 3; Piercing 3
+        spans: []
+      - text: '250000'
+        spans: []
+    - - text: Gigawatt Laser
+        spans: []
+      - text: '5'
+        spans: []
+      - text: '5'
+        spans: []
+      - text: '10'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: Long
+        spans: []
+      - text: Boost Charge; Gunnery 3; Reload 5
+        spans: []
+      - text: ''
+        spans: []
+  - type: table
+    rows:
+    - - text: Weapon Keywords
+        spans: []
+    - - text: Name
+        spans: []
+      - text: Effect
+        spans: []
+    - - text: Reload X
+        spans: []
+      - text: After firing, weapon requires X turns to reload before firing again.
+          (if Reload 1, weapon cannot fire for 1 round after use).
+        spans: []
+    - - text: Piercing X
+        spans: []
+      - text: Ignores X points of armor protection. If X is greater than the target’s
+          armour, deal additional damage equal to the difference. Reduces armour durability
+          by X on hit.
+        spans: []
+    - - text: Tether
+        spans: []
+      - text: Target ship becomes attached to attacking ship. After 1 round, smaller
+          ship is pulled to bigger ship, allowing forced docking and boarding. Cannot
+          be used outside of boarding range.
+        spans: []
+    - - text: Rapid-fire X
+        spans: []
+      - text: Can make X attacks per turn.
+        spans: []
+    - - text: Anti-Missile
+        spans: []
+      - text: Can target missiles to shoot them down (as an attack).
+        spans: []
+    - - text: Missile
+        spans: []
+      - text: Missiles take 1 round per range band to travel to the enemy ship. Attempts
+          to evade the missile receive +1 penalty die as it is locked onto its target.
+          When boosted, missiles fire an additional missile per boost level and do
+          not benefit from increased damage.
+        spans: []
+    - - text: Gunnery X
+        spans: []
+      - text: Weapons with Gunnery X require a character with Gunnery skill of X or
+          higher to fire. Other characters attempting to fire these weapons take +2
+          penalty dice to their rolls. On Extreme failure, the weapon is damaged and
+          must be repaired (DC 8 + X from Gunnery X)
+        spans: []
+    - - text: Boost Charge
+        spans: []
+      - text: For every round this weapon remains boosted (whether fired or not),
+          it gains additional damage equal to its base damage. This resets when it
+          is no longer boosted.
+        spans: []
+  - type: table
+    rows:
+    - - text: Defense Modules
+        spans: []
+    - - text: Name
+        spans: []
+      - text: Slots
+        spans: []
+      - text: Boost
+        spans: []
+      - text: Special
+        spans: []
+      - text: Cost
+        spans: []
+    - - text: Reinforced Plating
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: 2 armour
+        spans: []
+      - text: '20000'
+        spans: []
+    - - text: Combat Plating
+        spans: []
+      - text: '5'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: +1 armour per ship size
+        spans: []
+      - text: ''
+        spans: []
+    - - text: Improved Hull
+        spans: []
+      - text: '3'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: +3 Hull Points per ship size (ship size 2 gets +6 Hull Points)
+        spans: []
+      - text: 15000 * ship size
+        spans: []
+    - - text: Blast Doors
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Automated sealing of breached compartments
+        spans: []
+      - text: '8000'
+        spans: []
+  - type: table
+    rows:
+    - - text: Electronics Modules
+        spans: []
+    - - text: Name
+        spans: []
+      - text: Slots
+        spans: []
+      - text: Boost
+        spans: []
+      - text: Special
+        spans: []
+      - text: Cost
+        spans: []
+    - - text: Advanced Sensors
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: Capable of detecting stealth ships; +1 bonus die to Sensors checks
+        spans: []
+      - text: '15000'
+        spans: []
+    - - text: Cloaking Field
+        spans: []
+      - text: '3'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: Hides ship from sensors (DC10 sensors check to see it, requires advanced
+          sensors). Can still be seen visually
+        spans: []
+      - text: '60000'
+        spans: []
+    - - text: Long-Range Comms
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: System-wide communication relay
+        spans: []
+      - text: '7500'
+        spans: []
+    - - text: Targeting Computer
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: +1 bonus die to Gunnery for ship weapons
+        spans: []
+      - text: '15000'
+        spans: []
+  - type: table
+    rows:
+    - - text: Cargo & Utility Modules
+        spans: []
+    - - text: Name
+        spans: []
+      - text: Slots
+        spans: []
+      - text: Boost
+        spans: []
+      - text: Special
+        spans: []
+      - text: Cost
+        spans: []
+    - - text: Cargo Bay
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Provides a place for storing large quantities of cargo
+        spans: []
+      - text: '10000'
+        spans: []
+    - - text: Med Bay
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: Basic medical facility; capable of long-term care
+        spans: []
+      - text: '12000'
+        spans: []
+    - - text: Advanced Med Bay
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: State-of-the-art medical facility; includes auto-doc; +1 bonus die to
+          First Aid checks; capable of long-term care
+        spans: []
+      - text: '40000'
+        spans: []
+    - - text: Salvage Clamps
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Allows towing derelicts/debris
+        spans: []
+      - text: '7500'
+        spans: []
+    - - text: Hangar Bay
+        spans: []
+      - text: '4'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Allows small craft (size 2 or less) to land inside the ship
+        spans: []
+      - text: '50000'
+        spans: []
+    - - text: Brig
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '-'
+        spans: []
+      - text: Secure chamber for prisoner use
+        spans: []
+      - text: '5000'
+        spans: []
+    - - text: Cryogenics
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: Allows transport and monitoring of cryogenic pods
+        spans: []
+      - text: '25000'
+        spans: []
+  - type: table
+    rows:
+    - - text: Command & Navigation Modules
+        spans: []
+    - - text: Name
+        spans: []
+      - text: Slots
+        spans: []
+      - text: Boost
+        spans: []
+      - text: Special
+        spans: []
+      - text: Cost
+        spans: []
+    - - text: Navigation AI
+        spans: []
+      - text: '1'
+        spans: []
+      - text: '1'
+        spans: []
+      - text: +1 bonus die to Navigation checks
+        spans: []
+      - text: '20000'
+        spans: []
+    - - text: Whisper Drive
+        spans: []
+      - text: '2'
+        spans: []
+      - text: '3'
+        spans: []
+      - text: Allows ship to enter Whisperspace at jump points
+        spans: []
+      - text: '40000'
+        spans: []
+    - - text: Combat AI
+        spans: []
+      - text: '3'
+        spans: []
+      - text: '2'
+        spans: []
+      - text: Allows ship to make attacks with Gunnery rank 1
+        spans: []
+      - text: '50000'
+        spans: []
   sections: []

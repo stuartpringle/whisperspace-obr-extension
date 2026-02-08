@@ -15,5 +15,8 @@ cp "$SRC_DIR"/*.yaml "$DEST_DIR"/
 
 echo "[import-rules] Copied YAML files from $SRC_DIR to $DEST_DIR"
 
+echo "[import-rules] Parsing gear tables..."
+node scripts/parse-gear.mjs
+
 echo "[import-rules] Regenerating JSON..."
 npm run generate:data

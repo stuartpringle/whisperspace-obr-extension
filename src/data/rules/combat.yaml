@@ -222,6 +222,50 @@ sections:
       text: On a critical hit, the target gains +1 Stress in addition to stress they
         would gain by being injured.
       spans: []
+    - type: table
+      rows:
+      - - text: Critical Hit Table
+          spans: []
+      - - text: Roll Exceeds DC by…
+          spans: []
+        - text: Extra Damage
+          spans: []
+      - - text: 4-6
+          spans: []
+        - text: '2'
+          spans: []
+      - - text: 7-8
+          spans: []
+        - text: '3'
+          spans: []
+      - - text: 9+
+          spans: []
+        - text: '4'
+          spans: []
+    - type: table
+      rows:
+      - - text: Ranged weapons attacking within Very Near range
+          spans: []
+      - - text: Weapon type
+          spans: []
+        - text: Information
+          spans: []
+      - - text: Light
+          spans: []
+        - text: No penalty
+          spans: []
+      - - text: Medium
+          spans: []
+        - text: +1 penalty die
+          spans: []
+      - - text: Heavy
+          spans: []
+        - text: +2 penalty dice
+          spans: []
+      - - text: Exotic
+          spans: []
+        - text: +1 penalty die
+          spans: []
     sections: []
   - title: Ranged weapons attacking within Very Near range
     slug: ranged-weapons-attacking-within-very-near-range
@@ -471,6 +515,182 @@ sections:
     slug: list-of-actions-reactions-and-free-actions
     level: 3
     content:
+    - type: table
+      rows:
+      - - text: Actions
+          spans: []
+      - - text: Name
+          spans: []
+        - text: Cost
+          spans: []
+        - text: Description
+          spans: []
+      - - text: Aim
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: Take a moment to aim before firing. Aiming allows you to attack a
+            target up to one range band farther than your weapon’s Range without increasing
+            the attack’s DC.
+          spans: []
+      - - text: Move
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: A character may change stance (prone, crouching, standing) and move
+            up to his allotted movement distance. This movement may be split around
+            other actions. For example, a character may choose to move slightly, attack
+            an enemy, then move again. Both those movements may be part of the same
+            Move action. When split in this way, the total distance a character moves
+            can never exceed his Movement Speed.
+          spans: []
+      - - text: Draw weapon
+          spans: []
+        - text: 1 action (2 if stowed)
+          spans: []
+        - text: Draw your weapon for use.
+          spans: []
+      - - text: Attack
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: Make an attack against an opponent within range. Must have a drawn
+            weapon or make an unarmed attack.
+          spans:
+          - style: link_underline
+            text: unarmed attack
+            href: '#h.etnnerju0wm'
+      - - text: Reload
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: Reset your weapon’s ammo to full.
+          spans: []
+      - - text: Interact
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: Inject an ally with a syringe, interact with a console to open a door,
+            etc.
+          spans: []
+      - - text: Grapple
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: Roll Melee (unarmed). The defender also rolls either Melee (unarmed)
+            or Evade, their choice. If you win the skill contest (roll higher than
+            the defender), you have successfully grappled them (see Conditions below).
+          spans:
+          - style: link_italic_underline
+            text: grappled
+            href: '#h.8ocqzx8i6pyl'
+          - style: link_underline
+            text: Conditions
+            href: '#h.x7pl9qjpb3q7'
+      - - text: Aid
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: You may attempt to help an ally in a course of action you expect them
+            to take. You may not aid an attack action. Aiding an ally in this way
+            gives them a Bonus die for a single roll.
+          spans: []
+      - - text: Suppressing Fire
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: 'Choose a direction or a location within your weapon’s range, then
+            spend 1-3 ammo. Until the start of your next turn, the first time each
+            enemy you can see enters or moves from that direction or location, they
+            must make a Cool Under Fire (DC4 + ammo used) check. This effect occurs
+            once per ammo spent, up to a maximum of three times.Extreme success: no
+            effect.Success: enemy gains +1 movement penalty.Failure: enemy gains +1
+            stress and +1 movement penalty.Extreme failure: enemy gains +1 stress
+            and immediately falls prone, ending their movement.Suppressing fire may
+            only be used with a ranged weapon.'
+          spans: []
+      - - text: Hack an interface or enemy
+          spans: []
+        - text: 2 action
+          spans: []
+        - text: Each hacking check completes in one round. The Simple Hacking optional
+            rule may be used for this at the GMs discretion.
+          spans:
+          - style: link_underline
+            text: hacking
+            href: '#h.qf4s9j52rd08'
+          - style: link_underline
+            text: Simple Hacking
+            href: '#h.ht2dwn7sxgi7'
+      - - text: Intimidate
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: 'Attempt to demoralize or frighten an enemy. Roll Bearing or Persuade
+            (DC 12 - enemy’s stress level). Gain a bonus die to this roll if the enemy
+            was injured within the last round, another enemy was killed during combat,
+            or is flanked.Extreme success, target suffers +2 stress and is Demoralized.Success:
+            target is Demoralized.'
+          spans:
+          - style: link_underline
+            text: flanked
+            href: '#h.fy3jgwiudtd9'
+          - style: link_underline
+            text: Demoralized
+            href: '#h.p7xo9pm49k9v'
+          - style: link_underline
+            text: Demoralized
+            href: '#h.p7xo9pm49k9v'
+      - - text: Hold Action
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: Prepare to use an action on another character’s turn. To do so, choose
+            an action you would like to prepare as well as a trigger that will prompt
+            its use. For example, “I will hold an Attack action. The trigger will
+            be any enemy entering my range.”
+          spans: []
+      - - text: Teamwork
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: 'Co-ordinate with teammates. Choose any number of allies within Near
+            range; roll Tactics (DC4 + 2 per ally).Extreme Success: you and each targeted
+            ally all gain +1 bonus die to any roll before the start of your next turn.Success:
+            each targeted ally gains +1 bonus die to any roll before the start of
+            your next turn.Teamwork may be used no more than once per ally per turn.'
+          spans: []
+      - - text: Pick Up/Grab
+          spans: []
+        - text: 1 action
+          spans: []
+        - text: Pick up an item within melee range. If the item is being held by a
+            target unwilling to give it to you, they must be successfully grappled
+            before you can grab the item from them. Doing so requires an opposed Powerlift
+            roll; you succeed in taking the item on a higher or equal roll.
+          spans: []
+      - - text: Execute
+          spans: []
+        - text: 2 actions
+          spans: []
+        - text: 'Make an attack as normal against a character within Melee range who
+            is Dying, Unconscious, or otherwise completely helpless (GM discretion).Success:
+            target dies.Failure: no effect.After a successful Execute action, make
+            a Composure (DC6 + your Empathy) check.Success: no effectFailure: suffer
+            +1 stress.Extreme failure: suffer +2 stress.'
+          spans: []
+      - - text: ''
+          spans: []
+        - text: ''
+          spans: []
+        - text: ''
+          spans: []
+      - - text: ''
+          spans: []
+        - text: ''
+          spans: []
+        - text: ''
+          spans: []
     - type: list
       ordered: false
       items:
@@ -524,6 +744,68 @@ sections:
         spans: []
       - text: 'Extreme failure: suffer +2 stress.'
         spans: []
+    - type: table
+      rows:
+      - - text: Reactions
+          spans: []
+      - - text: Name
+          spans: []
+        - text: Cost
+          spans: []
+        - text: Trigger
+          spans: []
+        - text: Description
+          spans: []
+      - - text: Dive for Cover
+          spans: []
+        - text: 1 reaction
+          spans: []
+        - text: Targeted by ranged attack
+          spans: []
+        - text: See Dive for Cover below.
+          spans:
+          - style: link_underline
+            text: Dive for Cover
+            href: '#h.irt9qh5vtc5h'
+      - - text: Parry
+          spans: []
+        - text: 1 reaction
+          spans: []
+        - text: Targeted by melee attack
+          spans: []
+        - text: 'Requires melee weapon. Roll Melee (Weapons) (DC 8 + attacker’s weapon
+            skill).Extreme Success: you may immediately use 1 additional reaction
+            to attack your attacker.Success: attack against you fails.'
+          spans: []
+      - - text: Dodge
+          spans: []
+        - text: 1 reaction
+          spans: []
+        - text: Targeted by melee attack or throw action
+          spans: []
+        - text: Roll Evade. If your roll is higher than the melee attack roll against
+            you, the attack fails.
+          spans: []
+      - - text: Deflect/Catch
+          spans: []
+        - text: 1 reaction
+          spans: []
+        - text: Thrown object passes within melee range of you
+          spans: []
+        - text: 'Roll Finesse. If your roll is higher than the throw roll, you successfully
+            deflect or catch the thrown object.Extreme success: you may catch or deflect
+            object away from you (choose a location within Very Near range to deflect
+            it to).Success: you may catch or deflect object away from you (GM decides
+            where). If the object would deal damage on impact, take half that damage.'
+          spans: []
+      - - text: Use Held Action
+          spans: []
+        - text: 1 reaction
+          spans: []
+        - text: Custom (given when action was held)
+          spans: []
+        - text: Use the held action immediately.
+          spans: []
     - type: list
       ordered: false
       items:
@@ -541,6 +823,26 @@ sections:
       - text: 'Success: you may catch or deflect object away from you (GM decides
           where). If the object would deal damage on impact, take half that damage.'
         spans: []
+    - type: table
+      rows:
+      - - text: Free Actions
+          spans: []
+      - - text: Name
+          spans: []
+        - text: Description
+          spans: []
+      - - text: Drop
+          spans: []
+        - text: Drop any held object, item, or character.
+          spans: []
+      - - text: Speak
+          spans: []
+        - text: Say something out loud. This should be more of a sentence than a paragraph.
+          spans: []
+      - - text: ''
+          spans: []
+        - text: ''
+          spans: []
     sections: []
   - title: 'Special rule: Dive for Cover'
     slug: special-rule-dive-for-cover
@@ -727,6 +1029,34 @@ sections:
         was partial cover and its durability reaches 0, it is no longer capable of
         providing cover.
       spans: []
+    - type: table
+      rows:
+      - - text: Reasonable Cover Durability
+          spans: []
+      - - text: Cover
+          spans: []
+        - text: Type
+          spans: []
+        - text: Suggested Durability
+          spans: []
+      - - text: Overturned Table
+          spans: []
+        - text: Partial
+          spans: []
+        - text: 2 wounds
+          spans: []
+      - - text: Tree Stump
+          spans: []
+        - text: Partial
+          spans: []
+        - text: 5 wounds
+          spans: []
+      - - text: Car
+          spans: []
+        - text: Full
+          spans: []
+        - text: Indestructible unless hit by high-power weapon
+          spans: []
     sections: []
   - title: Human Shields
     slug: human-shields

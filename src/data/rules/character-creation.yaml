@@ -34,6 +34,143 @@ sections:
       to your character. They can double as great story hooks for your GM to use as
       well.
     spans: []
+  - type: table
+    rows:
+    - - text: Backgrounds
+        spans: []
+    - - text: D10 roll
+        spans: []
+      - text: Background
+        spans: []
+      - text: Description
+        spans: []
+    - - text: '1'
+        spans: []
+      - text: Station Rat
+        spans: []
+      - text: Grew up in the unwelcoming back-alleys of a space station fending for
+          yourself.
+        spans: []
+    - - text: '2'
+        spans: []
+      - text: Colony Survivor
+        spans: []
+      - text: The settlement didn’t make it. You did.
+        spans: []
+    - - text: '3'
+        spans: []
+      - text: Salvager
+        spans: []
+      - text: Raised in the guts of derelict ships, you learned how to chop them up
+          and sell them for parts pretty quickly. You had to.
+        spans: []
+    - - text: '4'
+        spans: []
+      - text: Military Academy
+        spans: []
+      - text: Drop out, wash out, or burn out; however you slice it you were in the
+          academy and now you’re not.
+        spans: []
+    - - text: '5'
+        spans: []
+      - text: Corporate Trainee
+        spans: []
+      - text: Everyone starts on the lowest rung of the corporate ladder. You just
+          never got the chance to get any higher.
+        spans: []
+    - - text: '6'
+        spans: []
+      - text: Wealthy Family
+        spans: []
+      - text: Life handed you most things on a silver platter. You said you wanted
+          to make your own way in the world - now look at you. Would your parents
+          even recognize you?
+        spans: []
+    - - text: '7'
+        spans: []
+      - text: Science Academy
+        spans: []
+      - text: How things work is fascinating. Like how someone with your obvious intellect
+          and skill could be kicked out of the science academy - you find that fascinating
+          indeed.
+        spans: []
+    - - text: '8'
+        spans: []
+      - text: Illegal Clone
+        spans: []
+      - text: Somewhere between the lab cell and the bio-recycling chamber, you got
+          free.
+        spans: []
+    - - text: '9'
+        spans: []
+      - text: Criminal
+        spans: []
+      - text: A life of crime may have led you here, but where you go next is up to
+          you.
+        spans: []
+    - - text: '10'
+        spans: []
+      - text: Orphan
+        spans: []
+      - text: You’ve been alone all your life. What’s it like to work with others?
+          To find a family?
+        spans: []
+  - type: table
+    rows:
+    - - text: Motivations
+        spans: []
+    - - text: D12 roll
+        spans: []
+      - text: Motivation
+        spans: []
+    - - text: '1'
+        spans: []
+      - text: Redemption
+        spans: []
+    - - text: '2'
+        spans: []
+      - text: Revenge
+        spans: []
+    - - text: '3'
+        spans: []
+      - text: Thrill-Seeking
+        spans: []
+    - - text: '4'
+        spans: []
+      - text: Duty
+        spans: []
+    - - text: '5'
+        spans: []
+      - text: Debt
+        spans: []
+    - - text: '6'
+        spans: []
+      - text: Greed
+        spans: []
+    - - text: '7'
+        spans: []
+      - text: Freedom
+        spans: []
+    - - text: '8'
+        spans: []
+      - text: Guilt
+        spans: []
+    - - text: '9'
+        spans: []
+      - text: Fame
+        spans: []
+    - - text: '10'
+        spans: []
+      - text: Love
+        spans: []
+    - - text: '11'
+        spans: []
+      - text: Faith
+        spans: []
+    - - text: '12'
+        spans: []
+      - text: Roll twice (rerolling 12s) for a complex motivation
+        spans: []
   - type: paragraph
     text: 'Is your character chasing down someone who wronged her? Fleeing the scene
       of a crime? Searching for something intangible she knows she won’t find trapped

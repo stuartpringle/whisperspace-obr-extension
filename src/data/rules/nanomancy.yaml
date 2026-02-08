@@ -223,6 +223,83 @@ sections:
     slug: nanomantic-effects
     level: 3
     content:
+    - type: table
+      rows:
+      - - text: Burner Effects
+          spans: []
+      - - text: Name
+          spans: []
+        - text: DC
+          spans: []
+        - text: Range
+          spans: []
+        - text: Stress Cost
+          spans: []
+        - text: Action cost
+          spans: []
+        - text: Effect
+          spans: []
+      - - text: Thermal Bloom
+          spans: []
+        - text: '8'
+          spans: []
+        - text: Near
+          spans: []
+        - text: '+1'
+          spans: []
+        - text: '2'
+          spans: []
+        - text: Burst of heat energy at target location; deal half ND (rounded up)
+            damage to anything within Very Near range of target.
+          spans: []
+      - - text: Absolute Zero
+          spans: []
+        - text: '9'
+          spans: []
+        - text: Very Near
+          spans: []
+        - text: '+2'
+          spans: []
+        - text: '2'
+          spans: []
+        - text: Removal of all heat at target location; deal 2 * ND damage to anything
+            within melee range of target.
+          spans: []
+      - - text: Static Burst
+          spans: []
+        - text: '7'
+          spans: []
+        - text: Very Near
+          spans: []
+        - text: 2 + 1 per action used
+          spans: []
+        - text: 1 to 3
+          spans: []
+        - text: Electrical energy crackles through the air. Choose an initial target,
+            then additional targets (number of actions spent equals total number of
+            targets). Each target must be within Very Near range of at least one other
+            chosen target and be capable of conducting electricity. Deal ND damage
+            to the first and half ND (rounded up) damage to any other targets. In
+            addition, apply EMP (0 + ND) to anything within melee range of any of
+            the target.
+          spans:
+          - style: link_underline
+            text: EMP (0 + ND)
+            href: '#h.pr5v7porf3q1'
+      - - text: Nullify
+          spans: []
+        - text: '-'
+          spans: []
+        - text: Very Near
+          spans: []
+        - text: '+1'
+          spans: []
+        - text: 1 reaction
+          spans: []
+        - text: 'Counter a Nanomantic Effect. DC = the effect’s Nanomancy roll.Extreme
+            success: negate the effect. In addition, that effect cannot be attempted
+            again for 1 * ND minute(s).Success: negate the effect.'
+          spans: []
     - type: list
       ordered: false
       items:
@@ -231,6 +308,93 @@ sections:
         spans: []
       - text: 'Success: negate the effect.'
         spans: []
+    - type: table
+      rows:
+      - - text: Physic Effects
+          spans: []
+      - - text: Name
+          spans: []
+        - text: DC
+          spans: []
+        - text: Range
+          spans: []
+        - text: Stress Cost
+          spans: []
+        - text: Action Cost
+          spans: []
+        - text: Effect
+          spans: []
+      - - text: Regenerative Cloud
+          spans: []
+        - text: '11'
+          spans: []
+        - text: Melee
+          spans: []
+        - text: 3 + 1 per action used
+          spans: []
+        - text: 1 to 3
+          spans: []
+        - text: 'Create a target location. For the duration, all living creatures
+            within Very Near range of that location heal at a rate of half ND (rounded
+            up) light wounds at the start of each of their turns. This effect lasts
+            1 round for each action used.Extreme success: this effect may heal (and
+            will prioritize) moderate wounds.'
+          spans: []
+      - - text: Knit Together
+          spans: []
+        - text: 9 - ND
+          spans: []
+        - text: Melee
+          spans: []
+        - text: '2'
+          spans: []
+        - text: '2'
+          spans: []
+        - text: 'Heal up to 1 + half ND (rounded up) light or moderate wounds on target
+            creature.Extreme success: you may heal heavy wounds with this effect as
+            well.Failure: give target Bleeding (1) Extreme failure: give target Bleeding
+            (2).'
+          spans:
+          - style: link_underline
+            text: Bleeding (1)
+            href: '#h.bxuyd85drjou'
+          - style: link_underline
+            text: Bleeding (2)
+            href: '#h.bxuyd85drjou'
+      - - text: Exsanguinate
+          spans: []
+        - text: '7'
+          spans: []
+        - text: Melee
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Give target Bleeding (0 + ND).
+          spans:
+          - style: link_underline
+            text: Bleeding (0 + ND)
+            href: '#h.bxuyd85drjou'
+      - - text: Horrifying Hallucinations
+          spans: []
+        - text: '9'
+          spans: []
+        - text: Melee
+          spans: []
+        - text: '2'
+          spans: []
+        - text: '2'
+          spans: []
+        - text: 'Impose Blinded on target creature for rounds equal to ND. While affected,
+            target gains +1 stress at the end of each of their turns.Extreme success:
+            target gains +2 stress at the end of each of their turns instead.Target
+            may attempt a Willpower or Composure (DC 6 + ND) check at the end of each
+            of their turns to end the effect early.'
+          spans:
+          - style: link_underline
+            text: Blinded
+            href: '#h.ydl52popm3kj'
     - type: list
       ordered: false
       items:
@@ -258,6 +422,82 @@ sections:
       - text: 'Extreme success: target gains +2 stress at the end of each of their
           turns instead.'
         spans: []
+    - type: table
+      rows:
+      - - text: Kinetic Effects
+          spans: []
+      - - text: Name
+          spans: []
+        - text: DC
+          spans: []
+        - text: Range
+          spans: []
+        - text: Stress Cost
+          spans: []
+        - text: Action Cost
+          spans: []
+        - text: Effect
+          spans: []
+      - - text: Push/Pull
+          spans: []
+        - text: '5'
+          spans: []
+        - text: Long
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '2'
+          spans: []
+        - text: Move an object no more than 10 bulk up to 10 * ND ft in any direction.
+            For each range band closer than long, increase the bulk this effect can
+            move by 5. If the object collides with something else, deal 1 * ND damage
+            to it.
+          spans: []
+      - - text: Crush
+          spans: []
+        - text: '9'
+          spans: []
+        - text: Medium
+          spans: []
+        - text: '2'
+          spans: []
+        - text: '1'
+          spans: []
+        - text: Deal 1 + ND damage. If target is Immobile, double the damage dealt.
+          spans:
+          - style: link_underline
+            text: Immobile
+            href: '#h.i4ndc4959ij'
+      - - text: Hold
+          spans: []
+        - text: '7'
+          spans: []
+        - text: Medium
+          spans: []
+        - text: '3'
+          spans: []
+        - text: '3'
+          spans: []
+        - text: Impose Immobile on target for ND number of rounds. Target may attempt
+            an Endurance or Athletics (DC6 + ND) check at the end of each of their
+            turns to end the effect early.
+          spans:
+          - style: link_underline
+            text: Immobile
+            href: '#h.i4ndc4959ij'
+      - - text: Shrapnel
+          spans: []
+        - text: '8'
+          spans: []
+        - text: Near
+          spans: []
+        - text: 0 + 1 per action used
+          spans: []
+        - text: 1 to 3
+          spans: []
+        - text: Deal 1 + ND damage to anything within melee range of target. Increase
+            the range of this effect by 1 range band for each action used beyond 1.
+          spans: []
     sections: []
 - title: Fine Control
   slug: fine-control

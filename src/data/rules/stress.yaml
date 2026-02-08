@@ -140,6 +140,34 @@ sections:
     - text: Succeeds with an Extreme Success only when roll exceeds DC by 6+ (rather
         than 4+)
       spans: []
+  - type: table
+    rows:
+    - - text: PTSD Reaction Table
+        spans: []
+    - - text: 1d4 roll
+        spans: []
+      - text: Result
+        spans: []
+    - - text: '1'
+        spans: []
+      - text: Freeze (lose 1 action. If it is not your turn, then instead lose 1 action
+          on your next turn)
+        spans: []
+    - - text: '2'
+        spans: []
+      - text: Cower (receive Fleeing (1) condition)
+        spans:
+        - style: link_underline
+          text: Fleeing (1)
+          href: '#h.ju3pufy1twg8'
+    - - text: '3'
+        spans: []
+      - text: Push Through (no effect)
+        spans: []
+    - - text: '4'
+        spans: []
+      - text: Push Through (no effect)
+        spans: []
   sections: []
 - title: Stress Breakdowns
   slug: stress-breakdowns
@@ -150,6 +178,44 @@ sections:
       of some sort (rolled on the table below or defined by the GM). This can range
       from a temporary effect to a permanent, character-altering one.
     spans: []
+  - type: table
+    rows:
+    - - text: Stress Breakdown Effects
+        spans: []
+    - - text: Roll (1d4)
+        spans: []
+      - text: Effect
+        spans: []
+      - text: Description
+        spans: []
+    - - text: '1'
+        spans: []
+      - text: Freeze up
+        spans: []
+      - text: Mind blanks. Cannot act for 1 minute.
+        spans: []
+    - - text: '2'
+        spans: []
+      - text: Collapse
+        spans: []
+      - text: Falls unconscious from strain
+        spans:
+        - style: italic
+          text: 'unconscious '
+    - - text: '3'
+        spans: []
+      - text: Panic
+        spans: []
+      - text: Flee for 1d6 rounds
+        spans:
+        - style: italic
+          text: 'Flee '
+    - - text: '4'
+        spans: []
+      - text: Mental Scar
+        spans: []
+      - text: Gain a permanent fear or phobia (GM’s discretion)
+        spans: []
   sections: []
 - title: Reducing Stress
   slug: reducing-stress

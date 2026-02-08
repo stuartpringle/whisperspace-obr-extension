@@ -230,6 +230,42 @@ sections:
       text: Once you’ve made the Fall Severity roll, compare the result to the Fall
         Severity table. All damage from falling is unmitigated damage.
       spans: []
+    - type: table
+      rows:
+      - - text: Fall Severity
+          spans: []
+      - - text: Fall Severity roll result
+          spans: []
+        - text: Outcome
+          spans: []
+      - - text: 1-3
+          spans: []
+        - text: No damage.
+          spans: []
+      - - text: 4-6
+          spans: []
+        - text: Take 1 damage.
+          spans: []
+      - - text: 7-8
+          spans: []
+        - text: Take 2 damage.
+          spans: []
+      - - text: 9-10
+          spans: []
+        - text: Take 3 damage and become Stunned for 1 round.
+          spans: []
+      - - text: 11-12
+          spans: []
+        - text: Take 4 damage and become Stunned for 2 rounds.
+          spans: []
+      - - text: 13-15
+          spans: []
+        - text: Take 6 damage and become Unconscious.
+          spans: []
+      - - text: 16+
+          spans: []
+        - text: Take 8 damage.
+          spans: []
     sections: []
 - title: Carrying Capacity
   slug: carrying-capacity

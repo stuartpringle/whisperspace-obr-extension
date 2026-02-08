@@ -2,14 +2,14 @@
   "items": [
     {
       "name": "Flashbang Grenade",
-      "effect": "Applies Stun 1 to everyone within near range, Thrown",
+      "effect": "Applies Stun 1 to everyone within Very Near range, Thrown",
       "uses": "1 use",
       "bulk": 1,
       "cost": 200
     },
     {
       "name": "Frag Grenade",
-      "effect": "Deals 2 area (near range) damage (DC8 to Evade half), Thrown",
+      "effect": "Deals 2 area (Very Near range) damage (DC8 to Evade half), Thrown",
       "uses": "1 use",
       "bulk": 1,
       "cost": 250
@@ -65,7 +65,7 @@
     },
     {
       "name": "Weapon Scope",
-      "effect": "Simple Modification. Grants +1 bonus die to called shots at medium range and farther; inflicts +1 penalty die to attacks at close range or nearer",
+      "effect": "Simple Modification. Grants +1 bonus die to called shots at medium range and farther; inflicts +1 penalty die to attacks at Near range or nearer",
       "uses": "Permanent",
       "bulk": 1,
       "cost": 750
@@ -82,8 +82,7 @@
       "effect": "+5 Inventory Slots when worn",
       "uses": "Permanent",
       "bulk": 0,
-      "cost": 150,
-      "statusEffects": "carrying_capacity+5"
+      "cost": 150
     },
     {
       "name": "Ammo (Flechette)",

@@ -8,6 +8,58 @@ content:
     view you and your allies as friendlies, hacking can be an incredibly powerful
     tool, depending on the campaign setting and goals.
   spans: []
+- type: table
+  rows:
+  - - text: Example System Tiers and DCs
+      spans: []
+  - - text: Tier
+      spans: []
+    - text: System Type
+      spans: []
+    - text: Hacking DC
+      spans: []
+  - - text: '0'
+      spans: []
+    - text: Public terminals, info kiosks
+      spans: []
+    - text: '6'
+      spans: []
+  - - text: '1'
+      spans: []
+    - text: Basic civilian tech (locks, doors)
+      spans: []
+    - text: '8'
+      spans: []
+  - - text: '2'
+      spans: []
+    - text: Small business systems, cameras
+      spans: []
+    - text: '10'
+      spans: []
+  - - text: '3'
+      spans: []
+    - text: Corporate terminals, basic ship systems
+      spans: []
+    - text: '12'
+      spans: []
+  - - text: '4'
+      spans: []
+    - text: Secure corp nodes, security drones
+      spans: []
+    - text: '14'
+      spans: []
+  - - text: '5'
+      spans: []
+    - text: Military-grade systems, ship AI
+      spans: []
+    - text: '16'
+      spans: []
+  - - text: 6+
+      spans: []
+    - text: Black Ops secure servers, hostile AI
+      spans: []
+    - text: 18 or above
+      spans: []
 sections:
 - title: 'Optional Rule: Simple Hacking'
   slug: optional-rule-simple-hacking

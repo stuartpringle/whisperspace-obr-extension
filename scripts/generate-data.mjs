@@ -23,6 +23,7 @@ const files = [
   { in: "items.yaml", out: "items.json" },
   { in: "cyberware.yaml", out: "cyberware.json" },
   { in: "narcotics.yaml", out: "narcotics.json" },
+  { in: "hacking_gear.yaml", out: "hacking_gear.json" },
 ];
 
 function timestamp() {

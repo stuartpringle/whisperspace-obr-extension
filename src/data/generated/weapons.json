@@ -20,10 +20,10 @@
       "range": "Med",
       "ammo": 6,
       "bulk": 1,
+      "cost": 900,
       "keywords": [
         "Smart-Linked"
-      ],
-      "cost": 900
+      ]
     },
     {
       "id": "toxic_spike",
@@ -31,14 +31,14 @@
       "skillId": "weapons_light",
       "useDC": 10,
       "damage": 3,
-      "range": "Short",
+      "range": "Near",
       "ammo": 1,
       "bulk": 1,
+      "cost": 750,
       "keywords": [
         "Toxin (Prax)",
         "Concealable"
-      ],
-      "cost": 750
+      ]
     },
     {
       "id": "smg",
@@ -49,10 +49,10 @@
       "range": "Med",
       "ammo": 8,
       "bulk": 2,
+      "cost": 600,
       "keywords": [
         "Bullet Spray"
-      ],
-      "cost": 600
+      ]
     },
     {
       "id": "photon_rifle",
@@ -63,10 +63,10 @@
       "range": "Long",
       "ammo": 6,
       "bulk": 3,
+      "cost": 5000,
       "keywords": [
-        "Two-Handed"
-      ],
-      "cost": 5000
+        "Two Handed"
+      ]
     },
     {
       "id": "rifle",
@@ -77,11 +77,11 @@
       "range": "Long",
       "ammo": 8,
       "bulk": 2,
+      "cost": 1000,
       "keywords": [
-        "Two-Handed",
+        "Two Handed",
         "Piercing 1"
-      ],
-      "cost": 1000
+      ]
     },
     {
       "id": "shotgun",
@@ -89,15 +89,15 @@
       "skillId": "weapons_medium",
       "useDC": 8,
       "damage": 4,
-      "range": "Short",
+      "range": "Near",
       "ammo": 4,
       "bulk": 3,
+      "cost": 800,
       "req": "PHYS 1",
       "keywords": [
         "Point Blank",
         "Shredding 1"
-      ],
-      "cost": 800
+      ]
     },
     {
       "id": "gauss_cannon",
@@ -108,11 +108,11 @@
       "range": "Med",
       "ammo": 20,
       "bulk": 4,
+      "cost": 900,
       "req": "PHYS 3",
       "keywords": [
         "Bullet Spray"
-      ],
-      "cost": 900
+      ]
     },
     {
       "id": "grenade_launcher",
@@ -123,14 +123,14 @@
       "range": "Med",
       "ammo": 1,
       "bulk": 3,
+      "cost": 2000,
       "req": "PHYS 2",
       "keywords": [
-        "Area (near)",
-        "Two-Handed",
+        "Area (Very Near)",
+        "Two Handed",
         "Slow Load",
         "Grenade"
-      ],
-      "cost": 2000
+      ]
     },
     {
       "id": "magneton_cannon",
@@ -138,16 +138,16 @@
       "skillId": "weapons_exotic",
       "useDC": 5,
       "damage": 2,
-      "range": "Short",
+      "range": "Near",
       "ammo": 5,
       "bulk": 2,
+      "cost": 8000,
       "req": "PHYS 1",
       "keywords": [
         "Area (melee)",
         "Slow Load",
         "Shredding 3"
-      ],
-      "cost": 8000
+      ]
     },
     {
       "id": "tesla_rifle",
@@ -158,11 +158,11 @@
       "range": "Med",
       "ammo": 6,
       "bulk": 2,
+      "cost": 6000,
       "keywords": [
-        "Two-Handed",
+        "Two Handed",
         "Stun 2"
-      ],
-      "cost": 6000
+      ]
     },
     {
       "id": "stun_baton",
@@ -171,11 +171,12 @@
       "useDC": 6,
       "damage": 0,
       "range": "Melee",
+      "ammo": 0,
       "bulk": 1,
+      "cost": 450,
       "keywords": [
         "Stun 1"
-      ],
-      "cost": 450
+      ]
     },
     {
       "id": "switchblade",
@@ -184,12 +185,13 @@
       "useDC": 9,
       "damage": 2,
       "range": "Melee",
+      "ammo": 0,
       "bulk": 1,
+      "cost": 150,
       "keywords": [
         "Concealable",
         "Thrown"
-      ],
-      "cost": 150
+      ]
     },
     {
       "id": "fusion_blade",
@@ -198,12 +200,13 @@
       "useDC": 8,
       "damage": 3,
       "range": "Melee",
+      "ammo": 0,
       "bulk": 2,
+      "cost": 1200,
       "req": "REF 2",
       "keywords": [
         "Piercing 2"
-      ],
-      "cost": 1200
+      ]
     },
     {
       "id": "rocket_maul",
@@ -214,11 +217,11 @@
       "range": "Melee",
       "ammo": 2,
       "bulk": 3,
+      "cost": 2500,
       "req": "PHYS 3",
       "keywords": [
-        "Two-Handed"
-      ],
-      "cost": 2500
+        "Two Handed"
+      ]
     }
   ]
 }

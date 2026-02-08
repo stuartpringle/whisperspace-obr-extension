@@ -29,7 +29,7 @@
     },
     {
       "name": "Chemical Strength",
-      "effect": "+1 bonus die to all PHYS checks for 1 hour; +1 movement bonus for 1 hour. After 1 hour, +1 penalty die to all PHYS checks and +1 movement penalty until sleep.",
+      "effect": "+1 bonus die to all PHYS checks for 1 hour; +1 movement bonus for 1 hour. After 1 hour, gain +1 penalty die to all PHYS checks and gain +1 movement penalty until sleep.",
       "uses": 1,
       "addictionScore": 3,
       "legality": "Illegal",
