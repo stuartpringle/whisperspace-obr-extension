@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import OBR from "@owlbear-rodeo/sdk";
+import { isImage } from "@owlbear-rodeo/sdk";
 import { CharacterSheetV1 } from "../rules/schema";
 import { ensureSheetOnToken,
   getMyCharacterTokenId,
@@ -54,6 +55,7 @@ export function SheetApp() {
   const [crucible, setCrucible] = useState<null | { incoming: number; dc: number; status: "pending" | "success" | "fail"; total?: number }>(null);
   const [isGM, setIsGM] = useState(false);
   const [combatLog, setCombatLog] = useState<CombatLogPayload[]>([]);
+  const didCenterRef = useRef(false);
 
   async function getTokenHeaderMeta(tokenId: string): Promise<{ ownerLabel: string; thumbUrl: string | null; ownerPlayerId?: string | null; isOwnedByMe?: boolean }> {
     try {
@@ -145,6 +147,7 @@ export function SheetApp() {
     const derived = deriveAttributesFromSkills(sheet.skills ?? {});
     const fixed: CharacterSheetV1 = { ...sheet, attributes: derived };
     const header = await getTokenHeaderMeta(resolvedMyTokenId);
+    didCenterRef.current = false;
     setState({ kind: "ready", tokenId: resolvedMyTokenId, sheet: fixed, mode: "my", suppressUnset: !!opts?.suppressUnset, ...header });
   }
 
@@ -163,6 +166,51 @@ export function SheetApp() {
       cancelled = true;
     };
   }, []);
+
+  const readyTokenId = state.kind === "ready" ? state.tokenId : null;
+  const readyMode = state.kind === "ready" ? state.mode : null;
+
+  useEffect(() => {
+    if (state.kind !== "ready") return;
+    if (readyMode !== "my") return;
+    if (didCenterRef.current) return;
+
+    let cancelled = false;
+    OBR.onReady(async () => {
+      if (cancelled) return;
+      try {
+        const [item] = await OBR.scene.items.getItems([readyTokenId!]);
+        if (!item) return;
+
+        let width = 1;
+        let height = 1;
+        if (isImage(item)) {
+          width = (item.image?.width ?? 1) * (item.scale?.x ?? 1);
+          height = (item.image?.height ?? 1) * (item.scale?.y ?? 1);
+        }
+
+        const center = item.position ?? { x: 0, y: 0 };
+        const bounds = {
+          min: { x: center.x - width / 2, y: center.y - height / 2 },
+          max: { x: center.x + width / 2, y: center.y + height / 2 },
+          width,
+          height,
+          center,
+        };
+
+        await OBR.viewport.animateToBounds(bounds);
+        const scale = await OBR.viewport.getScale();
+        await OBR.viewport.setScale(scale * 0.7);
+        didCenterRef.current = true;
+      } catch {
+        // ignore
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [state.kind, readyMode, readyTokenId]);
 
   useEffect(() => {
     let unsub: (() => void) | null = null;
@@ -378,6 +426,7 @@ export function SheetApp() {
     try { await tagTokenOwnedByMe(selectedId); } catch {}
     await setOpenTokenOverride(null);
     const header = await getTokenHeaderMeta(selectedId);
+    didCenterRef.current = false;
     setState({ kind: "ready", tokenId: selectedId, sheet: fixed, mode: "my", suppressUnset: false, ...header });
   }
 

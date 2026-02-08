@@ -23,9 +23,18 @@ export function SheetTabs(props: {
 }
 
 function Tab(props: { label: string; active: boolean; onClick: () => void; color: string }) {
+  const theme = useTheme();
+  const [hovered, setHovered] = React.useState(false);
+  const isDark = theme.palette.mode === "dark";
+  const hoverStyle = isDark
+    ? { background: "rgba(255,255,255,0.08)", borderColor: "rgba(255,255,255,0.45)" }
+    : {};
+
   return (
     <button
       onClick={props.onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
         padding: "6px 10px",
         borderRadius: 999,
@@ -34,6 +43,7 @@ function Tab(props: { label: string; active: boolean; onClick: () => void; color
         background: "transparent",
         fontWeight: props.active ? 700 : 400,
         color: props.color,
+        ...(hovered ? hoverStyle : {}),
       }}
     >
       {props.label}
