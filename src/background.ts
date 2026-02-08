@@ -26,7 +26,11 @@ async function main() {
         {
           icon: "/icon.svg",
           label: "Open Whisperspace Sheet",
-          filter: { min: 1, max: 1 }
+          filter: {
+            min: 1,
+            max: 1,
+            every: [{ key: "layer", value: "CHARACTER" }],
+          }
         }
       ],
       onClick: async (context, elementId) => {
@@ -50,13 +54,17 @@ async function main() {
 
 	    await OBR.contextMenu.create({
 	      id: ROLL_INIT_MENU_ID,
-	      icons: [
-	        {
-	          icon: "/icon.svg",
-	          label: "Roll Initiative",
-	          filter: { min: 1, max: 1 }
-	        }
-	      ],
+      icons: [
+        {
+          icon: "/icon.svg",
+          label: "Roll Initiative",
+          filter: {
+            min: 1,
+            max: 1,
+            every: [{ key: "layer", value: "CHARACTER" }],
+          }
+        }
+      ],
 	      onClick: async (context) => {
 	        const item = context.items?.[0] as any;
 	        const tokenId = item?.id as string | undefined;
