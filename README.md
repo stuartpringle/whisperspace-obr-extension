@@ -46,4 +46,46 @@ Parser README:
 
 - `npm run rules:sync` — copy parser output into `src/data/rules/` and regenerate JSON.
 - `npm run rules:gear` — parse equipment tables from `src/data/rules/equipment-gear.yaml` into data YAML files.
+- `npm run rules:publish` — run the parser, sync rules, build/publish the HTTP rules API + core module.
 - `npm run build` — runs rules sync, then builds the extension.
+
+## HTTP Rules API
+
+The latest rules API is published to:
+
+- `https://whisperspace.com/rules-api/latest/`
+
+Key files:
+
+- `rules.json` (full rules tree)
+- `skills.json`, `weapons.json`, `armour.json`, `items.json`, `cyberware.json`, `narcotics.json`, `hacking_gear.json`
+- `weapon_keywords.json`, `skill_tooltips.json`
+- `meta.json` (semver + hashes)
+
+### Core Module (HTTP)
+
+The shared core logic is available as an ES module:
+
+```js
+import { buildAttackOutcome, deriveAttributesFromSkills } from "https://whisperspace.com/rules-api/latest/core/index.js";
+```
+
+### CORS
+
+Apache should allow cross‑origin access for the rules API path. Example:
+
+```apache
+<Directory /hdd/sites/stuartpringle/whisperspace/public/rules-api>
+    Options -Indexes
+    AllowOverride None
+    Require all granted
+
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type"
+    </IfModule>
+</Directory>
+
+AddType application/json .json
+```
