@@ -112,3 +112,17 @@ export async function findMyOwnedTokenId(): Promise<string | null> {
   const mine = items.find((it) => it.metadata?.[TOKEN_KEY_OWNER_PLAYER] === myPlayerId);
   return mine?.id ?? null;
 }
+
+export async function clearMyOwnedTokenTags(): Promise<void> {
+  const myPlayerId = await OBR.player.getId();
+  const items = await OBR.scene.items.getItems();
+  const mine = items.filter((it) => it.metadata?.[TOKEN_KEY_OWNER_PLAYER] === myPlayerId);
+  if (mine.length === 0) return;
+  const ids = mine.map((it) => it.id);
+  await OBR.scene.items.updateItems(ids, (drafts) => {
+    drafts.forEach((it) => {
+      if (!it) return;
+      delete it.metadata[TOKEN_KEY_OWNER_PLAYER];
+    });
+  });
+}

@@ -6,6 +6,7 @@ import { ensureSheetOnToken,
   getOpenTokenOverride,
   saveSheetToToken,
   setMyCharacterTokenId,
+  clearMyOwnedTokenTags,
   setOpenTokenOverride,
   TOKEN_KEY_OWNER_PLAYER,
   tagTokenOwnedByMe,
@@ -316,6 +317,7 @@ export function SheetApp() {
 
   async function unsetMyCharacter() {
     await setMyCharacterTokenId(null);
+    try { await clearMyOwnedTokenTags(); } catch {}
     setState({ kind: "need-token" });
   }
 
