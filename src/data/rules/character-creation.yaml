@@ -1,0 +1,520 @@
+title: Character Creation
+slug: character-creation
+level: 1
+content:
+- type: paragraph
+  text: A character is a player’s portal into the world of the game. What your character
+    does is really what you do. Are you going to take on the universe as a rogue with
+    a good heart (Han Solo, for example) or a bounty hunter only really interested
+    in profit? What about as a research scientist looking into the recent outbreak
+    of a deadly virus?
+  spans: []
+sections:
+- title: 1. Concept
+  slug: 1-concept
+  level: 2
+  content:
+  - type: paragraph
+    text: Modeling your character around a concept you like is a great way to start.
+      Maybe you’re inspired by Han Solo and want to build a scoundrel with a heart
+      of gold, or maybe you like Paul Atreides and think someone trained in melee
+      fighting and leadership is the character for you. Having a character concept
+      in mind can help each decision you make bring you that little bit closer to
+      what you had in mind.
+    spans: []
+  sections: []
+- title: 2. Origin, Background, and Motivation
+  slug: 2-origin-background-and-motivation
+  level: 2
+  content:
+  - type: paragraph
+    text: Background, and motivation represent your character’s history. Background
+      encapsulates where he comes from. Motivation shows where he’s going - what he
+      wants to do. These are narrative devices you can use to give depth and personality
+      to your character. They can double as great story hooks for your GM to use as
+      well.
+    spans: []
+  - type: paragraph
+    text: Backgrounds
+    spans: []
+  - type: paragraph
+    text: D10 roll
+    spans: []
+  - type: paragraph
+    text: Background
+    spans: []
+  - type: paragraph
+    text: Description
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: Station Rat
+    spans: []
+  - type: paragraph
+    text: Grew up in the unwelcoming back-alleys of a space station fending for yourself.
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: Colony Survivor
+    spans: []
+  - type: paragraph
+    text: The settlement didn’t make it. You did.
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: Salvager
+    spans: []
+  - type: paragraph
+    text: Raised in the guts of derelict ships, you learned how to chop them up and
+      sell them for parts pretty quickly. You had to.
+    spans: []
+  - type: paragraph
+    text: '4'
+    spans: []
+  - type: paragraph
+    text: Military Academy
+    spans: []
+  - type: paragraph
+    text: Drop out, wash out, or burn out; however you slice it you were in the academy
+      and now you’re not.
+    spans: []
+  - type: paragraph
+    text: '5'
+    spans: []
+  - type: paragraph
+    text: Corporate Trainee
+    spans: []
+  - type: paragraph
+    text: Everyone starts on the lowest rung of the corporate ladder. You just never
+      got the chance to get any higher.
+    spans: []
+  - type: paragraph
+    text: '6'
+    spans: []
+  - type: paragraph
+    text: Wealthy Family
+    spans: []
+  - type: paragraph
+    text: Life handed you most things on a silver platter. You said you wanted to
+      make your own way in the world - now look at you. Would your parents even recognize
+      you?
+    spans: []
+  - type: paragraph
+    text: '7'
+    spans: []
+  - type: paragraph
+    text: Science Academy
+    spans: []
+  - type: paragraph
+    text: How things work is fascinating. Like how someone with your obvious intellect
+      and skill could be kicked out of the science academy - you find that fascinating
+      indeed.
+    spans: []
+  - type: paragraph
+    text: '8'
+    spans: []
+  - type: paragraph
+    text: Illegal Clone
+    spans: []
+  - type: paragraph
+    text: Somewhere between the lab cell and the bio-recycling chamber, you got free.
+    spans: []
+  - type: paragraph
+    text: '9'
+    spans: []
+  - type: paragraph
+    text: Criminal
+    spans: []
+  - type: paragraph
+    text: A life of crime may have led you here, but where you go next is up to you.
+    spans: []
+  - type: paragraph
+    text: '10'
+    spans: []
+  - type: paragraph
+    text: Orphan
+    spans: []
+  - type: paragraph
+    text: You’ve been alone all your life. What’s it like to work with others? To
+      find a family?
+    spans: []
+  - type: paragraph
+    text: Motivations
+    spans: []
+  - type: paragraph
+    text: D12 roll
+    spans: []
+  - type: paragraph
+    text: Motivation
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: Redemption
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: Revenge
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: Thrill-Seeking
+    spans: []
+  - type: paragraph
+    text: '4'
+    spans: []
+  - type: paragraph
+    text: Duty
+    spans: []
+  - type: paragraph
+    text: '5'
+    spans: []
+  - type: paragraph
+    text: Debt
+    spans: []
+  - type: paragraph
+    text: '6'
+    spans: []
+  - type: paragraph
+    text: Greed
+    spans: []
+  - type: paragraph
+    text: '7'
+    spans: []
+  - type: paragraph
+    text: Freedom
+    spans: []
+  - type: paragraph
+    text: '8'
+    spans: []
+  - type: paragraph
+    text: Guilt
+    spans: []
+  - type: paragraph
+    text: '9'
+    spans: []
+  - type: paragraph
+    text: Fame
+    spans: []
+  - type: paragraph
+    text: '10'
+    spans: []
+  - type: paragraph
+    text: Love
+    spans: []
+  - type: paragraph
+    text: '11'
+    spans: []
+  - type: paragraph
+    text: Faith
+    spans: []
+  - type: paragraph
+    text: '12'
+    spans: []
+  - type: paragraph
+    text: Roll twice (rerolling 12s) for a complex motivation
+    spans: []
+  - type: paragraph
+    text: 'Is your character chasing down someone who wronged her? Fleeing the scene
+      of a crime? Searching for something intangible she knows she won’t find trapped
+      on her home planet? Whatever your character wants, what drives them day by day:
+      that’s her motivation.'
+    spans: []
+  sections: []
+- title: 3. Pick an Archetype or a Feat
+  slug: 3-pick-an-archetype-or-a-feat
+  level: 2
+  content:
+  - type: paragraph
+    text: Feats are abilities that differentiate your character from others. Archetypes
+      are curated collections of feats designed to evoke a particular feel or expression
+      of play. The full list of Archetypes and Feats may be found in the Archetypes
+      and Feats section.
+    spans: []
+  sections: []
+- title: 4. Choose a Learning Focus
+  slug: 4-choose-a-learning-focus
+  level: 2
+  content:
+  - type: paragraph
+    text: Your learning focus determines what your character has trained for, studied
+      for, or worked on over time. Skills under a Learning Focus are sometimes referred
+      to as learned skills.
+    spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: Combat Weapons, fighting styles, use of explosives, etc.
+      spans: []
+    - text: Education Science, tech, hacking, medicine, etc.
+      spans: []
+    - text: Vehicles Piloting, gunnery, navigation, etc.
+      spans: []
+  - type: paragraph
+    text: You may raise skills in your chosen focus up to rank 5 (their maximum).
+      In the two other focuses, you may not raise skills above rank 2.
+    spans: []
+  - type: paragraph
+    text: The full list of Learning Focus Skills may be found in the next section,
+      Attributes and Skills.
+    spans: []
+  sections: []
+- title: 5. Spend Skill Points (SP)
+  slug: 5-spend-skill-points-sp
+  level: 2
+  content:
+  - type: paragraph
+    text: Each character begins creation with a pool of Skill Points determined by
+      the GM. A typical starting character would receive 30 Skill Points to spend.
+    spans: []
+  - type: paragraph
+    text: 'Skill levels can broadly be thought of as:'
+    spans: []
+  - type: table
+    rows:
+    - - text: Skill Level
+        spans: []
+      - text: Proficiency
+        spans: []
+    - - text: 0-1
+        spans: []
+      - text: Untrained
+        spans: []
+    - - text: 2-3
+        spans: []
+      - text: Proficient
+        spans: []
+    - - text: 4-5
+        spans: []
+      - text: Expert
+        spans: []
+  - type: paragraph
+    text: Skill Level
+    spans: []
+  - type: paragraph
+    text: Proficiency
+    spans: []
+  - type: paragraph
+    text: 0-1
+    spans: []
+  - type: paragraph
+    text: Untrained
+    spans: []
+  - type: paragraph
+    text: 2-3
+    spans: []
+  - type: paragraph
+    text: Proficient
+    spans: []
+  - type: paragraph
+    text: 4-5
+    spans: []
+  - type: paragraph
+    text: Expert
+    spans: []
+  - type: paragraph
+    text: Each level of a skill costs its own number of skill points. So level 1 in
+      a skill costs 1 skill point to get, while level 2 costs 2 skill points, and
+      so on.
+    spans: []
+  - type: paragraph
+    text: 'Going directly from level 0 in a skill (completely untrained) to level
+      3 would therefore cost 6 Skill Points: 1 from level 1, 2 from level 2, and 3
+      from level 3 (1 + 2 + 3 = 6). Here’s a table to see this in action easily:'
+    spans: []
+  - type: table
+    rows:
+    - - text: Skill Level
+        spans: []
+      - text: Total Skill Point cost (cumulative)
+        spans: []
+    - - text: '1'
+        spans: []
+      - text: '1'
+        spans: []
+    - - text: '2'
+        spans: []
+      - text: '3'
+        spans: []
+    - - text: '3'
+        spans: []
+      - text: '6'
+        spans: []
+    - - text: '4'
+        spans: []
+      - text: '10'
+        spans: []
+    - - text: '5'
+        spans: []
+      - text: '15'
+        spans: []
+  - type: paragraph
+    text: Skill Level
+    spans: []
+  - type: paragraph
+    text: Total Skill Point cost (cumulative)
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: '6'
+    spans: []
+  - type: paragraph
+    text: '4'
+    spans: []
+  - type: paragraph
+    text: '10'
+    spans: []
+  - type: paragraph
+    text: '5'
+    spans: []
+  - type: paragraph
+    text: '15'
+    spans: []
+  - type: paragraph
+    text: If you already have level 2 in a skill and want to advance to level 3, it
+      would cost 3 Skill Points.
+    spans: []
+  - type: paragraph
+    text: The full list of Skills may be found in the Attributes and Skills section
+      below.
+    spans: []
+  sections: []
+- title: 6. Attribute Calculation
+  slug: 6-attribute-calculation
+  level: 2
+  content:
+  - type: paragraph
+    text: 'Attributes are not ‘leveled up’ in the traditional sense; instead, each
+      attribute is a measure of the various skills tied to it. The formula is:'
+    spans: []
+  - type: paragraph
+    text: Attribute = Number of ranks of attribute skills / 4 (rounded up)
+    spans: []
+  - type: paragraph
+    text: 'So if your character has 8 ranks of PHYS skills (let’s say 4 in Powerlift
+      and 4 in Athletics), their PHYS would work out to 2, because: 2 = 8 / 4'
+    spans: []
+  - type: paragraph
+    text: The full list of Attributes and what their descriptions may be found below
+      in the Attributes and Skills section.
+    spans: []
+  sections: []
+- title: 7. Equipment
+  slug: 7-equipment
+  level: 2
+  content:
+  - type: paragraph
+    text: Your character begins with credits (standard currency) equal to 1d12 × 50
+      + 800. Thus, your starting credits will be somewhere between 850c and 1400c.
+    spans: []
+  - type: paragraph
+    text: You may use your credits to purchase items before play begins, at your GM’s
+      discretion. You may find a list of items under the Equipment & Gear section
+    spans: []
+  sections: []
+- title: 8 . Final Steps
+  slug: 8-final-steps
+  level: 2
+  content: []
+  sections:
+  - title: Inventory Slots
+    slug: inventory-slots
+    level: 4
+    content:
+    - type: paragraph
+      text: Each character has a carry capacity defined by inventory slots.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Carrying Capacity = 5 + (Physique * 5) slots
+        spans: []
+      - text: Each slot ≈ 5 lbs
+        spans: []
+    sections:
+    - title: Movement Speed
+      slug: movement-speed
+      level: 4
+      content:
+      - type: paragraph
+        text: 'Determine your character’s movement speed with the following formula:'
+        spans: []
+      - type: paragraph
+        text: Movement Speed = 30 + (PHYS * 5) feet
+        spans: []
+      - type: paragraph
+        text: Thus, a character with PHYS 2 would be able to move 40 feet during any
+          movement action.
+        spans: []
+      sections: []
+    - title: Cool Under Fire
+      slug: cool-under-fire
+      level: 4
+      content:
+      - type: paragraph
+        text: 'Use the following formula for Cool Under Fire:'
+        spans: []
+      - type: paragraph
+        text: Cool Under Fire = 1 + (Instinct + Willpower + Bearing + Toughness +
+          Tactics ÷ 5) (rounded up)
+        spans: []
+      - type: paragraph
+        text: Don’t worry, this is the most mathematically complex step in the entire
+          game.
+        spans: []
+      sections: []
+- title: 9 . Go play!
+  slug: 9-go-play
+  level: 2
+  content:
+  - type: paragraph
+    text: Congratulations; you’ve finished creating your character. Now it’s time
+      to see where their story goes.
+    spans: []
+  - type: paragraph
+    text: 'If this is your first time playing, I recommend taking a look at the following
+      sections in this book:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: Core Mechanics
+      spans: []
+    - text: Stress
+      spans: []
+    - text: Wounds
+      spans: []
+    - text: Combat
+      spans: []
+  - type: paragraph
+    text: These cover the very basics of playing Whisperspace.
+    spans: []
+  - type: paragraph
+    text: Happy gaming!
+    spans: []
+  sections: []

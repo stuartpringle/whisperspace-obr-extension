@@ -1,0 +1,1630 @@
+title: Starships
+slug: starships
+level: 1
+content:
+- type: paragraph
+  text: Ships are an integral part of Whisperspace; without them, inter-planetary
+    travel would be impossible, and the mysteries of Whisperspace itself would be
+    impossible to unlock. From tiny and cramped single-seat craft to massive cargo
+    transports or truly awe-inspiring capital ships, they vary widely in mass, hull
+    structure, and engine power.
+  spans: []
+sections:
+- title: Ship Movement
+  slug: ship-movement
+  level: 2
+  content:
+  - type: paragraph
+    text: 'To keep ship movement simple and intuitive, Whisperspace uses three basic
+      stats:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: Ship Size - how physically large the vessel is (0–6). The bigger the ship,
+        the more capabilities it likely has, but the worse it is at maneuvering.
+      spans: []
+    - text: Drive Rating - how powerful the engines are (1–5). This affects both cruise
+        speed (how quickly you can get places at sublight) and maneuverability.
+      spans: []
+    - text: Maneuverability - how agile the ship feels in motion (derived from Drive,
+        thrusters, and Size; see Building Your Own Ships).
+      spans: []
+  sections:
+  - title: High G-forces
+    slug: high-g-forces
+    level: 3
+    content:
+    - type: paragraph
+      text: A ship’s standard movement rate applies only minimum g-forces to the ship
+        and its inhabitants, however they are often capable of accelerating and changing
+        direction more quickly. This can be dangerous for the crew or even the ship’s
+        own structural integrity, but it does provide benefits in pursuit, escape,
+        or combat encounters.
+      spans: []
+    sections:
+    - title: What are High-G Maneuvers?
+      slug: what-are-high-g-maneuvers
+      level: 4
+      content:
+      - type: paragraph
+        text: 'High-G Maneuvers represent pushing a ship beyond safe operating limits
+          for a brief period of time. Examples include:'
+        spans: []
+      - type: list
+        ordered: false
+        items:
+        - text: 'Evasive Maneuvers: sudden, violent course changes to avoid incoming
+            fire or collisions.'
+          spans: []
+        - text: 'Hard Burn: extreme acceleration intended to rapidly close distance,
+            escape pursuit, or reposition.'
+          spans: []
+      sections: []
+    - title: Declaring a High-G Maneuver
+      slug: declaring-a-high-g-maneuver
+      level: 4
+      content:
+      - type: paragraph
+        text: When a pilot initiates a High-G Maneuver, they must declare a G-Level,
+          representing how extreme the maneuver will be.
+        spans: []
+      - type: list
+        ordered: false
+        items:
+        - text: A pilot may choose any G-Level up to the ship’s Maneuver rating.
+          spans: []
+        - text: A pilot may not choose a G-Level higher than their Piloting skill
+            rank.
+          spans: []
+        - text: Higher G-Levels provide greater benefits, but dramatically increase
+            risk to the crew and the ship.
+          spans: []
+      sections: []
+  - title: Evasive Maneuvers
+    slug: evasive-maneuvers
+    level: 3
+    content:
+    - type: paragraph
+      text: When a ship attempts evasive maneuvers in combat, the GM will call for
+        a Piloting check against the ship’s Evasive DC, which is based on its Size
+        and Maneuverability.
+      spans: []
+    sections: []
+  - title: Travel Time
+    slug: travel-time
+    level: 3
+    content:
+    - type: paragraph
+      text: For gameplay pacing, travel distances within a star system are divided
+        into travel segments (legs).
+      spans: []
+    - type: paragraph
+      text: 'A typical leg could represent distances such as:'
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Between two planets
+        spans: []
+      - text: From a planet to the nearest Whisperspace entrance
+        spans: []
+      - text: From a station to a drop point in space
+        spans: []
+    - type: paragraph
+      text: Some destinations could have multiple segments; for example, a far-away
+        Whisperspace entrance might be 3 legs from you.
+      spans: []
+    sections: []
+  - title: Travel Time Per Segment
+    slug: travel-time-per-segment
+    level: 3
+    content:
+    - type: paragraph
+      text: The ship’s Drive Rating determines how quickly it completes each leg.
+      spans: []
+    - type: table
+      rows:
+      - - text: Drive Rating
+          spans: []
+        - text: Assessment
+          spans: []
+        - text: Time per Leg
+          spans: []
+      - - text: '1'
+          spans: []
+        - text: Slow
+          spans: []
+        - text: ~2 hours
+          spans: []
+      - - text: '2'
+          spans: []
+        - text: Standard
+          spans: []
+        - text: ~1 hour
+          spans: []
+      - - text: '3'
+          spans: []
+        - text: Fast
+          spans: []
+        - text: ~45 minutes
+          spans: []
+      - - text: 4–5
+          spans: []
+        - text: Very Fast
+          spans: []
+        - text: ~20–30 min
+          spans: []
+    - type: paragraph
+      text: Drive Rating
+      spans: []
+    - type: paragraph
+      text: Assessment
+      spans: []
+    - type: paragraph
+      text: Time per Leg
+      spans: []
+    - type: paragraph
+      text: '1'
+      spans: []
+    - type: paragraph
+      text: Slow
+      spans: []
+    - type: paragraph
+      text: ~2 hours
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: Standard
+      spans: []
+    - type: paragraph
+      text: ~1 hour
+      spans: []
+    - type: paragraph
+      text: '3'
+      spans: []
+    - type: paragraph
+      text: Fast
+      spans: []
+    - type: paragraph
+      text: ~45 minutes
+      spans: []
+    - type: paragraph
+      text: 4–5
+      spans: []
+    - type: paragraph
+      text: Very Fast
+      spans: []
+    - type: paragraph
+      text: ~20–30 min
+      spans: []
+    sections: []
+- title: Basic Functions (Every Ship Has These)
+  slug: basic-functions-every-ship-has-these
+  level: 2
+  content:
+  - type: paragraph
+    text: 'Every ship can be assumed to have rudimentary systems on board, unless
+      otherwise noted. These systems include:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Propulsion (drive rating: 0, enough to maneuver to dock, not much more)'
+      spans: []
+    - text: Scanners (short-range radar, thermal imaging, hull integrity monitoring)
+      spans: []
+    - text: Communications (unencrypted radio and distress beacon)
+      spans: []
+    - text: Power (a minimal reactor sufficient for Basic Functions)
+      spans: []
+    - text: Life Support (oxygen, temperature, pressure, artificial gravity)
+      spans: []
+    - text: Computer Core (basic navigation capabilities, power routing)
+      spans: []
+    - text: Navigation (standard positional data and rudimentary autopilot)
+      spans: []
+    - text: Docking (universal docking collar, airlock, pressure seals)
+      spans: []
+    - text: Emergency Systems (fire suppression, sealant foam)
+      spans: []
+  - type: paragraph
+    text: These systems do not require module slots. A starship without them is no
+      longer a starship. Note that a Whisper Drive is not part of a ship’s basic systems;
+      it must be installed as a module to enable travel between systems.
+    spans: []
+  sections: []
+- title: Stock Ship Models
+  slug: stock-ship-models
+  level: 2
+  content:
+  - type: paragraph
+    text: These ships are ready-to-use examples that can be bought, stolen, or encountered
+      as NPC ships. You can also use them as templates for your own designs.
+    spans: []
+  - type: paragraph
+    text: 'To save room in this version of the rulebook, I’ve put these in another
+      document: Whisperspace Prebuilt Ships'
+    spans: []
+  sections: []
+- title: Building Your Own Ships
+  slug: building-your-own-ships
+  level: 2
+  content:
+  - type: paragraph
+    text: Starships in Whisperspace are modular machines built from a hull and a selection
+      of modules. Whether you want to build a one-person courier pod or a colossal
+      capital warship, just follow the steps below.
+    spans: []
+  sections:
+  - title: 1. Choose a Ship Size (0-6)
+    slug: 1-choose-a-ship-size-0-6
+    level: 3
+    content:
+    - type: paragraph
+      text: 'A ship’s size determines:'
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Base cost
+        spans: []
+      - text: Base hull points
+        spans: []
+      - text: Available module slots
+        spans: []
+      - text: Maneuverability
+        spans: []
+    - type: table
+      rows:
+      - - text: Ship Sizes
+          spans: []
+      - - text: Size
+          spans: []
+        - text: Example
+          spans: []
+        - text: Crew
+          spans: []
+        - text: Power
+          spans: []
+        - text: Module Slots
+          spans: []
+        - text: Hull
+          spans: []
+        - text: Base Cost
+          spans: []
+      - - text: '0'
+          spans: []
+        - text: Pod
+          spans: []
+        - text: 1–2
+          spans: []
+        - text: '2'
+          spans: []
+        - text: '1'
+          spans: []
+        - text: '4'
+          spans: []
+        - text: '15000'
+          spans: []
+      - - text: '1'
+          spans: []
+        - text: Craft
+          spans: []
+        - text: 1–5
+          spans: []
+        - text: '4'
+          spans: []
+        - text: '3'
+          spans: []
+        - text: '6'
+          spans: []
+        - text: '30000'
+          spans: []
+      - - text: '2'
+          spans: []
+        - text: Cutter
+          spans: []
+        - text: 2–6
+          spans: []
+        - text: '6'
+          spans: []
+        - text: '6'
+          spans: []
+        - text: '10'
+          spans: []
+        - text: '60000'
+          spans: []
+      - - text: '3'
+          spans: []
+        - text: Frigate
+          spans: []
+        - text: 4–15
+          spans: []
+        - text: '10'
+          spans: []
+        - text: '10'
+          spans: []
+        - text: '15'
+          spans: []
+        - text: '120000'
+          spans: []
+      - - text: '4'
+          spans: []
+        - text: Destroyer
+          spans: []
+        - text: 10–30
+          spans: []
+        - text: '14'
+          spans: []
+        - text: '15'
+          spans: []
+        - text: '22'
+          spans: []
+        - text: '250000'
+          spans: []
+      - - text: '5'
+          spans: []
+        - text: Cruiser
+          spans: []
+        - text: 20–80
+          spans: []
+        - text: '20'
+          spans: []
+        - text: '22'
+          spans: []
+        - text: '30'
+          spans: []
+        - text: '500000'
+          spans: []
+      - - text: '6'
+          spans: []
+        - text: Capital Ship
+          spans: []
+        - text: 100+
+          spans: []
+        - text: '30'
+          spans: []
+        - text: '30'
+          spans: []
+        - text: '40'
+          spans: []
+        - text: '1500000'
+          spans: []
+    - type: paragraph
+      text: Ship Sizes
+      spans: []
+    - type: paragraph
+      text: Size
+      spans: []
+    - type: paragraph
+      text: Example
+      spans: []
+    - type: paragraph
+      text: Crew
+      spans: []
+    - type: paragraph
+      text: Power
+      spans: []
+    - type: paragraph
+      text: Module Slots
+      spans: []
+    - type: paragraph
+      text: Hull
+      spans: []
+    - type: paragraph
+      text: Base Cost
+      spans: []
+    - type: paragraph
+      text: '0'
+      spans: []
+    - type: paragraph
+      text: Pod
+      spans: []
+    - type: paragraph
+      text: 1–2
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: '1'
+      spans: []
+    - type: paragraph
+      text: '4'
+      spans: []
+    - type: paragraph
+      text: '15000'
+      spans: []
+    - type: paragraph
+      text: '1'
+      spans: []
+    - type: paragraph
+      text: Craft
+      spans: []
+    - type: paragraph
+      text: 1–5
+      spans: []
+    - type: paragraph
+      text: '4'
+      spans: []
+    - type: paragraph
+      text: '3'
+      spans: []
+    - type: paragraph
+      text: '6'
+      spans: []
+    - type: paragraph
+      text: '30000'
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: Cutter
+      spans: []
+    - type: paragraph
+      text: 2–6
+      spans: []
+    - type: paragraph
+      text: '6'
+      spans: []
+    - type: paragraph
+      text: '6'
+      spans: []
+    - type: paragraph
+      text: '10'
+      spans: []
+    - type: paragraph
+      text: '60000'
+      spans: []
+    - type: paragraph
+      text: '3'
+      spans: []
+    - type: paragraph
+      text: Frigate
+      spans: []
+    - type: paragraph
+      text: 4–15
+      spans: []
+    - type: paragraph
+      text: '10'
+      spans: []
+    - type: paragraph
+      text: '10'
+      spans: []
+    - type: paragraph
+      text: '15'
+      spans: []
+    - type: paragraph
+      text: '120000'
+      spans: []
+    - type: paragraph
+      text: '4'
+      spans: []
+    - type: paragraph
+      text: Destroyer
+      spans: []
+    - type: paragraph
+      text: 10–30
+      spans: []
+    - type: paragraph
+      text: '14'
+      spans: []
+    - type: paragraph
+      text: '15'
+      spans: []
+    - type: paragraph
+      text: '22'
+      spans: []
+    - type: paragraph
+      text: '250000'
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Cruiser
+      spans: []
+    - type: paragraph
+      text: 20–80
+      spans: []
+    - type: paragraph
+      text: '20'
+      spans: []
+    - type: paragraph
+      text: '22'
+      spans: []
+    - type: paragraph
+      text: '30'
+      spans: []
+    - type: paragraph
+      text: '500000'
+      spans: []
+    - type: paragraph
+      text: '6'
+      spans: []
+    - type: paragraph
+      text: Capital Ship
+      spans: []
+    - type: paragraph
+      text: 100+
+      spans: []
+    - type: paragraph
+      text: '30'
+      spans: []
+    - type: paragraph
+      text: '30'
+      spans: []
+    - type: paragraph
+      text: '40'
+      spans: []
+    - type: paragraph
+      text: '1500000'
+      spans: []
+    sections: []
+  - title: 2. Spend Module Slots
+    slug: 2-spend-module-slots
+    level: 3
+    content:
+    - type: paragraph
+      text: 'Each ship has a pool of Module Slots based on its size. Installing a
+        module costs:'
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Module Slots
+        spans: []
+      - text: Power
+        spans: []
+      - text: Credits
+        spans: []
+    - type: paragraph
+      text: If you run out of slots, you must remove or swap modules. A ship cannot
+        physically support more slots than listed.
+      spans: []
+    - type: paragraph
+      text: If you run out of power, some modules simply will not function. Characters
+        may choose to power off some modules and power on others, but the functional
+        modules’ power requirements may never exceed the ship’s total power resource
+        (including installed power modules).
+      spans: []
+    - type: paragraph
+      text: If you run out of money, sadly, this ship build isn’t for you; you’ll
+        need to make it cheaper by removing modules or choosing a lower size. Alternatively,
+        you could try obtaining more money.
+      spans: []
+    - type: paragraph
+      text: A full list of Modules may be found below, under Modules.
+      spans: []
+    sections: []
+  - title: 3. Calculate Drive Rating, Power, Maneuverability, and Evasive DC
+    slug: 3-calculate-drive-rating-power-maneuverability-and-evasive-dc
+    level: 3
+    content:
+    - type: paragraph
+      text: Drive Rating = 1 + Drive Rating modifiers from installed modules
+      spans: []
+    - type: paragraph
+      text: A ship of any size with an installed Burner Mk. I would have a Drive Rating
+        of 2. Drive Rating determines how fast your ship travels over large distances,
+        and impacts maneuverability.
+      spans: []
+    - type: paragraph
+      text: Power = Power Capacity (from ship sizes table) + Power modifiers from
+        installed modules.
+      spans: []
+    - type: paragraph
+      text: A ship of size 3 with an installed Fusion Core would have 13 Power. Remember
+        that your ship’s power usage cannot be exceeded, so now’s a good time to make
+        sure the modules you chose don’t exceed your ship’s Power.
+      spans: []
+    - type: paragraph
+      text: Maneuverability = Drive Rating + Thruster bonuses (from modules) - Ship
+        Size
+      spans: []
+    - type: paragraph
+      text: Maneuverability can never go below 0. So a size 1 ship with a Drive Rating
+        of 2 and no thruster bonuses would have maneuverability of 1.
+      spans: []
+    - type: paragraph
+      text: Evasive DC = 8 + Ship Size - Maneuverability
+      spans: []
+    - type: paragraph
+      text: A ship of size 1 with Maneuverability of 3 would have Evasive DC of 6.
+      spans: []
+    sections: []
+  - title: 4. Fill Out the Stat Block
+    slug: 4-fill-out-the-stat-block
+    level: 3
+    content:
+    - type: paragraph
+      text: 'After installing modules, record the ship’s final stats:'
+      spans: []
+    sections: []
+  - title: Ship Stat Block Template
+    slug: ship-stat-block-template
+    level: 3
+    content:
+    - type: paragraph
+      text: 'Name:
+
+        Manufacturer:
+
+        Size:
+
+        Cost:
+
+        Crew Required:
+
+        Drive Rating:
+
+        Maneuverability (MVR):
+
+        Evasive DC:
+
+        Hull:
+
+        Armor:
+
+        Power (Total):
+
+        Slots Used / Total:'
+      spans: []
+    - type: paragraph
+      text: 'Modules Installed:'
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Propulsion:'
+        spans: []
+      - text: 'Weapons:'
+        spans: []
+      - text: 'Defense:'
+        spans: []
+      - text: 'Utility:'
+        spans: []
+      - text: 'Command / Navigation:'
+        spans: []
+      - text: 'Cargo:'
+        spans: []
+    sections: []
+  - title: 5. Add Character (optional)
+    slug: 5-add-character-optional
+    level: 3
+    content:
+    - type: paragraph
+      text: 'To make a ship feel real and unique, you can add:'
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: A name
+        spans: []
+      - text: A manufacturer
+        spans: []
+      - text: An interesting paint job
+        spans: []
+      - text: A quirk (floors not quite level; air smells of spice)
+        spans: []
+      - text: A past (was this ship salvaged? Is it brand new? Was it stolen?)
+        spans: []
+    sections: []
+- title: Modules
+  slug: modules
+  level: 2
+  content:
+  - type: paragraph
+    text: Propulsion Modules
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: Slots
+    spans: []
+  - type: paragraph
+    text: Boost
+    spans: []
+  - type: paragraph
+    text: Drive Rating
+    spans: []
+  - type: paragraph
+    text: Special
+    spans: []
+  - type: paragraph
+    text: Cost
+    spans: []
+  - type: paragraph
+    text: Burner Mk. I
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '+1'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: '12000'
+    spans: []
+  - type: paragraph
+    text: Combat Thrusters
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Maneuver +1
+    spans: []
+  - type: paragraph
+    text: '10000'
+    spans: []
+  - type: paragraph
+    text: Emergency Thrusters
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Maneuver + 2; when activated (once per round), gain +1 bonus die to Evasive
+      Maneuvers; everyone on board suffers 2 stress
+    spans: []
+  - type: paragraph
+    text: '30000'
+    spans: []
+  - type: paragraph
+    text: Interceptor Drive
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '+1'
+    spans: []
+  - type: paragraph
+    text: Maneuver +2
+    spans: []
+  - type: paragraph
+    text: '35000'
+    spans: []
+  - type: paragraph
+    text: Afterburner
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Gain +1 Drive Rating and +1 Maneuver for 1 round. If Engineering is manned,
+      roll Engineering (DC8 + Drive Rating). On failure, suffer +2 hull damage. On
+      extreme failure, suffer +4 hull damage.
+    spans: []
+  - type: paragraph
+    text: '25000'
+    spans: []
+  - type: paragraph
+    text: Kessler Burner Mk. 2
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '+2'
+    spans: []
+  - type: paragraph
+    text: Once per day consume +2 power to gain +1 maneuver for 10 minutes
+    spans: []
+  - type: paragraph
+    text: '45000'
+    spans: []
+  - type: paragraph
+    text: Power Modules
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: Slots
+    spans: []
+  - type: paragraph
+    text: Boost
+    spans: []
+  - type: paragraph
+    text: Special
+    spans: []
+  - type: paragraph
+    text: Cost
+    spans: []
+  - type: paragraph
+    text: Auxiliary Batteries
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Once per day gain +2 power for 10 minutes
+    spans: []
+  - type: paragraph
+    text: '8000'
+    spans: []
+  - type: paragraph
+    text: Fusion Core
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: '30000'
+    spans: []
+  - type: paragraph
+    text: High-Capacity Reactor
+    spans: []
+  - type: paragraph
+    text: '5'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: 15000 * ship size
+    spans: []
+  - type: paragraph
+    text: Power Distributor
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Grants +1 bonus die to Engineering checks to reroute power
+    spans: []
+  - type: paragraph
+    text: '10000'
+    spans: []
+  - type: paragraph
+    text: Weapon Modules
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: Slots
+    spans: []
+  - type: paragraph
+    text: Boost
+    spans: []
+  - type: paragraph
+    text: Use DC
+    spans: []
+  - type: paragraph
+    text: Damage
+    spans: []
+  - type: paragraph
+    text: Range
+    spans: []
+  - type: paragraph
+    text: Special
+    spans: []
+  - type: paragraph
+    text: Cost
+    spans: []
+  - type: paragraph
+    text: Light Railgun
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '8'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: Medium
+    spans: []
+  - type: paragraph
+    text: Rapid-fire 3
+    spans: []
+  - type: paragraph
+    text: '15000'
+    spans: []
+  - type: paragraph
+    text: Heavy Railgun
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '8'
+    spans: []
+  - type: paragraph
+    text: '4'
+    spans: []
+  - type: paragraph
+    text: Medium
+    spans: []
+  - type: paragraph
+    text: Rapid-fire 3
+    spans: []
+  - type: paragraph
+    text: '30000'
+    spans: []
+  - type: paragraph
+    text: Flak Cannon
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '6'
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: Near
+    spans: []
+  - type: paragraph
+    text: Anti-Missile
+    spans: []
+  - type: paragraph
+    text: '10000'
+    spans: []
+  - type: paragraph
+    text: Pulse Cannon
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '8'
+    spans: []
+  - type: paragraph
+    text: '4'
+    spans: []
+  - type: paragraph
+    text: Near
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: '20000'
+    spans: []
+  - type: paragraph
+    text: Heavy Pulse Cannon
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: '9'
+    spans: []
+  - type: paragraph
+    text: '7'
+    spans: []
+  - type: paragraph
+    text: Medium
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: '40000'
+    spans: []
+  - type: paragraph
+    text: Plasma Cannon
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '9'
+    spans: []
+  - type: paragraph
+    text: '12'
+    spans: []
+  - type: paragraph
+    text: Very Near
+    spans: []
+  - type: paragraph
+    text: Reload 2
+    spans: []
+  - type: paragraph
+    text: '50000'
+    spans: []
+  - type: paragraph
+    text: Energy Lance
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '5'
+    spans: []
+  - type: paragraph
+    text: '10'
+    spans: []
+  - type: paragraph
+    text: '5'
+    spans: []
+  - type: paragraph
+    text: Long
+    spans: []
+  - type: paragraph
+    text: Piercing 5
+    spans: []
+  - type: paragraph
+    text: '75000'
+    spans: []
+  - type: paragraph
+    text: Boarding Grapple
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: '7'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Boarding
+    spans: []
+  - type: paragraph
+    text: Reload 1; Tether
+    spans: []
+  - type: paragraph
+    text: '8000'
+    spans: []
+  - type: paragraph
+    text: Missile Pods
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '8'
+    spans: []
+  - type: paragraph
+    text: '8'
+    spans: []
+  - type: paragraph
+    text: Long
+    spans: []
+  - type: paragraph
+    text: Missile
+    spans: []
+  - type: paragraph
+    text: '25000'
+    spans: []
+  - type: paragraph
+    text: Aegis Cannon
+    spans: []
+  - type: paragraph
+    text: '15'
+    spans: []
+  - type: paragraph
+    text: '4'
+    spans: []
+  - type: paragraph
+    text: '12'
+    spans: []
+  - type: paragraph
+    text: '15'
+    spans: []
+  - type: paragraph
+    text: Extreme
+    spans: []
+  - type: paragraph
+    text: Reload 3; Gunnery 3; Piercing 3
+    spans: []
+  - type: paragraph
+    text: '250000'
+    spans: []
+  - type: paragraph
+    text: Gigawatt Laser
+    spans: []
+  - type: paragraph
+    text: '5'
+    spans: []
+  - type: paragraph
+    text: '5'
+    spans: []
+  - type: paragraph
+    text: '10'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: Long
+    spans: []
+  - type: paragraph
+    text: Boost Charge; Gunnery 3; Reload 5
+    spans: []
+  - type: paragraph
+    text: Weapon Keywords
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: Effect
+    spans: []
+  - type: paragraph
+    text: Reload X
+    spans: []
+  - type: paragraph
+    text: After firing, weapon requires X turns to reload before firing again. (if
+      Reload 1, weapon cannot fire for 1 round after use).
+    spans: []
+  - type: paragraph
+    text: Piercing X
+    spans: []
+  - type: paragraph
+    text: Ignores X points of armor protection. If X is greater than the target’s
+      armour, deal additional damage equal to the difference. Reduces armour durability
+      by X on hit.
+    spans: []
+  - type: paragraph
+    text: Tether
+    spans: []
+  - type: paragraph
+    text: Target ship becomes attached to attacking ship. After 1 round, smaller ship
+      is pulled to bigger ship, allowing forced docking and boarding. Cannot be used
+      outside of boarding range.
+    spans: []
+  - type: paragraph
+    text: Rapid-fire X
+    spans: []
+  - type: paragraph
+    text: Can make X attacks per turn.
+    spans: []
+  - type: paragraph
+    text: Anti-Missile
+    spans: []
+  - type: paragraph
+    text: Can target missiles to shoot them down (as an attack).
+    spans: []
+  - type: paragraph
+    text: Missile
+    spans: []
+  - type: paragraph
+    text: Missiles take 1 round per range band to travel to the enemy ship. Attempts
+      to evade the missile receive +1 penalty die as it is locked onto its target.
+      When boosted, missiles fire an additional missile per boost level and do not
+      benefit from increased damage.
+    spans: []
+  - type: paragraph
+    text: Gunnery X
+    spans: []
+  - type: paragraph
+    text: Weapons with Gunnery X require a character with Gunnery skill of X or higher
+      to fire. Other characters attempting to fire these weapons take +2 penalty dice
+      to their rolls. On Extreme failure, the weapon is damaged and must be repaired
+      (DC 8 + X from Gunnery X)
+    spans: []
+  - type: paragraph
+    text: Boost Charge
+    spans: []
+  - type: paragraph
+    text: For every round this weapon remains boosted (whether fired or not), it gains
+      additional damage equal to its base damage. This resets when it is no longer
+      boosted.
+    spans: []
+  - type: paragraph
+    text: Defense Modules
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: Slots
+    spans: []
+  - type: paragraph
+    text: Boost
+    spans: []
+  - type: paragraph
+    text: Special
+    spans: []
+  - type: paragraph
+    text: Cost
+    spans: []
+  - type: paragraph
+    text: Reinforced Plating
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: 2 armour
+    spans: []
+  - type: paragraph
+    text: '20000'
+    spans: []
+  - type: paragraph
+    text: Combat Plating
+    spans: []
+  - type: paragraph
+    text: '5'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: +1 armour per ship size
+    spans: []
+  - type: paragraph
+    text: Improved Hull
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: +3 Hull Points per ship size (ship size 2 gets +6 Hull Points)
+    spans: []
+  - type: paragraph
+    text: 15000 * ship size
+    spans: []
+  - type: paragraph
+    text: Blast Doors
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Automated sealing of breached compartments
+    spans: []
+  - type: paragraph
+    text: '8000'
+    spans: []
+  - type: paragraph
+    text: Electronics Modules
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: Slots
+    spans: []
+  - type: paragraph
+    text: Boost
+    spans: []
+  - type: paragraph
+    text: Special
+    spans: []
+  - type: paragraph
+    text: Cost
+    spans: []
+  - type: paragraph
+    text: Advanced Sensors
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: Capable of detecting stealth ships; +1 bonus die to Sensors checks
+    spans: []
+  - type: paragraph
+    text: '15000'
+    spans: []
+  - type: paragraph
+    text: Cloaking Field
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: Hides ship from sensors (DC10 sensors check to see it, requires advanced
+      sensors). Can still be seen visually
+    spans: []
+  - type: paragraph
+    text: '60000'
+    spans: []
+  - type: paragraph
+    text: Long-Range Comms
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: System-wide communication relay
+    spans: []
+  - type: paragraph
+    text: '7500'
+    spans: []
+  - type: paragraph
+    text: Targeting Computer
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: +1 bonus die to Gunnery for ship weapons
+    spans: []
+  - type: paragraph
+    text: '15000'
+    spans: []
+  - type: paragraph
+    text: Cargo & Utility Modules
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: Slots
+    spans: []
+  - type: paragraph
+    text: Boost
+    spans: []
+  - type: paragraph
+    text: Special
+    spans: []
+  - type: paragraph
+    text: Cost
+    spans: []
+  - type: paragraph
+    text: Cargo Bay
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Provides a place for storing large quantities of cargo
+    spans: []
+  - type: paragraph
+    text: '10000'
+    spans: []
+  - type: paragraph
+    text: Med Bay
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: Basic medical facility; capable of long-term care
+    spans: []
+  - type: paragraph
+    text: '12000'
+    spans: []
+  - type: paragraph
+    text: Advanced Med Bay
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: State-of-the-art medical facility; includes auto-doc; +1 bonus die to First
+      Aid checks; capable of long-term care
+    spans: []
+  - type: paragraph
+    text: '40000'
+    spans: []
+  - type: paragraph
+    text: Salvage Clamps
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Allows towing derelicts/debris
+    spans: []
+  - type: paragraph
+    text: '7500'
+    spans: []
+  - type: paragraph
+    text: Hangar Bay
+    spans: []
+  - type: paragraph
+    text: '4'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Allows small craft (size 2 or less) to land inside the ship
+    spans: []
+  - type: paragraph
+    text: '50000'
+    spans: []
+  - type: paragraph
+    text: Brig
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Secure chamber for prisoner use
+    spans: []
+  - type: paragraph
+    text: '5000'
+    spans: []
+  - type: paragraph
+    text: Cryogenics
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: Allows transport and monitoring of cryogenic pods
+    spans: []
+  - type: paragraph
+    text: '25000'
+    spans: []
+  - type: paragraph
+    text: Command & Navigation Modules
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: Slots
+    spans: []
+  - type: paragraph
+    text: Boost
+    spans: []
+  - type: paragraph
+    text: Special
+    spans: []
+  - type: paragraph
+    text: Cost
+    spans: []
+  - type: paragraph
+    text: Navigation AI
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: +1 bonus die to Navigation checks
+    spans: []
+  - type: paragraph
+    text: '20000'
+    spans: []
+  - type: paragraph
+    text: Whisper Drive
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: Allows ship to enter Whisperspace at jump points
+    spans: []
+  - type: paragraph
+    text: '40000'
+    spans: []
+  - type: paragraph
+    text: Combat AI
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: Allows ship to make attacks with Gunnery rank 1
+    spans: []
+  - type: paragraph
+    text: '50000'
+    spans: []
+  sections: []

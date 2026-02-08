@@ -1,0 +1,53 @@
+title: Character Progression
+slug: character-progression
+level: 1
+content:
+- type: paragraph
+  text: GMs may give out Skill Points (SP) after every session, during downtime, or
+    after a milestone (mission completed). You may use these SP to increase any skills
+    you have access to during downtime. At the same time, you may choose to take on
+    any Archetype your character meets the prerequisites for.
+  spans: []
+- type: table
+  rows:
+  - - text: Progression Rate
+      spans: []
+    - text: SP after session
+      spans: []
+  - - text: Quick
+      spans: []
+    - text: 5-10
+      spans: []
+  - - text: Normal
+      spans: []
+    - text: 3-5
+      spans: []
+  - - text: Slow
+      spans: []
+    - text: 1-2
+      spans: []
+- type: paragraph
+  text: Progression Rate
+  spans: []
+- type: paragraph
+  text: SP after session
+  spans: []
+- type: paragraph
+  text: Quick
+  spans: []
+- type: paragraph
+  text: 5-10
+  spans: []
+- type: paragraph
+  text: Normal
+  spans: []
+- type: paragraph
+  text: 3-5
+  spans: []
+- type: paragraph
+  text: Slow
+  spans: []
+- type: paragraph
+  text: 1-2
+  spans: []
+sections: []

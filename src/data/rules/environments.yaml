@@ -1,0 +1,38 @@
+title: Environments
+slug: environments
+level: 1
+content: []
+sections:
+- title: Hard Vac
+  slug: hard-vac
+  level: 2
+  content:
+  - type: list
+    ordered: false
+    items:
+    - text: Hard Vac refers to outer space; where humans are not meant to tread without
+        technological assistance.
+      spans: []
+    - text: A character without a space suit suffers 1d4 damage per round while in
+        Hard Vac.
+      spans: []
+    - text: A character without a method of breathing in Hard Vac immediately gains
+        the Asphyxiating condition.
+      spans: []
+  sections: []
+- title: Zero-G
+  slug: zero-g
+  level: 2
+  content:
+  - type: list
+    ordered: false
+    items:
+    - text: Characters not holding a surface gain Floating condition.
+      spans: []
+    - text: Characters cannot be encumbered.
+      spans: []
+    - text: Thrown weapons still deal damage based on their normal bulk.
+      spans: []
+    - text: Thrown weapon ranges increase by 1 band (from Near to Medium).
+      spans: []
+  sections: []

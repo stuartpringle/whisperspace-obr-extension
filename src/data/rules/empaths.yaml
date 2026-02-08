@@ -1,0 +1,413 @@
+title: Empaths
+slug: empaths
+level: 1
+content:
+- type: paragraph
+  text: Many call Empathy a gift; others, a curse. Feeling - not just sensing, but
+    feeling - the emotions of others around you is exhausting, and Empathy doesn’t
+    have an ‘off’ switch. Those who are blessed (or cursed) with it must bear their
+    unique abilities as an ever-present burden.
+  spans: []
+- type: paragraph
+  text: Some Empaths go insane. The constant weight of others’ feelings is too much
+    and they cannot handle the strain. Others seclude themselves, hiding away from
+    the world in the most remote locations imaginable to escape their ‘gift’. Still
+    others seek to find ways to live with it, to harness it; draw away stress and
+    the sting of traumatic emotion from those around them, or quell dangerous feelings
+    before they can boil to the surface.
+  spans: []
+- type: paragraph
+  text: Then there are Empaths who embrace their gift. They wreak havoc with the emotions
+    of those around them for sport and revel in their power over their fellow man.
+  spans: []
+- type: paragraph
+  text: However they cope with their gift, Empaths are a small group of people from
+    all over the Shatterbelt who are capable of feeling and at times intentionally
+    altering the emotional state of living creatures around them. They can defuse
+    fights before they start, or conjure them up between friends. Their services are
+    always in high demand, both for good and ill.
+  spans: []
+sections:
+- title: Using Empathy
+  slug: using-empathy
+  level: 2
+  content:
+  - type: paragraph
+    text: 'To use an Empathic Ability, you must first have the appropriate feat. Then
+      roll an Empathy check:'
+    spans: []
+  - type: paragraph
+    text: Roll 1d12 + SOC (DC determined by the Empathic Ability being used)
+    spans: []
+  - type: paragraph
+    text: 'Results:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Extreme success: ability resolves and is Heightened.'
+      spans: []
+    - text: 'Success: ability resolves'
+      spans: []
+    - text: 'Failure: ability does not resolve.'
+      spans: []
+    - text: 'Extreme failure: ability does not resolve; suffer +1 stress.'
+      spans: []
+  - type: paragraph
+    text: All Empathic Abilities must target a living creature.
+    spans: []
+  - type: paragraph
+    text: When targeting an unwilling creature, increase the Empathy check DC by the
+      creature’s Composure rank. Conversely, when targeting a willing creature, gain
+      +1 bonus die on all Empathic Ability checks.
+    spans: []
+  sections: []
+- title: Empathic Paths
+  slug: empathic-paths
+  level: 2
+  content:
+  - type: paragraph
+    text: 'All Empaths fall into one of three paths: readers, pushers, and vessels.'
+    spans: []
+  sections:
+  - title: Readers
+    slug: readers
+    level: 3
+    content:
+    - type: paragraph
+      text: Those who are constantly aware of the subtle play of emotions around them.
+        Beyond simply knowing who is happy and who isn’t, Readers are capable of tapping
+        into the subtle web of emotion felt by all creatures; they can sense deeper,
+        underlying feelings and even guess how those feelings are likely to shape
+        their actions.
+      spans: []
+    - type: paragraph
+      text: 'Using a Reader empathic ability requires the Empath: Reader feat.'
+      spans: []
+    sections: []
+  - title: Pushers
+    slug: pushers
+    level: 3
+    content:
+    - type: paragraph
+      text: Empaths to whom playing with another’s emotions is as easy as breathing
+        and nearly as commonplace. Pushers can bring peace to the most anguished soul
+        or turn a kind-hearted man into a killer.
+      spans: []
+    - type: paragraph
+      text: 'Using a Pusher empathic ability requires the Empath: Pusher feat.'
+      spans: []
+    sections: []
+  - title: Vessels
+    slug: vessels
+    level: 3
+    content:
+    - type: paragraph
+      text: 'Perhaps the most empathetic of all Empaths, Vessels sacrifice their own
+        emotional stability for others. Instead of imposing a feeling of their choice
+        on another creature like a Pusher would, a Vessel siphons away negative emotion
+        and allows the creature the choice to feel how they wish afterward. The price
+        can be steep: whatever negative emotion is removed finds its home within the
+        Vessel themselves.'
+      spans: []
+    - type: paragraph
+      text: 'Using a Vessel empathic ability requires the Empath: Vessel feat.'
+      spans: []
+    sections: []
+- title: Empathic Abilities
+  slug: empathic-abilities
+  level: 2
+  content:
+  - type: paragraph
+    text: Reader Empathic Abilities
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: DC
+    spans: []
+  - type: paragraph
+    text: Range
+    spans: []
+  - type: paragraph
+    text: Action Cost
+    spans: []
+  - type: paragraph
+    text: Effect
+    spans: []
+  - type: paragraph
+    text: Emotional Attunement
+    spans: []
+  - type: paragraph
+    text: 8 + stress
+    spans: []
+  - type: paragraph
+    text: Very Near
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: 'Form an Empathic Bond with target. When you have an Empathic Bond:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: All your other Empathic Abilities targeting bonded creature are bumped
+        up one level of success. So an extreme failure becomes a failure, a failure
+        becomes a success, etc.
+      spans: []
+    - text: Once per round, you may use 1 reaction to reduce stress gained by bonded
+        creature by 1 (minimum 1).
+      spans: []
+    - text: Whenever bonded creature suffers stress, you take half of that stress
+        (rounded up) while it takes the remainder.
+      spans: []
+  - type: paragraph
+    text: You may have no more than one Empathic Bond at a time. You may dismiss an
+      Empathic Bond by using 1 action. This ability cannot be Heightened.
+    spans: []
+  - type: paragraph
+    text: Sense Violence
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Medium
+    spans: []
+  - type: paragraph
+    text: '-'
+    spans: []
+  - type: paragraph
+    text: Violent emotions have a particular tang to them, reminiscent of a metallic
+      taste. You are aware of these around you at all times, though you cannot determine
+      the exact origin.
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: You cannot be Surprised by living creatures.
+      spans: []
+    - text: You gain +1 bonus die on Initiative rolls against living creatures.
+      spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Heightened: you know the exact origin of these emotions. Additionally,
+        the first attack by a living creature against you each combat suffers +1 penalty
+        die.'
+      spans: []
+  - type: paragraph
+    text: Read Motive
+    spans: []
+  - type: paragraph
+    text: '10'
+    spans: []
+  - type: paragraph
+    text: Medium
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: 'Discern what underlying emotions are influencing target creature’s current
+      actions. What drives a merchant: greed or necessity?'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Heightened: you gain knowledge of target’s greatest emotional lever:
+        their greatest fear, desire, or hope.'
+      spans: []
+  - type: paragraph
+    text: Pusher Empathic Abilities
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: DC
+    spans: []
+  - type: paragraph
+    text: Range
+    spans: []
+  - type: paragraph
+    text: Action Cost
+    spans: []
+  - type: paragraph
+    text: Effect
+    spans: []
+  - type: paragraph
+    text: Sow Chaos
+    spans: []
+  - type: paragraph
+    text: '8'
+    spans: []
+  - type: paragraph
+    text: Very Near
+    spans: []
+  - type: paragraph
+    text: 1 to 3
+    spans: []
+  - type: paragraph
+    text: Transfer stress (amount equal to number of actions spent) from yourself
+      to target creature.
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Heightened: transfer twice as much stress to target instead.'
+      spans: []
+  - type: paragraph
+    text: Reap Carnage
+    spans: []
+  - type: paragraph
+    text: 12 - target’s stress
+    spans: []
+  - type: paragraph
+    text: Melee
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: Impose the Frenzied condition on target. At the end of the target’s turns,
+      they may roll a Composure or Willpower (DC8) check to end this condition.
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Heightened: target creature ignores all penalty dice for the duration
+        of Frenzied.'
+      spans: []
+  - type: paragraph
+    text: Lash Out
+    spans: []
+  - type: paragraph
+    text: '9'
+    spans: []
+  - type: paragraph
+    text: Near
+    spans: []
+  - type: paragraph
+    text: 2-3
+    spans: []
+  - type: paragraph
+    text: Release a violent surge of emotions to all creatures within Near range of
+      you. Every living creature in range gains 1 stress for every 2 stress you currently
+      have (minimum 1). You reduce your stress by half the total stress inflicted
+      (rounded up). Creatures who receive stress this way must immediately roll Composure
+      (DC8) or gain the Demoralized condition.
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Heightened: you may exclude yourself and any bonded creature from the
+        distribution.'
+      spans: []
+  - type: paragraph
+    text: Vessel Empathic Abilities
+    spans: []
+  - type: paragraph
+    text: Name
+    spans: []
+  - type: paragraph
+    text: DC
+    spans: []
+  - type: paragraph
+    text: Range
+    spans: []
+  - type: paragraph
+    text: Action Cost
+    spans: []
+  - type: paragraph
+    text: Effect
+    spans: []
+  - type: paragraph
+    text: Siphon Tumult
+    spans: []
+  - type: paragraph
+    text: 6 + target’s stress
+    spans: []
+  - type: paragraph
+    text: Very Near
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: Remove up to 2 stress from target creature. Gain stress equal to the amount
+      removed. If target is reduced to 0 stress in this way, they may ignore the next
+      instance of stress gain before the end of the day.
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Heightened: remove up to 4 stress instead.'
+      spans: []
+  - type: paragraph
+    text: Take the Burden
+    spans: []
+  - type: paragraph
+    text: '10'
+    spans: []
+  - type: paragraph
+    text: Melee
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: Transfer one negative mental condition from target creature to yourself.
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Heightened: while you are affected by this condition, the target cannot
+        regain it again from the same source.'
+      spans: []
+  - type: paragraph
+    text: Emotional Grounding
+    spans: []
+  - type: paragraph
+    text: '8'
+    spans: []
+  - type: paragraph
+    text: Near
+    spans: []
+  - type: paragraph
+    text: 1-2
+    spans: []
+  - type: paragraph
+    text: 'Until the start of your next turn, choose one per action spent:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: Target reduces all stress gain by 1.
+      spans: []
+    - text: Target gains +1 bonus die on Composure checks
+      spans: []
+  - type: paragraph
+    text: You immediately gain 1 stress per action spent when using this ability.
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Heightened: you may apply this effect to yourself as well.'
+      spans: []
+  sections: []
+- title: Empaths and Machines
+  slug: empaths-and-machines
+  level: 2
+  content:
+  - type: paragraph
+    text: 'Machines are emotionless; cold and silent to Empaths. As such, most Empaths
+      tend to have one of two reactions to them: relief or distrust. Spending time
+      near an entity that isn’t loud in your head can be valuable and welcome, yet
+      by the same token it makes robots and machines unpredictable and impossible
+      to control.'
+    spans: []
+  sections: []

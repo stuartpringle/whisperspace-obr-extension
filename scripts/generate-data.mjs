@@ -54,6 +54,24 @@ async function main() {
     console.log(`[generate-data] Wrote ${path.relative(ROOT, outPath)}`);
   }
 
+  // --- Rules YAML aggregation ---
+  const RULES_DIR = path.join(SRC, "rules");
+  const RULES_OUT = path.join(OUT, "rules.json");
+  if (fs.existsSync(RULES_DIR)) {
+    const ruleFiles = fs.readdirSync(RULES_DIR).filter((f) => f.endsWith(".yaml")).sort();
+    const docs = [];
+    for (const filename of ruleFiles) {
+      const inPath = path.join(RULES_DIR, filename);
+      const raw = fs.readFileSync(inPath, "utf8");
+      const parsed = YAML.parse(raw);
+      docs.push({ file: filename, ...parsed });
+    }
+    fs.writeFileSync(RULES_OUT, JSON.stringify(docs, null, 2) + "\n", "utf8");
+    console.log(`[generate-data] Wrote ${path.relative(ROOT, RULES_OUT)}`);
+  } else {
+    console.warn(`[generate-data] Rules directory missing: ${path.relative(ROOT, RULES_DIR)} (skipping)`);
+  }
+
   await archiveProject({ enabled: ENABLE_ARCHIVE });
 }
 

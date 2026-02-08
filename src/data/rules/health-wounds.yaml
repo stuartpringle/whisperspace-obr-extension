@@ -1,0 +1,88 @@
+title: Health & Wounds
+slug: health-wounds
+level: 1
+content:
+- type: paragraph
+  text: 'Every character’s health is tracked through wounds. When he takes damage,
+    a character translates the damage taken into wounds, and keeps track of the severity.
+    You can think of severities as a pyramid: at the base are light wounds (4 of them).
+    After two light wounds have been received, a character suffers one moderate wound
+    (middle of the pyramid). After two moderate wounds have been suffered, he takes
+    a heavy wound (top of the pyramid). At that point, he is incapacitated or even
+    dead.'
+  spans: []
+- type: paragraph
+  text: This means that taking damage can quickly kill a character. Taking damage
+    at once (without armour or other ways to mitigate it) would outright kill or incapacitate
+    him.
+  spans: []
+sections:
+- title: Wound Tracking
+  slug: wound-tracking
+  level: 2
+  content:
+  - type: paragraph
+    text: 'On your character sheet, you will see a section for wound tracking. If
+      you do not have access to a character sheet, you can keep track of it in this
+      basic way:'
+    spans: []
+  sections: []
+- title: Wound Severity Effects
+  slug: wound-severity-effects
+  level: 2
+  content:
+  - type: paragraph
+    text: Light wounds do not cause any adverse effects mechanically (besides being
+      that much closer to more severe wounds or death).
+    spans: []
+  - type: paragraph
+    text: Moderate wounds reduce a character’s movement speed by 10 feet each (so
+      with two moderate wounds, movement speed is reduced by 20 feet)
+    spans: []
+  - type: paragraph
+    text: A heavy wound incapacitates a character entirely. He is unconscious. A character
+      with a heavy wound is in desperate need of medical aid and gains the Dying condition.
+    spans: []
+  sections: []
+- title: Healing
+  slug: healing
+  level: 2
+  content:
+  - type: paragraph
+    text: Sources for healing are few and far between, while recovering from the physical
+      trauma of a wound takes time.
+    spans: []
+  - type: paragraph
+    text: While in combat, treatment of Light and Moderate wounds may only be attempted
+      once per character per wound. Once out of combat, multiple attempts are allowed.
+      For all failed wound treatments, the wounded character receives +1 Stress.
+    spans: []
+  - type: paragraph
+    text: Light wounds may be healed on the battlefield in 10 minutes with a successful
+      First Aid check (DC8).
+    spans: []
+  - type: paragraph
+    text: Moderate wounds may be patched on the battlefield as well, but they require
+      a much more difficult First Aid (DC12) check and take 1 hour to patch up. The
+      movement impairment effect from a moderate wound remains until the character
+      has spent time resting/healing in down time (in a hospital for a day, or convalescing
+      for a week).
+    spans: []
+  - type: paragraph
+    text: Heavy wounds cannot be treated on the battlefield at all, aside from stopping
+      the character from bleeding out. A character with a heavy wound may not receive
+      battlefield healing for any other wounds they carry. Recovery from a heavy wound
+      takes weeks or months with constant medical attention (preferably in a hospital).
+      A character with a heavy wound (even if it’s been healed) may not receive battlefield
+      healing for light wounds.
+    spans: []
+  - type: paragraph
+    text: Outside of combat, characters passively heal up to 1 Light wound per day.
+      Characters do not heal Moderate or Heavy wounds this way.
+    spans: []
+  sections: []
+- title: Poisons and Toxins
+  slug: poisons-and-toxins
+  level: 2
+  content: []
+  sections: []

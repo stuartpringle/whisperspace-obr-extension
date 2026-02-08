@@ -1,0 +1,1217 @@
+title: Combat
+slug: combat
+level: 1
+content:
+- type: paragraph
+  text: Combat is tracked through rounds. Before the first round, the GM will call
+    for a Reflex check from each player (and will roll for NPCs). This determines
+    the initiative order for each round of combat (highest result to lowest).
+  spans: []
+sections:
+- title: Action Economy
+  slug: action-economy
+  level: 2
+  content:
+  - type: paragraph
+    text: At the start of combat, each player character and each NPC gains 1 reaction.
+      At the start of each character’s turn, that character gains 3 actions and 1
+      reaction. If the character has unused actions or reactions from his previous
+      turn, those are lost.
+    spans: []
+  sections:
+  - title: Fully Commit
+    slug: fully-commit
+    level: 3
+    content:
+    - type: paragraph
+      text: When in turn-based play (during combat, for example), you may choose to
+        spend 3 actions on a task that would normally take only one action. Doing
+        so grants +1 bonus die to any rolls associated with that task. For example,
+        you could Fully Commit to an attack against an enemy; doing so uses 3 actions
+        and grants +1 bonus die on this attack.
+      spans: []
+    sections: []
+- title: Surprise
+  slug: surprise
+  level: 2
+  content:
+  - type: paragraph
+    text: Ambushes, bushwhacks, and carefully-planned take-downs can result in situations
+      in which characters are unaware of danger until it is too late to react to it.
+      In these situations, a Surprise Round is played out before regular combat rounds.
+    spans: []
+  - type: paragraph
+    text: Characters who are unaware of the attackers or the threat are Surprised
+      and therefore cannot act in this round, either with actions or reactions. Surprised
+      characters gain 1 stress immediately.
+    spans: []
+  - type: paragraph
+    text: Characters who are aware of what’s going on (either by perceiving the ambush
+      before it hits, or by being part of the ambush itself) act on their initiative
+      as normal.
+    spans: []
+  sections:
+  - title: Ambush Severity
+    slug: ambush-severity
+    level: 3
+    content:
+    - type: paragraph
+      text: To determine how well-executed and concealed an ambush is, the ambushers
+        roll a Stealth or Subterfuge check (using the highest skill rank among them).
+        This may range from 1 (sloppy) to 5 (near-perfect); see the table below.
+      spans: []
+    - type: table
+      rows:
+      - - text: Roll
+          spans: []
+        - text: Ambush Severity
+          spans: []
+      - - text: 0-3
+          spans: []
+        - text: '1'
+          spans: []
+      - - text: 4-6
+          spans: []
+        - text: '2'
+          spans: []
+      - - text: 7-9
+          spans: []
+        - text: '3'
+          spans: []
+      - - text: 10-12
+          spans: []
+        - text: '4'
+          spans: []
+      - - text: 13+
+          spans: []
+        - text: '5'
+          spans: []
+    - type: paragraph
+      text: Roll
+      spans: []
+    - type: paragraph
+      text: Ambush Severity
+      spans: []
+    - type: paragraph
+      text: 0-3
+      spans: []
+    - type: paragraph
+      text: '1'
+      spans: []
+    - type: paragraph
+      text: 4-6
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: 7-9
+      spans: []
+    - type: paragraph
+      text: '3'
+      spans: []
+    - type: paragraph
+      text: 10-12
+      spans: []
+    - type: paragraph
+      text: '4'
+      spans: []
+    - type: paragraph
+      text: 13+
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    sections:
+    - title: 'Special rule: Instinct'
+      slug: special-rule-instinct
+      level: 4
+      content:
+      - type: paragraph
+        text: 'If a surprised character’s Instinct skill rank equals or exceeds the
+          Ambush Severity, they:'
+        spans: []
+      - type: list
+        ordered: false
+        items:
+        - text: May take reactions as normal during the surprise round
+          spans: []
+        - text: May roll an Instinct check (DC8 + Amish Severity) at the start of
+            his turn during the surprise round.
+          spans: []
+      - type: list
+        ordered: false
+        items:
+        - text: 'On extreme success: he may take up to 2 actions despite being Surprised.'
+          spans: []
+        - text: 'On success: he may take 1 action despite being Surprised.'
+          spans: []
+      sections: []
+- title: Seizing the Initiative
+  slug: seizing-the-initiative
+  level: 2
+  content:
+  - type: paragraph
+    text: At the start of a combat round, before any characters act, you may choose
+      to act at the top of the initiative order. If you do, immediately gain +2 Stress.
+      You may seize the initiative in a surprise round, however you may not do so
+      if you are Surprised.
+    spans: []
+  sections: []
+- title: Attacking
+  slug: attacking
+  level: 2
+  content:
+  - type: paragraph
+    text: 'Here’s the formula:'
+    spans: []
+  - type: paragraph
+    text: 1D12 + weapon skill mod VS Weapon Use DC + situational mods (distance, cover,
+      evading, environmental effects, etc)
+    spans: []
+  - type: paragraph
+    text: Let’s break it down.
+    spans: []
+  - type: paragraph
+    text: You use your weapon skill to fire the weapon. As with any skill roll, this
+      requires you to roll a D12 and add your skill modifier to it. Thus, to fire
+      a light weapon, you would roll a D12 and add your Light Weapons combat skill
+      to the result.
+    spans: []
+  - type: paragraph
+    text: To hit, you must meet or exceed your weapon’s DC. This reflects the fact
+      that different weapons are easier or more difficult to fire accurately. If your
+      light weapon has an accuracy of 10, then you would need to get 10 or higher
+      with your roll to hit the target. However, other factors may enter into the
+      equation. For example, your target may be behind partial cover (a +2 to the
+      DC to hit), which would mean you would instead need a 12 or higher to hit them.
+    spans: []
+  - type: paragraph
+    text: 'Distance is also a factor here: each weapon has a Range attribute. Firing
+      a weapon at a target outside (farther away) than the weapon’s Range results
+      in a +2 increase to the DC to hit per range band farther the target is from
+      you. So if you were to fire a weapon with a range of Near at a target at Long
+      distance, you would be crossing two range bands (Medium, Long), so the DC for
+      your attack would go up by +4. Firing across three range bands (from Near to
+      Very Long, for example) is considered an impossible shot and you automatically
+      miss.'
+    spans: []
+  - type: paragraph
+    text: 'This system is meant to reflect the way shooting weapons works in real
+      life: the shooter uses his weapon to fire at a target. If he shoots well, he
+      hits. It’s possible to make yourself a more difficult target to hit, but mere
+      humans do not exist in the Matrix; we cannot dodge bullets.'
+    spans: []
+  sections:
+  - title: Multiple Attacks
+    slug: multiple-attacks
+    level: 3
+    content:
+    - type: paragraph
+      text: Successive attacks you make on your turn are harder to make effectively.
+        Every attack you make on a turn (after your first attack) suffers +1 penalty
+        die to its roll.
+      spans: []
+    sections: []
+  - title: Dual Wielding
+    slug: dual-wielding
+    level: 3
+    content:
+    - type: paragraph
+      text: Holding two one-handed weapons allows you to attack with each using normal
+        attack rules. There are no bonuses or penalties to dual wielding weapons in
+        this way, but you must declare before each attack which weapon you are using.
+      spans: []
+    sections: []
+  - title: Two-handed Weapons
+    slug: two-handed-weapons
+    level: 3
+    content:
+    - type: paragraph
+      text: Weapons with the Two Handed keyword require both hands to operate; attempting
+        to use a two-handed weapon one-handed imposes +1 penalty die to your attack
+        roll. In the case of a two-handed melee weapon used one-handed, it also deals
+        half its regular damage on a hit (rounded up).
+      spans: []
+    sections: []
+  - title: Prone (ranged)
+    slug: prone-ranged
+    level: 3
+    content:
+    - type: paragraph
+      text: When prone and using a ranged weapon, if you Fully Commit to an attack,
+        gain an additional +1 bonus die. Attacks with a ranged weapon against a prone
+        target outside of Very Near range gain +1 penalty die.
+      spans: []
+    sections: []
+  - title: Critical Hits
+    slug: critical-hits
+    level: 3
+    content:
+    - type: paragraph
+      text: If you attack an enemy and roll 4+ over your weapon’s Use DC (taking into
+        account cover and anything else that might affect the DC), you have hit with
+        an Extreme Success, which is considered a critical hit. Critical hits deal
+        additional damage according to the critical hit table below.
+      spans: []
+    - type: paragraph
+      text: On a critical hit, the target gains +1 Stress in addition to stress they
+        would gain by being injured.
+      spans: []
+    - type: paragraph
+      text: Critical Hit Table
+      spans: []
+    - type: paragraph
+      text: Roll Exceeds DC by…
+      spans: []
+    - type: paragraph
+      text: Extra Damage
+      spans: []
+    - type: paragraph
+      text: 4-6
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: 7-8
+      spans: []
+    - type: paragraph
+      text: '3'
+      spans: []
+    - type: paragraph
+      text: 9+
+      spans: []
+    - type: paragraph
+      text: '4'
+      spans: []
+    sections: []
+  - title: Ranged weapons attacking within Very Near range
+    slug: ranged-weapons-attacking-within-very-near-range
+    level: 3
+    content:
+    - type: paragraph
+      text: Weapon type
+      spans: []
+    - type: paragraph
+      text: Information
+      spans: []
+    - type: paragraph
+      text: Light
+      spans: []
+    - type: paragraph
+      text: No penalty
+      spans: []
+    - type: paragraph
+      text: Medium
+      spans: []
+    - type: paragraph
+      text: +1 penalty die
+      spans: []
+    - type: paragraph
+      text: Heavy
+      spans: []
+    - type: paragraph
+      text: +2 penalty dice
+      spans: []
+    - type: paragraph
+      text: Exotic
+      spans: []
+    - type: paragraph
+      text: +1 penalty die
+      spans: []
+    sections: []
+- title: Melee Combat
+  slug: melee-combat
+  level: 2
+  content: []
+  sections:
+  - title: Flanking
+    slug: flanking
+    level: 3
+    content:
+    - type: paragraph
+      text: Whenever you and your allies outnumber enemy characters in melee combat,
+        you receive +1 bonus die to your attacks against those enemies. The opposite
+        is also true; if you are outnumbered in melee combat, enemies receive a bonus
+        die to their attacks.
+      spans: []
+    sections: []
+  - title: Prone (melee)
+    slug: prone-melee
+    level: 3
+    content:
+    - type: paragraph
+      text: When melee attacking while prone, you gain +1 penalty die to your attack
+        rolls. If the target is prone, you gain +1 bonus die to attack rolls against
+        them. Thus, if you and your target are both prone, you gain both +1 penalty
+        and +1 bonus die which cancel each other out and give you a straight roll.
+      spans: []
+    sections: []
+  - title: Called Shots
+    slug: called-shots
+    level: 3
+    content:
+    - type: paragraph
+      text: You may choose to take a penalty die to your attack roll to try to hit
+        a specific part of your target. To make a called shot, you must have direct
+        line of sight with the part of your enemy you are trying to shoot. Thus, making
+        a called shot on an enemy’s head is impossible when their head is reasonably
+        determined to be hidden from view.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Head
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Double damage the target receives (after adjusting for armour protection)
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Legs/feet
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Impose +2 movement penalties to target until end of combat or treated
+          with First Aid (DC6)
+        spans: []
+      - text: Inflict -1 damage on this attack
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Hand
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Target must drop what it’s holding
+        spans: []
+      - text: Inflict -1 damage on this attack
+        spans: []
+    - type: paragraph
+      text: The GM may allow other called shot locations using the above examples
+        as a guideline.
+      spans: []
+    sections: []
+  - title: Melee attacks
+    slug: melee-attacks
+    level: 3
+    content:
+    - type: paragraph
+      text: Functionally, these are the same as ranged attacks. If a melee attack
+        is made at a target outside of Melee range, the attack automatically fails.
+      spans: []
+    sections: []
+  - title: Unarmed Attacks
+    slug: unarmed-attacks
+    level: 3
+    content:
+    - type: paragraph
+      text: Attacking without a weapon uses the Melee (unarmed) skill and deals damage
+        equal to half your character’s PHYS or REF, rounded up.
+      spans: []
+    sections: []
+  - title: Improvised Weapons
+    slug: improvised-weapons
+    level: 3
+    content:
+    - type: paragraph
+      text: Improvised weapons can be anything from a chair leg to a computer terminal.
+        Improvised weapons count as melee weapons for attack rolls and other rules.
+        They commonly have a Use DC of 10 and deal damage equal to 1 + half your character’s
+        PHYS or REF, rounded up.
+      spans: []
+    - type: paragraph
+      text: The GM may decide to lower or increase either the Use DC or the damage
+        of an improvised weapon as they see fit. They usually break on an extreme
+        failure, or after a few solid hits (GM discretion).
+      spans: []
+    sections: []
+  - title: Throwing weapons
+    slug: throwing-weapons
+    level: 3
+    content:
+    - type: paragraph
+      text: Any weapon may be thrown at an adversary. To do so, roll a throw check,
+        as described below. Most weapons are not designed with throwing in mind, and
+        for this reason a weapon without the Thrown keyword imposes +1 penalty die
+        on the attack roll. A thrown weapon has a range of Very Near and counts as
+        a ranged attack.
+      spans: []
+    - type: paragraph
+      text: Unless a weapon has the Thrown keyword, throwing it always uses a character’s
+        PHYS attribute. It does damage equal to ½ the weapon’s bulk, rounded down
+        (minimum 1 damage).
+      spans: []
+    - type: paragraph
+      text: Thrown Weapon Use DC = 8 + weapon’s bulk
+      spans: []
+    sections:
+    - title: Thrown Keyword
+      slug: thrown-keyword
+      level: 4
+      content:
+      - type: paragraph
+        text: Weapons with the Thrown keyword always use the weapon’s Use DC for throwing
+          and deal the weapon’s normal damage upon hit. A character may choose to
+          use either PHYS or REF to throw it. Unless otherwise specified, grenades
+          have a Use DC of 8.
+        spans: []
+      sections: []
+    - title: Missed Throws
+      slug: missed-throws
+      level: 4
+      content:
+      - type: paragraph
+        text: Most of the time, a thrown weapon or item will travel in the direction
+          it was thrown in, however it may not always make it to its intended destination.
+          When you roll a throw check and fail, the GM determines a location within
+          Very Near range of your target; that’s where the thrown object lands. On
+          an extreme failure, the GM instead chooses a location within Near range
+          of your target as the point of impact.
+        spans: []
+      sections: []
+    - title: Recovering Thrown or Dropped Weapons
+      slug: recovering-thrown-or-dropped-weapons
+      level: 4
+      content:
+      - type: paragraph
+        text: You may use an action to pick up a thrown or dropped weapon at the GMs
+          discretion, assuming you are within melee range of it. If the weapon is
+          embedded in a surface (such as a wall or an enemy), you may need to roll
+          Powerlift to draw it free; this is considered part of the action to pick
+          the weapon up, and does not require a second action.
+        spans: []
+      sections: []
+- title: Armour
+  slug: armour
+  level: 2
+  content:
+  - type: paragraph
+    text: Armour provides damage mitigation
+    spans: []
+  sections:
+  - title: Unmitigated damage
+    slug: unmitigated-damage
+    level: 3
+    content:
+    - type: paragraph
+      text: Some damage sources deal ‘unmitigated damage’. Armour does not reduce
+        this type of damage at all.
+      spans: []
+    sections: []
+- title: Combat actions
+  slug: combat-actions
+  level: 2
+  content:
+  - type: paragraph
+    text: Each character gets three actions and one reaction per round of combat.
+      These actions may be spent in any combination of ways. For example, a character
+      could choose to triple-move (use the ‘move’ action three times in a row), triple-shoot
+      (fire his weapon three times in a row - though at a penalty for the second and
+      third shot), or combine actions in any way he sees fit (move, shoot, move again,
+      etc). A character’s turn ends either when he runs out of available actions or
+      chooses to end his turn with one or more actions remaining (saving actions for
+      potential reactions, for example).
+    spans: []
+  - type: paragraph
+    text: Any unused actions may be used as Reactions until the start of your next
+      turn. Unused actions or reactions are wasted, as you once again get three actions
+      and one reaction at this point.
+    spans: []
+  sections:
+  - title: Reactions
+    slug: reactions
+    level: 3
+    content:
+    - type: paragraph
+      text: At the start of combat as well as the start of each of your turns, you
+        gain 1 reaction.
+      spans: []
+    - type: paragraph
+      text: A Character performs a reaction in response to external stimuli (called
+        the trigger; this is described by the reaction). A reaction may be performed
+        at any time, not just on his turn. To use a reaction, a character must use
+        an action (if he has no remaining actions this round, he cannot use a reaction).
+      spans: []
+    - type: paragraph
+      text: 'Note: unless otherwise stated, a reaction takes place before whatever
+        triggered it is completed. Thus, a character using the Parry reaction will
+        declare the reaction and make the roll required after an attack is declared
+        against him (the trigger for the reaction), but before the attack is completed
+        and he takes any damage.'
+      spans: []
+    sections: []
+  - title: Free actions
+    slug: free-actions
+    level: 3
+    content:
+    - type: paragraph
+      text: Free actions may be done at any point during your turn without requiring
+        the use of an action. Making a free action when it’s not your turn may be
+        done at any point, but requires the use of 1 reaction.
+      spans: []
+    sections: []
+  - title: List of Actions, Reactions, and Free Actions
+    slug: list-of-actions-reactions-and-free-actions
+    level: 3
+    content:
+    - type: paragraph
+      text: Actions
+      spans: []
+    - type: paragraph
+      text: Name
+      spans: []
+    - type: paragraph
+      text: Cost
+      spans: []
+    - type: paragraph
+      text: Description
+      spans: []
+    - type: paragraph
+      text: Aim
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: Take a moment to aim before firing. Aiming allows you to attack a target
+        up to one range band farther than your weapon’s Range without increasing the
+        attack’s DC.
+      spans: []
+    - type: paragraph
+      text: Move
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: A character may change stance (prone, crouching, standing) and move up
+        to his allotted movement distance. This movement may be split around other
+        actions. For example, a character may choose to move slightly, attack an enemy,
+        then move again. Both those movements may be part of the same Move action.
+        When split in this way, the total distance a character moves can never exceed
+        his Movement Speed.
+      spans: []
+    - type: paragraph
+      text: Draw weapon
+      spans: []
+    - type: paragraph
+      text: 1 action (2 if stowed)
+      spans: []
+    - type: paragraph
+      text: Draw your weapon for use.
+      spans: []
+    - type: paragraph
+      text: Attack
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: Make an attack against an opponent within range. Must have a drawn weapon
+        or make an unarmed attack.
+      spans: []
+    - type: paragraph
+      text: Reload
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: Reset your weapon’s ammo to full.
+      spans: []
+    - type: paragraph
+      text: Interact
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: Inject an ally with a syringe, interact with a console to open a door,
+        etc.
+      spans: []
+    - type: paragraph
+      text: Grapple
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: Roll Melee (unarmed). The defender also rolls either Melee (unarmed) or
+        Evade, their choice. If you win the skill contest (roll higher than the defender),
+        you have successfully grappled them (see Conditions below).
+      spans: []
+    - type: paragraph
+      text: Aid
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: You may attempt to help an ally in a course of action you expect them
+        to take. You may not aid an attack action. Aiding an ally in this way gives
+        them a Bonus die for a single roll.
+      spans: []
+    - type: paragraph
+      text: Suppressing Fire
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: Choose a direction or a location within your weapon’s range, then spend
+        1-3 ammo. Until the start of your next turn, the first time each enemy you
+        can see enters or moves from that direction or location, they must make a
+        Cool Under Fire (DC4 + ammo used) check. This effect occurs once per ammo
+        spent, up to a maximum of three times.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Extreme success: no effect.'
+        spans: []
+      - text: 'Success: enemy gains +1 movement penalty.'
+        spans: []
+      - text: 'Failure: enemy gains +1 stress and +1 movement penalty.'
+        spans: []
+      - text: 'Extreme failure: enemy gains +1 stress and immediately falls prone,
+          ending their movement.'
+        spans: []
+    - type: paragraph
+      text: Suppressing fire may only be used with a ranged weapon.
+      spans: []
+    - type: paragraph
+      text: Hack an interface or enemy
+      spans: []
+    - type: paragraph
+      text: 2 action
+      spans: []
+    - type: paragraph
+      text: Each hacking check completes in one round. The Simple Hacking optional
+        rule may be used for this at the GMs discretion.
+      spans: []
+    - type: paragraph
+      text: Intimidate
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: Attempt to demoralize or frighten an enemy. Roll Bearing or Persuade (DC
+        12 - enemy’s stress level). Gain a bonus die to this roll if the enemy was
+        injured within the last round, another enemy was killed during combat, or
+        is flanked.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Extreme success, target suffers +2 stress and is Demoralized.
+        spans: []
+      - text: 'Success: target is Demoralized.'
+        spans: []
+    - type: paragraph
+      text: Hold Action
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: Prepare to use an action on another character’s turn. To do so, choose
+        an action you would like to prepare as well as a trigger that will prompt
+        its use. For example, “I will hold an Attack action. The trigger will be any
+        enemy entering my range.”
+      spans: []
+    - type: paragraph
+      text: Teamwork
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: Co-ordinate with teammates. Choose any number of allies within Near range;
+        roll Tactics (DC4 + 2 per ally).
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Extreme Success: you and each targeted ally all gain +1 bonus die to
+          any roll before the start of your next turn.'
+        spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Success: each targeted ally gains +1 bonus die to any roll before the
+          start of your next turn.'
+        spans: []
+    - type: paragraph
+      text: Teamwork may be used no more than once per ally per turn.
+      spans: []
+    - type: paragraph
+      text: Pick Up/Grab
+      spans: []
+    - type: paragraph
+      text: 1 action
+      spans: []
+    - type: paragraph
+      text: Pick up an item within melee range. If the item is being held by a target
+        unwilling to give it to you, they must be successfully grappled before you
+        can grab the item from them. Doing so requires an opposed Powerlift roll;
+        you succeed in taking the item on a higher or equal roll.
+      spans: []
+    - type: paragraph
+      text: Execute
+      spans: []
+    - type: paragraph
+      text: 2 actions
+      spans: []
+    - type: paragraph
+      text: Make an attack as normal against a character within Melee range who is
+        Dying, Unconscious, or otherwise completely helpless (GM discretion).
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Success: target dies.'
+        spans: []
+      - text: 'Failure: no effect.'
+        spans: []
+    - type: paragraph
+      text: After a successful Execute action, make a Composure (DC6 + your Empathy)
+        check.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Success: no effect'
+        spans: []
+      - text: 'Failure: suffer +1 stress.'
+        spans: []
+      - text: 'Extreme failure: suffer +2 stress.'
+        spans: []
+    - type: paragraph
+      text: Reactions
+      spans: []
+    - type: paragraph
+      text: Name
+      spans: []
+    - type: paragraph
+      text: Cost
+      spans: []
+    - type: paragraph
+      text: Trigger
+      spans: []
+    - type: paragraph
+      text: Description
+      spans: []
+    - type: paragraph
+      text: Dive for Cover
+      spans: []
+    - type: paragraph
+      text: 1 reaction
+      spans: []
+    - type: paragraph
+      text: Targeted by ranged attack
+      spans: []
+    - type: paragraph
+      text: See Dive for Cover below.
+      spans: []
+    - type: paragraph
+      text: Parry
+      spans: []
+    - type: paragraph
+      text: 1 reaction
+      spans: []
+    - type: paragraph
+      text: Targeted by melee attack
+      spans: []
+    - type: paragraph
+      text: Requires melee weapon. Roll Melee (Weapons) (DC 8 + attacker’s weapon
+        skill).
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Extreme Success: you may immediately use 1 additional reaction to attack
+          your attacker.'
+        spans: []
+      - text: 'Success: attack against you fails.'
+        spans: []
+    - type: paragraph
+      text: Dodge
+      spans: []
+    - type: paragraph
+      text: 1 reaction
+      spans: []
+    - type: paragraph
+      text: Targeted by melee attack or throw action
+      spans: []
+    - type: paragraph
+      text: Roll Evade. If your roll is higher than the melee attack roll against
+        you, the attack fails.
+      spans: []
+    - type: paragraph
+      text: Deflect/Catch
+      spans: []
+    - type: paragraph
+      text: 1 reaction
+      spans: []
+    - type: paragraph
+      text: Thrown object passes within melee range of you
+      spans: []
+    - type: paragraph
+      text: Roll Finesse. If your roll is higher than the throw roll, you successfully
+        deflect or catch the thrown object.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Extreme success: you may catch or deflect object away from you (choose
+          a location within Very Near range to deflect it to).'
+        spans: []
+      - text: 'Success: you may catch or deflect object away from you (GM decides
+          where). If the object would deal damage on impact, take half that damage.'
+        spans: []
+    - type: paragraph
+      text: Use Held Action
+      spans: []
+    - type: paragraph
+      text: 1 reaction
+      spans: []
+    - type: paragraph
+      text: Custom (given when action was held)
+      spans: []
+    - type: paragraph
+      text: Use the held action immediately.
+      spans: []
+    - type: paragraph
+      text: Free Actions
+      spans: []
+    - type: paragraph
+      text: Name
+      spans: []
+    - type: paragraph
+      text: Description
+      spans: []
+    - type: paragraph
+      text: Drop
+      spans: []
+    - type: paragraph
+      text: Drop any held object, item, or character.
+      spans: []
+    - type: paragraph
+      text: Speak
+      spans: []
+    - type: paragraph
+      text: Say something out loud. This should be more of a sentence than a paragraph.
+      spans: []
+    sections: []
+  - title: 'Special rule: Dive for Cover'
+    slug: special-rule-dive-for-cover
+    level: 3
+    content:
+    - type: paragraph
+      text: 'When attacked by an enemy using a ranged weapon, a character may use
+        a reaction to Dive for Cover providing:'
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: They are aware of the incoming attack (can see the enemy pointing the
+          weapon at them, for example) OR they succeed a DC7 Instinct check.
+        spans: []
+      - text: They are standing up.
+        spans: []
+      - text: They are not grappled or otherwise immobilized.
+        spans: []
+    - type: paragraph
+      text: Diving for cover allows you to leap up to 10 feet in any direction and
+        hit the ground, ending up prone. This can get you out of or farther away from
+        danger. When you dive for cover, the enemy attack against you is made at +2
+        DC. This does not apply for subsequent attacks, however if you dive for cover
+        behind partial or full cover, then subsequent attacks against you are made
+        using cover rules as normal. The initial attack you dove for cover to avoid
+        is not subject to increased DC based on you getting behind cover, as the attack
+        occurs while you are moving (before cover is reached).
+      spans: []
+    sections: []
+- title: Ranges
+  slug: ranges
+  level: 2
+  content:
+  - type: paragraph
+    text: Combat ranges are defined in general terms as melee, very near, near, medium,
+      long, very long, and extreme.
+    spans: []
+  - type: table
+    rows:
+    - - text: Melee
+        spans: []
+      - text: Very Near
+        spans: []
+      - text: Near
+        spans: []
+      - text: Medium
+        spans: []
+      - text: Long
+        spans: []
+      - text: Very Long
+        spans: []
+      - text: Extreme
+        spans: []
+    - - text: Within 5 feet
+        spans: []
+      - text: 6-15 feet
+        spans: []
+      - text: 16-30 feet
+        spans: []
+      - text: 31-60 feet
+        spans: []
+      - text: 61-120 feet
+        spans: []
+      - text: 121-250 feet
+        spans: []
+      - text: Over 250 feet, up to 500 feet
+        spans: []
+  - type: paragraph
+    text: Melee
+    spans: []
+  - type: paragraph
+    text: Very Near
+    spans: []
+  - type: paragraph
+    text: Near
+    spans: []
+  - type: paragraph
+    text: Medium
+    spans: []
+  - type: paragraph
+    text: Long
+    spans: []
+  - type: paragraph
+    text: Very Long
+    spans: []
+  - type: paragraph
+    text: Extreme
+    spans: []
+  - type: paragraph
+    text: Within 5 feet
+    spans: []
+  - type: paragraph
+    text: 6-15 feet
+    spans: []
+  - type: paragraph
+    text: 16-30 feet
+    spans: []
+  - type: paragraph
+    text: 31-60 feet
+    spans: []
+  - type: paragraph
+    text: 61-120 feet
+    spans: []
+  - type: paragraph
+    text: 121-250 feet
+    spans: []
+  - type: paragraph
+    text: Over 250 feet, up to 500 feet
+    spans: []
+  - type: paragraph
+    text: 'In space, ranges are defined differently:'
+    spans: []
+  - type: table
+    rows:
+    - - text: Boarding
+        spans: []
+      - text: Very Near
+        spans: []
+      - text: Near
+        spans: []
+      - text: Medium
+        spans: []
+      - text: Long
+        spans: []
+      - text: Very Long
+        spans: []
+      - text: Extreme
+        spans: []
+    - - text: Within 0.5 km
+        spans: []
+      - text: 0.6 to 5 km
+        spans: []
+      - text: 6-15 km
+        spans: []
+      - text: 16-50 km
+        spans: []
+      - text: 51-100 km
+        spans: []
+      - text: 101-150
+        spans: []
+      - text: Over 150 km, up to 500km
+        spans: []
+  - type: paragraph
+    text: Boarding
+    spans: []
+  - type: paragraph
+    text: Very Near
+    spans: []
+  - type: paragraph
+    text: Near
+    spans: []
+  - type: paragraph
+    text: Medium
+    spans: []
+  - type: paragraph
+    text: Long
+    spans: []
+  - type: paragraph
+    text: Very Long
+    spans: []
+  - type: paragraph
+    text: Extreme
+    spans: []
+  - type: paragraph
+    text: Within 0.5 km
+    spans: []
+  - type: paragraph
+    text: 0.6 to 5 km
+    spans: []
+  - type: paragraph
+    text: 6-15 km
+    spans: []
+  - type: paragraph
+    text: 16-50 km
+    spans: []
+  - type: paragraph
+    text: 51-100 km
+    spans: []
+  - type: paragraph
+    text: 101-150
+    spans: []
+  - type: paragraph
+    text: Over 150 km, up to 500km
+    spans: []
+  sections: []
+- title: Cover
+  slug: cover
+  level: 2
+  content:
+  - type: paragraph
+    text: A character is behind cover when at least part of their body is obscured
+      from direct line of sight from attacking characters. Cover can be either partial
+      cover in which case much of the character is still exposed, or full cover in
+      which almost the entire character’s body is protected and out of sight. If a
+      character is completely hidden, he or she cannot be attacked directly at all.
+    spans: []
+  sections:
+  - title: Partial Cover
+    slug: partial-cover
+    level: 3
+    content:
+    - type: paragraph
+      text: Lying prone behind a park bench, standing behind a tree, or throwing a
+        table onto its side and kneeling behind it; these are examples of partial
+        cover, which is defined as being obscured from an attacker in such a way as
+        reasonably blocks direct line of sight of up to half a character’s body. Being
+        behind partial cover gives a character a +2 to the DC of anyone trying to
+        attack them.
+      spans: []
+    sections: []
+  - title: Full Cover
+    slug: full-cover
+    level: 3
+    content:
+    - type: paragraph
+      text: Kneeling behind a car, lying prone behind a large log, or standing in
+        a trench are all examples of full cover, which is defined as being obscured
+        from an attacker’s view in such a way as reasonably blocks direct line of
+        sight of almost the entirety of the character’s body. Characters behind full
+        cover receive a +4 to the DC to hit them.
+      spans: []
+    sections: []
+  - title: Cover durability
+    slug: cover-durability
+    level: 3
+    content:
+    - type: paragraph
+      text: In order for cover to be effective, it must be able to withstand an attack
+        meant for the character using it. If an attack is intended for a character
+        but hits the cover instead, would that cover stop the attack? Depending on
+        the type of cover, it may be effective at stopping many attacks (kneeling
+        behind a car), a single attack (lying prone behind a park bench), or part
+        of an attack (kneeling behind an overturned table). The GM determines the
+        durability of the cover available to you. If cover is unable to block even
+        a single wound of damage, it cannot be considered cover. It could still potentially
+        serve as camouflage, depending on the situation.
+      spans: []
+    - type: paragraph
+      text: Cover takes damage when an attack made against the person using the cover
+        misses. The amount of damage taken is equal to the damage from the attacker’s
+        weapon. If more damage is dealt to the cover than it has remaining durability,
+        there is a 50% chance the remaining damage is transferred to the character
+        behind the cover. This is rolled by the GM.
+      spans: []
+    - type: paragraph
+      text: If an object that provides full cover is reduced to 0 durability, the
+        GM has a choice to make. Either the cover is destroyed completely (as might
+        be the case of a car struck by the main turret of a tank) or the cover level
+        is reduced to partial and given new (probably lesser) durability in its new
+        state. This might be the case if a table were shot by a pistol. If the cover
+        was partial cover and its durability reaches 0, it is no longer capable of
+        providing cover.
+      spans: []
+    - type: paragraph
+      text: Reasonable Cover Durability
+      spans: []
+    - type: paragraph
+      text: Cover
+      spans: []
+    - type: paragraph
+      text: Type
+      spans: []
+    - type: paragraph
+      text: Suggested Durability
+      spans: []
+    - type: paragraph
+      text: Overturned Table
+      spans: []
+    - type: paragraph
+      text: Partial
+      spans: []
+    - type: paragraph
+      text: 2 wounds
+      spans: []
+    - type: paragraph
+      text: Tree Stump
+      spans: []
+    - type: paragraph
+      text: Partial
+      spans: []
+    - type: paragraph
+      text: 5 wounds
+      spans: []
+    - type: paragraph
+      text: Car
+      spans: []
+    - type: paragraph
+      text: Full
+      spans: []
+    - type: paragraph
+      text: Indestructible unless hit by high-power weapon
+      spans: []
+    sections: []
+  - title: Human Shields
+    slug: human-shields
+    level: 3
+    content:
+    - type: paragraph
+      text: Using a character as cover is possible. The character should be treated
+        as partial cover for the character behind them and the same rules for damage
+        should be applied.
+      spans: []
+    sections: []

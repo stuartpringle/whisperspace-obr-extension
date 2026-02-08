@@ -1,0 +1,346 @@
+title: Stress
+slug: stress
+level: 1
+content:
+- type: paragraph
+  text: A measure of a character’s emotional trauma, mental strain, and psychological
+    instability, stress increases when bad things happen. Taking damage increases
+    a character’s stress, being near monstrous enemies or embroiled in scary situations
+    may increase her stress as well, at the GM’s discretion.
+  spans: []
+- type: paragraph
+  text: Stress has a minimum of 0 and a maximum of 8 and is tracked on your character
+    sheet.
+  spans: []
+sections:
+- title: Stress From Damage
+  slug: stress-from-damage
+  level: 2
+  content:
+  - type: paragraph
+    text: 'Each time you take damage, you gain stress based on the highest severity
+      of wound that the incoming damage creates. You do not add multiple severities
+      together (light + moderate, for example). Only the highest severity is applied.
+      For example:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: If you take 3 damage while uninjured, you fill 3 light wound boxes. Light
+        wounds give +1 stress, so you gain 1 stress total.
+      spans: []
+    - text: If you take 5 damage while uninjured, you fill all 4 light wound boxes
+        and 1 moderate wound box. Because the highest severity filled was moderate,
+        you can +2 stress total.
+      spans: []
+  - type: table
+    rows:
+    - - text: Wound Severity
+        spans: []
+      - text: Stress Increase
+        spans: []
+    - - text: Light
+        spans: []
+      - text: '+1'
+        spans: []
+    - - text: Moderate
+        spans: []
+      - text: '+2'
+        spans: []
+    - - text: Heavy
+        spans: []
+      - text: '+4'
+        spans: []
+  - type: paragraph
+    text: Wound Severity
+    spans: []
+  - type: paragraph
+    text: Stress Increase
+    spans: []
+  - type: paragraph
+    text: Light
+    spans: []
+  - type: paragraph
+    text: '+1'
+    spans: []
+  - type: paragraph
+    text: Moderate
+    spans: []
+  - type: paragraph
+    text: '+2'
+    spans: []
+  - type: paragraph
+    text: Heavy
+    spans: []
+  - type: paragraph
+    text: '+4'
+    spans: []
+  sections: []
+- title: Stress Penalties
+  slug: stress-penalties
+  level: 2
+  content:
+  - type: paragraph
+    text: Stress weighs on a character mentally; the more stress they have, the harder
+      it is to focus, to remain calm, and even to act at all.
+    spans: []
+  - type: paragraph
+    text: Stress Penalty = ½ stress (rounded up) - Cool Under Fire
+    spans: []
+  - type: paragraph
+    text: Thus, a character with Cool Under Fire 1 and 3 stress would suffer a -1.
+      This effect only applies to the first roll you make to use an action or reaction
+      each round.
+    spans: []
+  sections: []
+- title: Crucible Test
+  slug: crucible-test
+  level: 2
+  content:
+  - type: paragraph
+    text: If a character takes enough stress to push her above 5, she reaches a Crucible
+      Test. She must immediately roll a Cool Under Fire check (not affected by any
+      Bonus or Penalty dice). The DC for this check is 8 + incoming stress. So for
+      example, if a character is at 4 stress and would suffer an additional 4 stress,
+      she must roll a Cool Under Fire check and meet or exceed 12 (8 base + 4 from
+      incoming stress amount).
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Success: her stress is reduced to 5 and she may apply an Indomitable
+        effect to herself (see below).'
+      spans: []
+    - text: 'Failure: she suffers the stress as normal and enters into PTSD range.'
+      spans: []
+  - type: paragraph
+    text: If a character fails a Crucible Test, she may choose to spend one point
+      of her Cool Under Fire attribute (reducing that attribute’s level by 1 permanently)
+      to pass it instead.
+    spans: []
+  sections:
+  - title: Indomitable
+    slug: indomitable
+    level: 3
+    content:
+    - type: paragraph
+      text: Once per session, when you succeed on a Crucible Test, you may… (choose
+        one)
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Take no stress penalty to skill checks for 1 hour
+        spans: []
+      - text: Immediately take 1 full turn (3 actions). If it’s already your turn,
+          take another full turn directly after your current turn ends instead.
+        spans: []
+      - text: Ignore all stress increases for 1 hour
+        spans: []
+    sections: []
+- title: PTSD Range (stress levels 6-8)
+  slug: ptsd-range-stress-levels-6-8
+  level: 2
+  content:
+  - type: paragraph
+    text: 'While in the PTSD range, a character:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: Is considered extremely psychologically fragile
+      spans: []
+    - text: Must roll on the PTSD Reaction Table (below) upon receiving any additional
+        stress or failing a roll (if failing a roll grants stress, only roll once).
+      spans: []
+    - text: Suffers the Stress Penalty to all rolls, instead of only the first roll
+        each round.
+      spans: []
+    - text: Succeeds with an Extreme Success only when roll exceeds DC by 6+ (rather
+        than 4+)
+      spans: []
+  - type: paragraph
+    text: PTSD Reaction Table
+    spans: []
+  - type: paragraph
+    text: 1d4 roll
+    spans: []
+  - type: paragraph
+    text: Result
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: Freeze (lose 1 action. If it is not your turn, then instead lose 1 action
+      on your next turn)
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: Cower (receive Fleeing (1) condition)
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: Push Through (no effect)
+    spans: []
+  - type: paragraph
+    text: '4'
+    spans: []
+  - type: paragraph
+    text: Push Through (no effect)
+    spans: []
+  sections: []
+- title: Stress Breakdowns
+  slug: stress-breakdowns
+  level: 2
+  content:
+  - type: paragraph
+    text: A character reaching her maximum stress level means she suffers a break
+      of some sort (rolled on the table below or defined by the GM). This can range
+      from a temporary effect to a permanent, character-altering one.
+    spans: []
+  - type: paragraph
+    text: Stress Breakdown Effects
+    spans: []
+  - type: paragraph
+    text: Roll (1d4)
+    spans: []
+  - type: paragraph
+    text: Effect
+    spans: []
+  - type: paragraph
+    text: Description
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: Freeze up
+    spans: []
+  - type: paragraph
+    text: Mind blanks. Cannot act for 1 minute.
+    spans: []
+  - type: paragraph
+    text: '2'
+    spans: []
+  - type: paragraph
+    text: Collapse
+    spans: []
+  - type: paragraph
+    text: Falls unconscious from strain
+    spans: []
+  - type: paragraph
+    text: '3'
+    spans: []
+  - type: paragraph
+    text: Panic
+    spans: []
+  - type: paragraph
+    text: Flee for 1d6 rounds
+    spans: []
+  - type: paragraph
+    text: '4'
+    spans: []
+  - type: paragraph
+    text: Mental Scar
+    spans: []
+  - type: paragraph
+    text: Gain a permanent fear or phobia (GM’s discretion)
+    spans: []
+  sections: []
+- title: Reducing Stress
+  slug: reducing-stress
+  level: 2
+  content:
+  - type: paragraph
+    text: Healing wounds received reduces stress by half the amount the wound caused
+      (rounded up). For example, recovering from a moderate wound would reduce a character’s
+      stress by 1.
+    spans: []
+  sections:
+  - title: Passive Recovery
+    slug: passive-recovery
+    level: 3
+    content:
+    - type: paragraph
+      text: During downtime, a character may rest up to reduce stress at a rate of
+        1 point per day. Some character Archetypes may also reduce stress for allies
+        at a faster rate. Additionally, specialized therapy, prescription drugs, or
+        even cybernetic implants can reduce stress. A character who has entered PTSD
+        range may not lower their stress below 5 using this method; they must seek
+        other ways to reduce their stress.
+      spans: []
+    sections: []
+  - title: Therapy, Empaths, and Medication
+    slug: therapy-empaths-and-medication
+    level: 3
+    content:
+    - type: paragraph
+      text: Therapy helps bring characters down from PTSD levels of stress, though
+        the process is often expensive and time-consuming (weeks or even months in
+        extreme cases). After each week of a character’s therapy, the GM rolls a d12
+        check based on the therapist’s skill level; three successful checks reduce
+        the character’s stress below PTSD range.
+      spans: []
+    - type: paragraph
+      text: 'Unskilled Therapist (DC10, 1500 credits per week)
+
+        Skilled Therapist (DC8, 2500 credits per week)
+
+        Expert (DC4, 5000 credits per week)'
+      spans: []
+    - type: paragraph
+      text: Empaths provide a path toward recovery that is much quicker than therapy,
+        however true empaths are rare and difficult to find, while there are many
+        charlatans after big paydays. An empath may work only for favours, or may
+        charge upwards of 10000 credits to bear the burden of another’s emotional
+        trauma.
+      spans: []
+    - type: paragraph
+      text: Medication may help some come down from PTSD range, however there are
+        always side effects. Stress-reducing medication may be found in the Equipment
+        & Gear section.
+      spans: []
+    sections: []
+  - title: Pep Talk
+    slug: pep-talk
+    level: 3
+    content:
+    - type: paragraph
+      text: A character may attempt to aid another character’s stress recovery by
+        giving them a quick pep talk. A pep talk can be given as an action (within
+        or without combat) or over the duration of 10 minutes. Any additional pep
+        talks given to the stressed character have no effect until the next day.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: If done as a single action, giving a pep talk requires a SOC (DC8 +
+          stress level) empathy check.
+        spans: []
+      - text: If done over the course of 10 minutes, giving a pep talk requires a
+          SOC (DC4 + stress level) empathy check.
+        spans: []
+    - type: paragraph
+      text: A success or extreme success reduces the target’s stress by 1. Extreme
+        failure increases the target's stress by 1.
+      spans: []
+    - type: paragraph
+      text: A character cannot attempt to give a pep talk if he is in PTSD range,
+        and pep talks have no positive effect if the target is in PTSD range.
+      spans: []
+    sections: []
+  - title: Whisperspace
+    slug: whisperspace
+    level: 3
+    content:
+    - type: paragraph
+      text: There’s something unsettling about travel through the starless void; while
+        in Whisperspace, a character cannot reduce stress via passive recovery, therapy,
+        or medication and the DC for giving a pep talk is increased by +2.
+      spans: []
+    sections: []

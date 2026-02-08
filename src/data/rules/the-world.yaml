@@ -1,0 +1,421 @@
+title: The World
+slug: the-world
+level: 1
+content: []
+sections:
+- title: The Halcyon Empire
+  slug: the-halcyon-empire
+  level: 2
+  content:
+  - type: paragraph
+    text: A system post-collapse, the Shatterbelt was the dominion of the Halcyon
+      Empire. Emperor Galen Halcyon IV could not hold together what nearly a thousand
+      years of effort and bloodshed had built; the collapse happened almost overnight.
+      Civil war swept through what had once been a united galaxy, dozens of once-prosperous
+      worlds were wiped clean of life, cleansing fire rained down from orbiting ships.
+      In the span of less than a decade, over one tenth of the galaxy’s population
+      died. Through years of in-fighting and power struggles, the mighty fleets of
+      the Halcyon Empire vanished, and the void that was left in the empire’s wake
+      was filled by hundreds of factions each hungry for power. Piracy sprang up and
+      Whisper cults formed as the population of the galaxy tried to make sense of
+      what was happening.
+    spans: []
+  - type: paragraph
+    text: Thirty-five years after the fall of the Halcyon Empire, most of the direct
+      conflict has ceased. Modern-day skirmishes are a far cry from the full-scale
+      warfare of Collapse. Now, a handful of factions hold sway over large swaths
+      of the Shatterbelt, while independent planetary governments oversee and tax
+      their own systems like so many petty kingdoms.
+    spans: []
+  sections: []
+- title: The Shatterbelt
+  slug: the-shatterbelt
+  level: 2
+  content:
+  - type: paragraph
+    text: Stretching across half the galaxy and including hundreds of solar systems,
+      inhabited and otherwise, the Shatterbelt is the name for a collection of solar
+      systems reaching half-way across the known galaxy. These systems once made up
+      the majority of the Halcyon Empire’s holdings, and were once united without
+      exception. After the Collapse, the name ‘Shatterbelt’ seems prophetic to some.
+    spans: []
+  sections: []
+- title: Whisperspace & The Anchorate
+  slug: whisperspace-the-anchorate
+  level: 2
+  content:
+  - type: paragraph
+    text: Whisperspace is the thing that connects the worlds and systems of the Shatterbelt.
+      Faster-than-light travel through technological means has proven impossible.
+      The only way to bridge the vast gulf of space between places is by entering
+      into and traveling through Whisperspace.
+    spans: []
+  - type: paragraph
+    text: Once, an entire branch of the Imperial Knowledge-Seekers devoted themselves
+      to the study of Whisperspace. It behaves unpredictably. Entering into it taxes
+      the human mind. It is the only way to keep civilization connected. These were
+      their findings; these and not much more.
+    spans: []
+  - type: paragraph
+    text: From that initial research, the Anchorate was formed. They are responsible
+      for charting Whisperspace, determining the best routes through, and calculating
+      for ‘drift’, the movement of Whisperspace corridors as they intersect with realspace
+      and the slow movement of the ‘jump points’, the ways in and out of Whisperspace.
+      While the Anchorate is not a political body, they do have considerable sway,
+      for without them Whisperspace would quickly become impossible to navigate.
+    spans: []
+  sections:
+  - title: Whisperspace Superstition
+    slug: whisperspace-superstition
+    level: 3
+    content:
+    - type: paragraph
+      text: 'Beliefs about whisperspace are as varied as the stars in the sky, however
+        some of the most common are:'
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: Frequent jumps into Whisperspace induce madness.
+        spans: []
+      - text: If you speak while in Whisperspace, your voice will join the whispers
+          there.
+        spans: []
+      - text: Stopping your ship in Whisperspace guarantees you will be lost there
+          forever.
+        spans: []
+      - text: Sleeping in Whisperspace is dangerous; dreams there are not your own.
+        spans: []
+      - text: Whisperspace hates overconfident crews.
+        spans: []
+    - type: paragraph
+      text: 'In addition to these, many ships follow the Crossing Rules:'
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: No speaking when jumping into or out of Whisperspace
+        spans: []
+      - text: Cover all viewports and turn off all sensors when entering Whisperspace.
+        spans: []
+    sections: []
+- title: The Mega-Corporations
+  slug: the-mega-corporations
+  level: 2
+  content:
+  - type: paragraph
+    text: Keeping to the background, several of the largest corporations of the Imperium
+      managed to stay largely untouched during the Collapse. Some even increased their
+      power - and their shareholders’ yearly returns - by profiting off the chaos
+      that gripped the galaxy. In the years since, these corporations have increased
+      their holdings and their power.
+    spans: []
+  sections:
+  - title: Kessler Forgeworlds
+    slug: kessler-forgeworlds
+    level: 3
+    content:
+    - type: paragraph
+      text: Kessler was once of the first corporations to get into planetary politics
+        during the Collapse, starting with the planet Crayt Prime. Dalton Gunn, Kessler’s
+        CEO, wined, dined, and finally bought outright the leadership of Crayt. Soon,
+        Kessler manufacturing plants sprang up across the world. Within a year, the
+        majority of the planet’s exports were Kessler-manufactured goods, earning
+        Crayt the name ‘Forgeworld’. From Crayt, Kessler began moving outward, following
+        the same pattern.
+      spans: []
+    - type: paragraph
+      text: Though Kessler never directly interferes with the governments of the worlds
+        it controls, and in fact does not ‘control’ any world at all, technically,
+        still its worlds tend to do exactly what their corporate overlords want.
+      spans: []
+    sections: []
+  - title: Orrica Industries
+    slug: orrica-industries
+    level: 3
+    content:
+    - type: paragraph
+      text: 'Orrica isn’t interested so much in manufacturing things as it is in pushing
+        the boundaries of science and innovation so people can live a better tomorrow.
+        You can tell this just by reading their helpful slogan: “Orrica Industries:
+        pushing the boundaries of science and innovation so you can live a better
+        tomorrow.”'
+      spans: []
+    - type: paragraph
+      text: Its leadership is largely unknown; its board of directors is a list of
+        various trusts, conglomerates, and hedge funds for the ultra-rich. However
+        it’s led, Orrica’s leadership has been very effective at guiding it to the
+        top of the food chain and ruthlessly taking down its competition on the way
+        up.
+      spans: []
+    - type: paragraph
+      text: Orrica doesn’t concern itself with planetary politics or base itself in
+        any one system. Instead, Orrica works as a vast, spread-out network.
+      spans: []
+    sections: []
+- title: Whisper Cults
+  slug: whisper-cults
+  level: 2
+  content:
+  - type: paragraph
+    text: Whisperspace is viewed in many different ways. To some, it offers expedient
+      travel times. To others, its very existence is a mystery to be pondered. And
+      to some, it is a power greater than any other; the whispers within are a warning,
+      a revelation, or even prophecy. These beliefs are the core of Whisper Cults.
+      They view Whisperspace not for what it is but what it could be. Many worship
+      the silence. Some make it their mission to enter into Whisperspace as many times
+      as possible in the belief that hearing the whispers more often may make comprehending
+      them possible. Still others think listening to the whispers brings wrath upon
+      us all, that those sounds are not for our ears or our minds.
+    spans: []
+  - type: paragraph
+    text: Most Whisper Cults are small, led by a single person, who teaches as many
+      others as will listen to his or her beliefs. Of these, most fail within a decade
+      or two, as madness sets in or the members of the cult are urged to act - often
+      violently - to get others to share their beliefs.
+    spans: []
+  - type: paragraph
+    text: There are others that seem largely intent on secluding themselves away from
+      the rest of the galaxy; gatherings of people who believe travel through Whisperspace
+      is wrong, and may even go on to believe the use of any level of technology to
+      be wrong as well. These are usually harmless groups, interested more in saving
+      themselves from the rest of the galaxy than anything else.
+    spans: []
+  sections:
+  - title: Children of Silence
+    slug: children-of-silence
+    level: 3
+    content:
+    - type: paragraph
+      text: By far the most prominent Whisper-cult in the galaxy, the Children of
+        Silence exist as a response to the fragility of life in the Shatterbelt, the
+        uncertainty of human leadership, and the existential dread of what Whisperspace
+        itself could be.
+      spans: []
+    - type: paragraph
+      text: Even within the Children of Silence, different branches may worship or
+        fear Whisperspace, yet they are united in that they revere it and believe
+        humanity must not attempt to understand what it is. If Whisperspace is studied,
+        they fear it may awaken. Most people believe the Children to be misguided
+        fanatics at best, yet their words have found a place in the hearts of many.
+      spans: []
+    - type: paragraph
+      text: Just over a decade ago, a woman named Solenya rose up in the ranks of
+        the Children of Silence. Her words were quiet, not the feverish ravings of
+        the others in the cult. She spoke of finding peace inwardly and outwardly.
+        Since she became the face of the cult, its membership has surged. Estimates
+        state the Children of Silence have nearly a million adherents, spread out
+        across hundreds of systems.
+      spans: []
+    - type: paragraph
+      text: The Children of Silence are clear that they are a peaceful organization
+        dedicated to the betterment of the human race. Yet more and more there have
+        been rumours of fanatical branches, of members hijacking ships as they pass
+        through Whisperspace, spacing the crew before returning to normal space. To
+        many, it feels like the Children of Silence are up to something, like they
+        have some agenda they aren’t sharing with the rest of the galaxy. So no matter
+        how they frame themselves, their emissaries are often met with distrust and
+        derision.
+      spans: []
+    - type: paragraph
+      text: That hasn’t stopped their numbers from growing, though. In a galaxy concerned
+        with personal survival above all else, many find the message of the Children
+        of Silence - that there is meaning beyond ourselves, and that there is hope
+        for a brighter future - compelling.
+      spans: []
+    sections: []
+- title: The New Dawn
+  slug: the-new-dawn
+  level: 2
+  content:
+  - type: paragraph
+    text: Banned during the reign of the Imperium, the New Dawn is a religious order
+      that has its roots in ancient history; some say before humanity ever found its
+      way to the stars. Since the Collapse, the New Dawn has returned, with many of
+      its adherents simply able to state their beliefs publicly rather than having
+      to keep them private.
+    spans: []
+  - type: paragraph
+    text: The New Dawn seems almost to disregard the state of the galaxy and even
+      Whisperspace itself. They teach that God is real; that the universe will end
+      one day, and that
+    spans: []
+  sections: []
+- title: Kael’s Remnant
+  slug: kael-s-remnant
+  level: 2
+  content:
+  - type: paragraph
+    text: The Empire collapsed, the galaxy was in chaos… But then a fleet returned
+      from a long-term exploration of uninhabited systems near the galaxy’s rim. Leading
+      this fleet was Admiral Kael Varn.
+    spans: []
+  - type: paragraph
+    text: Finding the empire gone, the Remnant fleet wasted no time springing to action.
+      They seized control of several key old-empire worlds, and promptly imposed imperial
+      rule in a galaxy without an Empire. Kael calls himself a regent; one awaiting
+      the return of the imperial family, and has been slowly spreading his influence
+      and rule across the galaxy little by little. It’s no secret what the Remnant
+      wants; they want a full return to the ways of the empire, its ideals, laws,
+      and customs.
+    spans: []
+  sections: []
+- title: The Black Suns
+  slug: the-black-suns
+  level: 2
+  content:
+  - type: paragraph
+    text: Mercenary groups are common in the Shatterbelt. Whether a job requires a
+      little extra muscle or there’s something legally questionable about it, mercenaries
+      are a quick and easy answer to otherwise difficult problems. The Black Suns
+      are the cream of the crop.
+    spans: []
+  - type: paragraph
+    text: Nearly every corporate black bag operation is given to the Black Suns. They
+      have a reputation for getting the job done no matter what it takes, and for
+      that they charge a premium.
+    spans: []
+  - type: paragraph
+    text: If the Black Suns has a leader, that leader remains anonymous. Their members
+      are organized into teams, and each team is responsible for fulfilling its own
+      contracts. How they avoid overlapping jobs is also unclear.
+    spans: []
+  sections: []
+- title: Nanites, Sensitives, and Nanomancy
+  slug: nanites-sensitives-and-nanomancy
+  level: 2
+  content:
+  - type: paragraph
+    text: At its peak, the Halcyon Empire was growing quickly, both in terms of military
+      and economic strength and technological advancement. Some technologies were
+      spread to the general populace; things such as cyberware, medical advancements,
+      and more. Other technologies were never shared, never even hinted at to the
+      general public. Nanites was one of these hidden technologies.
+    spans: []
+  sections:
+  - title: What are Nanites?
+    slug: what-are-nanites
+    level: 3
+    content:
+    - type: paragraph
+      text: 'The concept was simple enough: shrink a robot down to the point it becomes
+        invisible to the human eye, but retain its usefulness. In practice, this was
+        difficult to achieve. After decades of research, however, it became a reality.
+        Press releases were readied; the next era of civilization was here! Nanites
+        would be capable of passively fighting disease, healing damaged cells, or
+        even slowing the aging process. They were self-sustaining, using ambient energy
+        from sources such as sunlight, and even self-replicating. The applications
+        seemed limitless.'
+      spans: []
+    sections: []
+  - title: Control
+    slug: control
+    level: 3
+    content:
+    - type: paragraph
+      text: 'Everything changed when a high-ranking member of the Halcyon Empire’s
+        science division had an idea: yes, nanites could be used for the betterment
+        of mankind, yet they could also be used for control. Nanites could be given
+        instructions to target specific individuals, targeting based on genetic markers
+        and approximate age. Suddenly, if the Empire didn’t like what someone was
+        saying or doing, they had a quick and easy way to make the problem go away.
+        On some worlds, nanites were employed not only to keep the population healthy
+        (advertised as ‘atmospheric vitality’), but also to keep it calm. Nanites
+        were instructed to search out individuals with higher than normal blood pressure
+        and heart rates, and slowly manipulate their cells to calm them down. One
+        experiment even went so far as to instruct nanites to trigger the production
+        of oxytocin in people whenever the Imperial anthem played; the goal was to
+        promote a sense of loyalty and admiration toward the empire.'
+      spans: []
+    sections: []
+  - title: Post-Collapse
+    slug: post-collapse
+    level: 3
+    content:
+    - type: paragraph
+      text: With the empire gone, nanites were forgotten. Those who knew about their
+        existence and deployment were dead, leaving nobody to give directives to the
+        nanites already saturating the atmosphere of so many worlds.
+      spans: []
+    - type: paragraph
+      text: 'Without new orders, nanites default to their basic directives: maintain
+        a healthy population of nanites through replication; heal injured humans;
+        fight disease; await new instructions.'
+      spans: []
+    - type: paragraph
+      text: Nanites have unwittingly been brought on board spaceships and thus traveled
+        to many locations outside the great core worlds of the Empire. There might
+        be a healthy population of nanites on an out-of-the-way waystation just outside
+        Whisperspace. A passenger liner might have nanites on board. Most of the time,
+        these little machines are for all intents and purposes inert; their basic
+        instructions don’t give them much to do beyond keeping their population up,
+        and the replication process is purposefully designed to minimize material
+        usage. Its unlikely it would appear to be anything more than the degradation
+        of time; slight wear on a ship’s bulkheads, maybe, where nanites have scavenged
+        metal flakes to replicate, or a strange power fluctuation where they recharge
+        themselves.
+      spans: []
+    sections: []
+  - title: Degradation
+    slug: degradation
+    level: 3
+    content:
+    - type: paragraph
+      text: Sometimes, the basic commands given to a population of nanites may start
+        to fade or collapse after many generations of iterative replication. Imperial
+        scientists would have termed this ‘degradation’. Sometimes, it results in
+        strange or erratic behaviour they were never programmed with originally.
+      spans: []
+    sections: []
+  - title: The Sensitives
+    slug: the-sensitives
+    level: 3
+    content:
+    - type: paragraph
+      text: Unwittingly living alongside nanites for so long, some humans have developed
+        a strange mental connection with them. These are the Sensitives. Most often
+        they don’t recognize this connection for anything out of the ordinary, or
+        don’t even notice it at all; but the nanites are aware of them and pay them
+        special attention. If there are a dozen people injured in an accident, nanites
+        may rush to save the one Sensitive in the group, even if their injuries are
+        minor. Sometimes, Sensitives can communicate with nanites, usually without
+        realizing what they are doing. Most often, this happens in times of extreme
+        stress; an injured pilot unable to reach the ship’s throttle to avoid certain
+        death may will the ship to stop… And inexplicably the throttle is pulled back
+        by hundreds or even thousands of microscopic robots.
+      spans: []
+    sections: []
+  - title: Suspicion and Distrust
+    slug: suspicion-and-distrust
+    level: 3
+    content:
+    - type: paragraph
+      text: Sensitives are often distrusted. Firstly, no one believes their tales.
+        The throttle pulled back by itself? Sure it did. Secondly, there’s enough
+        superstition in the galaxy to make a Sensitive’s claim sound like Whisperspace
+        strangeness - and nobody wants to get closer to that. Most Sensitives hide
+        any strange occurrences around them.
+      spans: []
+    sections: []
+  - title: Nanomancers
+    slug: nanomancers
+    level: 3
+    content:
+    - type: paragraph
+      text: A few Sensitives have a connection so established to nanites that they
+        can actively command them. These are Nanomancers; individuals who command
+        unseen forces to do their will. In many places, Nanomancers are looked on
+        with fear or dread. Often, they are killed on sight as unnatural aberrations.
+        Sometimes, they are taken to laboratories and studied endlessly.
+      spans: []
+    - type: paragraph
+      text: To the layman, a Nanomancer’s abilities appear to be magic. Some Nanomancers
+        may even call themselves magicians. Nevertheless, what they do is not magic;
+        it is a simple chain of cause and effect.
+      spans: []
+    sections: []
+- title: Empaths
+  slug: empaths
+  level: 2
+  content: []
+  sections: []

@@ -1,0 +1,43 @@
+title: Core Philosophies
+slug: core-philosophies
+level: 1
+content:
+- type: paragraph
+  text: 'Whisperspace was built with the following ideas in mind:'
+  spans: []
+- type: list
+  ordered: false
+  items:
+  - text: Player characters (PCs) are fragile humans. Getting shot by a machine gun
+      causes massive trauma whether the person who shot you is a level 1 character
+      or a level 100 character. Your character won’t typically become inherently harder
+      to kill simply by gaining skills (though better armour can always be worn).
+    spans: []
+  - text: Being in combat takes a toll on even the bravest. To reflect this, Whisperspace
+      has a Stress system that can permanently impact characters.
+    spans: []
+  - text: 'Movement and positioning matters in combat. Are you hiding behind a spaceship
+      so the bad guy can’t shoot you? Good: that means they can’t shoot you. Hollywood
+      gunfights are fun to watch, but in Whisperspace, you rarely want to be standing
+      out in the open, presenting yourself as an easy target.'
+    spans: []
+- type: paragraph
+  text: Whisperspace is a gritty, cinematic sci-fi TTRPG about survival, control,
+    and consequence in a fractured galaxy. You’re not a superhero. You’re a specialist
+    with a past, a pulse, and a purpose — doing jobs others can’t (or won’t) in forgotten
+    places.
+  spans: []
+- type: paragraph
+  text: Yet play is not designed to feel hopeless. It’s exciting, yes. Difficult,
+    certainly. But never meaningless. Characters may die — but others will rise to
+    take up their causes. The most compelling stories aren’t about people getting
+    everything they want with ease. They’re about struggle, resilience, and eventually
+    triumphing against the odds.
+  spans: []
+- type: paragraph
+  text: Whisperspace mirrors that narrative structure. Everyone wins when the party
+    succeeds — but the GM isn’t going to say “Congratulations, you win!” the moment
+    you sit down. Success is earned. Victory is earned. And when it comes, it will
+    mean something.
+  spans: []
+sections: []

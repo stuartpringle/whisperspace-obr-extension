@@ -1,0 +1,101 @@
+title: Core Game Principles
+slug: core-game-principles
+level: 1
+content:
+- type: paragraph
+  text: Every game is built with a certain set of assumptions. Here are the fundamental
+    assumptions behind Whisperspace’s ruleset.
+  spans: []
+sections:
+- title: Specific Trumps General
+  slug: specific-trumps-general
+  level: 2
+  content:
+  - type: paragraph
+    text: Whisperspace includes many frameworks for how to resolve different types
+      of situations. However, sometimes these may appear to be in conflict with other
+      rules (weapon keywords, archetype bonuses, etc). In such cases, the specific
+      rule is taken over the general rule. If the rules for combat tell you that making
+      a Called Shot gives you a penalty die, but an archetype feature says you can
+      ignore that penalty die, then the specific rule from your archetype will apply,
+      overruling the general rule of combat actions.
+    spans: []
+  sections:
+  - title: GM Trumps All
+    slug: gm-trumps-all
+    level: 3
+    content:
+    - type: paragraph
+      text: The Game Master (or GM) is the final authority for how the rules of this
+        system work. A good GM will work with players to make an experience everyone
+        will enjoy; this system provides a framework to help do that. Thus, whenever
+        a question arises of how a rule should be applied, the GM is the arbitrator.
+        It’s their call whether they want to agree with a player’s interpretation
+        or not - or even use a particular rule in this system or not!
+      spans: []
+    sections: []
+- title: Your Character Affects the Roll. The World Affects the Difficulty.
+  slug: your-character-affects-the-roll-the-world-affects-the-difficulty
+  level: 2
+  content:
+  - type: paragraph
+    text: In Whisperspace, the dice you roll — and what you add to them — reflect
+      your character’s knowledge, training, and decisions.
+    spans: []
+  - type: paragraph
+    text: External conditions — like cover, lighting, distance, or equipment quality
+      — affect the Difficulty Class (DC) you’re rolling against.
+    spans: []
+  - type: paragraph
+    text: 'Here’s how it breaks down:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'You modify the roll:'
+      spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: Skill level adds directly to the roll
+      spans: []
+    - text: Tactical choices may grant Bonus Dice
+      spans: []
+    - text: Traits, archetype features, or cybernetic boosts also apply here
+      spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'The world modifies the DC:'
+      spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: An enemy behind cover? Higher DC
+      spans: []
+    - text: Poor visibility? Higher DC
+      spans: []
+    - text: Targeting system on your rifle? Lower DC
+      spans: []
+  - type: paragraph
+    text: 'For example:'
+    spans: []
+  - type: paragraph
+    text: 'You aim and fire at an enemy behind a crate. Your Aim grants a Bonus die,
+      and your Rifle skill adds +3. That’s your side of the roll.
+
+      The GM sets the DC higher than normal because of the target’s cover. You can’t
+      control your enemy’s cover; that’s the world making things more difficult for
+      you.'
+    spans: []
+  - type: paragraph
+    text: 'This division is fundamental to the Whisperspace system:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: What comes from your character adds to your roll.
+      spans: []
+    - text: Everything else modifies the DC.
+      spans: []
+  sections: []

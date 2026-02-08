@@ -1,0 +1,268 @@
+title: Core Mechanics
+slug: core-mechanics
+level: 1
+content: []
+sections:
+- title: D12 System
+  slug: d12-system
+  level: 2
+  content:
+  - type: paragraph
+    text: 'Simply put, the core mechanic is: roll 1d12 and add a modifier to it. This
+      d12 is called the base die.'
+    spans: []
+  - type: paragraph
+    text: If you think of player action as a desire and a question (‘I want to climb
+      the wall. Do I succeed?’), then you can think of this core mechanic as the GM’s
+      way of answering that question (‘Roll 1d12 and add your athletics skill to it.
+      If you get at least 8, you succeed climbing the wall’).
+    spans: []
+  - type: paragraph
+    text: Want to fly a spaceship? Negotiate with terrorists? Shoot someone with a
+      photon rifle? You’ll be rolling D12s and adding your skill modifiers for each
+      one.
+    spans: []
+  sections: []
+- title: Difficulty Class
+  slug: difficulty-class
+  level: 2
+  content:
+  - type: paragraph
+    text: Difficulty Class (usually referred to as DC) is a target number a roll must
+      meet or exceed in order to succeed. In the example above, the GM decided that
+      a DC of 8 was required to successfully climb a wall.
+    spans: []
+  - type: paragraph
+    text: DC can be mechanically decided in some contexts (such as combat; an attack
+      roll must meet or exceed a DC determined by the weapon used, whether the target
+      is behind cover, etc), while at other times the GM may be responsible for determining
+      DCs ‘on the fly’.
+    spans: []
+  - type: paragraph
+    text: Here’s a quick reference table to see some common DCs and what they might
+      represent.
+    spans: []
+  - type: table
+    rows:
+    - - text: Task Difficulty
+        spans: []
+      - text: Difficulty Class (DC)
+        spans: []
+      - text: Description
+        spans: []
+    - - text: Trivial
+        spans: []
+      - text: '4'
+        spans: []
+      - text: Finding milk in a fridge
+        spans: []
+    - - text: Easy
+        spans: []
+      - text: '6'
+        spans: []
+      - text: Pouring milk into a glass
+        spans: []
+    - - text: Standard
+        spans: []
+      - text: '9'
+        spans: []
+      - text: Hitting a dartboard with a glass of milk
+        spans: []
+    - - text: Challenging
+        spans: []
+      - text: '12'
+        spans: []
+      - text: Flying a spaceship while drinking a glass of milk
+        spans: []
+    - - text: Extreme
+        spans: []
+      - text: '15'
+        spans: []
+      - text: Climbing a slippery wall while drinking a glass of milk
+        spans: []
+    - - text: Improbable
+        spans: []
+      - text: '18'
+        spans: []
+      - text: Throwing a glass of milk and getting all the milk back into its carton
+          without spilling any
+        spans: []
+  - type: paragraph
+    text: Task Difficulty
+    spans: []
+  - type: paragraph
+    text: Difficulty Class (DC)
+    spans: []
+  - type: paragraph
+    text: Description
+    spans: []
+  - type: paragraph
+    text: Trivial
+    spans: []
+  - type: paragraph
+    text: '4'
+    spans: []
+  - type: paragraph
+    text: Finding milk in a fridge
+    spans: []
+  - type: paragraph
+    text: Easy
+    spans: []
+  - type: paragraph
+    text: '6'
+    spans: []
+  - type: paragraph
+    text: Pouring milk into a glass
+    spans: []
+  - type: paragraph
+    text: Standard
+    spans: []
+  - type: paragraph
+    text: '9'
+    spans: []
+  - type: paragraph
+    text: Hitting a dartboard with a glass of milk
+    spans: []
+  - type: paragraph
+    text: Challenging
+    spans: []
+  - type: paragraph
+    text: '12'
+    spans: []
+  - type: paragraph
+    text: Flying a spaceship while drinking a glass of milk
+    spans: []
+  - type: paragraph
+    text: Extreme
+    spans: []
+  - type: paragraph
+    text: '15'
+    spans: []
+  - type: paragraph
+    text: Climbing a slippery wall while drinking a glass of milk
+    spans: []
+  - type: paragraph
+    text: Improbable
+    spans: []
+  - type: paragraph
+    text: '18'
+    spans: []
+  - type: paragraph
+    text: Throwing a glass of milk and getting all the milk back into its carton without
+      spilling any
+    spans: []
+  sections:
+  - title: Degrees of Success and Failure
+    slug: degrees-of-success-and-failure
+    level: 3
+    content:
+    - type: paragraph
+      text: Not all successes (or failures) are created equal. In cases where the
+        skill check rolled is significantly higher or lower than the DC, additional
+        consequences may occur. Extreme successes may be rewarded narratively (at
+        the GM’s discretion) or mechanically in systems such as combat. Conversely,
+        extreme failures may bring about negative consequences in addition to the
+        action’s failure.
+      spans: []
+    - type: paragraph
+      text: In the wall-climbing example given above, the DC was 8. If a character
+        rolls a 14 (6 over) they’re in extreme success territory; maybe they climb
+        the wall in half the time, or maybe they move soundlessly while they do it.
+        If the roll is a 4, however, they’re in extreme failure territory - maybe
+        they climb partway, then fall and take damage, or an enemy is alerted to their
+        presence.
+      spans: []
+    - type: table
+      rows:
+      - - text: Result vs DC
+          spans: []
+        - text: Outcome
+          spans: []
+      - - text: Success by 0-3
+          spans: []
+        - text: Success
+          spans: []
+      - - text: Success by 4+
+          spans: []
+        - text: Extreme Success
+          spans: []
+      - - text: Fail by 0-3
+          spans: []
+        - text: Failure
+          spans: []
+      - - text: Fail by 4+
+          spans: []
+        - text: Extreme Failure
+          spans: []
+    - type: paragraph
+      text: Result vs DC
+      spans: []
+    - type: paragraph
+      text: Outcome
+      spans: []
+    - type: paragraph
+      text: Success by 0-3
+      spans: []
+    - type: paragraph
+      text: Success
+      spans: []
+    - type: paragraph
+      text: Success by 4+
+      spans: []
+    - type: paragraph
+      text: Extreme Success
+      spans: []
+    - type: paragraph
+      text: Fail by 0-3
+      spans: []
+    - type: paragraph
+      text: Failure
+      spans: []
+    - type: paragraph
+      text: Fail by 4+
+      spans: []
+    - type: paragraph
+      text: Extreme Failure
+      spans: []
+    sections: []
+- title: Bonus Dice and Penalty Dice
+  slug: bonus-dice-and-penalty-dice
+  level: 2
+  content:
+  - type: paragraph
+    text: 'Often, situations or tactical choices in Whisperspace will grant bonus
+      dice or impose penalty dice to your character on a roll. Bonus and penalty may
+      be thought of as two sides of the same coin; they perform the same but opposite
+      function. Bonus and Penalty dice work alongside the core mechanic discussed
+      above:'
+    spans: []
+  - type: paragraph
+    text: 'Bonus die: roll your skill check plus another d12. Choose the highest die
+      rolled, then add your skill modifier to it.'
+    spans: []
+  - type: paragraph
+    text: 'Penalty die: roll your skill check plus another d12. Choose the lowest
+      die rolled, then add your modifier to it.'
+    spans: []
+  sections:
+  - title: Stacking Bonuses and Penalties
+    slug: stacking-bonuses-and-penalties
+    level: 3
+    content:
+    - type: paragraph
+      text: You may certainly come across situations in which you will receive a bonus
+        die from more than one source. These are used together (they ‘stack’) up to
+        a maximum of 2 bonus dice. The same is true of penalty dice. If you were to
+        roll an attack with 2 penalty dice, for example, you would roll 3d12 (one
+        from the attack action, 2 as penalty dice), choose the lowest number on any
+        of those dice, then add your modifier to that number.
+      spans: []
+    - type: paragraph
+      text: Bonus dice and penalty dice cancel each other out. Let’s say you receive
+        2 Bonus dice and 1 Penalty die on a roll. 1 Penalty die would cancel out 1
+        Bonus die, leaving you to make your roll with 1 Bonus die. 2 Bonus dice and
+        2 Penalty dice would equate to no Bonus or Penalty dice; you’d simply make
+        the normal roll. 4 Bonus dice and 2 Penalty dice would leave you with 2 Bonus
+        dice to roll.
+      spans: []
+    sections: []

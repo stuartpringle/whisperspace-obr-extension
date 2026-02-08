@@ -1,0 +1,640 @@
+title: Nanomancy
+slug: nanomancy
+level: 1
+content:
+- type: paragraph
+  text: Nanomancy is not magic, though it is often mistaken for it. To the outsider,
+    what else could lift rocks, fry machinery at will, or heal in moments what should
+    take weeks to mend?
+  spans: []
+- type: paragraph
+  text: 'It is the deliberate manipulation of nearly-omnipresent nanites; microscopic
+    machines left behind by a dead empire and now woven into the fabric of countless
+    worlds. By exerting intense mental focus, a Nanomancer issues commands that these
+    swarms obey: heat blooms, wounds knit, and objects move.'
+  spans: []
+- type: paragraph
+  text: The process is neither safe nor fully understood. Human brains were not designed
+    to interface directly with these machines, and every act of nanomancy strains
+    the Nanomancer and may draw unwanted attention to them.
+  spans: []
+sections:
+- title: Nanite Density
+  slug: nanite-density
+  level: 2
+  content:
+  - type: paragraph
+    text: A Nanomancer’s abilities function only in the presence of nanites. Most
+      places have at least a low density of nanites, though it’s not unheard of for
+      a planet or space station to be entirely devoid of nanites. Some planets (especially
+      former Imperial core worlds) have high or even extreme densities of nanites,
+      while some Nanomancers take to bringing nanites with them wherever they go.
+      Nanomantic Effects cannot be used when Nanite density is 0. Nanite density is
+      abbreviated ND for the remainder of this section.
+    spans: []
+  - type: paragraph
+    text: A GM may choose the ND of a location or area as they see fit, remembering
+      that most places are 2 ND, while space (and many other hostile environments)
+      are almost always 0. If uncertain, roll 1d12 and compare it to the Nanite Density
+      table below.
+    spans: []
+  - type: table
+    rows:
+    - - text: D12 roll
+        spans: []
+      - text: Nanite Density
+        spans: []
+    - - text: '1'
+        spans: []
+      - text: None (0)
+        spans: []
+    - - text: 2-4
+        spans: []
+      - text: Low (1)
+        spans: []
+    - - text: 5-8
+        spans: []
+      - text: Medium (2)
+        spans: []
+    - - text: 9-11
+        spans: []
+      - text: High (3)
+        spans: []
+    - - text: '12'
+        spans: []
+      - text: Extreme (4)
+        spans: []
+  - type: paragraph
+    text: D12 roll
+    spans: []
+  - type: paragraph
+    text: Nanite Density
+    spans: []
+  - type: paragraph
+    text: '1'
+    spans: []
+  - type: paragraph
+    text: None (0)
+    spans: []
+  - type: paragraph
+    text: 2-4
+    spans: []
+  - type: paragraph
+    text: Low (1)
+    spans: []
+  - type: paragraph
+    text: 5-8
+    spans: []
+  - type: paragraph
+    text: Medium (2)
+    spans: []
+  - type: paragraph
+    text: 9-11
+    spans: []
+  - type: paragraph
+    text: High (3)
+    spans: []
+  - type: paragraph
+    text: '12'
+    spans: []
+  - type: paragraph
+    text: Extreme (4)
+    spans: []
+  sections:
+  - title: Local ND
+    slug: local-nd
+    level: 3
+    content:
+    - type: paragraph
+      text: Some Nanomantic Effects can temporarily increase or decrease the ND (rolling
+        an extreme success; using a Nanomantic Effect farther than its stated range).
+        These increases and reductions apply only to the effect itself; the ND of
+        the area (the ‘local ND’) remains unchanged.
+      spans: []
+    sections: []
+  - title: EMP Effects
+    slug: emp-effects
+    level: 3
+    content:
+    - type: paragraph
+      text: Any EMP effect affects nanites as any other electronic devices in the
+        area. After an EMP (X) effect is triggered, reduce the Local ND by 1 for X
+        rounds.
+      spans: []
+    sections: []
+  - title: Nanite Density of 0
+    slug: nanite-density-of-0
+    level: 3
+    content:
+    - type: paragraph
+      text: Whenever ND drops to 0 (either the local ND or through decreases to ND),
+        Nanomantic Effects automatically fail, though if attempted they still cost
+        actions and impose stress gain.
+      spans: []
+    sections: []
+- title: Using Nanomancy
+  slug: using-nanomancy
+  level: 2
+  content:
+  - type: paragraph
+    text: 'To use a Nanomantic Effect, you must have the Nanomancy feat and:'
+    spans: []
+  - type: paragraph
+    text: Roll 1d12 + MENT + Stress (DC determined by the Nanomantic Effect)
+    spans: []
+  - type: paragraph
+    text: For example, a character with a MENT of 1 and 2 stress would roll 1d12 and
+      add 3. Compare your result to the DC of the Nanomantic Effect.
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Extreme success: effect heightened; use the critical hit table. Instead
+        of applying extra damage, raise the ND for the effect by that much.'
+      spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: 'Success: effect occurs as normal.'
+      spans: []
+    - text: 'Failure: effect fails; no result.'
+      spans: []
+    - text: 'Extreme Failure: effect fails; no result. Gain +1 stress. If this would
+        raise your stress above 4, instead take 1 unmitigated damage.'
+      spans: []
+  - type: paragraph
+    text: Some Nanomantic Effects specify what happens on various levels of success
+      or failure. Those effects do not replace these; instead, they occur simultaneously
+      with them.
+    spans: []
+  - type: paragraph
+    text: Many Nanomantic Effects may be used in ways not obvious in their name or
+      effect. For example, the Kinetic effect ‘Push/Pull’ may be used by the Nanomancer
+      on themselves to levitate.
+    spans: []
+  sections:
+  - title: Nanomancy Fields
+    slug: nanomancy-fields
+    level: 3
+    content:
+    - type: paragraph
+      text: Not all Nanomancers specialize in the same fields; while some nanites
+        may have vastly different purposes, and thus only be able to fulfil certain
+        roles. When they first gain access to Nanomantic Effects, each Nanomancer
+        chooses a field (burner, physic, kinetic) as their primary field. When using
+        a Nanomantic Effect from a different field, rolls are made with +1 penalty
+        die.
+      spans: []
+    sections:
+    - title: Burner
+      slug: burner
+      level: 4
+      content:
+      - type: paragraph
+        text: Nanites that are designed to manipulate and work with energy. The most
+          common forms of energy manipulation are temperature (heat and cold) and
+          electricity.
+        spans: []
+      - type: paragraph
+        text: 'If a Nanomancer’s primary field is Burner, they gain:'
+        spans: []
+      - type: list
+        ordered: false
+        items:
+        - text: May use 2 actions to temporarily disrupt electronics within Near range.
+            This effect is not as extreme as EMP (does not shut down electronic devices
+            completely), but causes effects like static on video screens, strange
+            readings on scanners, and slight malfunctions in cyberware. This effect
+            lasts ND rounds.
+          spans: []
+        - text: Suffer 1 less damage (minimum 1) from energy sources (extreme temperature,
+            electricity, lasers, etc)
+          spans: []
+      sections: []
+    - title: Physic
+      slug: physic
+      level: 4
+      content:
+      - type: paragraph
+        text: Nanites that work with the human body, often designed as a healing system.
+          These were not programmed with ‘Do No Harm’.
+        spans: []
+      - type: paragraph
+        text: 'If a Nanomancer’s primary field is Physic, they gain:'
+        spans: []
+      - type: list
+        ordered: false
+        items:
+        - text: Gain a +ND modifier to all dying checks and checks to end physical
+            conditions.
+          spans: []
+      sections: []
+    - title: Kinetic
+      slug: kinetic
+      level: 4
+      content:
+      - type: paragraph
+        text: Interactions with physical objects; kinetic nanites are ones that focus
+          on moving or lifting things.
+        spans: []
+      - type: paragraph
+        text: 'If a Nanomancer’s primary field is Kinetic, they gain:'
+        spans: []
+      - type: list
+        ordered: false
+        items:
+        - text: Gain a +ND modifier to all Athletics, Powerlift, Finesse, and Balance
+            checks.
+          spans: []
+      sections: []
+  - title: Nanomantic Effects
+    slug: nanomantic-effects
+    level: 3
+    content:
+    - type: paragraph
+      text: Burner Effects
+      spans: []
+    - type: paragraph
+      text: Name
+      spans: []
+    - type: paragraph
+      text: DC
+      spans: []
+    - type: paragraph
+      text: Range
+      spans: []
+    - type: paragraph
+      text: Stress Cost
+      spans: []
+    - type: paragraph
+      text: Action cost
+      spans: []
+    - type: paragraph
+      text: Effect
+      spans: []
+    - type: paragraph
+      text: Thermal Bloom
+      spans: []
+    - type: paragraph
+      text: '8'
+      spans: []
+    - type: paragraph
+      text: Near
+      spans: []
+    - type: paragraph
+      text: '+1'
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: Burst of heat energy at target location; deal half ND (rounded up) damage
+        to anything within Very Near range of target.
+      spans: []
+    - type: paragraph
+      text: Absolute Zero
+      spans: []
+    - type: paragraph
+      text: '9'
+      spans: []
+    - type: paragraph
+      text: Very Near
+      spans: []
+    - type: paragraph
+      text: '+2'
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: Removal of all heat at target location; deal 2 * ND damage to anything
+        within melee range of target.
+      spans: []
+    - type: paragraph
+      text: Static Burst
+      spans: []
+    - type: paragraph
+      text: '7'
+      spans: []
+    - type: paragraph
+      text: Very Near
+      spans: []
+    - type: paragraph
+      text: 2 + 1 per action used
+      spans: []
+    - type: paragraph
+      text: 1 to 3
+      spans: []
+    - type: paragraph
+      text: Electrical energy crackles through the air. Choose an initial target,
+        then additional targets (number of actions spent equals total number of targets).
+        Each target must be within Very Near range of at least one other chosen target
+        and be capable of conducting electricity. Deal ND damage to the first and
+        half ND (rounded up) damage to any other targets. In addition, apply EMP (0
+        + ND) to anything within melee range of any of the target.
+      spans: []
+    - type: paragraph
+      text: Nullify
+      spans: []
+    - type: paragraph
+      text: '-'
+      spans: []
+    - type: paragraph
+      text: Very Near
+      spans: []
+    - type: paragraph
+      text: '+1'
+      spans: []
+    - type: paragraph
+      text: 1 reaction
+      spans: []
+    - type: paragraph
+      text: Counter a Nanomantic Effect. DC = the effect’s Nanomancy roll.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Extreme success: negate the effect. In addition, that effect cannot
+          be attempted again for 1 * ND minute(s).'
+        spans: []
+      - text: 'Success: negate the effect.'
+        spans: []
+    - type: paragraph
+      text: Physic Effects
+      spans: []
+    - type: paragraph
+      text: Name
+      spans: []
+    - type: paragraph
+      text: DC
+      spans: []
+    - type: paragraph
+      text: Range
+      spans: []
+    - type: paragraph
+      text: Stress Cost
+      spans: []
+    - type: paragraph
+      text: Action Cost
+      spans: []
+    - type: paragraph
+      text: Effect
+      spans: []
+    - type: paragraph
+      text: Regenerative Cloud
+      spans: []
+    - type: paragraph
+      text: '11'
+      spans: []
+    - type: paragraph
+      text: Melee
+      spans: []
+    - type: paragraph
+      text: 3 + 1 per action used
+      spans: []
+    - type: paragraph
+      text: 1 to 3
+      spans: []
+    - type: paragraph
+      text: Create a target location. For the duration, all living creatures within
+        Very Near range of that location heal at a rate of half ND (rounded up) light
+        wounds at the start of each of their turns. This effect lasts 1 round for
+        each action used.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Extreme success: this effect may heal (and will prioritize) moderate
+          wounds.'
+        spans: []
+    - type: paragraph
+      text: Knit Together
+      spans: []
+    - type: paragraph
+      text: 9 - ND
+      spans: []
+    - type: paragraph
+      text: Melee
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: Heal up to 1 + half ND (rounded up) light or moderate wounds on target
+        creature.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Extreme success: you may heal heavy wounds with this effect as well.'
+        spans: []
+      - text: 'Failure: give target Bleeding (1)'
+        spans: []
+      - text: 'Extreme failure: give target Bleeding (2).'
+        spans: []
+    - type: paragraph
+      text: Exsanguinate
+      spans: []
+    - type: paragraph
+      text: '7'
+      spans: []
+    - type: paragraph
+      text: Melee
+      spans: []
+    - type: paragraph
+      text: '1'
+      spans: []
+    - type: paragraph
+      text: '1'
+      spans: []
+    - type: paragraph
+      text: Give target Bleeding (0 + ND).
+      spans: []
+    - type: paragraph
+      text: Horrifying Hallucinations
+      spans: []
+    - type: paragraph
+      text: '9'
+      spans: []
+    - type: paragraph
+      text: Melee
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: Impose Blinded on target creature for rounds equal to ND. While affected,
+        target gains +1 stress at the end of each of their turns.
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: 'Extreme success: target gains +2 stress at the end of each of their
+          turns instead.'
+        spans: []
+    - type: paragraph
+      text: Target may attempt a Willpower or Composure (DC 6 + ND) check at the end
+        of each of their turns to end the effect early.
+      spans: []
+    - type: paragraph
+      text: Kinetic Effects
+      spans: []
+    - type: paragraph
+      text: Name
+      spans: []
+    - type: paragraph
+      text: DC
+      spans: []
+    - type: paragraph
+      text: Range
+      spans: []
+    - type: paragraph
+      text: Stress Cost
+      spans: []
+    - type: paragraph
+      text: Action Cost
+      spans: []
+    - type: paragraph
+      text: Effect
+      spans: []
+    - type: paragraph
+      text: Push/Pull
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Long
+      spans: []
+    - type: paragraph
+      text: '1'
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: Move an object no more than 10 bulk up to 10 * ND ft in any direction.
+        For each range band closer than long, increase the bulk this effect can move
+        by 5. If the object collides with something else, deal 1 * ND damage to it.
+      spans: []
+    - type: paragraph
+      text: Crush
+      spans: []
+    - type: paragraph
+      text: '9'
+      spans: []
+    - type: paragraph
+      text: Medium
+      spans: []
+    - type: paragraph
+      text: '2'
+      spans: []
+    - type: paragraph
+      text: '1'
+      spans: []
+    - type: paragraph
+      text: Deal 1 + ND damage. If target is Immobile, double the damage dealt.
+      spans: []
+    - type: paragraph
+      text: Hold
+      spans: []
+    - type: paragraph
+      text: '7'
+      spans: []
+    - type: paragraph
+      text: Medium
+      spans: []
+    - type: paragraph
+      text: '3'
+      spans: []
+    - type: paragraph
+      text: '3'
+      spans: []
+    - type: paragraph
+      text: Impose Immobile on target for ND number of rounds. Target may attempt
+        an Endurance or Athletics (DC6 + ND) check at the end of each of their turns
+        to end the effect early.
+      spans: []
+    - type: paragraph
+      text: Shrapnel
+      spans: []
+    - type: paragraph
+      text: '8'
+      spans: []
+    - type: paragraph
+      text: Near
+      spans: []
+    - type: paragraph
+      text: 0 + 1 per action used
+      spans: []
+    - type: paragraph
+      text: 1 to 3
+      spans: []
+    - type: paragraph
+      text: Deal 1 + ND damage to anything within melee range of target. Increase
+        the range of this effect by 1 range band for each action used beyond 1.
+      spans: []
+    sections: []
+- title: Fine Control
+  slug: fine-control
+  level: 2
+  content:
+  - type: paragraph
+    text: Nanomantic Effects can be controlled (and scaled down) by the Nanomancer;
+      Thermal Bloom could easily be used to warm a pot of soup instead of char a creature’s
+      flesh or even to keep a creature from freezing to death.
+    spans: []
+  - type: paragraph
+    text: As written, Nanomantic Effects display the maximum possible effect from
+      their usage. If you wish to scale an effect back (reduced or no damage, smaller
+      area, etc), you may do so.
+    spans: []
+  sections:
+  - title: Range
+    slug: range
+    level: 3
+    content:
+    - type: paragraph
+      text: Nanomantic Effects lose power rapidly outside their normal ranges. When
+        attempting to use an effect farther away than its range, reduce the ND by
+        1 for each range band beyond its normal range. For example, on a planet with
+        ND 3, using Thermal Bloom (range of Near) at Long range (2 range bands above
+        the effect’s normal range) would deal 1 damage (effect is 1 * ND).
+      spans: []
+    sections: []
+- title: Stress is Both Cost and Fuel
+  slug: stress-is-both-cost-and-fuel
+  level: 2
+  content:
+  - type: paragraph
+    text: Nanomancy is not gentle on the mind; creating the simplest Nanomantic Effect
+      is a strain as human brains were not designed to interface with technology in
+      such a raw, visceral way.
+    spans: []
+  - type: paragraph
+    text: At the same time, strong emotions can help strengthen the bond between flesh
+      and machine. Nanomancers are often at their strongest when they’re at their
+      most desperate, like a cornered animal. Thus, stress is not only a side-effect
+      of Nanomancy, but also a fuel for more consistent and stronger effects.
+    spans: []
+  - type: paragraph
+    text: 'Once your stress reaches PTSD range (6+), Nanomancy becomes impossible
+      to exert fine control over:'
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: Nanomantic Effects used must be resolved at its full listed magnitude,
+        range, and area, and cannot exclude unintended targets.
+      spans: []
+    - text: Any extreme success rolled on a Nanomancy check fries the circuits of
+        many nearby nanites. After the Nanomantic Effect is resolved, reduce the local
+        ND by 1 for 1 day (GM’s discretion).
+      spans: []
+  sections: []

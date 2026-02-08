@@ -1,0 +1,273 @@
+title: Hacking
+slug: hacking
+level: 1
+content:
+- type: paragraph
+  text: Whether you’re trying to break into a high-security corporate database, access
+    the security camera feed from a convenience store, or force security drones to
+    view you and your allies as friendlies, hacking can be an incredibly powerful
+    tool, depending on the campaign setting and goals.
+  spans: []
+- type: paragraph
+  text: Example System Tiers and DCs
+  spans: []
+- type: paragraph
+  text: Tier
+  spans: []
+- type: paragraph
+  text: System Type
+  spans: []
+- type: paragraph
+  text: Hacking DC
+  spans: []
+- type: paragraph
+  text: '0'
+  spans: []
+- type: paragraph
+  text: Public terminals, info kiosks
+  spans: []
+- type: paragraph
+  text: '6'
+  spans: []
+- type: paragraph
+  text: '1'
+  spans: []
+- type: paragraph
+  text: Basic civilian tech (locks, doors)
+  spans: []
+- type: paragraph
+  text: '8'
+  spans: []
+- type: paragraph
+  text: '2'
+  spans: []
+- type: paragraph
+  text: Small business systems, cameras
+  spans: []
+- type: paragraph
+  text: '10'
+  spans: []
+- type: paragraph
+  text: '3'
+  spans: []
+- type: paragraph
+  text: Corporate terminals, basic ship systems
+  spans: []
+- type: paragraph
+  text: '12'
+  spans: []
+- type: paragraph
+  text: '4'
+  spans: []
+- type: paragraph
+  text: Secure corp nodes, security drones
+  spans: []
+- type: paragraph
+  text: '14'
+  spans: []
+- type: paragraph
+  text: '5'
+  spans: []
+- type: paragraph
+  text: Military-grade systems, ship AI
+  spans: []
+- type: paragraph
+  text: '16'
+  spans: []
+- type: paragraph
+  text: 6+
+  spans: []
+- type: paragraph
+  text: Black Ops secure servers, hostile AI
+  spans: []
+- type: paragraph
+  text: 18 or above
+  spans: []
+sections:
+- title: 'Optional Rule: Simple Hacking'
+  slug: optional-rule-simple-hacking
+  level: 2
+  content:
+  - type: paragraph
+    text: To keep things simple and gameplay quick, the GM may choose to use Simple
+      Hacking for all (or some) Hacking skill checks.
+    spans: []
+  - type: paragraph
+    text: Simple Hacking consists of making a single Hacking skill check (the DC per
+      tier level is determined by the table above). On a success, the effect the character
+      wished to achieve is achieved. On a failure, countermeasures kick in or the
+      hack simply fails.
+    spans: []
+  - type: paragraph
+    text: For every tier of hacking equipment a character uses to help with this hack,
+      a character receives a +1 bonus to her roll.
+    spans: []
+  sections: []
+- title: Hacking Sequence
+  slug: hacking-sequence
+  level: 2
+  content:
+  - type: paragraph
+    text: 'Some coders say hacking is like an intricate dance: there are specific
+      steps to follow and, if you skip any, the results could be bad. Each step requires
+      a Hacking skill check against the DC of the system you’re trying to break into
+      (taking into account any modifiers from software used and previous steps in
+      the sequence).'
+    spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: Scan (optional)
+      spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: Identify nearby systems, node type, security
+      spans: []
+    - text: Grants insight into System Tier of target system, its current Alert Level,
+        as well as possible countermeasures
+      spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: Bypass (optional)
+      spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: Get around static defenses (firewalls, encryption, etc)
+      spans: []
+    - text: Success reduces the DC of subsequent hacking checks by 1
+      spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: Spoof (optional)
+      spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: Trick the system into believing you’re a valid user
+      spans: []
+    - text: Success grants a Bonus die for use on the Main Hack check.
+      spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: Main Hack
+      spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: 'Perform your goal: disable cameras, steal data, etc'
+      spans: []
+    - text: Determines the overall success of your hack
+      spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: Cover tracks (optional)
+      spans: []
+  - type: list
+    ordered: true
+    items:
+    - text: Prevent or delay detection of the intrusion
+      spans: []
+  sections:
+  - title: Skipping Steps
+    slug: skipping-steps
+    level: 3
+    content:
+    - type: paragraph
+      text: 'Every step except the Main Hack is optional and players may choose to
+        skip them to save time or because they do not have appropriate gear. Each
+        skipped step adds:'
+      spans: []
+    - type: list
+      ordered: false
+      items:
+      - text: One Penalty Die to Main Hack check
+        spans: []
+      - text: Increased Alert Level
+        spans: []
+    sections: []
+  - title: Countermeasures & Alert Level
+    slug: countermeasures-alert-level
+    level: 3
+    content:
+    - type: paragraph
+      text: Many systems include either (or both) passive and active countermeasures
+        to safeguard them from unwanted intrusion. These range from simple access
+        logs that prove someone was in the system to advanced active countermeasures
+        like Spikes, which can disrupt the hack, detect the location of the hacker,
+        or even damage the hacker’s rig.
+      spans: []
+    - type: paragraph
+      text: These countermeasures work together to keep systems safe. They only trigger
+        when illicit activity is detected - this is known as the system’s Alert Level.
+      spans: []
+    - type: paragraph
+      text: For each failed (or skipped) step, the system’s Alert Level goes up by
+        1. When it reaches 5, the system is fully aware it is being infiltrated and
+        will use its countermeasures to full effect.
+      spans: []
+    - type: paragraph
+      text: Some countermeasures may activate before the system’s Alert Level gets
+        to 5, and some systems have a constant alert level higher than 0 even before
+        the hacking begins.
+      spans: []
+    sections: []
+  - title: Hacking Gear
+    slug: hacking-gear
+    level: 3
+    content:
+    - type: paragraph
+      text: 'Hacking gear comes in two types: hardware and software. For a full list,
+        see the section in Equipment & Gear'
+      spans: []
+    sections:
+    - title: Hardware (Rigs)
+      slug: hardware-rigs
+      level: 4
+      content:
+      - type: paragraph
+        text: Rigs have tiers, just as enemy systems have tiers. To hack into a system,
+          the hacker’s rig tier must be equal to or greater than the system’s tier.
+          To use software on the rig, the rig tier must be equal to or greater than
+          the software’s tier.
+        spans: []
+      - type: paragraph
+        text: Rigs are limited; most can only handle a small number of programs loaded
+          at once. Loading or unloading a program takes ten minutes, so choose your
+          loadout carefully.
+        spans: []
+      sections: []
+    - title: Software
+      slug: software
+      level: 4
+      content:
+      - type: paragraph
+        text: Software is really the backbone of any hacking attempt. These are code
+          snippets and scripts used to perform specific functions during a hack. To
+          perform a hacking Scan, for example, a character is required to have software
+          that can perform the Scan active on his rig. Many software packages allow
+          more than one hack type, and some even provide bonuses to those hacks.
+        spans: []
+      - type: paragraph
+        text: A character may attempt to use software of a lower tier than the system
+          he is breaking into during a hack, if he wishes. Doing so increases the
+          DC of the hack by the difference in tiers. For example, attempting to use
+          a Tier 1 scan program on a Tier 3 system would result in a DC of 11 (base
+          DC for hacking a Tier 3 system is 9, the difference between Tier 1 and Tier
+          3 is two, 9 + 2 = 11). Conversely, using software of a higher tier than
+          the system reduces the DC by the difference in tiers.
+        spans: []
+      sections: []
+- title: Data Decryption
+  slug: data-decryption
+  level: 2
+  content:
+  - type: paragraph
+    text: Sometimes, characters need to decrypt data. Yay!
+    spans: []
+  sections: []

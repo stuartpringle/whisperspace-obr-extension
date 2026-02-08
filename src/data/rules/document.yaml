@@ -1,0 +1,384 @@
+title: Document
+slug: document
+level: 0
+content:
+- type: paragraph
+  text: Whisperspace
+  spans: []
+- type: paragraph
+  text: Skippable Intro
+  spans: []
+- type: paragraph
+  text: Whisperspace is a tabletop roleplaying game system created by Stuart Pringle.
+    In this book you will find the core rules of play as well as suggestions on how
+    to make the most of them. This book does not include a setting, however it is
+    loosely based on a modern or near-future setting and can be adapted for use as
+    required.
+  spans: []
+- type: paragraph
+  text: 'Whisperspace began as an extremely simple system of rules I put together
+    when creating one-shot adventures. I wanted the adventures to be system-agnostic
+    and I didn’t want to have to put a lot of thought into how to alter existing systems
+    to allow me to put together the character archetypes I wanted to include. This
+    had the advantage of being useful for players who were unfamiliar with existing
+    roleplaying game rulesets to play a new setting easily and quickly. I’ve since
+    rebuilt the system from the ground up but I’ve kept the core identity of what
+    Whisperspace is: an easy-to-play, simple rule system designed to promote fun,
+    quick-paced gameplay and minimize dead time during your gaming sessions.'
+  spans: []
+- type: paragraph
+  text: 'Todo: bring back empathy somehow to tie into empaths, feats, and execute
+    action, look over execute action, new nanomancer field updates to burner, dying
+    condition…. Also add cyberware to interact with dying, maybe by rolling cybernetics?
+    Or using the cybernetics rank as a modifier, like rounds you can auto-succeed
+    a dying check or something.'
+  spans: []
+- type: paragraph
+  text: Table of Contents
+  spans: []
+- type: paragraph
+  text: Core Philosophies 5
+  spans: []
+- type: paragraph
+  text: Core Game Principles 5
+  spans: []
+- type: paragraph
+  text: Specific Trumps General 5
+  spans: []
+- type: paragraph
+  text: Your Character Affects the Roll. The World Affects the Difficulty. 6
+  spans: []
+- type: paragraph
+  text: Core Mechanics 6
+  spans: []
+- type: paragraph
+  text: D12 System 6
+  spans: []
+- type: paragraph
+  text: Difficulty Class 7
+  spans: []
+- type: paragraph
+  text: Bonus Dice and Penalty Dice 8
+  spans: []
+- type: paragraph
+  text: Character Creation 8
+  spans: []
+- type: paragraph
+  text: 1. Concept 9
+  spans: []
+- type: paragraph
+  text: 2. Origin, Background, and Motivation 9
+  spans: []
+- type: paragraph
+  text: 3. Pick an Archetype or a Feat 11
+  spans: []
+- type: paragraph
+  text: 4. Choose a Learning Focus 11
+  spans: []
+- type: paragraph
+  text: 5. Spend Skill Points (SP) 11
+  spans: []
+- type: paragraph
+  text: 6. Attribute Calculation 12
+  spans: []
+- type: paragraph
+  text: 7. Equipment 12
+  spans: []
+- type: paragraph
+  text: 8. Final Steps 12
+  spans: []
+- type: paragraph
+  text: 9. Go play! 13
+  spans: []
+- type: paragraph
+  text: Attributes and Skills 13
+  spans: []
+- type: paragraph
+  text: Attributes 13
+  spans: []
+- type: paragraph
+  text: Skills 14
+  spans: []
+- type: paragraph
+  text: Archetypes and Feats 20
+  spans: []
+- type: paragraph
+  text: Stress 26
+  spans: []
+- type: paragraph
+  text: Stress From Damage 26
+  spans: []
+- type: paragraph
+  text: Stress Penalties 27
+  spans: []
+- type: paragraph
+  text: Crucible Test 27
+  spans: []
+- type: paragraph
+  text: PTSD Range (stress levels 6-8) 27
+  spans: []
+- type: paragraph
+  text: Stress Breakdowns 28
+  spans: []
+- type: paragraph
+  text: Reducing Stress 28
+  spans: []
+- type: paragraph
+  text: Health & Wounds 30
+  spans: []
+- type: paragraph
+  text: Wound Tracking 30
+  spans: []
+- type: paragraph
+  text: Wound Severity Effects 30
+  spans: []
+- type: paragraph
+  text: Healing 30
+  spans: []
+- type: paragraph
+  text: Poisons and Toxins 31
+  spans: []
+- type: paragraph
+  text: Stealth 31
+  spans: []
+- type: paragraph
+  text: Movement 31
+  spans: []
+- type: paragraph
+  text: Movement Bonuses and Penalties 31
+  spans: []
+- type: paragraph
+  text: Types of Movement 32
+  spans: []
+- type: paragraph
+  text: Standing from prone 32
+  spans: []
+- type: paragraph
+  text: Swimming 32
+  spans: []
+- type: paragraph
+  text: Climbing 33
+  spans: []
+- type: paragraph
+  text: Carrying Capacity 34
+  spans: []
+- type: paragraph
+  text: Combat 36
+  spans: []
+- type: paragraph
+  text: Action Economy 36
+  spans: []
+- type: paragraph
+  text: Surprise 36
+  spans: []
+- type: paragraph
+  text: Seizing the Initiative 37
+  spans: []
+- type: paragraph
+  text: Attacking 37
+  spans: []
+- type: paragraph
+  text: Melee Combat 39
+  spans: []
+- type: paragraph
+  text: Armour 41
+  spans: []
+- type: paragraph
+  text: Combat actions 41
+  spans: []
+- type: paragraph
+  text: Ranges 45
+  spans: []
+- type: paragraph
+  text: Cover 46
+  spans: []
+- type: paragraph
+  text: Resting 47
+  spans: []
+- type: paragraph
+  text: Conditions 48
+  spans: []
+- type: paragraph
+  text: Grappled 48
+  spans: []
+- type: paragraph
+  text: Unconscious 48
+  spans: []
+- type: paragraph
+  text: Agonized (X) 48
+  spans: []
+- type: paragraph
+  text: Asphyxiating 48
+  spans: []
+- type: paragraph
+  text: Dying 48
+  spans: []
+- type: paragraph
+  text: EMP (X) 49
+  spans: []
+- type: paragraph
+  text: Floating 49
+  spans: []
+- type: paragraph
+  text: Demoralized 49
+  spans: []
+- type: paragraph
+  text: Frightened 49
+  spans: []
+- type: paragraph
+  text: Fleeing 49
+  spans: []
+- type: paragraph
+  text: Stunned 49
+  spans: []
+- type: paragraph
+  text: Immobile 50
+  spans: []
+- type: paragraph
+  text: Blinded 50
+  spans: []
+- type: paragraph
+  text: Bleeding (X) 50
+  spans: []
+- type: paragraph
+  text: Frenzied 50
+  spans: []
+- type: paragraph
+  text: Sluggish 50
+  spans: []
+- type: paragraph
+  text: Environments 50
+  spans: []
+- type: paragraph
+  text: Hard Vac 50
+  spans: []
+- type: paragraph
+  text: Zero-G 50
+  spans: []
+- type: paragraph
+  text: Hacking 51
+  spans: []
+- type: paragraph
+  text: 'Optional Rule: Simple Hacking 51'
+  spans: []
+- type: paragraph
+  text: Hacking Sequence 52
+  spans: []
+- type: paragraph
+  text: Data Decryption 53
+  spans: []
+- type: paragraph
+  text: Character Progression 53
+  spans: []
+- type: paragraph
+  text: Downtime 54
+  spans: []
+- type: paragraph
+  text: Exploration 54
+  spans: []
+- type: paragraph
+  text: Equipment & Gear 54
+  spans: []
+- type: paragraph
+  text: The Right Tool for the Job 54
+  spans: []
+- type: paragraph
+  text: Salvaging 54
+  spans: []
+- type: paragraph
+  text: Crafting 54
+  spans: []
+- type: paragraph
+  text: Repair and Modification 54
+  spans: []
+- type: paragraph
+  text: Gear List 56
+  spans: []
+- type: paragraph
+  text: Hacking Equipment 68
+  spans: []
+- type: paragraph
+  text: Robots 69
+  spans: []
+- type: paragraph
+  text: Starships 70
+  spans: []
+- type: paragraph
+  text: Ship Movement 70
+  spans: []
+- type: paragraph
+  text: Basic Functions (Every Ship Has These) 72
+  spans: []
+- type: paragraph
+  text: Stock Ship Models 72
+  spans: []
+- type: paragraph
+  text: Building Your Own Ships 72
+  spans: []
+- type: paragraph
+  text: Modules 75
+  spans: []
+- type: paragraph
+  text: Empaths 80
+  spans: []
+- type: paragraph
+  text: Using Empathy 81
+  spans: []
+- type: paragraph
+  text: Empathic Paths 81
+  spans: []
+- type: paragraph
+  text: Empathic Abilities 82
+  spans: []
+- type: paragraph
+  text: Empaths and Machines 83
+  spans: []
+- type: paragraph
+  text: Nanomancy 83
+  spans: []
+- type: paragraph
+  text: Nanite Density 84
+  spans: []
+- type: paragraph
+  text: Using Nanomancy 85
+  spans: []
+- type: paragraph
+  text: Fine Control 88
+  spans: []
+- type: paragraph
+  text: Stress is Both Cost and Fuel 88
+  spans: []
+- type: paragraph
+  text: The World 89
+  spans: []
+- type: paragraph
+  text: The Halcyon Empire 89
+  spans: []
+- type: paragraph
+  text: The Shatterbelt 89
+  spans: []
+- type: paragraph
+  text: Whisperspace & The Anchorate 89
+  spans: []
+- type: paragraph
+  text: The Mega-Corporations 90
+  spans: []
+- type: paragraph
+  text: Whisper Cults 91
+  spans: []
+- type: paragraph
+  text: The New Dawn 92
+  spans: []
+- type: paragraph
+  text: Kael’s Remnant 92
+  spans: []
+- type: paragraph
+  text: The Black Suns 93
+  spans: []
+- type: paragraph
+  text: Nanites, Sensitives, and Nanomancy 93
+  spans: []
+- type: paragraph
+  text: Empaths 95
+  spans: []
+sections: []

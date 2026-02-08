@@ -1,0 +1,821 @@
+title: Attributes and Skills
+slug: attributes-and-skills
+level: 1
+content: []
+sections:
+- title: Attributes
+  slug: attributes
+  level: 2
+  content:
+  - type: paragraph
+    text: Attributes are a measurement of how focused on different areas of development
+      your character is. For example, an athlete would have a high PHYS, since they’ve
+      developed their body primarily. A scientist would likely have a high MENT.
+    spans: []
+  - type: paragraph
+    text: Attributes act as skill categories, are sometimes asked for in the form
+      of attribute rolls (such as rolling a reflex check to determine your initiative
+      order in combat), and also as a baseline for all skills related to them. No
+      skill check can have a result lower than its related attribute.
+    spans: []
+  - type: paragraph
+    text: For example, if your character has a PHYS attribute of 2 but a Powerlift
+      of 0, every Powerlift check you roll will have a result of 2 or higher (even
+      if you roll a 1 and add -1 from your Powerlift skill, which would normally give
+      you a result of 0). This reflects that, although you are not a particularly
+      gifted powerlifter, your generally good physique allows you to have some basic
+      competence in that area.
+    spans: []
+  - type: table
+    rows:
+    - - text: Attribute
+        spans: []
+      - text: Short Form
+        spans: []
+      - text: Description
+        spans: []
+    - - text: Physique
+        spans: []
+      - text: PHYS
+        spans: []
+      - text: Physical prowess, stamina, strength, and overall fitnessEach point in
+          Physique increases your carrying capacityEvery point in Physique increases
+          your movement speed by 5ftSoldiers and brawlers typically have high PHYS
+        spans: []
+    - - text: Reflex
+        spans: []
+      - text: REF
+        spans: []
+      - text: Quickness of mind and body sometimes bordering on instinctReflex is
+          rolled to determine initiative order in combatPilots, Martial Artists, and
+          Spiderman are all known for high REF
+        spans: []
+    - - text: Social
+        spans: []
+      - text: SOC
+        spans: []
+      - text: Empathy, charm, quickness of wit, gravitas, personal magnetism, and
+          picking up on social cuesDiplomats and empaths typically have high SOC
+        spans: []
+    - - text: Mental
+        spans: []
+      - text: MENT
+        spans: []
+      - text: Acuity, keenness of mind, learning ability, and mental toughnessScientists,
+          mechanics, and hackers are likely to want high MENT
+        spans: []
+  - type: paragraph
+    text: Attribute
+    spans: []
+  - type: paragraph
+    text: Short Form
+    spans: []
+  - type: paragraph
+    text: Description
+    spans: []
+  - type: paragraph
+    text: Physique
+    spans: []
+  - type: paragraph
+    text: PHYS
+    spans: []
+  - type: paragraph
+    text: Physical prowess, stamina, strength, and overall fitness
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: Each point in Physique increases your carrying capacity
+      spans: []
+    - text: Every point in Physique increases your movement speed by 5ft
+      spans: []
+    - text: Soldiers and brawlers typically have high PHYS
+      spans: []
+  - type: paragraph
+    text: Reflex
+    spans: []
+  - type: paragraph
+    text: REF
+    spans: []
+  - type: paragraph
+    text: Quickness of mind and body sometimes bordering on instinct
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: Reflex is rolled to determine initiative order in combat
+      spans: []
+    - text: Pilots, Martial Artists, and Spiderman are all known for high REF
+      spans: []
+  - type: paragraph
+    text: Social
+    spans: []
+  - type: paragraph
+    text: SOC
+    spans: []
+  - type: paragraph
+    text: Empathy, charm, quickness of wit, gravitas, personal magnetism, and picking
+      up on social cues
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: Diplomats and empaths typically have high SOC
+      spans: []
+  - type: paragraph
+    text: Mental
+    spans: []
+  - type: paragraph
+    text: MENT
+    spans: []
+  - type: paragraph
+    text: Acuity, keenness of mind, learning ability, and mental toughness
+    spans: []
+  - type: list
+    ordered: false
+    items:
+    - text: Scientists, mechanics, and hackers are likely to want high MENT
+      spans: []
+  sections:
+  - title: Cool Under Fire
+    slug: cool-under-fire
+    level: 3
+    content:
+    - type: paragraph
+      text: 'The one outlier to these attributes is Cool Under Fire, which denotes
+        a character’s ability to withstand the incredible strain of dangerous situations.
+        This attribute is determined by the following formula:'
+      spans: []
+    - type: paragraph
+      text: Cool Under Fire = 1 + (Instinct + Willpower + Bearing + Toughness + Tactics
+        ÷ 5) rounded up to the next whole number.
+      spans: []
+    - type: paragraph
+      text: This means if you round 2.1, it will become 3. 2.9 will also become 3.
+        1.9 will become 2, and so on.
+      spans: []
+    sections: []
+- title: Skills
+  slug: skills
+  level: 2
+  content:
+  - type: paragraph
+    text: Characters in Whisperspace are defined primarily through their choices in
+      Skills.
+    spans: []
+  sections:
+  - title: Skill Checks
+    slug: skill-checks
+    level: 3
+    content:
+    - type: paragraph
+      text: Skill levels determine what modifier you add to your skill check roll.
+        Except for level 0 skills (completely untrained), you will add your skill
+        rank as a modifier to all checks for that skill. For example, a Melee (weapons)
+        skill check would entail rolling 1d12 and adding your Melee (weapons) skill
+        rank to it.
+      spans: []
+    sections:
+    - title: Skill Ranks
+      slug: skill-ranks
+      level: 4
+      content:
+      - type: paragraph
+        text: Your skill rank is simply how many points you’ve put into a skill. So
+          if you’ve put 3 points into your Balance skill, it has a skill rank of 3.
+        spans: []
+      sections: []
+    - title: Untrained Rolls
+      slug: untrained-rolls
+      level: 4
+      content:
+      - type: paragraph
+        text: A rank 0 skill is considered untrained. When rolling an untrained skill,
+          roll with a -1 modifier. This emphasizes the difference between an untrained
+          skill (modifier of -1) and a trained skill of rank 1 (modifier of +1).
+        spans: []
+      sections: []
+  - title: Learned Skills
+    slug: learned-skills
+    level: 3
+    content:
+    - type: paragraph
+      text: Learned skills represent training, study, and long-term practice. Learned
+        skills outside of your chosen Learning Focus (Combat, Education, or Vehicles)
+        cannot exceed rank 2.
+      spans: []
+    - type: paragraph
+      text: If you make a skill check using a rank 0 skill within your chosen Learning
+        Focus, ignore the usual -1 penalty for untrained rolls. Instead, treat the
+        roll as 1d12 + 0.
+      spans: []
+    - type: paragraph
+      text: 'Example:'
+      spans: []
+    - type: paragraph
+      text: Your Learning Focus is Education.
+      spans: []
+    - type: paragraph
+      text: You attempt a First Aid check, but have rank 0 in First Aid.
+      spans: []
+    - type: paragraph
+      text: Normally, you would roll 1d12 - 1, but because First Aid is part of your
+        chosen Learning focus, you instead roll 1d12 + 0.
+      spans: []
+    sections:
+    - title: Combat Learning Focus
+      slug: combat-learning-focus
+      level: 4
+      content:
+      - type: table
+        rows:
+        - - text: Combat Learning Focus Skills
+            spans: []
+          - text: Description
+            spans: []
+        - - text: Melee (weapons)
+            spans: []
+          - text: Proficiency with melee weapons (bar stools, katanas)
+            spans: []
+        - - text: Melee (unarmed)
+            spans: []
+          - text: Unarmed fighting
+            spans: []
+        - - text: Weapons (light)
+            spans: []
+          - text: Pistols, SMGs
+            spans: []
+        - - text: Weapons (medium)
+            spans: []
+          - text: Shotguns, rifles
+            spans: []
+        - - text: Weapons (heavy)
+            spans: []
+          - text: Autocannons, mortars
+            spans: []
+        - - text: Weapons (exotic)
+            spans: []
+          - text: Experimental weapons, high-tech weaponry
+            spans: []
+        - - text: Power Armour
+            spans: []
+          - text: Use and abuse of the best armour there is
+            spans: []
+        - - text: Explosives
+            spans: []
+          - text: Make things go boom without going boom yourself
+            spans: []
+        - - text: Tactics
+            spans: []
+          - text: Strategic thinking, setting up ambushes perhaps (or spotting where
+              they may be set up by someone else), and other military-type training
+              that focuses your character on the battlefield
+            spans: []
+      - type: paragraph
+        text: Combat Learning Focus Skills
+        spans: []
+      - type: paragraph
+        text: Description
+        spans: []
+      - type: paragraph
+        text: Melee (weapons)
+        spans: []
+      - type: paragraph
+        text: Proficiency with melee weapons (bar stools, katanas)
+        spans: []
+      - type: paragraph
+        text: Melee (unarmed)
+        spans: []
+      - type: paragraph
+        text: Unarmed fighting
+        spans: []
+      - type: paragraph
+        text: Weapons (light)
+        spans: []
+      - type: paragraph
+        text: Pistols, SMGs
+        spans: []
+      - type: paragraph
+        text: Weapons (medium)
+        spans: []
+      - type: paragraph
+        text: Shotguns, rifles
+        spans: []
+      - type: paragraph
+        text: Weapons (heavy)
+        spans: []
+      - type: paragraph
+        text: Autocannons, mortars
+        spans: []
+      - type: paragraph
+        text: Weapons (exotic)
+        spans: []
+      - type: paragraph
+        text: Experimental weapons, high-tech weaponry
+        spans: []
+      - type: paragraph
+        text: Power Armour
+        spans: []
+      - type: paragraph
+        text: Use and abuse of the best armour there is
+        spans: []
+      - type: paragraph
+        text: Explosives
+        spans: []
+      - type: paragraph
+        text: Make things go boom without going boom yourself
+        spans: []
+      - type: paragraph
+        text: Tactics
+        spans: []
+      - type: paragraph
+        text: Strategic thinking, setting up ambushes perhaps (or spotting where they
+          may be set up by someone else), and other military-type training that focuses
+          your character on the battlefield
+        spans: []
+      sections: []
+    - title: Education Learning Focus
+      slug: education-learning-focus
+      level: 4
+      content:
+      - type: table
+        rows:
+        - - text: Education Learning Focus Skills
+            spans: []
+          - text: Description
+            spans: []
+        - - text: Material Sciences
+            spans: []
+          - text: Chemistry and geology
+            spans: []
+        - - text: Computers
+            spans: []
+          - text: Hacking, coding
+            spans: []
+        - - text: Cryptology
+            spans: []
+          - text: Encoding and decoding secrets and ciphers
+            spans: []
+        - - text: Electronics
+            spans: []
+          - text: Power grids, computer hardware, cybernetics
+            spans: []
+        - - text: Engineering
+            spans: []
+          - text: Ship maintenance, repairing drones, cutting through locked doors,
+              or designing new mechanical parts
+            spans: []
+        - - text: First Aid
+            spans: []
+          - text: Saving lives in emergencies
+            spans: []
+        - - text: Forgery
+            spans: []
+          - text: Making stuff look like stuff it isn’t. Like signatures.
+            spans: []
+        - - text: History
+            spans: []
+          - text: What happened before you were there to see it and why
+            spans: []
+        - - text: Linguistics
+            spans: []
+          - text: Languages. Lots of languages
+            spans: []
+        - - text: Research
+            spans: []
+          - text: Finding information in databases, scientific journals, data centres,
+              etc
+            spans: []
+        - - text: Natural Sciences
+            spans: []
+          - text: Biology, botany, zoology; study of organic creatures and how they
+              work, flora, and fauna
+            spans: []
+      - type: paragraph
+        text: Education Learning Focus Skills
+        spans: []
+      - type: paragraph
+        text: Description
+        spans: []
+      - type: paragraph
+        text: Material Sciences
+        spans: []
+      - type: paragraph
+        text: Chemistry and geology
+        spans: []
+      - type: paragraph
+        text: Computers
+        spans: []
+      - type: paragraph
+        text: Hacking, coding
+        spans: []
+      - type: paragraph
+        text: Cryptology
+        spans: []
+      - type: paragraph
+        text: Encoding and decoding secrets and ciphers
+        spans: []
+      - type: paragraph
+        text: Electronics
+        spans: []
+      - type: paragraph
+        text: Power grids, computer hardware, cybernetics
+        spans: []
+      - type: paragraph
+        text: Engineering
+        spans: []
+      - type: paragraph
+        text: Ship maintenance, repairing drones, cutting through locked doors, or
+          designing new mechanical parts
+        spans: []
+      - type: paragraph
+        text: First Aid
+        spans: []
+      - type: paragraph
+        text: Saving lives in emergencies
+        spans: []
+      - type: paragraph
+        text: Forgery
+        spans: []
+      - type: paragraph
+        text: Making stuff look like stuff it isn’t. Like signatures.
+        spans: []
+      - type: paragraph
+        text: History
+        spans: []
+      - type: paragraph
+        text: What happened before you were there to see it and why
+        spans: []
+      - type: paragraph
+        text: Linguistics
+        spans: []
+      - type: paragraph
+        text: Languages. Lots of languages
+        spans: []
+      - type: paragraph
+        text: Research
+        spans: []
+      - type: paragraph
+        text: Finding information in databases, scientific journals, data centres,
+          etc
+        spans: []
+      - type: paragraph
+        text: Natural Sciences
+        spans: []
+      - type: paragraph
+        text: Biology, botany, zoology; study of organic creatures and how they work,
+          flora, and fauna
+        spans: []
+      sections: []
+    - title: Vehicles Learning Focus
+      slug: vehicles-learning-focus
+      level: 4
+      content:
+      - type: table
+        rows:
+        - - text: Vehicles Learning Focus Skills
+            spans: []
+          - text: Description
+            spans: []
+        - - text: Gunnery
+            spans: []
+          - text: Shooting things from ships
+            spans: []
+        - - text: Navigation
+            spans: []
+          - text: Figure out the best way to get where you’re going
+            spans: []
+        - - text: Piloting
+            spans: []
+          - text: Flying ships, driving vehicles
+            spans: []
+        - - text: Remote Operation
+            spans: []
+          - text: Using drones or unmanned ships
+            spans: []
+        - - text: Sensors
+            spans: []
+          - text: Interpreting a whole heap of scan data to find anomalies or things
+              of interest
+            spans: []
+        - - text: Systems Interface
+            spans: []
+          - text: Your ability to operate and interact with digital control systems—whether
+              on a starship bridge, station terminal, outpost console, or emergency
+              override panel. Systems Interface governs real-time manipulation of
+              user-facing systems like power reroutes, system lockdowns, navigational
+              tools, environmental controls, and automated safety features.
+            spans: []
+      - type: paragraph
+        text: Vehicles Learning Focus Skills
+        spans: []
+      - type: paragraph
+        text: Description
+        spans: []
+      - type: paragraph
+        text: Gunnery
+        spans: []
+      - type: paragraph
+        text: Shooting things from ships
+        spans: []
+      - type: paragraph
+        text: Navigation
+        spans: []
+      - type: paragraph
+        text: Figure out the best way to get where you’re going
+        spans: []
+      - type: paragraph
+        text: Piloting
+        spans: []
+      - type: paragraph
+        text: Flying ships, driving vehicles
+        spans: []
+      - type: paragraph
+        text: Remote Operation
+        spans: []
+      - type: paragraph
+        text: Using drones or unmanned ships
+        spans: []
+      - type: paragraph
+        text: Sensors
+        spans: []
+      - type: paragraph
+        text: Interpreting a whole heap of scan data to find anomalies or things of
+          interest
+        spans: []
+      - type: paragraph
+        text: Systems Interface
+        spans: []
+      - type: paragraph
+        text: Your ability to operate and interact with digital control systems—whether
+          on a starship bridge, station terminal, outpost console, or emergency override
+          panel. Systems Interface governs real-time manipulation of user-facing systems
+          like power reroutes, system lockdowns, navigational tools, environmental
+          controls, and automated safety features.
+        spans: []
+      sections: []
+  - title: Inherent Skills
+    slug: inherent-skills
+    level: 3
+    content:
+    - type: paragraph
+      text: Contrasted with Learned Skills, Inherent Skills are things your character
+        is naturally good at (or bad at); they are a measure of who your character
+        is. Each inherent skill is tied to one of your character’s attributes. Some
+        people have a natural gift when it comes to diffusing a difficult or tense
+        situation. Others seem to have a gift for hand-eye coordination, math computation,
+        etc. These are things that are inherently a part of a person.
+      spans: []
+    - type: paragraph
+      text: Physique
+      spans: []
+    - type: paragraph
+      text: Physique Skills
+      spans: []
+    - type: paragraph
+      text: Max rank
+      spans: []
+    - type: paragraph
+      text: Description
+      spans: []
+    - type: paragraph
+      text: Athletics
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Running, jumping, climbing. Overall fitness. Whether you’d make a good
+        triathlon-ist or not.
+      spans: []
+    - type: paragraph
+      text: Cybernetics
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Can incorporate one level of cybernetic implant per level of this skill.
+        So with 3 points in Cybernetics, you could equip one Level 2 cybernetic implant
+        plus one Level 1 implant, three Level 1 implants, or one Level 3 implant.
+      spans: []
+    - type: paragraph
+      text: Powerlift
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Ability to move heavy things. Lifting, carrying, pulling, prying, etc.
+      spans: []
+    - type: paragraph
+      text: Endurance
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: A measure of physical stamina. Push through fatigue, hunger, etc.
+      spans: []
+    - type: paragraph
+      text: Toughness
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Pain tolerance, etc
+      spans: []
+    - type: paragraph
+      text: Reflex
+      spans: []
+    - type: paragraph
+      text: Reflex Skills
+      spans: []
+    - type: paragraph
+      text: Max rank
+      spans: []
+    - type: paragraph
+      text: Description
+      spans: []
+    - type: paragraph
+      text: Balance
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Ability to maintain control over your body in motion, react fluidly to
+        unstable conditions, and perform complex physical tasks with grace and precision.
+      spans: []
+    - type: paragraph
+      text: Evade
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: You may use your reaction in combat to attempt to dodge an incoming melee
+        attack. To do so, roll Evade and get a score higher than the roll your opponent
+        made to hit you.
+      spans: []
+    - type: paragraph
+      text: Finesse
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Skill at unnoticed dexterous actions. Pickpocketing, magic tricks, etc.
+      spans: []
+    - type: paragraph
+      text: Instinct
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Natural ability to react to signs of trouble before they happen. Helps
+        against surprise.
+      spans: []
+    - type: paragraph
+      text: Stealth
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Blending in, keep out of sight, and move without making noise
+      spans: []
+    - type: paragraph
+      text: Social
+      spans: []
+    - type: paragraph
+      text: Social Skills
+      spans: []
+    - type: paragraph
+      text: Max rank
+      spans: []
+    - type: paragraph
+      text: Description
+      spans: []
+    - type: paragraph
+      text: Subterfuge
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Lie, disguise, or otherwise talk your way out of situations. Come up with
+        convincing cover stories, false identities, etc.
+      spans: []
+    - type: paragraph
+      text: Bearing
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Appearance and posture; manner of carrying yourself. Confidence, related
+        by body language.
+      spans: []
+    - type: paragraph
+      text: Negotiate
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Haggle your way to a better deal, whether in a store or while negotiating
+        with a mob boss. Unlike Persuade, which often appeals to emotion or logic,
+        Negotiate is rooted in mutual gain - or at least the illusion of it.
+      spans: []
+    - type: paragraph
+      text: Persuade
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Your ability to convince others through speech, reasoning, charm, or emotional
+        appeal. Persuade is used to shift someone’s beliefs, decisions, or behavior,
+        especially when you want them to act without any guaranteed personal gain.
+        It’s the skill of leaders, con artists, diplomats, and silver-tongued wanderers.
+      spans: []
+    - type: paragraph
+      text: Streetwise
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Your ability to read the unspoken rules of the environment, especially
+        in disreputable, dangerous, or politically charged spaces. Streetwise covers
+        your knack for picking up on indirect social cues, tension in the air, or
+        subtle shifts in behavior that reveal deeper truths. Whether you're spotting
+        a con artist in a crowd, sensing an ambush in a quiet alley, or reading the
+        performative lies of a smooth-talking diplomat, Streetwise lets you interpret
+        what’s going on beneath the surface.
+      spans: []
+    - type: paragraph
+      text: Mental
+      spans: []
+    - type: paragraph
+      text: Mental Skills
+      spans: []
+    - type: paragraph
+      text: Max rank
+      spans: []
+    - type: paragraph
+      text: Description
+      spans: []
+    - type: paragraph
+      text: Composure
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Affects reactions under pressure; high-stakes social or stress-related
+        moments.
+      spans: []
+    - type: paragraph
+      text: Psychology
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Analyze someone’s motives, try to figure out their end goals, tell if
+        they’re lying to you, etc.
+      spans: []
+    - type: paragraph
+      text: Observe
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: See things others may have missed. Investigate a crime scene. Spot a frog
+        or a dog on a log.
+      spans: []
+    - type: paragraph
+      text: Recall
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Remember things from your past. Were there three guards or four? Was her
+        hair purple or brown? What planet are you from?
+      spans: []
+    - type: paragraph
+      text: Willpower
+      spans: []
+    - type: paragraph
+      text: '5'
+      spans: []
+    - type: paragraph
+      text: Ability to withstand mental manipulation.
+      spans: []
+    sections: []
