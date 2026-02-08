@@ -105,13 +105,32 @@ export async function rollWithDicePlusTotal(opts: {
   const timeoutMs = opts.timeoutMs ?? 5000;
 
   return new Promise<number>(async (resolve, reject) => {
+    const extractTotal = (data: any): number => {
+      const candidates = [
+        data?.total,
+        data?.value,
+        data?.result?.total,
+        data?.result?.totalValue,
+      ];
+      for (const c of candidates) {
+        const n = typeof c === "number" ? c : typeof c === "string" ? Number(c) : NaN;
+        if (Number.isFinite(n)) return Math.trunc(n);
+      }
+      return NaN;
+    };
+
     const unsubscribeResult = OBR.broadcast.onMessage(
       `${DICEPLUS_SOURCE}/roll-result`,
       (event) => {
         const data = event.data as any;
         if (data?.rollId === rollId) {
+          const total = extractTotal(data);
+          if (!Number.isFinite(total)) {
+            // Keep waiting; some Dice+ configs may omit totals in the first payload.
+            return;
+          }
           cleanup();
-          resolve(Number(data?.result?.totalValue ?? 0));
+          resolve(total);
         }
       }
     );
