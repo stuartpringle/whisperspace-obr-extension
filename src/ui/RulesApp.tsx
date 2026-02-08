@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
-import { RULES_API_BASE } from "../config";
+import { RULES_API_BASE } from "../../packages/sdk/src/config";
 import rulesData from "../data/generated/rules.json";
 import { resolveWeaponKeyword, splitKeywordList } from "./weaponKeywords";
 import { WEAPON_KEYWORDS } from "../data/weaponKeywords";

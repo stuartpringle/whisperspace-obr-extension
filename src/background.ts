@@ -5,7 +5,7 @@ import { migrateSheet } from "./rules/migrate";
 import { rollWithDicePlusTotal } from "./ui/diceplus/roll";
 import { getInitiativeState, removeFromInitiative, upsertInitiativeEntry } from "./obr/initiative";
 import { skillsData } from "./data/skills";
-import { calcDeriveAttributes, calcDeriveCuf, calcSkillNotation, calcStatusDeltas } from "./lib/calcApi";
+import { calcDeriveAttributes, calcDeriveCuf, calcSkillNotation, calcStatusDeltas } from "../packages/sdk/src/calc";
 
 const EXT_ID = "com.whisperspace.sheet";
 const MENU_ID = `${EXT_ID}/context/open-sheet`;

@@ -1,4 +1,4 @@
-import { CALC_API_BASE } from "../config";
+import { CALC_API_BASE } from "./config";
 
 async function postJson<T>(path: string, body: unknown): Promise<T> {
   const res = await fetch(`${CALC_API_BASE}${path}`, {

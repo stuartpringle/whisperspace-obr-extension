@@ -1,5 +1,5 @@
 import type { CharacterSheetV1 } from "../../rules/schema";
-import { calcDamage } from "../../lib/calcApi";
+import { calcDamage } from "../../../packages/sdk/src/calc";
 import { getHookBus } from "../../../packages/core/src/hooks";
 
 export async function applyDamageAndStress(opts: {
