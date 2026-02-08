@@ -40,6 +40,15 @@ load_env("/hdd/sites/stuartpringle/whisperspace/public/rules-api/calc/.env");
 
 $headers = function_exists("getallheaders") ? getallheaders() : [];
 $apiKey = $headers["X-WS-API-Key"] ?? $headers["x-ws-api-key"] ?? null;
+if (!$apiKey) {
+  $auth = $headers["Authorization"] ?? $headers["authorization"] ?? "";
+  if (str_starts_with($auth, "Bearer ")) {
+    $apiKey = substr($auth, 7);
+  }
+}
+if (!$apiKey) {
+  $apiKey = $_GET["api_key"] ?? null;
+}
 $expected = $_SERVER["WS_RULES_API_KEY"] ?? ($_ENV["WS_RULES_API_KEY"] ?? (getenv("WS_RULES_API_KEY") ?: ""));
 
 $path = parse_url($_SERVER["REQUEST_URI"] ?? "", PHP_URL_PATH) ?? "";
