@@ -29,7 +29,7 @@ type RuleDoc = RuleSection & {
 type LabeledTable = { label: string; block: RuleBlock };
 type Glossary = {
   regex: RegExp | null;
-  linkTerms: Map<string, { id: string; docSlug: string }>;
+  linkTerms: Map<string, { id: string; docSlug: string; sameLevelCount: number }>;
   tooltipTerms: Map<string, string>;
   anchorToDoc: Map<string, string>;
 };
@@ -91,9 +91,10 @@ function escapeRegExp(value: string) {
 }
 
 function buildAnchorMaps(docs: RuleDoc[]) {
-  const linkTerms = new Map<string, { id: string; docSlug: string }>();
+  const linkTerms = new Map<string, { id: string; docSlug: string; sameLevelCount: number }>();
   const anchorToDoc = new Map<string, string>();
   const blacklist = new Set(["the", "and", "or", "of", "in", "to", "a", "an"]);
+  const candidates = new Map<string, Array<{ id: string; docSlug: string; depth: number }>>();
 
   for (const doc of docs) {
     const docSlug = getSectionId(doc);
@@ -103,8 +104,10 @@ function buildAnchorMaps(docs: RuleDoc[]) {
       if (!title || title.length < 4) continue;
       if (blacklist.has(title.toLowerCase())) continue;
       const id = getSectionId(section);
-      if (!linkTerms.has(title)) linkTerms.set(title, { id, docSlug });
-      if (!anchorToDoc.has(id)) anchorToDoc.set(id, docSlug);
+      const depth = section.level ?? 0;
+      const list = candidates.get(title) ?? [];
+      list.push({ id, docSlug, depth });
+      candidates.set(title, list);
     }
 
     const walk = (sec: RuleSection) => {
@@ -129,6 +132,19 @@ function buildAnchorMaps(docs: RuleDoc[]) {
       (sec.sections ?? []).forEach(walk);
     };
     walk(doc);
+  }
+
+  for (const [title, list] of candidates.entries()) {
+    if (!list.length) continue;
+    const minDepth = Math.min(...list.map((c) => c.depth));
+    const sameLevel = list.filter((c) => c.depth === minDepth);
+    const chosen = sameLevel[0];
+    linkTerms.set(title, {
+      id: chosen.id,
+      docSlug: chosen.docSlug,
+      sameLevelCount: sameLevel.length,
+    });
+    if (!anchorToDoc.has(chosen.id)) anchorToDoc.set(chosen.id, chosen.docSlug);
   }
 
   return { linkTerms, anchorToDoc };
@@ -243,6 +259,11 @@ function renderGlossaryText(
           key={`${term}-${start}`}
           href={`#${link.id}`}
           style={{ color: "inherit", textDecoration: "underline dotted" }}
+          title={
+            link.sameLevelCount > 1
+              ? `Multiple sections named "${term}" at the same level: ${link.sameLevelCount}`
+              : undefined
+          }
           onClick={(e) => {
             e.preventDefault();
             onNavigate(link.id, link.docSlug);
