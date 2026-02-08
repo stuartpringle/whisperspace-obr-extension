@@ -7,6 +7,7 @@ import CasinoIcon from "@mui/icons-material/Casino";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 import {
   Accordion,
@@ -396,11 +397,16 @@ function SkillRow(props: {
       }}
     >
       <Box sx={{ minWidth: 0 }}>
-        <Tooltip title={tooltip} disableHoverListener={!tooltip}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, minWidth: 0 }}>
           <Typography fontWeight={600} noWrap>
             {props.skill.label}
           </Typography>
-        </Tooltip>
+          {tooltip ? (
+            <Tooltip title={tooltip}>
+              <InfoOutlinedIcon fontSize="small" sx={{ opacity: 0.7 }} />
+            </Tooltip>
+          ) : null}
+        </Box>
         <Typography variant="caption" sx={{ opacity: 0.7 }} noWrap>
           {props.rightTag ?? ""}
         </Typography>

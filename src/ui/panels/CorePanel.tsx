@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { CharacterSheetV1 } from "../../rules/schema";
 import { Stack, Box, Typography, TextField, ToggleButtonGroup, ToggleButton, IconButton, Tooltip } from "@mui/material";
 import CasinoIcon from "@mui/icons-material/Casino";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { buildWhisperspaceSkillNotation, rollWithDicePlus } from "../diceplus/roll";
 import { getAttributeTooltip } from "../../data/skillTooltips";
 
@@ -99,17 +100,20 @@ export function CorePanel(props: {
 function AttrField(props: { label: string; tooltip?: string; value: number; onRoll: () => void }) {
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-      <Tooltip title={props.tooltip || ""} disableHoverListener={!props.tooltip}>
-        <Box sx={{ flex: 1 }}>
-          <TextField
-            label={props.label}
-            size="small"
-            value={props.value}
-            inputProps={{ readOnly: true }}
-            fullWidth
-          />
-        </Box>
-      </Tooltip>
+      <Box sx={{ flex: 1, display: "flex", alignItems: "center", gap: 0.5 }}>
+        <TextField
+          label={props.label}
+          size="small"
+          value={props.value}
+          inputProps={{ readOnly: true }}
+          fullWidth
+        />
+        {props.tooltip ? (
+          <Tooltip title={props.tooltip}>
+            <InfoOutlinedIcon fontSize="small" sx={{ opacity: 0.7 }} />
+          </Tooltip>
+        ) : null}
+      </Box>
       <Tooltip title="Roll with Dice+">
         <IconButton onClick={props.onRoll} aria-label={`Roll ${props.label}`}>
           <CasinoIcon />
