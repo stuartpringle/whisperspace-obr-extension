@@ -6,7 +6,7 @@
   "icon": "/icon.svg",
   "author": "Whisperspace",
   "action": {
-    "title": "My Sheet",
+    "title": "Whisperspace Character Sheet",
     "icon": "/icon.svg",
     "popover": "/",
     "width": 520,
