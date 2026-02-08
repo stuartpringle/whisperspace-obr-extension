@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteRule ^ - [E=WS_CALC:1]
+RewriteCond %{ENV:WS_CALC} =1
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
