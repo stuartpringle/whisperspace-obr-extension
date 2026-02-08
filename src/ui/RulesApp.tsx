@@ -224,6 +224,14 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
   const id = getSectionId(props.section);
   const q = props.query ?? "";
   const fallbackTable = props.tablesByLabel?.get(props.section.title.toLowerCase());
+  const hasLabeledTableInContent = content.some((block) => {
+    if (block.type !== "table") return false;
+    const firstRow = block.rows?.[0] ?? [];
+    if (firstRow.length !== 1) return false;
+    const label = String(firstRow[0]?.text ?? "").trim().toLowerCase();
+    return label === props.section.title.toLowerCase();
+  });
+  const shouldInjectTable = !!fallbackTable && !hasLabeledTableInContent;
 
   if (depth === 0) {
     return (
@@ -253,8 +261,8 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
           {highlightText(props.section.title, q)}
         </summary>
         <div>
+          {shouldInjectTable ? renderBlock(fallbackTable!, 0, q) : null}
           {content.map((b, i) => renderBlock(b, i, q))}
-          {content.length === 0 && fallbackTable ? renderBlock(fallbackTable, 0, q) : null}
           {hasChildren && (props.section.sections ?? []).map((s, i) => (
             <RuleSectionView
               key={`${s.slug ?? s.title}-${i}`}
