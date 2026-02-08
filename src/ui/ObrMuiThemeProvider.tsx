@@ -33,7 +33,20 @@ function toMuiTheme(t: ObrTheme) {
       fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
     },
     components: {
-      MuiPaper: { defaultProps: { elevation: 0 } }
+      MuiPaper: { defaultProps: { elevation: 0 } },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            color: textPrimary,
+          },
+          containedPrimary: {
+            color: primaryContrast,
+          },
+          containedSecondary: {
+            color: secondaryContrast,
+          },
+        },
+      },
     }
   });
 }

@@ -37,6 +37,8 @@ type ViewState =
       mode: "my" | "view";
       ownerLabel?: string;
       thumbUrl?: string | null;
+      ownerPlayerId?: string | null;
+      isOwnedByMe?: boolean;
     }
   | { kind: "error"; message: string };
 
@@ -46,7 +48,7 @@ export function SheetApp() {
   const [isSaving, setIsSaving] = useState(false);
   const [crucible, setCrucible] = useState<null | { incoming: number; dc: number; status: "pending" | "success" | "fail"; total?: number }>(null);
 
-  async function getTokenHeaderMeta(tokenId: string): Promise<{ ownerLabel: string; thumbUrl: string | null }> {
+  async function getTokenHeaderMeta(tokenId: string): Promise<{ ownerLabel: string; thumbUrl: string | null; ownerPlayerId?: string | null; isOwnedByMe?: boolean }> {
     try {
       const items = await OBR.scene.items.getItems([tokenId]);
       const it: any = items?.[0];
@@ -59,23 +61,23 @@ export function SheetApp() {
       // Owner label
       const ownerPlayerId = it?.metadata?.[TOKEN_KEY_OWNER_PLAYER];
       if (typeof ownerPlayerId !== "string" || ownerPlayerId.length === 0) {
-        return { ownerLabel: "unowned", thumbUrl };
+        return { ownerLabel: "unowned", thumbUrl, ownerPlayerId: null, isOwnedByMe: false };
       }
 
       const myId = await OBR.player.getId();
-      if (ownerPlayerId === myId) return { ownerLabel: "owned by you", thumbUrl };
+      if (ownerPlayerId === myId) return { ownerLabel: "owned by you", thumbUrl, ownerPlayerId, isOwnedByMe: true };
 
       // Try to resolve to a friendly name via party players
       try {
         const players: any[] = (await (OBR.party as any).getPlayers?.()) ?? [];
         const p = players.find((x) => x?.id === ownerPlayerId);
         const name = typeof p?.name === "string" && p.name.length > 0 ? p.name : ownerPlayerId;
-        return { ownerLabel: `owned by ${name}`, thumbUrl };
+        return { ownerLabel: `owned by ${name}`, thumbUrl, ownerPlayerId, isOwnedByMe: false };
       } catch {
-        return { ownerLabel: `owned by ${ownerPlayerId}`, thumbUrl };
+        return { ownerLabel: `owned by ${ownerPlayerId}`, thumbUrl, ownerPlayerId, isOwnedByMe: false };
       }
     } catch {
-      return { ownerLabel: "unowned", thumbUrl: null };
+      return { ownerLabel: "unowned", thumbUrl: null, ownerPlayerId: null, isOwnedByMe: false };
     }
   }
 
@@ -651,7 +653,7 @@ function burnCufToPass() {
         </div>
 
         <div style={{ display: "flex", gap: 8 }}>
-          {state.mode === "view" ? (
+          {state.mode === "view" && !state.isOwnedByMe ? (
             <button
               style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #999", cursor: "pointer", opacity: 0.9 }}
               onClick={backToMySheet}
