@@ -155,6 +155,25 @@ function highlightText(text: string, q: string) {
   return parts;
 }
 
+function scrollToSection(id: string) {
+  if (!id) return;
+  const el = document.getElementById(id);
+  if (!el) return;
+  let parent: HTMLElement | null = el.parentElement;
+  while (parent) {
+    if (parent.tagName.toLowerCase() === "details") {
+      (parent as HTMLDetailsElement).open = true;
+    }
+    parent = parent.parentElement;
+  }
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+  try {
+    window.history.replaceState(null, "", `#${id}`);
+  } catch {
+    // ignore
+  }
+}
+
 function renderGlossaryText(text: string, q: string, glossary: Glossary) {
   const raw = String(text ?? "");
   if (!glossary.regex) return highlightText(raw, q);
@@ -186,6 +205,10 @@ function renderGlossaryText(text: string, q: string, glossary: Glossary) {
           key={`${term}-${start}`}
           href={`#${link}`}
           style={{ color: "inherit", textDecoration: "underline dotted" }}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection(link);
+          }}
         >
           {content}
         </a>
@@ -215,6 +238,10 @@ function renderKeywordText(text: string, q: string) {
         <a
           href={`#${info.anchor}`}
           style={{ color: "inherit", textDecoration: "underline dotted" }}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection(info.anchor);
+          }}
         >
           {highlightText(part, q)}
         </a>
