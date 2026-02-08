@@ -29,7 +29,8 @@ import {
 } from "@mui/material";
 
 import { buildWhisperspaceSkillNotation, rollWithDicePlus } from "../diceplus/roll";
-import { rollWeaponAttackAndBroadcast } from "../combat/weaponAttack";
+import { rollWeaponAttackAndBroadcast, type CombatLogPayload } from "../combat/weaponAttack";
+import { applyDamageAndStress } from "../combat/applyDamage";
 
 function makeLearnedInfoById() {
   const map = new Map<string, { focus: FocusId }>();
@@ -45,12 +46,16 @@ export function CombatPanel(props: {
   onChange: (patch: Partial<CharacterSheetV1>) => void;
   onApplyStress?: (nextStress: number) => void;
   skillMods?: Record<string, number>;
+  combatLog?: CombatLogPayload[];
+  onApplyCombatLog?: (entry: CombatLogPayload) => void;
+  isGM?: boolean;
 }) {
   const s = props.sheet;
   const [netDice, setNetDice] = useState<-2 | -1 | 0 | 1 | 2>(0);
   const [dragWeaponIndex, setDragWeaponIndex] = useState<number | null>(null);
   const [damageInput, setDamageInput] = useState<string>("");
   const [unmitigatedDamage, setUnmitigatedDamage] = useState<boolean>(false);
+  const logEntries = (props.combatLog ?? []).slice(-8).reverse();
 
 
   const learnedInfoById = useMemo(() => makeLearnedInfoById(), []);
@@ -86,69 +91,17 @@ function applyDamage() {
   const incoming = Number.isFinite(raw) ? Math.max(0, Math.trunc(raw)) : 0;
   if (incoming <= 0) return;
 
-  const armor = props.sheet.armor;
-	  const armorBroken = (armor?.durability?.current ?? 0) <= 0;
-	  const prot = (unmitigatedDamage || armorBroken) ? 0 : (armor?.protection ?? 0);
-  const afterArmor = Math.max(0, incoming - prot);
-
-  // Fill wound track (4 light, 2 moderate, 1 heavy)
-  const before = props.sheet.wounds ?? { light: 0, moderate: 0, heavy: 0 };
-  let light = before.light ?? 0;
-  let moderate = before.moderate ?? 0;
-  let heavy = before.heavy ?? 0;
-
-  let remaining = afterArmor;
-  let addedLight = 0, addedModerate = 0, addedHeavy = 0;
-
-  // light
-  const lightCap = 4;
-  const addL = Math.min(remaining, Math.max(0, lightCap - light));
-  light += addL; remaining -= addL; addedLight = addL;
-
-  // moderate
-  const modCap = 2;
-  const addM = Math.min(remaining, Math.max(0, modCap - moderate));
-  moderate += addM; remaining -= addM; addedModerate = addM;
-
-  // heavy
-  const heavyCap = 1;
-  const addH = Math.min(remaining, Math.max(0, heavyCap - heavy));
-  heavy += addH; remaining -= addH; addedHeavy = addH;
-
-  const nextWounds = { light, moderate, heavy };
-
-  // Stress from the highest severity created by this damage
-  let stressInc = 0;
-  if (addedHeavy > 0) stressInc = 4;
-  else if (addedModerate > 0) stressInc = 2;
-  else if (addedLight > 0) stressInc = 1;
-
-	  // Armor durability loss (only if damage gets through, not unmitigated, and armor isn't already broken)
-  let nextArmor = armor;
-	  if (!unmitigatedDamage && !armorBroken && afterArmor > 0 && armor?.durability) {
-    nextArmor = {
-      ...armor,
-      durability: {
-        ...armor.durability,
-        current: Math.max(0, Math.trunc((armor.durability.current ?? 0) - 1)),
-      },
-    };
-  }
-
-  props.onChange({
-    wounds: nextWounds as any,
-    armor: nextArmor as any,
+  const next = applyDamageAndStress({
+    sheet: props.sheet,
+    incomingDamage: incoming,
+    unmitigated: unmitigatedDamage,
   });
 
-  if (stressInc > 0) {
-    const curStress = props.sheet.stress?.current ?? 0;
-    const nextStress = curStress + stressInc;
-    // Prefer SheetApp's crucible-aware handler, if provided
-    if (props.onApplyStress) props.onApplyStress(nextStress);
-    else {
-      props.onChange({ stress: { ...(props.sheet.stress as any), current: nextStress } as any });
-    }
-  }
+  props.onChange({
+    wounds: next.wounds as any,
+    armor: next.armor as any,
+    stress: next.stress as any,
+  });
 
   setDamageInput("");
 }
@@ -326,9 +279,9 @@ function updateWeapon(i: number, patch: Partial<CharacterSheetV1["weapons"][numb
 
       </Box>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1, flexWrap: "wrap" }}>
-          <Typography variant="subtitle2" sx={{ opacity: 0.8 }}>Attack Roll:</Typography>
-          <ToggleButtonGroup
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1, flexWrap: "wrap" }}>
+        <Typography variant="subtitle2" sx={{ opacity: 0.8 }}>Attack Roll:</Typography>
+        <ToggleButtonGroup
             size="small"
             exclusive
             value={netDice}
@@ -342,8 +295,37 @@ function updateWeapon(i: number, patch: Partial<CharacterSheetV1["weapons"][numb
             <ToggleButton value={0}>0</ToggleButton>
             <ToggleButton value={1}>+1</ToggleButton>
             <ToggleButton value={2}>+2</ToggleButton>
-          </ToggleButtonGroup>
-        </Box>
+        </ToggleButtonGroup>
+      </Box>
+
+      <Box sx={{ border: "1px solid", borderColor: "divider", borderRadius: 2, p: 1.25 }}>
+        <Typography variant="subtitle2" sx={{ opacity: 0.8, mb: 0.5 }}>Combat Log</Typography>
+        {logEntries.length === 0 ? (
+          <Typography variant="body2" sx={{ opacity: 0.7 }}>No recent rolls.</Typography>
+        ) : (
+          <Stack spacing={0.75}>
+            {logEntries.map((entry) => {
+              const canApply =
+                !!entry.outcome?.hit &&
+                ((entry.outcome?.totalDamage ?? 0) > 0 || (entry.outcome?.stressDelta ?? 0) > 0) &&
+                !!props.onApplyCombatLog;
+              const applyLabel = props.isGM ? "Apply to Selected" : "Apply to My Character";
+              return (
+                <Box key={entry.ts} sx={{ display: "flex", alignItems: "center", gap: 1, flexWrap: "wrap" }}>
+                  <Typography variant="body2" sx={{ flex: "1 1 260px" }}>
+                    {entry.text}
+                  </Typography>
+                  {canApply && (
+                    <Button size="small" variant="outlined" onClick={() => props.onApplyCombatLog?.(entry)}>
+                      {applyLabel}
+                    </Button>
+                  )}
+                </Box>
+              );
+            })}
+          </Stack>
+        )}
+      </Box>
 
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>

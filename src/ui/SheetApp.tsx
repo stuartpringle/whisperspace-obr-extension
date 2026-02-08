@@ -19,7 +19,8 @@ import { FeatsPanel } from "./panels/FeatsPanel";
 import { CombatPanel } from "./panels/CombatPanel";
 import { InventoryPanel } from "./panels/InventoryPanel";
 import { InitiativePanel } from "./panels/InitiativePanel";
-import { COMBAT_LOG_CHANNEL } from "./combat/weaponAttack";
+import { COMBAT_LOG_CHANNEL, type CombatLogPayload } from "./combat/weaponAttack";
+import { applyDamageAndStress } from "./combat/applyDamage";
 
 import { skillsData } from "../data/skills";
 import type { SkillDef } from "../data/types";
@@ -48,6 +49,8 @@ export function SheetApp() {
   const [activeTab, setActiveTab] = useState<"core" | "skills" | "combat" | "initiative" | "inventory" | "feats">("core");
   const [isSaving, setIsSaving] = useState(false);
   const [crucible, setCrucible] = useState<null | { incoming: number; dc: number; status: "pending" | "success" | "fail"; total?: number }>(null);
+  const [isGM, setIsGM] = useState(false);
+  const [combatLog, setCombatLog] = useState<CombatLogPayload[]>([]);
 
   async function getTokenHeaderMeta(tokenId: string): Promise<{ ownerLabel: string; thumbUrl: string | null; ownerPlayerId?: string | null; isOwnedByMe?: boolean }> {
     try {
@@ -146,6 +149,8 @@ export function SheetApp() {
     let cancelled = false;
     OBR.onReady(async () => {
       try {
+        const role = await OBR.player.getRole();
+        if (!cancelled) setIsGM(String(role).toUpperCase() === "GM");
         await load();
       } catch (e) {
         if (!cancelled) setState({ kind: "error", message: (e as Error).message ?? "Unknown error" });
@@ -153,6 +158,28 @@ export function SheetApp() {
     });
     return () => {
       cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let unsub: (() => void) | null = null;
+    let cancelled = false;
+    OBR.onReady(() => {
+      if (cancelled) return;
+      unsub = OBR.broadcast.onMessage(COMBAT_LOG_CHANNEL, (event) => {
+        const data = event.data as CombatLogPayload;
+        if (!data?.text) return;
+        setCombatLog((prev) => {
+          const next = [...prev, data].slice(-50);
+          return next;
+        });
+      });
+    });
+    return () => {
+      cancelled = true;
+      if (typeof unsub === "function") {
+        try { unsub(); } catch { /* ignore */ }
+      }
     };
   }, []);
 
@@ -246,6 +273,39 @@ export function SheetApp() {
       }
     };
   }, []);
+
+  async function applyOutcomeToToken(tokenId: string, entry: CombatLogPayload) {
+    const outcome = entry.outcome;
+    if (!outcome?.hit) return;
+    const sheet = await ensureSheetOnToken(tokenId);
+    if (!sheet) return;
+    const next = applyDamageAndStress({
+      sheet,
+      incomingDamage: outcome.totalDamage ?? 0,
+      stressDelta: outcome.stressDelta ?? 0,
+    });
+    await saveSheetToToken(tokenId, next);
+  }
+
+  async function applyCombatLog(entry: CombatLogPayload) {
+    if (!entry?.outcome?.hit) return;
+    if (isGM) {
+      const selection = (await OBR.player.getSelection()) ?? [];
+      if (!selection.length) {
+        void OBR.notification.show("Select one or more target tokens to apply damage.", "WARNING");
+        return;
+      }
+      await Promise.all(selection.map((id) => applyOutcomeToToken(id, entry)));
+      return;
+    }
+
+    const myTokenId = await getMyCharacterTokenId();
+    if (!myTokenId) {
+      void OBR.notification.show("No character token set. Set your character first.", "WARNING");
+      return;
+    }
+    await applyOutcomeToToken(myTokenId, entry);
+  }
 
   // Keep sheet name in sync with token text (Edit Text in OBR)
   useEffect(() => {
@@ -803,15 +863,18 @@ function burnCufToPass() {
           onMetaChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))}
         />
       )}
-      {activeTab === "combat" && (
-        <CombatPanel
-          sheet={sheetForView as CharacterSheetV1}
-          tokenId={state.tokenId}
-          skillMods={statusSkillMods}
-          onChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))}
-          onApplyStress={applyStress}
-        />
-      )}
+        {activeTab === "combat" && (
+          <CombatPanel
+            sheet={sheetForView as CharacterSheetV1}
+            tokenId={state.tokenId}
+            skillMods={statusSkillMods}
+            onChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))}
+            onApplyStress={applyStress}
+            combatLog={combatLog}
+            onApplyCombatLog={applyCombatLog}
+            isGM={isGM}
+          />
+        )}
       {activeTab === "initiative" && <InitiativePanel />}
       {activeTab === "inventory" && (
         <InventoryPanel sheet={sheetForView as CharacterSheetV1} onChange={(patch) => updateSheet((s) => ({ ...s, ...patch }))} />

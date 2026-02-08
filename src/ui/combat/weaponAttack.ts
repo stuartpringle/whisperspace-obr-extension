@@ -22,7 +22,14 @@ export type AttackOutcome = {
   critExtra: number;
   baseDamage: number;
   totalDamage: number;
+  stressDelta: number;
   message: string;
+};
+
+export type CombatLogPayload = {
+  text: string;
+  ts: number;
+  outcome?: Pick<AttackOutcome, "total" | "useDC" | "hit" | "isCrit" | "baseDamage" | "totalDamage" | "stressDelta">;
 };
 
 function critExtraForMargin(margin: number): number {
@@ -70,6 +77,7 @@ export async function rollWeaponAttack(opts: {
 
   const baseDamage = Math.trunc(opts.weapon.damage ?? 0);
   const totalDamage = hit ? baseDamage + critExtra : 0;
+  const stressDelta = isCrit ? 1 : 0;
 
   let msg: string;
   if (!hit) {
@@ -82,7 +90,20 @@ export async function rollWeaponAttack(opts: {
 
   if (opts.prefix) msg = `${opts.prefix} ${msg}`;
 
-  void OBR.broadcast.sendMessage(COMBAT_LOG_CHANNEL, { text: msg, ts: Date.now() }, { destination: "ALL" });
+  const payload: CombatLogPayload = {
+    text: msg,
+    ts: Date.now(),
+    outcome: {
+      total,
+      useDC,
+      hit,
+      isCrit,
+      baseDamage,
+      totalDamage,
+      stressDelta,
+    },
+  };
+  void OBR.broadcast.sendMessage(COMBAT_LOG_CHANNEL, payload, { destination: "ALL" });
 
   return {
     total,
@@ -93,6 +114,7 @@ export async function rollWeaponAttack(opts: {
     critExtra,
     baseDamage,
     totalDamage,
+    stressDelta,
     message: msg,
   };
 }
