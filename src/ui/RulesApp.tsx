@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import rulesData from "../data/generated/rules.json";
+import { resolveWeaponKeyword, splitKeywordList } from "./weaponKeywords";
 
 type RuleSpan = {
   text?: string;
@@ -72,6 +73,29 @@ function highlightText(text: string, q: string) {
   return parts;
 }
 
+function renderKeywordText(text: string, q: string) {
+  const parts = splitKeywordList(text);
+  if (!parts.length) return highlightText(text, q);
+
+  const resolved = parts.map((p) => resolveWeaponKeyword(p));
+  if (resolved.some((r) => !r)) return highlightText(text, q);
+
+  return parts.map((part, idx) => {
+    const info = resolved[idx]!;
+    return (
+      <span key={`${part}-${idx}`} title={info.description}>
+        <a
+          href={`#${info.anchor}`}
+          style={{ color: "inherit", textDecoration: "underline dotted" }}
+        >
+          {highlightText(part, q)}
+        </a>
+        {idx < parts.length - 1 ? ", " : null}
+      </span>
+    );
+  });
+}
+
 function renderBlock(block: RuleBlock, idx: number, q: string) {
   if (block.type === "table") {
     const rows = block.rows ?? [];
@@ -93,7 +117,7 @@ function renderBlock(block: RuleBlock, idx: number, q: string) {
             <tr key={r}>
               {row.map((cell, c) => (
                 <td key={c} style={{ borderBottom: "1px solid rgba(255,255,255,0.12)", padding: "4px 6px" }}>
-                  {highlightText(cell.text, q)}
+                  {renderKeywordText(cell.text, q)}
                 </td>
               ))}
             </tr>

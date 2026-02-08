@@ -18,6 +18,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
+  Chip,
   IconButton,
   MenuItem,
   Stack,
@@ -34,6 +35,7 @@ import { applyDamageAndStress } from "../combat/applyDamage";
 import { makeLearnedInfoById, skillModifierFor } from "../combat/skills";
 import { getAmmoMax } from "../combat/weapons";
 import { CombatLog } from "../combat/CombatLog";
+import { resolveWeaponKeyword } from "../weaponKeywords";
 
 export function CombatPanel(props: {
   sheet: CharacterSheetV1;
@@ -459,6 +461,23 @@ function updateWeapon(i: number, patch: Partial<CharacterSheetV1["weapons"][numb
                       placeholder="Two-Handed, Piercing 1"
                       sx={{ gridColumn: "1 / -1" }}
                     />
+                    {(w.keywords ?? []).length > 0 && (
+                      <Box sx={{ gridColumn: "1 / -1", display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                        {(w.keywords ?? []).map((kw, kidx) => {
+                          const info = resolveWeaponKeyword(kw);
+                          if (!info) {
+                            return <Chip key={`${kw}-${kidx}`} label={kw} size="small" variant="outlined" />;
+                          }
+                          return (
+                            <Tooltip key={`${kw}-${kidx}`} title={info.description}>
+                              <span>
+                                <Chip label={kw} size="small" variant="outlined" />
+                              </span>
+                            </Tooltip>
+                          );
+                        })}
+                      </Box>
+                    )}
                   </Box>
                 </Box>
               ))
