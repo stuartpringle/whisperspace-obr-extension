@@ -161,6 +161,10 @@ export function RulesApp() {
   const rules = rulesData as RuleDoc[];
 
   const q = query.trim().toLowerCase();
+  const [activeSlug, setActiveSlug] = useState<string>(() => {
+    const first = rules[0];
+    return first?.slug || first?.title?.toLowerCase().replace(/\s+/g, "-") || "";
+  });
   const filtered = useMemo(() => {
     if (!q) return rules;
     return rules.map((doc) => filterSection(doc, q)).filter(Boolean) as RuleDoc[];
@@ -171,6 +175,10 @@ export function RulesApp() {
     slug: doc.slug || doc.title.toLowerCase().replace(/\s+/g, "-"),
   }));
 
+  const activeDoc = useMemo(() => {
+    return rules.find((d) => (d.slug || d.title.toLowerCase().replace(/\s+/g, "-")) === activeSlug) ?? rules[0];
+  }, [rules, activeSlug]);
+
   return (
     <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 12, padding: 12 }}>
       <aside style={{ position: "sticky", top: 12, alignSelf: "start" }}>
@@ -180,13 +188,13 @@ export function RulesApp() {
             <button
               key={t.slug}
               onClick={() => {
-                const el = document.getElementById(t.slug);
-                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                setActiveSlug(t.slug);
+                setQuery("");
               }}
               style={{
                 textAlign: "left",
                 background: "transparent",
-                border: "1px solid rgba(255,255,255,0.2)",
+                border: `1px solid ${t.slug === activeSlug ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.2)"}`,
                 borderRadius: 8,
                 padding: "6px 8px",
                 cursor: "pointer",
@@ -217,12 +225,46 @@ export function RulesApp() {
           }}
         />
 
-        {filtered.length === 0 ? (
-          <p style={{ opacity: 0.7 }}>No matches.</p>
+        {q ? (
+          filtered.length === 0 ? (
+            <p style={{ opacity: 0.7 }}>No matches.</p>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 12 }}>
+              {filtered.map((doc) => {
+                const slug = doc.slug || doc.title.toLowerCase().replace(/\s+/g, "-");
+                return (
+                  <button
+                    key={slug}
+                    onClick={() => {
+                      setActiveSlug(slug);
+                      setQuery("");
+                    }}
+                    style={{
+                      textAlign: "left",
+                      background: "transparent",
+                      border: "1px solid rgba(255,255,255,0.2)",
+                      borderRadius: 8,
+                      padding: "6px 8px",
+                      cursor: "pointer",
+                      color: "inherit",
+                    }}
+                  >
+                    {highlightText(doc.title, q)}
+                  </button>
+                );
+              })}
+            </div>
+          )
         ) : (
-          filtered.map((doc, i) => (
-            <RuleSectionView key={`${doc.slug ?? doc.title}-${i}`} section={doc} depth={0} expandAll={!!q} query={q} />
-          ))
+          activeDoc && (
+            <RuleSectionView
+              key={activeDoc.slug ?? activeDoc.title}
+              section={activeDoc}
+              depth={0}
+              expandAll={false}
+              query=""
+            />
+          )
         )}
       </main>
     </div>
