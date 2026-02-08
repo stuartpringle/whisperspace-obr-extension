@@ -29,8 +29,9 @@ type RuleDoc = RuleSection & {
 type LabeledTable = { label: string; block: RuleBlock };
 type Glossary = {
   regex: RegExp | null;
-  linkTerms: Map<string, string>;
+  linkTerms: Map<string, { id: string; docSlug: string }>;
   tooltipTerms: Map<string, string>;
+  anchorToDoc: Map<string, string>;
 };
 
 function getSectionId(section: RuleSection) {
@@ -89,21 +90,53 @@ function escapeRegExp(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function buildGlossary(docs: RuleDoc[]): Glossary {
-  const linkTerms = new Map<string, string>();
-  const tooltipTerms = new Map<string, string>();
+function buildAnchorMaps(docs: RuleDoc[]) {
+  const linkTerms = new Map<string, { id: string; docSlug: string }>();
+  const anchorToDoc = new Map<string, string>();
   const blacklist = new Set(["the", "and", "or", "of", "in", "to", "a", "an"]);
 
   for (const doc of docs) {
+    const docSlug = getSectionId(doc);
     const sections = collectSectionTitles(doc, []);
     for (const section of sections) {
       const title = String(section.title ?? "").trim();
       if (!title || title.length < 4) continue;
       if (blacklist.has(title.toLowerCase())) continue;
       const id = getSectionId(section);
-      if (!linkTerms.has(title)) linkTerms.set(title, id);
+      if (!linkTerms.has(title)) linkTerms.set(title, { id, docSlug });
+      if (!anchorToDoc.has(id)) anchorToDoc.set(id, docSlug);
     }
+
+    const walk = (sec: RuleSection) => {
+      (sec.content ?? []).forEach((block) => {
+        if (block.type !== "table") return;
+        const rows = block.rows ?? [];
+        if (!rows.length) return;
+        const [head, ...body] = rows;
+        const headerText = head.map((cell) => String(cell.text ?? "").toLowerCase());
+        const isKeywordTable = headerText.some((h) => h.includes("keyword")) && headerText.length >= 2;
+        if (!isKeywordTable) return;
+        body.forEach((row) => {
+          const raw = String(row[0]?.text ?? "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "");
+          if (!raw) return;
+          const anchor = `weapon-keyword-${raw}`;
+          if (!anchorToDoc.has(anchor)) anchorToDoc.set(anchor, docSlug);
+        });
+      });
+      (sec.sections ?? []).forEach(walk);
+    };
+    walk(doc);
   }
+
+  return { linkTerms, anchorToDoc };
+}
+
+function buildGlossary(docs: RuleDoc[]): Glossary {
+  const { linkTerms, anchorToDoc } = buildAnchorMaps(docs);
+  const tooltipTerms = new Map<string, string>();
 
   Object.entries(ATTRIBUTE_TOOLTIPS).forEach(([key, desc]) => {
     if (key && desc) tooltipTerms.set(key, desc);
@@ -119,7 +152,7 @@ function buildGlossary(docs: RuleDoc[]): Glossary {
     new Set([...tooltipTerms.keys(), ...linkTerms.keys()])
   ).sort((a, b) => b.length - a.length);
 
-  if (!terms.length) return { regex: null, linkTerms, tooltipTerms };
+  if (!terms.length) return { regex: null, linkTerms, tooltipTerms, anchorToDoc };
 
   const patterns = terms.map((term) => {
     const escaped = escapeRegExp(term);
@@ -129,7 +162,7 @@ function buildGlossary(docs: RuleDoc[]): Glossary {
   });
 
   const regex = new RegExp(`(${patterns.join("|")})`, "g");
-  return { regex, linkTerms, tooltipTerms };
+  return { regex, linkTerms, tooltipTerms, anchorToDoc };
 }
 
 function highlightText(text: string, q: string) {
@@ -174,7 +207,12 @@ function scrollToSection(id: string) {
   }
 }
 
-function renderGlossaryText(text: string, q: string, glossary: Glossary) {
+function renderGlossaryText(
+  text: string,
+  q: string,
+  glossary: Glossary,
+  onNavigate: (id: string, docSlug?: string) => void
+) {
   const raw = String(text ?? "");
   if (!glossary.regex) return highlightText(raw, q);
 
@@ -203,11 +241,11 @@ function renderGlossaryText(text: string, q: string, glossary: Glossary) {
       nodes.push(
         <a
           key={`${term}-${start}`}
-          href={`#${link}`}
+          href={`#${link.id}`}
           style={{ color: "inherit", textDecoration: "underline dotted" }}
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection(link);
+            onNavigate(link.id, link.docSlug);
           }}
         >
           {content}
@@ -224,7 +262,12 @@ function renderGlossaryText(text: string, q: string, glossary: Glossary) {
   return nodes;
 }
 
-function renderKeywordText(text: string, q: string) {
+function renderKeywordText(
+  text: string,
+  q: string,
+  glossary: Glossary,
+  onNavigate: (id: string, docSlug?: string) => void
+) {
   const parts = splitKeywordList(text);
   if (!parts.length) return highlightText(text, q);
 
@@ -240,7 +283,7 @@ function renderKeywordText(text: string, q: string) {
           style={{ color: "inherit", textDecoration: "underline dotted" }}
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection(info.anchor);
+            onNavigate(info.anchor, glossary.anchorToDoc.get(info.anchor));
           }}
         >
           {highlightText(part, q)}
@@ -251,7 +294,13 @@ function renderKeywordText(text: string, q: string) {
   });
 }
 
-function renderBlock(block: RuleBlock, idx: number, q: string, glossary: Glossary) {
+function renderBlock(
+  block: RuleBlock,
+  idx: number,
+  q: string,
+  glossary: Glossary,
+  onNavigate: (id: string, docSlug?: string) => void
+) {
   if (block.type === "table") {
     const rows = block.rows ?? [];
     if (!rows.length) return null;
@@ -284,7 +333,9 @@ function renderBlock(block: RuleBlock, idx: number, q: string, glossary: Glossar
             >
               {row.map((cell, c) => (
                 <td key={c} style={{ borderBottom: "1px solid rgba(255,255,255,0.12)", padding: "4px 6px" }}>
-                  {isKeywordTable ? renderKeywordText(cell.text, q) : renderGlossaryText(cell.text, q, glossary)}
+                  {isKeywordTable
+                    ? renderKeywordText(cell.text, q, glossary, onNavigate)
+                    : renderGlossaryText(cell.text, q, glossary, onNavigate)}
                 </td>
               ))}
             </tr>
@@ -296,7 +347,7 @@ function renderBlock(block: RuleBlock, idx: number, q: string, glossary: Glossar
   if (block.type === "paragraph") {
     return (
       <p key={`p-${idx}`} style={{ margin: "6px 0", lineHeight: 1.4 }}>
-        {renderGlossaryText(block.text, q, glossary)}
+        {renderGlossaryText(block.text, q, glossary, onNavigate)}
       </p>
     );
   }
@@ -308,7 +359,7 @@ function renderBlock(block: RuleBlock, idx: number, q: string, glossary: Glossar
       <ListTag key={`list-${idx}`} style={{ margin: "6px 0 6px 18px", padding: 0 }}>
         {items.map((item, i) => (
           <li key={i} style={{ margin: "4px 0", lineHeight: 1.4 }}>
-            {renderGlossaryText(item.text ?? "", q, glossary)}
+            {renderGlossaryText(item.text ?? "", q, glossary, onNavigate)}
           </li>
         ))}
       </ListTag>
@@ -349,7 +400,15 @@ function filterSection(section: RuleSection, q: string): RuleSection | null {
   return null;
 }
 
-function RuleSectionView(props: { section: RuleSection; depth?: number; expandAll?: boolean; query?: string; tablesByLabel?: Map<string, RuleBlock>; glossary: Glossary }) {
+function RuleSectionView(props: {
+  section: RuleSection;
+  depth?: number;
+  expandAll?: boolean;
+  query?: string;
+  tablesByLabel?: Map<string, RuleBlock>;
+  glossary: Glossary;
+  onNavigate: (id: string, docSlug?: string) => void;
+}) {
   const depth = props.depth ?? 0;
   const content = normalizeContent(props.section.content ?? []);
   const hasChildren = (props.section.sections ?? []).length > 0;
@@ -372,7 +431,7 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
       <div id={id} style={{ marginLeft: pad, marginTop: 0 }}>
         <h2 style={{ margin: "0 0 8px 0", fontSize: 22 }}>{props.section.title}</h2>
         <div>
-          {content.map((b, i) => renderBlock(b, i, q, props.glossary))}
+          {content.map((b, i) => renderBlock(b, i, q, props.glossary, props.onNavigate))}
           {hasChildren && (props.section.sections ?? []).map((s, i) => (
             <RuleSectionView
               key={`${s.slug ?? s.title}-${i}`}
@@ -382,6 +441,7 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
               query={q}
               tablesByLabel={props.tablesByLabel}
               glossary={props.glossary}
+              onNavigate={props.onNavigate}
             />
           ))}
         </div>
@@ -396,8 +456,8 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
           {highlightText(props.section.title, q)}
         </summary>
         <div>
-          {shouldInjectTable ? renderBlock(fallbackTable!, 0, q, props.glossary) : null}
-          {content.map((b, i) => renderBlock(b, i, q, props.glossary))}
+          {shouldInjectTable ? renderBlock(fallbackTable!, 0, q, props.glossary, props.onNavigate) : null}
+          {content.map((b, i) => renderBlock(b, i, q, props.glossary, props.onNavigate))}
           {hasChildren && (props.section.sections ?? []).map((s, i) => (
             <RuleSectionView
               key={`${s.slug ?? s.title}-${i}`}
@@ -407,6 +467,7 @@ function RuleSectionView(props: { section: RuleSection; depth?: number; expandAl
               query={q}
               tablesByLabel={props.tablesByLabel}
               glossary={props.glossary}
+              onNavigate={props.onNavigate}
             />
           ))}
         </div>
@@ -500,6 +561,14 @@ export function RulesApp() {
   }));
 
   const glossary = useMemo(() => buildGlossary(rules), [rules]);
+
+  const navigateTo = (id: string, docSlug?: string) => {
+    if (docSlug && docSlug !== activeSlug) {
+      setActiveSlug(docSlug);
+    }
+    setTimeout(() => scrollToSection(id), 0);
+    setTimeout(() => scrollToSection(id), 50);
+  };
 
   const activeDoc = useMemo(() => {
     const slug = q && searchSelection ? searchSelection : activeSlug;
@@ -708,6 +777,7 @@ export function RulesApp() {
               query=""
               tablesByLabel={tablesByLabel}
               glossary={glossary}
+              onNavigate={navigateTo}
             />
           )
         )}
@@ -720,6 +790,7 @@ export function RulesApp() {
             query={q}
             tablesByLabel={tablesByLabel}
             glossary={glossary}
+            onNavigate={navigateTo}
           />
         ) : null}
       </main>
