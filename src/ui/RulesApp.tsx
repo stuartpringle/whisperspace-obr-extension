@@ -8,6 +8,7 @@ type RuleSpan = {
 
 type RuleBlock =
   | { type: "paragraph"; text: string; spans?: RuleSpan[] }
+  | { type: "list"; ordered?: boolean; items?: { text: string; spans?: RuleSpan[] }[] }
   | { type: "table"; rows: { text: string; spans?: RuleSpan[] }[][] };
 
 type RuleSection = {
@@ -149,6 +150,20 @@ function renderBlock(block: RuleBlock, idx: number, q: string) {
       </p>
     );
   }
+  if (block.type === "list") {
+    const items = block.items ?? [];
+    if (!items.length) return null;
+    const ListTag = block.ordered ? "ol" : "ul";
+    return (
+      <ListTag key={`list-${idx}`} style={{ margin: "6px 0 6px 18px", padding: 0 }}>
+        {items.map((item, i) => (
+          <li key={i} style={{ margin: "4px 0", lineHeight: 1.4 }}>
+            {highlightText(item.text ?? "", q)}
+          </li>
+        ))}
+      </ListTag>
+    );
+  }
   return null;
 }
 
@@ -254,7 +269,6 @@ export function RulesApp() {
       <div key={`${id}-${depth}`} style={{ marginLeft: depth * 12 }}>
         <button
           onClick={() => {
-            setActiveSlug(activeSlug);
             setQuery("");
             setTimeout(() => {
               const el = document.getElementById(id);
@@ -288,32 +302,37 @@ export function RulesApp() {
       <aside style={{ position: "sticky", top: 12, alignSelf: "start" }}>
         <h3 style={{ margin: "0 0 8px 0" }}>Contents</h3>
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          {toc.map((t) => (
-            <button
-              key={t.slug}
-              onClick={() => {
-                setActiveSlug(t.slug);
-                setQuery("");
-              }}
-              style={{
-                textAlign: "left",
-                background: "transparent",
-                border: `1px solid ${t.slug === activeSlug ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.2)"}`,
-                borderRadius: 8,
-                padding: "6px 8px",
-                cursor: "pointer",
-                color: "inherit",
-              }}
-            >
-              {t.title}
-            </button>
-          ))}
+          {toc.map((t) => {
+            const isActive = t.slug === activeSlug;
+            const doc = rules.find((d) => getSectionId(d) === t.slug);
+            return (
+              <div key={t.slug} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                <button
+                  onClick={() => {
+                    setActiveSlug(t.slug);
+                    setQuery("");
+                  }}
+                  style={{
+                    textAlign: "left",
+                    background: "transparent",
+                    border: `1px solid ${isActive ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.2)"}`,
+                    borderRadius: 8,
+                    padding: "6px 8px",
+                    cursor: "pointer",
+                    color: "inherit",
+                  }}
+                >
+                  {t.title}
+                </button>
+                {!q && isActive && doc?.sections?.length ? (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                    {doc.sections.map((section) => renderSectionTree(section, 1))}
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
         </div>
-        {!q && activeDoc?.sections?.length ? (
-          <div style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 6 }}>
-            {activeDoc.sections.map((section) => renderSectionTree(section, 1))}
-          </div>
-        ) : null}
       </aside>
 
       <main>
