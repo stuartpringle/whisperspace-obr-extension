@@ -118,6 +118,20 @@ function sectionMatchesQuery(section: RuleSection, q: string): boolean {
   return hay.includes(q);
 }
 
+function countQueryMatches(section: RuleSection, q: string): number {
+  if (!q) return 0;
+  const hay = JSON.stringify(section).toLowerCase();
+  let count = 0;
+  let idx = 0;
+  while (true) {
+    const hit = hay.indexOf(q, idx);
+    if (hit === -1) break;
+    count += 1;
+    idx = hit + q.length;
+  }
+  return count;
+}
+
 function filterSection(section: RuleSection, q: string): RuleSection | null {
   if (!q) return section;
   const selfMatches = sectionMatchesQuery(section, q);
@@ -232,6 +246,7 @@ export function RulesApp() {
             <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 12 }}>
               {filtered.map((doc) => {
                 const slug = doc.slug || doc.title.toLowerCase().replace(/\s+/g, "-");
+                const count = countQueryMatches(doc, q);
                 return (
                   <button
                     key={slug}
@@ -249,7 +264,10 @@ export function RulesApp() {
                       color: "inherit",
                     }}
                   >
-                    {highlightText(doc.title, q)}
+                    <span style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+                      <span>{highlightText(doc.title, q)}</span>
+                      <span style={{ opacity: 0.7, fontSize: 12 }}>{count} entries</span>
+                    </span>
                   </button>
                 );
               })}
