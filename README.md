@@ -1,239 +1,26 @@
-# Whisperspace OBR Sheet + Rules Reference
+# Whisperspace OBR Extension
 
-This repo contains two Owlbear Rodeo extensions:
+Whisperspace character sheet extension for Owlbear Rodeo.
 
-1. **Whisperspace Character Sheet** (token-backed sheet)
-2. **Whisperspace Rules Reference** (shared rules viewer)
+## Build
 
-## Install in OBR
-
-Add these manifests in Owlbear Rodeo:
-
-- `dist/manifest.json` — Character Sheet
-- `dist/manifest.rules.json` — Rules Reference
-
-## Rules Data Workflow
-
-Rules data comes from the **Whisperspace Rules Parser**. That parser ingests the Google Doc export and outputs YAML files.
-
-Parser README:
-`/hdd/sites/stuartpringle/whisperspace-rules-parser/README.md`
-
-### Update Rules
-
-1. Update the Google Doc and run the parser:
-   ```bash
-   PYTHONPATH=src python3 -m whisperspace_rules_parser.cli --out out
-   ```
-2. Sync rules into this repo:
-   ```bash
-   npm run rules:sync
-   ```
-   This copies YAML files into `src/data/rules/` and regenerates `src/data/generated/rules.json`.
-
-3. Build:
-   ```bash
-   npm run build
-   ```
-
-### Where Rules Live
-
-- Source YAML: `src/data/rules/*.yaml`
-- Generated JSON: `src/data/generated/rules.json`
-- Rules UI entry: `rules.html` + `src/rules-main.tsx` + `src/ui/RulesApp.tsx`
-
-## Scripts
-
-- `npm run rules:sync` — copy parser output into `src/data/rules/` and regenerate JSON.
-- `npm run rules:gear` — parse equipment tables from `src/data/rules/equipment-gear.yaml` into data YAML files.
-- `npm run rules:publish` — run the parser, sync rules, build/publish the HTTP rules API + core module.
-- `npm run build` — runs rules sync, then builds the extension.
-
-## HTTP Rules API
-
-The latest rules API is published to:
-
-- `https://whisperspace.com/rules-api/latest/`
-
-Key files:
-
-- `rules.json` (full rules tree)
-- `skills.json`, `weapons.json`, `armour.json`, `items.json`, `cyberware.json`, `narcotics.json`, `hacking_gear.json`
-- `weapon_keywords.json`, `skill_tooltips.json`
-- `meta.json` (semver + hashes)
-
-### Core Module (HTTP)
-
-The shared core logic is available as an ES module:
-
-```js
-import { buildAttackOutcome, deriveAttributesFromSkills } from "https://whisperspace.com/rules-api/latest/core/index.js";
-```
-
-### Calc Endpoints (PHP)
-
-All endpoints are `POST` and accept JSON bodies. No auth required.
-Rate limit: 120 requests per minute per IP (best-effort).
-Schemas: `https://whisperspace.com/rules-api/calc/schemas/index.json`
-
-Endpoints:
-- `/rules-api/calc/attack`
-- `/rules-api/calc/crit-extra`
-- `/rules-api/calc/damage`
-- `/rules-api/calc/derive-attributes`
-- `/rules-api/calc/derive-cuf`
-- `/rules-api/calc/skill-notation`
-- `/rules-api/calc/skill-mod`
-- `/rules-api/calc/status-deltas`
-- `/rules-api/calc/status-apply`
-- `/rules-api/calc/ammo-max`
-- `/rules-api/calc/point-budget`
-- `/rules-api/calc/validate-sheet`
-
-Example: `POST https://whisperspace.com/rules-api/calc/attack`
-
-Body:
-```json
-{
-  "total": 11,
-  "useDC": 8,
-  "weaponDamage": 4,
-  "label": "Shotgun"
-}
-```
-
-Response:
-```json
-{
-  "total": 11,
-  "useDC": 8,
-  "margin": 3,
-  "hit": true,
-  "isCrit": false,
-  "critExtra": 0,
-  "baseDamage": 4,
-  "totalDamage": 4,
-  "stressDelta": 0,
-  "message": "Hit. Shotgun rolled 11 vs DC 8. Damage: 4."
-}
-```
-
-Quick payload shapes:
-- `/attack`: `{ total, useDC, weaponDamage, label? }`
-- `/crit-extra`: `{ margin }`
-- `/damage`: `{ incomingDamage, stressDelta?, unmitigated?, armour?, wounds?, stress? }`
-- `/derive-attributes`: `{ skills, inherentSkills }`
-- `/derive-cuf`: `{ skills }`
-- `/skill-notation`: `{ netDice, modifier, label }`
-- `/skill-mod`: `{ learnedByFocus, skillId, ranks?, learningFocus?, skillMods? }`
-- `/status-deltas`: `{ statuses: string[] }`
-- `/status-apply`: `{ derived, statuses: string[] }`
-- `/ammo-max`: `{ weapon }`
-- `/point-budget`: `{ skills, skillPoints }`
-- `/validate-sheet`: `{ sheet, learnedByFocus, inherentSkills, maxRankInherent?, maxRankOnFocus?, maxRankOffFocus? }`
-
-Minimal curl examples:
 ```bash
-curl -s https://whisperspace.com/rules-api/calc/attack \
-  -H "Content-Type: application/json" \
-  -d '{"total":12,"useDC":8,"weaponDamage":4,"label":"Shotgun"}'
-
-curl -s https://whisperspace.com/rules-api/calc/crit-extra \
-  -H "Content-Type: application/json" \
-  -d '{"margin":4}'
-
-curl -s https://whisperspace.com/rules-api/calc/damage \
-  -H "Content-Type: application/json" \
-  -d '{"incomingDamage":4,"stressDelta":1,"armour":{"protection":2,"durability":{"current":3,"max":3}},"wounds":{"light":0,"moderate":0,"heavy":0},"stress":{"current":0,"cuf":0,"cufLoss":0}}'
-
-curl -s https://whisperspace.com/rules-api/calc/derive-attributes \
-  -H "Content-Type: application/json" \
-  -d '{"skills":{"athletics":2},"inherentSkills":[{"id":"athletics","attribute":"phys"}]}'
-
-curl -s https://whisperspace.com/rules-api/calc/derive-cuf \
-  -H "Content-Type: application/json" \
-  -d '{"skills":{"instinct":2,"willpower":1,"bearing":0,"toughness":0,"tactics":1}}'
-
-curl -s https://whisperspace.com/rules-api/calc/skill-notation \
-  -H "Content-Type: application/json" \
-  -d '{"netDice":1,"modifier":2,"label":"Athletics"}'
-
-curl -s https://whisperspace.com/rules-api/calc/skill-mod \
-  -H "Content-Type: application/json" \
-  -d '{"learnedByFocus":{"combat":[{"id":"melee"}]},"skillId":"melee","ranks":{"melee":0},"learningFocus":"combat","skillMods":{"melee":0}}'
-
-curl -s https://whisperspace.com/rules-api/calc/status-deltas \
-  -H "Content-Type: application/json" \
-  -d '{"statuses":["phys +1","speed -2"]}'
-
-curl -s https://whisperspace.com/rules-api/calc/status-apply \
-  -H "Content-Type: application/json" \
-  -d '{"derived":{"phys":2,"ref":1,"soc":0,"ment":1,"speed":6},"statuses":["phys +1","speed -2"]}'
-
-curl -s https://whisperspace.com/rules-api/calc/ammo-max \
-  -H "Content-Type: application/json" \
-  -d '{"weapon":{"keywordParams":{"ammoMax":6}}}'
-
-curl -s https://whisperspace.com/rules-api/calc/point-budget \
-  -H "Content-Type: application/json" \
-  -d '{"skills":{"athletics":2,"melee":1},"skillPoints":10}'
-
-curl -s https://whisperspace.com/rules-api/calc/validate-sheet \
-  -H "Content-Type: application/json" \
-  -d '{"sheet":{"skills":{"athletics":2,"melee":1},"learningFocus":"combat","skillPoints":10},"learnedByFocus":{"combat":[{"id":"melee"}]},"inherentSkills":[{"id":"athletics"}]}' 
+npm install
+npm run build
 ```
 
-### Core Hooks
+## Development
 
-You can subscribe to hooks exposed by the core module:
-
-```js
-import { getHookBus } from "https://whisperspace.com/rules-api/latest/core/index.js";
-
-const off = getHookBus().on("attack:resolved", (payload) => {
-  console.log("Attack resolved:", payload);
-});
-
-// later:
-off();
+```bash
+npm run dev
 ```
 
-### CORS
+## Manifest
 
-Apache should allow cross‑origin access for the rules API path. Example:
+Load `dist/manifest.json` in Owlbear Rodeo after building.
 
-```apache
-<Directory /hdd/sites/stuartpringle/whisperspace/public/rules-api>
-    Options -Indexes
-    AllowOverride None
-    Require all granted
+## Related Repos
 
-    <IfModule mod_headers.c>
-        Header set Access-Control-Allow-Origin "*"
-        Header set Access-Control-Allow-Methods "GET, OPTIONS"
-        Header set Access-Control-Allow-Headers "Content-Type"
-    </IfModule>
-</Directory>
-
-AddType application/json .json
-```
-
-### Cache Headers (ETag + Cache-Control)
-
-If you want cheap revalidation, add ETag + cache headers in Apache. Example:
-
-```apache
-<Directory /hdd/sites/stuartpringle/whisperspace/public/rules-api>
-    <IfModule mod_headers.c>
-        Header set Cache-Control "public, max-age=300, must-revalidate"
-        Header set ETag "expr=%{REQUEST_URI}-%{FILE_SIZE}-%{FILE_MTIME}"
-    </IfModule>
-
-    <IfModule mod_expires.c>
-        ExpiresActive On
-        ExpiresDefault "access plus 5 minutes"
-    </IfModule>
-</Directory>
-```
-
-Note: your vhost currently has `AllowOverride None`, so put these in the vhost config (not `.htaccess`).
+- Rules reference extension: `whisperspace-obr-rules-extension`
+- SDK: `whisperspace-sdk`
+- Rules API: `whisperspace-rules-api`
