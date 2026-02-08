@@ -72,11 +72,25 @@ import { buildAttackOutcome, deriveAttributesFromSkills } from "https://whispers
 
 ### Calc Endpoints (PHP)
 
-`POST https://whisperspace.com/rules-api/calc/attack`
+Auth:
+- `Authorization: Bearer <your key>`
+- `?api_key=<your key>` (fallback)
 
-Headers:
-- `Content-Type: application/json`
-- `X-WS-API-Key: <your key>`
+All endpoints are `POST` and accept JSON bodies.
+
+Endpoints:
+- `/rules-api/calc/attack`
+- `/rules-api/calc/crit-extra`
+- `/rules-api/calc/damage`
+- `/rules-api/calc/derive-attributes`
+- `/rules-api/calc/derive-cuf`
+- `/rules-api/calc/skill-notation`
+- `/rules-api/calc/skill-mod`
+- `/rules-api/calc/status-deltas`
+- `/rules-api/calc/status-apply`
+- `/rules-api/calc/ammo-max`
+
+Example: `POST https://whisperspace.com/rules-api/calc/attack`
 
 Body:
 ```json
@@ -103,6 +117,18 @@ Response:
   "message": "Hit. Shotgun rolled 11 vs DC 8. Damage: 4."
 }
 ```
+
+Quick payload shapes:
+- `/attack`: `{ total, useDC, weaponDamage, label? }`
+- `/crit-extra`: `{ margin }`
+- `/damage`: `{ incomingDamage, stressDelta?, unmitigated?, armour?, wounds?, stress? }`
+- `/derive-attributes`: `{ skills, inherentSkills }`
+- `/derive-cuf`: `{ skills }`
+- `/skill-notation`: `{ netDice, modifier, label }`
+- `/skill-mod`: `{ learnedByFocus, skillId, ranks?, learningFocus?, skillMods? }`
+- `/status-deltas`: `{ statuses: string[] }`
+- `/status-apply`: `{ derived, statuses: string[] }`
+- `/ammo-max`: `{ weapon }`
 
 ### Core Hooks
 
