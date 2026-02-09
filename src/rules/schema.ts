@@ -185,9 +185,8 @@ export function createDefaultSheet(name?: string): CharacterSheetV1 {
 // -------------------------
 export type CharacterRecordAdapterOptions = {
   id?: string;
-  concept?: string;
   background?: string;
-  level?: number;
+  motivation?: string;
   createdAt?: string;
   updatedAt?: string;
 };
@@ -209,61 +208,28 @@ export function toCharacterRecordV1(
   const createdAt = opts.createdAt ?? new Date().toISOString();
   const updatedAt = opts.updatedAt ?? createdAt;
 
-  const skills = Object.entries(sheet.skills ?? {}).map(([key, rank]) => ({
-    key,
-    label: key,
-    rank: Number(rank ?? 0),
-  }));
-
-  const gear: CharacterRecordV1["gear"] = [];
-  const weapons = sheet.weapons ?? [];
-  weapons.forEach((weapon, index) => {
-    const id = weapon.id ?? `weapon_${index}`;
-    gear.push({
-      id,
-      name: weapon.name ?? "",
-      type: "weapon",
-      tags: weapon.keywords ?? [],
-      notes: weapon.range ?? "",
-    });
-  });
-
-  if (sheet.armor) {
-    gear.push({
-      id: "armour_0",
-      name: sheet.armor.name ?? "",
-      type: "armour",
-      tags: sheet.armor.keywords ?? [],
-      notes: sheet.armor.special ?? "",
-    });
-  }
-
-  (sheet.inventory ?? []).forEach((item, index) => {
-    const id = item.id ?? `gear_${index}`;
-    const base = { id, name: item.name ?? "", tags: [] as string[], notes: "" };
-    if (item.type === "item") {
-      gear.push({ ...base, type: "item", notes: item.effect ?? "" });
-    } else if (item.type === "cyberware") {
-      gear.push({ ...base, type: "cyberware", notes: item.effect ?? "" });
-    } else if (item.type === "narcotics") {
-      gear.push({ ...base, type: "narcotic", notes: item.effect ?? "" });
-    }
-  });
-
   return {
     id: opts.id ?? getUuid(),
     name: sheet.name ?? "",
-    concept: opts.concept ?? "",
     background: opts.background ?? "",
-    level: opts.level ?? 1,
+    motivation: opts.motivation ?? "",
     attributes: {
       phys: Number(attrs.phys ?? 0),
       ref: Number(attrs.ref ?? 0),
       soc: Number(attrs.soc ?? 0),
       ment: Number(attrs.ment ?? 0),
     },
-    skills,
-    gear,
+    skills: { ...(sheet.skills ?? {}) },
+    learningFocus: sheet.learningFocus,
+    skillPoints: sheet.skillPoints,
+    stress: sheet.stress,
+    wounds: sheet.wounds,
+    weapons: sheet.weapons ?? [],
+    armour: sheet.armor,
+    inventory: sheet.inventory ?? [],
+    credits: sheet.credits,
+    feats: sheet.feats ?? [],
+    indomitable: sheet.indomitable ?? false,
     notes: sheet.notes ?? "",
     createdAt,
     updatedAt,
@@ -276,72 +242,6 @@ export function toCharacterRecordV1(
  */
 export function fromCharacterRecordV1(record: CharacterRecordV1): CharacterSheetV1 {
   const base = createDefaultSheet(record.name);
-  const skills: Record<string, number> = {};
-  record.skills.forEach((skill) => {
-    skills[skill.key] = Number(skill.rank ?? 0);
-  });
-
-  const weapons = record.gear
-    .filter((g) => g.type === "weapon")
-    .map((g) => ({
-      id: g.id,
-      name: g.name,
-      skillId: "",
-      useDC: 8,
-      damage: 0,
-      keywords: g.tags ?? [],
-      keywordParams: {},
-      range: g.notes ?? "",
-    }));
-
-  const armour = record.gear.find((g) => g.type === "armour");
-  const inventory = record.gear
-    .filter((g) => g.type !== "weapon" && g.type !== "armour")
-    .map((g) => {
-      if (g.type === "cyberware") {
-        return {
-          id: g.id,
-          type: "cyberware" as const,
-          name: g.name,
-          quantity: 1,
-          bulk: 1,
-          tier: 1,
-          installationDifficulty: 0,
-          requirements: "",
-          physicalImpact: "",
-          effect: g.notes ?? "",
-          cost: 0,
-          statusEffects: "",
-        };
-      }
-      if (g.type === "narcotic") {
-        return {
-          id: g.id,
-          type: "narcotics" as const,
-          name: g.name,
-          bulk: 1,
-          quantity: 1,
-          uses: 1,
-          addictionScore: 0,
-          legality: "",
-          effect: g.notes ?? "",
-          cost: 0,
-          statusEffects: "",
-        };
-      }
-      return {
-        id: g.id,
-        type: "item" as const,
-        name: g.name,
-        quantity: 1,
-        uses: "",
-        bulk: 0,
-        effect: g.notes ?? "",
-        cost: 0,
-        statusEffects: "",
-      };
-    });
-
   return {
     ...base,
     name: record.name,
@@ -351,19 +251,17 @@ export function fromCharacterRecordV1(record: CharacterRecordV1): CharacterSheet
       soc: Number(record.attributes.soc ?? 0),
       ment: Number(record.attributes.ment ?? 0),
     },
-    skills,
-    weapons,
-    armor: armour
-      ? {
-          name: armour.name ?? "",
-          keywords: armour.tags ?? [],
-          keywordParams: {},
-          protection: 0,
-          durability: { current: 0, max: 0 },
-          special: armour.notes ?? "",
-        }
-      : base.armor,
-    inventory,
+    skills: { ...(record.skills ?? {}) },
+    learningFocus: record.learningFocus,
+    skillPoints: record.skillPoints,
+    stress: record.stress ?? base.stress,
+    wounds: record.wounds ?? base.wounds,
+    weapons: record.weapons ?? base.weapons,
+    armor: record.armour ?? base.armor,
+    inventory: record.inventory ?? base.inventory,
+    credits: record.credits ?? base.credits,
+    feats: record.feats ?? base.feats,
+    indomitable: record.indomitable ?? base.indomitable,
     notes: record.notes ?? "",
   };
 }
