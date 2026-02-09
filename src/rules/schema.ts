@@ -149,6 +149,18 @@ export const CharacterSheetV1Schema = z.object({
           cost: z.number().int().default(0),
           statusEffects: z.string().default(""),
         }),
+        z.object({
+          id: z.string().optional(),
+          type: z.literal("hacker_gear"),
+          name: z.string().default(""),
+          quantity: z.number().int().default(1),
+          bulk: z.number().int().default(1),
+          notes: z.string().default(""),
+          systemTierAccess: z.number().int().default(1),
+          maxSoftwareTier: z.number().int().default(1),
+          tier: z.number().int().optional(),
+          cost: z.number().int().default(0),
+        }),
       ])
     )
     .default([]),
