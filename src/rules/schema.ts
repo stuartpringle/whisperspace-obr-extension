@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { CharacterRecordV1 } from "@whisperspace/sdk";
 
 /**
  * Whisperspace OBR Sheet - schema
@@ -177,4 +178,194 @@ export function createDefaultSheet(name?: string): CharacterSheetV1 {
     return { ...base, name: name.trim() };
   }
   return base;
+}
+
+// -------------------------
+// Adapters (OBR token schema <-> canonical record)
+// -------------------------
+export type CharacterRecordAdapterOptions = {
+  id?: string;
+  concept?: string;
+  background?: string;
+  level?: number;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+function getUuid(): string {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") return crypto.randomUUID();
+  return `ws_${Math.random().toString(36).slice(2)}_${Date.now()}`;
+}
+
+/**
+ * Lossy conversion: OBR token sheet -> canonical record.
+ * This intentionally preserves only fields that exist in both models.
+ */
+export function toCharacterRecordV1(
+  sheet: CharacterSheetV1,
+  opts: CharacterRecordAdapterOptions = {}
+): CharacterRecordV1 {
+  const attrs = sheet.attributes ?? { phys: 0, ref: 0, soc: 0, ment: 0 };
+  const createdAt = opts.createdAt ?? new Date().toISOString();
+  const updatedAt = opts.updatedAt ?? createdAt;
+
+  const skills = Object.entries(sheet.skills ?? {}).map(([key, rank]) => ({
+    key,
+    label: key,
+    rank: Number(rank ?? 0),
+  }));
+
+  const gear: CharacterRecordV1["gear"] = [];
+  const weapons = sheet.weapons ?? [];
+  weapons.forEach((weapon, index) => {
+    const id = weapon.id ?? `weapon_${index}`;
+    gear.push({
+      id,
+      name: weapon.name ?? "",
+      type: "weapon",
+      tags: weapon.keywords ?? [],
+      notes: weapon.range ?? "",
+    });
+  });
+
+  if (sheet.armor) {
+    gear.push({
+      id: "armour_0",
+      name: sheet.armor.name ?? "",
+      type: "armour",
+      tags: sheet.armor.keywords ?? [],
+      notes: sheet.armor.special ?? "",
+    });
+  }
+
+  (sheet.inventory ?? []).forEach((item, index) => {
+    const id = item.id ?? `gear_${index}`;
+    const base = { id, name: item.name ?? "", tags: [] as string[], notes: "" };
+    if (item.type === "item") {
+      gear.push({ ...base, type: "item", notes: item.effect ?? "" });
+    } else if (item.type === "cyberware") {
+      gear.push({ ...base, type: "cyberware", notes: item.effect ?? "" });
+    } else if (item.type === "narcotics") {
+      gear.push({ ...base, type: "narcotic", notes: item.effect ?? "" });
+    }
+  });
+
+  return {
+    id: opts.id ?? getUuid(),
+    name: sheet.name ?? "",
+    concept: opts.concept ?? "",
+    background: opts.background ?? "",
+    level: opts.level ?? 1,
+    attributes: {
+      phys: Number(attrs.phys ?? 0),
+      dex: Number(attrs.ref ?? 0),
+      int: Number(attrs.ment ?? 0),
+      will: 0,
+      cha: Number(attrs.soc ?? 0),
+      emp: 0,
+    },
+    skills,
+    gear,
+    notes: sheet.notes ?? "",
+    createdAt,
+    updatedAt,
+    version: 1,
+  };
+}
+
+/**
+ * Lossy conversion: canonical record -> OBR token sheet.
+ */
+export function fromCharacterRecordV1(record: CharacterRecordV1): CharacterSheetV1 {
+  const base = createDefaultSheet(record.name);
+  const skills: Record<string, number> = {};
+  record.skills.forEach((skill) => {
+    skills[skill.key] = Number(skill.rank ?? 0);
+  });
+
+  const weapons = record.gear
+    .filter((g) => g.type === "weapon")
+    .map((g) => ({
+      id: g.id,
+      name: g.name,
+      skillId: "",
+      useDC: 8,
+      damage: 0,
+      keywords: g.tags ?? [],
+      keywordParams: {},
+      range: g.notes ?? "",
+    }));
+
+  const armour = record.gear.find((g) => g.type === "armour");
+  const inventory = record.gear
+    .filter((g) => g.type !== "weapon" && g.type !== "armour")
+    .map((g) => {
+      if (g.type === "cyberware") {
+        return {
+          id: g.id,
+          type: "cyberware" as const,
+          name: g.name,
+          quantity: 1,
+          bulk: 1,
+          tier: 1,
+          installationDifficulty: 0,
+          requirements: "",
+          physicalImpact: "",
+          effect: g.notes ?? "",
+          cost: 0,
+          statusEffects: "",
+        };
+      }
+      if (g.type === "narcotic") {
+        return {
+          id: g.id,
+          type: "narcotics" as const,
+          name: g.name,
+          bulk: 1,
+          quantity: 1,
+          uses: 1,
+          addictionScore: 0,
+          legality: "",
+          effect: g.notes ?? "",
+          cost: 0,
+          statusEffects: "",
+        };
+      }
+      return {
+        id: g.id,
+        type: "item" as const,
+        name: g.name,
+        quantity: 1,
+        uses: "",
+        bulk: 0,
+        effect: g.notes ?? "",
+        cost: 0,
+        statusEffects: "",
+      };
+    });
+
+  return {
+    ...base,
+    name: record.name,
+    attributes: {
+      phys: Number(record.attributes.phys ?? 0),
+      ref: Number(record.attributes.dex ?? 0),
+      soc: Number(record.attributes.cha ?? 0),
+      ment: Number(record.attributes.int ?? 0),
+    },
+    skills,
+    weapons,
+    armor: armour
+      ? {
+          name: armour.name ?? "",
+          keywords: armour.tags ?? [],
+          keywordParams: {},
+          protection: 0,
+          durability: { current: 0, max: 0 },
+          special: armour.notes ?? "",
+        }
+      : base.armor,
+    inventory,
+    notes: record.notes ?? "",
+  };
 }
